@@ -1,10 +1,12 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
 function death( damage_type_bit_field, damage_message, entity_thats_responsible, drop_items )
-	local x, y = EntityGetTransform( GetUpdatedEntityID() )
+	local entity_id = GetUpdatedEntityID()
+	local x, y = EntityGetTransform( entity_id )
 	local flag_status = HasFlagPersistent( "card_unlocked_rain" )
 	
-	SetRandomSeed( x, y * GameGetFrameNum() )
+	SetRandomSeed( 0, 120 )
+	
 	local opts = { "WORM_RAIN", "METEOR_RAIN" }
 	local rnd = Random( 1, #opts )
 	

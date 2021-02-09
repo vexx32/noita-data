@@ -5,9 +5,9 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local entity_id    = GetUpdatedEntityID()
 	local pos_x, pos_y = EntityGetTransform( entity_id )
 	
-	SetRandomSeed(pos_x, pos_y)
+	SetRandomSeed( 0, 10 )
+	
 	make_random_card(pos_x, pos_y)
-
 
 	-- set flag with name of monster. 
 	GameAddFlagRun(EntityGetName(entity_id) .. "_killed")

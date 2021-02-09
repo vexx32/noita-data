@@ -304,6 +304,28 @@ g_big_enemies =
 		entity 	= "data/entities/animals/drone_shield.xml",
 		ngpluslevel = 2,
 	},
+	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/buildings/hpcrystal.xml",
+		ngpluslevel = 1,
+	},
+	{
+		prob   		= 0.01,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/easter/sniper.xml",
+		spawn_check = function() 
+			local year, month, day = GameGetDateAndTimeLocal()
+			
+			if ( month == 8 ) and ( day == 24 ) then
+				return true
+			else
+				return false 
+			end
+		end,
+	},
 }
 
 
@@ -422,7 +444,7 @@ g_unique_enemy2 =
 		min_count	= 1,
 		max_count	= 1,    
 		entity 	= "data/entities/animals/sniper.xml"
-	},
+	}
 }
 
 ------------ ITEMS ------------------------------------------------------------

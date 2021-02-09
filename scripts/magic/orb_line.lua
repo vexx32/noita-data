@@ -7,8 +7,14 @@ SetRandomSeed( x * GameGetFrameNum(), y )
 
 local orbdata = orb_map_get()
 
-x = x % 35840
-local pw = math.floor(x / 35840)
+local mx = ( ( x + 17920 ) % 35840 ) - 17920
+local pw = x
+
+if ( x >= 0 ) then
+	pw = math.floor( ( x + 17920 ) / 35840 )
+else
+	pw = math.floor( ( x - 17920 ) / 35840 )
+end
 
 if ( Random( 1, 25 ) == 4 ) then
 	local closest = -1
@@ -18,7 +24,7 @@ if ( Random( 1, 25 ) == 4 ) then
 		local ox = v[1] * 512 + 256
 		local oy = v[2] * 512 + 256
 		
-		local dist = get_distance( x, y, ox, oy )
+		local dist = get_distance( mx, y, ox, oy )
 		
 		if ( dist < cdist ) then
 			cdist = dist
@@ -28,12 +34,12 @@ if ( Random( 1, 25 ) == 4 ) then
 
 	if ( closest > -1 ) then
 		local v = orbdata[closest]
-		local ox = v[1] * 512 * pw + 256
-		local oy = v[2] * 512 * pw + 256
+		local ox = v[1] * 512 + 256
+		local oy = v[2] * 512 + 256
 		
 		-- print("Closest orb is at " .. tostring(v[1]) .. ", " .. tostring(v[2]))
 		
-		local dir = get_direction( ox, oy, x, y )
+		local dir = get_direction( ox, oy, mx, y )
 		
 		local vel_x = math.cos( dir ) * 400
 		local vel_y = 0 - math.sin( dir ) * 400

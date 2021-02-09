@@ -103,6 +103,13 @@ g_small_enemies =
 		max_count	= 2,    
 		entity 	= "data/entities/animals/ethereal_being.xml"
 	},
+	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/buildings/hpcrystal.xml",
+		ngpluslevel = 1,
+	},
 }
 
 g_stash =

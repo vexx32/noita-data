@@ -53,6 +53,11 @@
 		</AudioLoopComponent>
 	</Entity>
 	
+	<CameraBoundComponent
+	  max_count="10"
+	  distance="2000">
+	</CameraBoundComponent>
+	
 	<LifetimeComponent
 		lifetime="1800"
 		>

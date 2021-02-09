@@ -36,8 +36,8 @@ local ability_comp = EntityGetFirstComponent( entity_id, "AbilityComponent" )
 
 local gun = { }
 gun.name = {"Scattershot wand"}
-gun.deck_capacity = 25
-gun.actions_per_round = 25
+gun.deck_capacity = 26
+gun.actions_per_round = 26
 gun.reload_time = {24,38}
 gun.shuffle_deck_when_empty = 0
 gun.fire_rate_wait = {5,10}

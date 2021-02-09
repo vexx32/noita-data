@@ -29,7 +29,9 @@
 		</SpriteParticleEmitterComponent>
 		
 		<LifetimeComponent
-			lifetime="5">
+			lifetime="5"
+			kill_parent="1"
+			>
 		</LifetimeComponent>
 	</Entity>
 </Entity>

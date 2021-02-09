@@ -91,6 +91,35 @@ function spawn_ghostlamp(x, y)
 	spawn2(g_ghostlamp,x,y,0,0)
 end
 
+function parallel_check( x, y )
+	if ( y < 0 ) then
+		local pw = 0
+		if ( x >= 0 ) then
+			pw = math.floor( ( x + 17920 ) / 35840 )
+		else
+			pw = math.floor( ( math.abs( x ) + 17920 ) / 35840 )
+		end
+		
+		if ( pw ~= 0 ) then
+			local r = ProceduralRandom( x + 35, y - 253 )
+			local rx = ProceduralRandom( x - 35, y + 243 )
+			
+			SetRandomSeed( x + 35, y - 253 )
+			
+			local r = Random( 1, 100 )
+			local rx = Random( 0, 512 )
+			
+			if ( r >= 98 ) then
+				print( "ALCHEMIST AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
+				EntityLoad( "data/entities/animals/parallel/alchemist/parallel_alchemist.xml", x + rx, y )
+			elseif ( r >= 96 ) then
+				print( "TENTACLE AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
+				EntityLoad( "data/entities/animals/parallel/tentacles/parallel_tentacles.xml", x + rx, y )
+			end
+		end
+	end
+end
+
 function spawn_heart( x, y )
 	local r = ProceduralRandom( x, y )
 	SetRandomSeed( x, y )

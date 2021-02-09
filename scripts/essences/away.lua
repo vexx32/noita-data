@@ -22,6 +22,26 @@ function death( )
 		end
 	end
 	
+	if GameHasFlagRun( "essence_laser" ) then
+		EntityLoad( "data/entities/items/pickup/stonestone.xml", x, y )
+	end
+	
+	if GameHasFlagRun( "essence_fire" ) then
+		EntityLoad( "data/entities/items/pickup/brimstone.xml", x, y - 12 )
+	end
+	
+	if GameHasFlagRun( "essence_water" ) then
+		EntityLoad( "data/entities/items/pickup/waterstone.xml", x, y - 24 )
+	end
+	
+	if GameHasFlagRun( "essence_air" ) then
+		EntityLoad( "data/entities/items/pickup/thunderstone.xml", x, y - 36 )
+	end
+	
+	if GameHasFlagRun( "essence_alcohol" ) then
+		EntityLoad( "data/entities/items/pickup/poopstone.xml", x, y - 48 )
+	end
+	
 	GameRemoveFlagRun( "essence_laser" )
 	GameRemoveFlagRun( "essence_fire" )
 	GameRemoveFlagRun( "essence_water" )

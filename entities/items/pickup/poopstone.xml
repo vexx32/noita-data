@@ -199,6 +199,7 @@
 		emission_interval_max_frames="40"
 		is_emitting="1" >
 	</ParticleEmitterComponent>
+	
 	<ParticleEmitterComponent 
 		_tags="enabled_in_world,enabled_in_hand"
 		emitted_material_name="poo"

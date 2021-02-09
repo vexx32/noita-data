@@ -109,6 +109,13 @@ g_big_enemies =
 		entities 	= { "data/entities/animals/wizard_twitchy.xml", "data/entities/animals/wizard_poly.xml" },
 		ngpluslevel = 2,
 	},
+	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/buildings/hpcrystal.xml",
+		ngpluslevel = 1,
+	},
 }
 
 g_lamp =

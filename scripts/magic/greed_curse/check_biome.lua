@@ -49,10 +49,8 @@ elseif ( status == 1 ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) the
 		end
 		]]--
 		
-		GameAddFlagRun( "greed_curse_gone" )
-		
 		EntitySetComponentsWithTagEnabled( entity_id, "curse", false )
-		GamePrintImportant( "$log_greed_curse_away", "$logdesc_greed_curse_away" )
+		GamePrintImportant( "$log_greed_curse_away_short", "$logdesc_greed_curse_away_short" )
 		
 		old_depth = math.max( old_depth, depth )
 		status = 0
@@ -61,12 +59,12 @@ elseif ( status == 1 ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) the
 end
 
 if ( status == 1 ) then
-	if ( timer < 3 ) then
+	if ( timer < 5 ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
 		timer = timer + 1
-	elseif ( timer == 3 ) then
+	elseif ( timer == 5 ) then
 		GamePrint( "$log_greed_curse_return" )
 		EntitySetComponentsWithTagEnabled( entity_id, "curse", true )
-		timer = 4
+		timer = 6
 	end
 end
 

@@ -98,6 +98,12 @@ g_big_enemies =
 		entity 	= "data/entities/buildings/snowcrystal.xml"
 	},
 	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/buildings/hpcrystal.xml"
+	},
+	{
 		prob   		= 0.2,
 		min_count	= 1,
 		max_count	= 1,    
@@ -309,6 +315,8 @@ g_props =
 -- actual functions that get called from the wang generator
 
 function init(x, y, w, h)
+	parallel_check( x, y )
+	
 	-- halloween
 	local year, month, day = GameGetDateAndTimeLocal()		
 	if y > -1000 and y < 0 and month == 10 and day == 31 then

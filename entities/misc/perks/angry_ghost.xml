@@ -33,6 +33,14 @@
 	</LuaComponent>
 	
 	<VariableStorageComponent
+		_tags="angry_ghost_cooldown"
+		name="cooldown"
+		value_int="0"
+		>
+	</VariableStorageComponent>
+	
+	<VariableStorageComponent
+		_tags="angry_ghost_projectile_memory"
 		name="projectile_memory"
 		value_string="data/entities/projectiles/deck/light_bullet.xml"
 		>

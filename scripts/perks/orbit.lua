@@ -21,7 +21,7 @@ for i,projectile_id in ipairs(projectiles) do
 		who_shot = ComponentGetValue2( comp, "mWhoShot" ) 
 	end)
 	
-	print( tostring( who_shot ) .. ", " .. tostring( entity_id ) )
+	-- print( tostring( who_shot ) .. ", " .. tostring( entity_id ) )
 	
 	if ( who_shot ~= entity_id ) then
 		local spd = math.sqrt( vel_y ^ 2 + vel_x ^ 2 )

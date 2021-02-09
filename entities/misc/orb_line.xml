@@ -1,7 +1,7 @@
 <Entity>
 	<Base file="data/entities/base_projectile.xml" >
 		<VelocityComponent
-		  gravity_y="250"
+		  gravity_y="180"
 		  air_friction="0.6"
 		  mass="0.07"
 		  >

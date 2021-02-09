@@ -7,6 +7,7 @@ RegisterSpawnFunction( 0xff667600, "spawn_teleport_back" )
 RegisterSpawnFunction( 0xffb2a700, "spawn_bunker2" )
 RegisterSpawnFunction( 0xffb27600, "spawn_bunker" )
 RegisterSpawnFunction( 0xff390000, "spawn_alchemist" )
+RegisterSpawnFunction( 0xffffeedd, "init" )
 
 ------------ SMALL ENEMIES ----------------------------------------------------
 
@@ -193,6 +194,10 @@ g_lamp =
 ------------ MISC --------------------------------------
 
 -- actual functions that get called from the wang generator
+
+function init(x, y, w, h)
+	parallel_check( x, y )
+end
 
 function spawn_small_enemies(x, y)
 	-- print("spawn_small_enemies")

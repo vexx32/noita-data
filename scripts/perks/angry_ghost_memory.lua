@@ -35,3 +35,14 @@ if ( #projectile > 0 ) then
 		end
 	end
 end
+
+local comp_cd = EntityGetFirstComponent( entity_id, "VariableStorageComponent", "angry_ghost_cooldown" )
+if ( comp_cd ~= nil ) then
+	local cd = ComponentGetValue2( comp_cd, "value_int" )
+
+	if ( cd > 0 ) then
+		cd = cd - 1
+		
+		ComponentSetValue2( comp_cd, "value_int", cd )
+	end
+end

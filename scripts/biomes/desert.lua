@@ -4,7 +4,7 @@ dofile_once("data/scripts/director_helpers.lua")
 dofile_once("data/scripts/biome_scripts.lua")
 
 RegisterSpawnFunction( 0xff30D14E, "spawn_secret_checker" )
-
+RegisterSpawnFunction( 0xffffeedd, "init" )
 
 ------------ SMALL ENEMIES ----------------------------------------------------
 
@@ -110,6 +110,12 @@ g_big_enemies =
 		max_count	= 1,    
 		entity 	= "data/entities/animals/enlightened_alchemist.xml"
 	},
+	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/buildings/hpcrystal.xml"
+	},
 }
 
 g_unique_enemy =
@@ -181,6 +187,10 @@ g_candles =
 ------------ MISC --------------------------------------
 
 -- actual functions that get called from the wang generator
+
+function init(x, y, w, h)
+	parallel_check( x, y )
+end
 
 function spawn_small_enemies(x, y)
 	if ( y < 1000 ) then

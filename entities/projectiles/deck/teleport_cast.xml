@@ -36,7 +36,11 @@
 	penetrate_entities="1"
 	damage_every_x_frames="25"
 	>
-    <config_explosion />
+    <config_explosion 
+		damage="0"
+		radius="1"
+		>
+	</config_explosion>
   </ProjectileComponent>
 
   <LightComponent 

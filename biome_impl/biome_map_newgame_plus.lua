@@ -365,7 +365,12 @@ for i,v in pairs(orb_list) do
 	v[2] = y2
 end
 
-orb_map_update()
+local world_state_entity = GameGetWorldStateEntity()
+local comp = EntityGetComponent( world_state_entity, "WorldStateComponent" )
+
+if ( comp ~= nil ) then
+	orb_map_update()
+end
 
 -- biome 5
 -- crypt

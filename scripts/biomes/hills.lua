@@ -201,6 +201,8 @@ g_pumpkins =
 -- actual functions that get called from the wang generator
 
 function init(x, y, w, h)
+	parallel_check( x, y )
+	
 	-- halloween
 	local year, month, day = GameGetDateAndTimeLocal()		
 	if y > -1000 and y < 0 and month == 10 and day == 31 then

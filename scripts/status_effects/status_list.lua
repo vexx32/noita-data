@@ -70,7 +70,7 @@ status_effects =
 		ui_name="$status_teleportation",
 		ui_description="$statusdesc_teleportation",
 		ui_icon="data/ui_gfx/status_indicators/teleportation.png",
-		effect_entity="data/entities/misc/effect_teleportation.xml",
+		effect_entity="data/entities/misc/effect_unstable_teleportation.xml",
 	},
 	{
 		id="HP_REGENERATION",
@@ -300,6 +300,13 @@ status_effects =
 		ui_description="$statusdesc_farts",
 		ui_icon="data/ui_gfx/status_indicators/farts.png",
 		effect_entity="data/entities/misc/effect_farts.xml",
+	},
+	{
+		id="RAINBOW_FARTS",
+		ui_name="$status_rainbow_farts",
+		ui_description="$statusdesc_rainbow_farts",
+		ui_icon="data/ui_gfx/status_indicators/farts.png",
+		effect_entity="data/entities/misc/effect_rainbow_farts.xml",
 	},
 	{
 		id="INGESTION_ON_FIRE",

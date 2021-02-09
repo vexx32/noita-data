@@ -83,9 +83,10 @@ for _,id in ipairs(EntityGetInRadiusWithTag(x, y, 70, "egg_item")) do
 		-- check egg count
 		component_readwrite( get_variable_storage_component(entity_id, "egg_count"), { value_int = 0 }, function(comp)
 			comp.value_int = comp.value_int + 1
-			if comp.value_int >= max_egg_count then
+			if comp.value_int >= max_egg_count and ( GameHasFlagRun( "gate_monster_spawned" ) == false ) then
 				-- spawn monster spawner
 				EntityLoad("data/entities/buildings/wizardcave_gate_monster_spawner.xml", x_orig, y_orig)
+				GameAddFlagRun( "gate_monster_spawned" )
 				-- audio
 				GamePlaySound( "data/audio/Desktop/projectiles.snd", "player_projectiles/crumbling_earth/create", x_orig, y_orig )
 				GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

@@ -162,7 +162,6 @@
 		z_index="-0.45"
 		>
 	</SpriteComponent>
-		
 
 	<SpriteStainsComponent
     	fade_stains_towards_srite_top="0"

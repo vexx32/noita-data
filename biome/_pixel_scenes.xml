@@ -38,13 +38,11 @@
 	<Image filename="data/biome_impl/hidden/vault_inside.png" x="-2120" y="8446" ></Image>
 	<Image filename="data/biome_impl/hidden/crypt_left.png" x="-4129" y="10533" ></Image>
 
-	<Image filename="data/biome_impl/liquidcave/liquidcave_corner.png" x="-3072" y="0" ></Image>
-	<!--
+	<Image filename="data/biome_impl/liquidcave/liquidcave_corner.png" x="-3072" y="-32" ></Image>
 	<Image filename="data/biome_impl/liquidcave/liquidcave_top.png" x="-3584" y="-64" ></Image>
 	<Image filename="data/biome_impl/liquidcave/liquidcave_top.png" x="-4096" y="-64" ></Image>
 	<Image filename="data/biome_impl/liquidcave/liquidcave_top.png" x="-4608" y="-64" ></Image>
 	<Image filename="data/biome_impl/liquidcave/liquidcave_corner2.png" x="-5120" y="-32" ></Image>
-	-->
 	
 	<!-- <Image filename="data/biome_impl/wandcave/right_edge.png" x="-2560" y="3584" ></Image> -->
 	
@@ -120,7 +118,7 @@
 		<PixelScene DEBUG_RELOAD_ME="0" background_filename="data/biome_impl/bunker_background.png" clean_area_before="0" colors_filename="data/biome_impl/bunker_visual.png" material_filename="data/biome_impl/bunker2.png" pos_x="-12953" pos_y="540" skip_biome_checks="1" skip_edge_textures="1" >
 		</PixelScene>
 		
-		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png" material_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar.png" pos_x="-2446" pos_y="-233" skip_biome_checks="1" skip_edge_textures="1" >
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png" material_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar.png" pos_x="-2446" pos_y="-223" skip_biome_checks="1" skip_edge_textures="1" >
 		</PixelScene>
 
 		<!-- just load an entity -->
@@ -155,7 +153,7 @@
 		
 		<PixelScene pos_x="-6884" pos_y="-165" just_load_an_entity="data/entities/props/physics_protective_armour.xml" />
 		
-		<PixelScene pos_x="-2434" pos_y="-217" just_load_an_entity="data/entities/items/pickup/evil_eye.xml" />
+		<PixelScene pos_x="-2434" pos_y="-207" just_load_an_entity="data/entities/items/pickup/evil_eye.xml" />
 		
 		<PixelScene pos_x="-12441" pos_y="190" just_load_an_entity="data/entities/buildings/hut_check.xml" />
 		

@@ -5,7 +5,6 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local entity_id = GetUpdatedEntityID()
 	local x, y = EntityGetTransform( entity_id )
 	
-	--[[
 	if ( #players > 0 ) then
 		for i,player_id in ipairs(players) do
 			local c = EntityGetAllChildren( player_id )
@@ -21,11 +20,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 			end
 		end
 	end
-	]]--
 	
-	if GameHasFlagRun( "greed_curse_gone" ) then
-		GameRemoveFlagRun( "greed_curse_gone" )
-		GamePrintImportant( "$log_greed_curse_back", "$logdesc_greed_curse_back" )
-	end
+	GameAddFlagRun( "greed_curse_gone" )
+	GamePrintImportant( "$log_greed_curse_away", "$logdesc_greed_curse_away" )
 end
  

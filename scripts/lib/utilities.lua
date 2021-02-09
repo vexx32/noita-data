@@ -818,6 +818,21 @@ function change_entity_ingame_name( entity_id, new_name, new_description )
 	end
 end
 
+--
+
+function check_parallel_pos( x )
+	local mx = ( ( x + 17920 ) % 35840 ) - 17920
+	local pw = 0
+	
+	if ( x >= 0 ) then
+		pw = math.floor( ( x + 17920 ) / 35840 )
+	else
+		pw = math.floor( ( x - 17920 ) / 35840 )
+	end
+	
+	return pw,mx
+end
+
 -- Used for secrets
 
 alt_notes = {
@@ -949,6 +964,7 @@ GUI_OPTION = {
 	Hack_AllowDuplicateIds = 49,
 
 	ScrollContainer_Smooth = 50,
+	IsExtraDraggable = 51,
 
 	_SnapToCenter = 62,
 	Disabled = 63,

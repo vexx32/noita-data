@@ -704,7 +704,7 @@ end
 
 -- actual functions that get called from the wang generator
 
-local enemy_list = { "acidshooter", "alchemist", "ant", "assassin", "barfer", "bat", "bigbat", "bigfirebug", "bigzombie", "blob", "bloodcrystal_physics", "bloom", "chest_mimic", "coward", "crystal_physics", "drone_physics",  "drone_shield", "enlightened_alchemist", "failed_alchemist", "failed_alchemist_b", "firebug", "firemage", "fireskull", "flamer", "fly", "frog", "frog_big", "fungus", "fungus_big", "gazer", "ghoul", "giant", "giantshooter", "healerdrone_physics", "icer", "iceskull", "lasershooter", "longleg", "maggot", "miner", "miner_fire", "missilecrab", "monk", "necromancer", "necromancer_shop", "necromancer_super", "phantom_a", "phantom_b", "rat", "roboguard", "scavenger_clusterbomb", "scavenger_heal", "scavenger_grenade", "scavenger_leader", "scavenger_mine", "scavenger_poison", "scavenger_smg", "shooterflower", "shotgunner", "skullfly", "skullrat", "slimeshooter", "sniper", "spitmonster", "statue_physics", "tank", "tank_rocket", "tank_super", "tentacler", "tentacler_small", "thundermage", "thundermage_big", "thunderskull", "turret_left", "turret_right", "wizard_dark", "wizard_hearty", "wizard_neutral", "wizard_poly", "wizard_returner", "wizard_swapper", "wizard_tele", "wizard_twitchy", "wizard_weaken", "wizard_wither", "wolf", "wraith", "wraith_glowing", "wraith_storm", "zombie", "skycrystal_physics", "scavenger_shield", "spearbot", "statue", "goblin_bomb" }
+local enemy_list = { "acidshooter", "alchemist", "ant", "assassin", "barfer", "bat", "bigbat", "bigfirebug", "bigzombie", "blob", "bloodcrystal_physics", "bloom", "chest_mimic", "coward", "crystal_physics", "drone_physics",  "drone_shield", "enlightened_alchemist", "failed_alchemist", "failed_alchemist_b", "firebug", "firemage", "fireskull", "flamer", "fly", "frog", "frog_big", "fungus", "fungus_big", "gazer", "ghoul", "giant", "giantshooter", "healerdrone_physics", "icer", "iceskull", "lasershooter", "longleg", "maggot", "miner", "miner_fire", "missilecrab", "monk", "necromancer", "necromancer_shop", "necromancer_super", "phantom_a", "phantom_b", "rat", "roboguard", "scavenger_clusterbomb", "scavenger_heal", "scavenger_grenade", "scavenger_leader", "scavenger_mine", "scavenger_poison", "scavenger_smg", "shooterflower", "shotgunner", "skullfly", "skullrat", "slimeshooter", "sniper", "spitmonster", "statue_physics", "tank", "tank_rocket", "tank_super", "tentacler", "tentacler_small", "thundermage", "thundermage_big", "thunderskull", "turret_left", "turret_right", "wizard_dark", "wizard_hearty", "wizard_neutral", "wizard_poly", "wizard_returner", "wizard_swapper", "wizard_tele", "wizard_twitchy", "wizard_weaken", "wizard_wither", "wolf", "wraith", "wraith_glowing", "wraith_storm", "zombie", "skycrystal_physics", "scavenger_shield", "spearbot", "statue", "goblin_bomb", "buildings/snowcrystal", "buildings/hpcrystal" }
 
 function spawn_any_enemy( x, y )
 	SetRandomSeed( x, y )
@@ -712,7 +712,12 @@ function spawn_any_enemy( x, y )
 		local rnd = Random( 1, #enemy_list )
 		local target = enemy_list[rnd]
 		
-		local eid = EntityLoad( "data/entities/animals/" .. target .. ".xml", x, y )
+		local folder = "animals/"
+		if ( string.sub( target, 1, 10 ) == "buildings/" ) then
+			folder = ""
+		end
+		
+		local eid = EntityLoad( "data/entities/" .. folder .. target .. ".xml", x, y )
 		
 		if ( target ~= "scavenger_heal" ) and ( target ~= "healerdrone_physics" ) then
 			local damagemodels = EntityGetComponent( eid, "DamageModelComponent" )

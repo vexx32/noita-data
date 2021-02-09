@@ -630,6 +630,40 @@ perk_list =
 		end,
 	},
 	{
+		id = "FOOD_CLOCK",
+		ui_name = "$perk_food_clock",
+		ui_description = "$perkdesc_food_clock",
+		ui_icon = "data/ui_gfx/perk_icons/food_clock.png",
+		perk_icon = "data/items_gfx/perks/food_clock.png",
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+		
+			EntityAddComponent( entity_who_picked, "LuaComponent", 
+			{ 
+				script_source_file = "data/scripts/perks/food_clock.lua",
+				execute_every_n_frame = "60",
+			} )
+			
+			EntityAddComponent( entity_who_picked, "ShotEffectComponent", 
+			{ 
+				extra_modifier = "food_clock",
+			} )
+			
+			local x,y = EntityGetTransform( entity_perk_item )
+			EntityLoad( "data/entities/items/pickup/potion_porridge.xml", x, y )
+			
+			local comp = EntityGetFirstComponent( entity_who_picked, "IngestionComponent" )
+
+			if ( comp ~= nil ) then
+				ComponentSetValue2( comp, "ingestion_cooldown_delay_frames", 400 )
+				ComponentSetValue2( comp, "ingestion_reduce_every_n_frame", 15 )
+				
+				local curr = ComponentGetValue2( comp, "ingestion_size" )
+				ComponentSetValue2( comp, "ingestion_size", math.max( curr, 8000 ) )
+			end
+		end,
+	},
+	{
 		id = "WAND_RADAR",
 		ui_name = "$perk_radar_wand",
 		ui_description = "$perkdesc_radar_wand",
@@ -896,7 +930,7 @@ perk_list =
 			
 			EntityAddComponent( entity_who_picked, "ShotEffectComponent", 
 			{ 
-				extra_modifier = "powerful_shot_placeholder",
+				extra_modifier = "powerful_shot",
 			} )
 			
 			--[[
@@ -1836,7 +1870,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/fast_projectiles.png",
 		perk_icon = "data/items_gfx/perks/fast_projectiles.png",
 		usable_by_enemies = true,
-		stackable = STACKABLE_YES,
+		stackable = STACKABLE_NO,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			EntityAddComponent( entity_who_picked, "ShotEffectComponent", 
 			{ 
@@ -2122,6 +2156,7 @@ perk_list =
 			end
 		end,
 	},
+	--[[
 	{
 		id = "EXTRA_POTION_CAPACITY",
 		ui_name = "$perk_extra_potion_capacity",
@@ -2136,6 +2171,7 @@ perk_list =
 			GlobalsSetValue( "EXTRA_POTION_CAPACITY_LEVEL", tostring( capacity ) )
 		end,
 	},
+	]]--
 	{
 		id = "CONTACT_DAMAGE",
 		ui_name = "$perk_contact_damage",

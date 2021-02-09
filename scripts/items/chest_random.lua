@@ -166,7 +166,7 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 			-------------------------------------------------------------------
 			-- Misc items
 			-------------------------------------------------------------------
-			local opts = { "data/entities/items/pickup/safe_haven.xml", "data/entities/items/pickup/moon.xml", "data/entities/items/pickup/thunderstone.xml", "data/entities/items/pickup/evil_eye.xml", "data/entities/items/pickup/brimstone.xml", "runestone", "die" }
+			local opts = { "data/entities/items/pickup/safe_haven.xml", "data/entities/items/pickup/moon.xml", "data/entities/items/pickup/thunderstone.xml", "data/entities/items/pickup/evil_eye.xml", "data/entities/items/pickup/brimstone.xml", "runestone", "die", "orb" }
 			rnd = Random( 1, #opts )
 			local opt = opts[rnd]
 			
@@ -188,6 +188,8 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 				local r_opt = r_opts[rnd]
 				
 				opt = "data/entities/items/pickup/runestones/runestone_" .. r_opt .. ".xml"
+			elseif ( opt == "orb" ) then
+				opt = "data/entities/items/pickup/physics_gold_orb.xml"
 			end
 			
 			table.insert( entities, { opt, x, y - 10 } )

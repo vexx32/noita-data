@@ -361,6 +361,27 @@ actions =
 		end,
 	},
 	{
+		id          = "BLACK_HOLE_DEATH_TRIGGER",
+		name 		= "$action_black_hole_death_trigger",
+		description = "$actiondesc_black_hole_death_trigger",
+		sprite 		= "data/ui_gfx/gun_actions/black_hole_timer.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/black_hole_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/black_hole.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,4,5,6", -- BLACK_HOLE
+		spawn_probability                 = "0.5,0.5,0.5,0.5", -- BLACK_HOLE
+		price = 220,
+		mana = 200,
+		max_uses    = 3, 
+		never_unlimited = true,
+		custom_xml_file = "data/entities/misc/custom_cards/black_hole.xml",
+		action 		= function()
+			add_projectile_trigger_death("data/entities/projectiles/deck/black_hole.xml", 1)
+			c.fire_rate_wait = c.fire_rate_wait + 90
+			c.screenshake = c.screenshake + 20
+		end,
+	},
+	{
 		id          = "BLACK_HOLE_BIG",
 		name 		= "$action_black_hole_big",
 		description = "$actiondesc_black_hole_big",
@@ -997,6 +1018,12 @@ actions =
 			c.child_speed_multiplier = c.child_speed_multiplier * 0.75
 			c.speed_multiplier = c.speed_multiplier * 0.75
 			shot_effects.recoil_knockback = 60.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -1018,6 +1045,12 @@ actions =
 			c.child_speed_multiplier = c.child_speed_multiplier * 0.75
 			c.speed_multiplier = c.speed_multiplier * 0.75
 			shot_effects.recoil_knockback = 60.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -1038,6 +1071,12 @@ actions =
 			c.fire_rate_wait = c.fire_rate_wait + 30
 			c.child_speed_multiplier = c.child_speed_multiplier * 0.75
 			c.speed_multiplier = c.speed_multiplier * 0.75
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -1059,6 +1098,12 @@ actions =
 			c.speed_multiplier = c.speed_multiplier * 0.75
 			add_projectile_trigger_death("data/entities/projectiles/deck/pipe_bomb.xml", 1)
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 60.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -1100,6 +1145,28 @@ actions =
 			add_projectile("data/entities/projectiles/deck/duck.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 60
 			current_reload_time = current_reload_time + 20
+		end,
+	},
+	{
+		id          = "WORM_SHOT",
+		name 		= "$action_worm_shot",
+		description = "$actiondesc_worm_shot",
+		spawn_requires_flag = "card_unlocked_exploding_deer",
+		sprite 		= "data/ui_gfx/gun_actions/worm.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/exploding_deer_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/worm_shot.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "3,4,5", -- EXPLODING_DEER
+		spawn_probability                 = "0.6,0.8,0.6", -- EXPLODING_DEER
+		price = 200,
+		mana = 150,
+		max_uses    = 10,
+		never_unlimited = true,
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/worm_shot.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 80
+			current_reload_time = current_reload_time + 40
+			c.spread_degrees = c.spread_degrees + 20
 		end,
 	},
 	--[[
@@ -1630,6 +1697,12 @@ actions =
 			c.spread_degrees = c.spread_degrees + 4.0
 			c.fire_rate_wait = c.fire_rate_wait + 10
 			c.speed_multiplier = c.speed_multiplier * 1.1
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -2438,6 +2511,12 @@ actions =
 			add_projectile("data/entities/projectiles/deck/purple_explosion_field.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 10
 			c.speed_multiplier = c.speed_multiplier - 2
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -3164,6 +3243,12 @@ actions =
 			c.screenshake = c.screenshake + 10.5
 			current_reload_time = current_reload_time + 600
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 300.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	--[[
@@ -3831,6 +3916,7 @@ actions =
 		sprite 		= "data/ui_gfx/gun_actions/nolla.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
 		spawn_requires_flag = "card_unlocked_duplicate",
+		related_extra_entities = { "data/entities/misc/nolla.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,5,6,10", -- LIFETIME_DOWN
 		spawn_probability                 = "0.2,0.2,0.5,0.5,1", -- LIFETIME_DOWN
@@ -3866,6 +3952,7 @@ actions =
 		description = "$actiondesc_explosion_remove",
 		sprite 		= "data/ui_gfx/gun_actions/explosion_remove.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/misc/explosion_remove.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,5,6", -- LIFETIME_DOWN
 		spawn_probability                 = "0.2,0.6,0.7,0.2", -- LIFETIME_DOWN
@@ -3886,6 +3973,7 @@ actions =
 		description = "$actiondesc_explosion_tiny",
 		sprite 		= "data/ui_gfx/gun_actions/explosion_tiny.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/misc/explosion_tiny.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,5,6", -- LIFETIME_DOWN
 		spawn_probability                 = "0.2,0.6,0.7,0.2", -- LIFETIME_DOWN
@@ -3906,6 +3994,7 @@ actions =
 		description = "$actiondesc_laser_emitter_wider",
 		sprite 		= "data/ui_gfx/gun_actions/laser_emitter_wider.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/burn_trail_unidentified.png",
+		related_extra_entities = { "data/entities/misc/laser_emitter_wider.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- BURN_TRAIL
 		spawn_probability                 = "0.3,0.3,0.3", -- BURN_TRAIL
@@ -3963,6 +4052,7 @@ actions =
 		description = "$actiondesc_blood_magic",
 		sprite 		= "data/ui_gfx/gun_actions/blood_magic.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/particles/blood_sparks.xml" },
 		type 		= ACTION_TYPE_UTILITY,
 		spawn_level                       = "5,6,10", -- MANA_REDUCE
 		spawn_probability                 = "0.1,0.7,0.5", -- MANA_REDUCE
@@ -3994,6 +4084,7 @@ actions =
 		description = "$actiondesc_money_magic",
 		sprite 		= "data/ui_gfx/gun_actions/golden_punch.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/particles/gold_sparks.xml" },
 		type 		= ACTION_TYPE_UTILITY,
 		spawn_level                       = "3,5,6,10", -- MANA_REDUCE
 		spawn_probability                 = "0.2,0.8,0.1,0.5", -- MANA_REDUCE
@@ -4008,7 +4099,7 @@ actions =
 			if ( dcomp ~= nil ) then
 				local money = ComponentGetValue2( dcomp, "money" )
 				local moneyspent = ComponentGetValue2( dcomp, "money_spent" )
-				local damage = math.floor( money * 0.05 )
+				local damage = math.min( math.floor( money * 0.05 ), 24000 )
 				
 				if ( damage > 1 ) and ( money >= 10 ) then
 					damage = math.max( damage, 10 )
@@ -4072,6 +4163,7 @@ actions =
 		description = "$actiondesc_quantum_split",
 		sprite 		= "data/ui_gfx/gun_actions/quantum_split.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/misc/quantum_split.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- MANA_REDUCE
 		spawn_probability                 = "0.5,0.5,0.5,0.5,1", -- MANA_REDUCE
@@ -4137,6 +4229,7 @@ actions =
 		description = "$actiondesc_sinewave",
 		sprite 		= "data/ui_gfx/gun_actions/sinewave.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/sinewave.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,6", -- SINEWAVE
 		spawn_probability                 = "0.4,0.4,0.4", -- SINEWAVE
@@ -4146,6 +4239,13 @@ actions =
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/sinewave.xml,"
 			c.speed_multiplier = c.speed_multiplier * 2
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4155,6 +4255,7 @@ actions =
 		description = "$actiondesc_chaotic_arc",
 		sprite 		= "data/ui_gfx/gun_actions/chaotic_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/chaotic_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- CHAOTIC_ARC
 		spawn_probability                 = "0.4,0.4,0.4", -- CHAOTIC_ARC
@@ -4164,6 +4265,13 @@ actions =
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/chaotic_arc.xml,"
 			c.speed_multiplier = c.speed_multiplier * 2
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4173,6 +4281,7 @@ actions =
 		description = "$actiondesc_pingpong_path",
 		sprite 		= "data/ui_gfx/gun_actions/pingpong_path.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/pingpong_path.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- PINGPONG_PATH
 		spawn_probability                 = "0.4,0.4,0.4", -- PINGPONG_PATH
@@ -4191,6 +4300,7 @@ actions =
 		description = "$actiondesc_avoiding_arc",
 		sprite 		= "data/ui_gfx/gun_actions/avoiding_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/avoiding_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,6", -- AVOIDING_ARC
 		spawn_probability                 = "0.4,0.4,0.4", -- AVOIDING_ARC
@@ -4209,6 +4319,7 @@ actions =
 		description = "$actiondesc_floating_arc",
 		sprite 		= "data/ui_gfx/gun_actions/floating_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/floating_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- FLOATING_ARC
 		spawn_probability                 = "0.4,0.4,0.4", -- FLOATING_ARC
@@ -4227,6 +4338,7 @@ actions =
 		description = "$actiondesc_fly_downwards",
 		sprite 		= "data/ui_gfx/gun_actions/fly_downwards.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/fly_downwards.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- FLY_DOWNWARDS
 		spawn_probability                 = "0.4,0.4,0.4", -- FLY_DOWNWARDS
@@ -4245,6 +4357,7 @@ actions =
 		description = "$actiondesc_fly_upwards",
 		sprite 		= "data/ui_gfx/gun_actions/fly_upwards.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/fly_upwards.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,6", -- FLY_UPWARDS
 		spawn_probability                 = "0.4,0.4,0.4", -- FLY_UPWARDS
@@ -4263,6 +4376,7 @@ actions =
 		description = "$actiondesc_horizontal_arc",
 		sprite 		= "data/ui_gfx/gun_actions/horizontal_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/horizontal_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- HORIZONTAL_ARC
 		spawn_probability                 = "0.4,0.4,0.4", -- HORIZONTAL_ARC
@@ -4282,6 +4396,7 @@ actions =
 		description = "$actiondesc_line_arc",
 		sprite 		= "data/ui_gfx/gun_actions/line_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/line_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,5", -- HORIZONTAL_ARC
 		spawn_probability                 = "0.4,0.4,0.4", -- HORIZONTAL_ARC
@@ -4301,6 +4416,7 @@ actions =
 		description = "$actiondesc_orbit_shot",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/spiraling_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4", -- HORIZONTAL_ARC
 		spawn_probability                 = "0.2,0.3,0.4,0.1", -- HORIZONTAL_ARC
@@ -4321,6 +4437,7 @@ actions =
 		description = "$actiondesc_spiraling_shot",
 		sprite 		= "data/ui_gfx/gun_actions/spiraling_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4", -- HORIZONTAL_ARC
 		spawn_probability                 = "0.2,0.3,0.4,0.1", -- HORIZONTAL_ARC
@@ -4341,6 +4458,7 @@ actions =
 		description = "$actiondesc_phasing_arc",
 		sprite 		= "data/ui_gfx/gun_actions/phasing_arc.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/phasing_arc.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5", -- HORIZONTAL_ARC
 		spawn_probability                 = "0.2,0.3,0.6,0.1", -- HORIZONTAL_ARC
@@ -4350,10 +4468,16 @@ actions =
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/phasing_arc.xml,"
 			draw_actions( 1, true )
-			c.fire_rate_wait    = c.fire_rate_wait - 6
-			c.lifetime_add 		= c.lifetime_add + 50
+			c.fire_rate_wait    = c.fire_rate_wait - 12
+			c.lifetime_add 		= c.lifetime_add + 80
 			c.speed_multiplier	= c.speed_multiplier * 0.33
 			c.child_speed_multiplier	= c.child_speed_multiplier * 0.33
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
 		end,
 	},
 	{
@@ -4379,6 +4503,7 @@ actions =
 		description = "$actiondesc_homing",
 		sprite 		= "data/ui_gfx/gun_actions/homing.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5,6", -- HOMING
 		spawn_probability                 = "0.1,0.4,0.4,0.4,0.4,0.4", -- HOMING
@@ -4396,6 +4521,7 @@ actions =
 		description = "$actiondesc_homing_rotate",
 		sprite 		= "data/ui_gfx/gun_actions/homing_rotate.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_rotate.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- HOMING_ROTATE
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- HOMING_ROTATE
@@ -4413,6 +4539,7 @@ actions =
 		description = "$actiondesc_homing_shooter",
 		sprite 		= "data/ui_gfx/gun_actions/homing_shooter.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_shooter.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- HOMING_SHOOTER
 		spawn_probability                 = "0.2,0.2,0.2,0.2,0.2", -- HOMING_SHOOTER
@@ -4430,6 +4557,7 @@ actions =
 		description = "$actiondesc_autoaim",
 		sprite 		= "data/ui_gfx/gun_actions/autoaim.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/autoaim_unidentified.png",
+		related_extra_entities = { "data/entities/misc/autoaim.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- AUTOAIM
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- AUTOAIM
@@ -4446,6 +4574,7 @@ actions =
 		description = "$actiondesc_homing_accelerating",
 		sprite 		= "data/ui_gfx/gun_actions/homing_accelerating.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_accelerating.xml", "data/entities/particles/tinyspark_white_small.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.3,0.3,0.5", -- HOMING
@@ -4463,6 +4592,7 @@ actions =
 		description = "$actiondesc_homing_cursor",
 		sprite 		= "data/ui_gfx/gun_actions/homing_cursor.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_cursor.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- HOMING_ROTATE
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- HOMING_ROTATE
@@ -4480,6 +4610,7 @@ actions =
 		description = "$actiondesc_homing_area",
 		sprite 		= "data/ui_gfx/gun_actions/homing_area.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_area.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- HOMING_ROTATE
 		spawn_probability                 = "0.2,0.4,0.6,0.7,0.4", -- HOMING_ROTATE
@@ -4491,6 +4622,13 @@ actions =
 			c.fire_rate_wait    = c.fire_rate_wait + 8
 			c.spread_degrees = c.spread_degrees + 6
 			c.speed_multiplier	= c.speed_multiplier * 0.75
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4519,6 +4657,7 @@ actions =
 		description = "$actiondesc_piercing_shot",
 		sprite 		= "data/ui_gfx/gun_actions/piercing_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/piercing_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- PIERCING_SHOT
 		spawn_probability                 = "0.6,0.6,0.6,0.6,0.6", -- PIERCING_SHOT
@@ -4538,6 +4677,7 @@ actions =
 		description = "$actiondesc_clipping_shot",
 		sprite 		= "data/ui_gfx/gun_actions/clipping_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/clipping_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- CLIPPING_SHOT
 		spawn_probability                 = "0.6,0.6,0.6,0.6,0.6", -- CLIPPING_SHOT
@@ -4557,6 +4697,7 @@ actions =
 		description = "$actiondesc_damage",
 		sprite 		= "data/ui_gfx/gun_actions/damage.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/damage_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_yellow.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- DAMAGE
 		spawn_probability                 = "0.6,0.6,0.6,0.6,0.6", -- DAMAGE
@@ -4580,6 +4721,7 @@ actions =
 		sprite 		= "data/ui_gfx/gun_actions/damage_random.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/damage_unidentified.png",
 		spawn_requires_flag = "card_unlocked_pyramid",
+		related_extra_entities = { "data/entities/particles/tinyspark_yellow.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,5", -- DAMAGE
 		spawn_probability                 = "0.6,0.6,0.6", -- DAMAGE
@@ -4607,6 +4749,7 @@ actions =
 		description = "$actiondesc_bloodlust",
 		sprite 		= "data/ui_gfx/gun_actions/bloodlust.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5,6", -- PIERCING_SHOT
 		spawn_probability                 = "0.2,0.3,0.6,0.6,0.3", -- PIERCING_SHOT
@@ -4630,6 +4773,7 @@ actions =
 		description = "$actiondesc_damage_forever",
 		sprite 		= "data/ui_gfx/gun_actions/damage_forever.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/damage_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- DAMAGE
 		spawn_probability                 = "0.2,0.4,0.6,0.4,0.2", -- DAMAGE
@@ -4677,6 +4821,7 @@ actions =
 		description = "$actiondesc_area_damage",
 		sprite 		= "data/ui_gfx/gun_actions/area_damage.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/area_damage.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- AREA_DAMAGE
 		spawn_probability                 = "0.5,0.5,0.5,0.5,0.5", -- AREA_DAMAGE
@@ -4694,6 +4839,7 @@ actions =
 		description = "$actiondesc_spells_to_power",
 		sprite 		= "data/ui_gfx/gun_actions/spells_to_power.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/spells_to_power.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6,10", -- AREA_DAMAGE
 		spawn_probability                 = "0.5,0.5,0.5,0.5,0.5,0.1", -- AREA_DAMAGE
@@ -4712,6 +4858,7 @@ actions =
 		description = "$actiondesc_enemies_to_power",
 		sprite 		= "data/ui_gfx/gun_actions/essence_to_power.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/essence_to_power.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,10", -- AREA_DAMAGE
 		spawn_probability                 = "0.2,0.5,0.5,0.1", -- AREA_DAMAGE
@@ -4801,6 +4948,7 @@ actions =
 		description = "$actiondesc_heavy_shot",
 		sprite 		= "data/ui_gfx/gun_actions/heavy_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/heavy_shot_unidentified.png",
+		related_extra_entities = { "data/entities/particles/heavy_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HEAVY_SHOT
 		spawn_probability                 = "0.4,0.4,0.4", -- HEAVY_SHOT
@@ -4815,6 +4963,13 @@ actions =
 			c.speed_multiplier = c.speed_multiplier * 0.3
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 50.0
 			c.extra_entities = c.extra_entities .. "data/entities/particles/heavy_shot.xml,"
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4824,6 +4979,7 @@ actions =
 		description = "$actiondesc_light_shot",
 		sprite 		= "data/ui_gfx/gun_actions/light_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/heavy_shot_unidentified.png",
+		related_extra_entities = { "data/entities/particles/light_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- LIGHT_SHOT
 		spawn_probability                 = "0.4,0.4,0.4", -- LIGHT_SHOT
@@ -4842,6 +4998,13 @@ actions =
 			c.spread_degrees = c.spread_degrees - 6
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 10.0
 			c.extra_entities = c.extra_entities .. "data/entities/particles/light_shot.xml,"
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4933,6 +5096,13 @@ actions =
 		custom_xml_file = "data/entities/misc/custom_cards/speed.xml",
 		action 		= function()
 			c.speed_multiplier = c.speed_multiplier * 2.5
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4942,6 +5112,7 @@ actions =
 		description = "$actiondesc_accelerating_shot",
 		sprite 		= "data/ui_gfx/gun_actions/accelerating_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/heavy_shot_unidentified.png",
+		related_extra_entities = { "data/entities/misc/accelerating_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- ACCELERATING_SHOT
 		spawn_probability                 = "0.5,0.5,1", -- ACCELERATING_SHOT
@@ -4954,6 +5125,13 @@ actions =
 			c.speed_multiplier = c.speed_multiplier * 0.32
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 10.0
 			c.extra_entities = c.extra_entities .. "data/entities/misc/accelerating_shot.xml,"
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -4963,6 +5141,7 @@ actions =
 		description = "$actiondesc_decelerating_shot",
 		sprite 		= "data/ui_gfx/gun_actions/decelerating_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/heavy_shot_unidentified.png",
+		related_extra_entities = { "data/entities/misc/decelerating_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- ACCELERATING_SHOT
 		spawn_probability                 = "0.3,0.3,0.5", -- ACCELERATING_SHOT
@@ -4975,6 +5154,13 @@ actions =
 			c.speed_multiplier = c.speed_multiplier * 1.68
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 10.0
 			c.extra_entities = c.extra_entities .. "data/entities/misc/decelerating_shot.xml,"
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -5014,6 +5200,13 @@ actions =
 			c.fire_rate_wait   = c.fire_rate_wait + 40
 			c.speed_multiplier = c.speed_multiplier * 0.75
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 30.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -5023,6 +5216,7 @@ actions =
 		description = "$actiondesc_water_to_poison",
 		sprite 		= "data/ui_gfx/gun_actions/water_to_poison.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/water_to_poison.xml", "data/entities/particles/tinyspark_purple.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- WATER_TO_POISON
 		spawn_probability                 = "0.3,0.3,0.3", -- WATER_TO_POISON
@@ -5041,6 +5235,7 @@ actions =
 		description = "$actiondesc_blood_to_acid",
 		sprite 		= "data/ui_gfx/gun_actions/blood_to_acid.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/blood_to_acid.xml", "data/entities/particles/tinyspark_red.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- BLOOD_TO_ACID
 		spawn_probability                 = "0.3,0.3,0.3", -- BLOOD_TO_ACID
@@ -5059,6 +5254,7 @@ actions =
 		description = "$actiondesc_lava_to_blood",
 		sprite 		= "data/ui_gfx/gun_actions/lava_to_blood.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/lava_to_blood.xml", "data/entities/particles/tinyspark_orange.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- LAVA_TO_BLOOD
 		spawn_probability                 = "0.3,0.3,0.3", -- LAVA_TO_BLOOD
@@ -5077,6 +5273,7 @@ actions =
 		description = "$actiondesc_liquid_to_explosion",
 		sprite 		= "data/ui_gfx/gun_actions/liquid_to_explosion.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/liquid_to_explosion.xml", "data/entities/particles/tinyspark_red.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- BLOOD_TO_ACID
 		spawn_probability                 = "0.3,0.3,0.3", -- BLOOD_TO_ACID
@@ -5095,6 +5292,7 @@ actions =
 		description = "$actiondesc_toxic_to_acid",
 		sprite 		= "data/ui_gfx/gun_actions/toxic_to_acid.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/toxic_to_acid.xml", "data/entities/particles/tinyspark_green.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- TOXIC_TO_ACID
 		spawn_probability                 = "0.3,0.3,0.3", -- TOXIC_TO_ACID
@@ -5113,6 +5311,7 @@ actions =
 		description = "$actiondesc_static_to_sand",
 		sprite 		= "data/ui_gfx/gun_actions/static_to_sand.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/static_to_sand.xml", "data/entities/particles/tinyspark_yellow.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- STATIC_TO_SAND
 		spawn_probability                 = "0.3,0.3,0.3", -- STATIC_TO_SAND
@@ -5131,6 +5330,7 @@ actions =
 		description = "$actiondesc_transmutation",
 		sprite 		= "data/ui_gfx/gun_actions/transmutation.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/transmutation.xml", "data/entities/particles/tinyspark_purple_bright.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6,10", -- TRANSMUTATION
 		spawn_probability                 = "0.3,0.3,0.3,0.3,0.3,0.2", -- TRANSMUTATION
@@ -5149,6 +5349,7 @@ actions =
 		description = "$actiondesc_random_explosion",
 		sprite 		= "data/ui_gfx/gun_actions/random_explosion.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		related_extra_entities = { "data/entities/misc/random_explosion.xml", "data/entities/particles/tinyspark_purple_bright.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,5,6", -- TRANSMUTATION
 		spawn_probability                 = "0.3,0.6,1", -- TRANSMUTATION
@@ -5185,6 +5386,7 @@ actions =
 		name 		= "$action_light",
 		description = "$actiondesc_light",
 		sprite 		= "data/ui_gfx/gun_actions/light.png",
+		related_extra_entities = { "data/entities/misc/light.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "0,1,2,3,4", -- LIGHT
 		spawn_probability                 = "1,0.8,0.6,0.4,0.2", -- LIGHT
@@ -5834,6 +6036,7 @@ actions =
 		description = "$actiondesc_electric_charge",
 		sprite 		= "data/ui_gfx/gun_actions/electric_charge.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/particles/electricity.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5", -- ELECTRIC_CHARGE
 		spawn_probability                 = "1,1,1,1", -- ELECTRIC_CHARGE
@@ -5854,6 +6057,7 @@ actions =
 		description = "$actiondesc_matter_eater",
 		sprite 		= "data/ui_gfx/gun_actions/matter_eater.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/matter_eater.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5,10", -- MATTER_EATER
 		spawn_probability                 = "0.1,1,0.1,0.1,0.2", -- MATTER_EATER
@@ -5872,6 +6076,7 @@ actions =
 		description = "$actiondesc_freeze",
 		sprite 		= "data/ui_gfx/gun_actions/freeze.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/particles/freeze_charge.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- FREEZE
 		spawn_probability                 = "1,1,1,1", -- FREEZE
@@ -5880,7 +6085,7 @@ actions =
 		--max_uses = 50,
 		custom_xml_file = "data/entities/misc/custom_cards/freeze.xml",
 		action 		= function()
-			c.damage_projectile_add = c.damage_ice_add + 0.2
+			c.damage_ice_add = c.damage_ice_add + 0.2
 			c.game_effect_entities = c.game_effect_entities .. "data/entities/misc/effect_frozen.xml,"
 			c.extra_entities = c.extra_entities .. "data/entities/particles/freeze_charge.xml,"
 			draw_actions( 1, true )
@@ -5891,7 +6096,8 @@ actions =
 		name 		= "$action_hitfx_burning_critical_hit",
 		description = "$actiondesc_hitfx_burning_critical_hit",
 		sprite 		= "data/ui_gfx/gun_actions/burning_critical.png",
-		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		sprite_unidentified = "data/entities/misc/hitfx_burning_critical_hit.xml",
+		related_extra_entities = { "data/entities/particles/freeze_charge.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_BURNING_CRITICAL_HIT
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_BURNING_CRITICAL_HIT
@@ -5909,6 +6115,7 @@ actions =
 		description = "$actiondesc_hitfx_critical_water",
 		sprite 		= "data/ui_gfx/gun_actions/critical_water.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_critical_water.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_CRITICAL_WATER
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_CRITICAL_WATER
@@ -5926,6 +6133,7 @@ actions =
 		description = "$actiondesc_hitfx_critical_oil",
 		sprite 		= "data/ui_gfx/gun_actions/critical_oil.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_critical_oil.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_CRITICAL_OIL
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_CRITICAL_OIL
@@ -5943,6 +6151,7 @@ actions =
 		description = "$actiondesc_hitfx_critical_blood",
 		sprite 		= "data/ui_gfx/gun_actions/critical_blood.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_critical_blood.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_CRITICAL_BLOOD
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_CRITICAL_BLOOD
@@ -5960,6 +6169,7 @@ actions =
 		description = "$actiondesc_hitfx_toxic_charm",
 		sprite 		= "data/ui_gfx/gun_actions/charm_on_toxic.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_toxic_charm.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_TOXIC_CHARM
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_TOXIC_CHARM
@@ -5977,6 +6187,7 @@ actions =
 		description = "$actiondesc_hitfx_explosion_slime",
 		sprite 		= "data/ui_gfx/gun_actions/explode_on_slime.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_explode_slime.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_EXPLOSION_SLIME
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_EXPLOSION_SLIME
@@ -5994,6 +6205,7 @@ actions =
 		description = "$actiondesc_hitfx_explosion_slime_giga",
 		sprite 		= "data/ui_gfx/gun_actions/explode_on_slime_giga.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_explode_slime_giga.xml", "data/entities/particles/tinyspark_purple.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_EXPLOSION_SLIME_GIGA
 		spawn_probability                 = "0.1,0.1,0.1,0.1", -- HITFX_EXPLOSION_SLIME_GIGA
@@ -6011,6 +6223,7 @@ actions =
 		description = "$actiondesc_hitfx_explosion_alcohol",
 		sprite 		= "data/ui_gfx/gun_actions/explode_on_alcohol.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_explode_alcohol.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_EXPLOSION_ALCOHOL
 		spawn_probability                 = "0.2,0.2,0.2,0.2", -- HITFX_EXPLOSION_ALCOHOL
@@ -6028,6 +6241,7 @@ actions =
 		description = "$actiondesc_hitfx_explosion_alcohol_giga",
 		sprite 		= "data/ui_gfx/gun_actions/explode_on_alcohol_giga.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/freeze_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_explode_alcohol_giga.xml", "data/entities/particles/tinyspark_orange.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,3,4,5", -- HITFX_EXPLOSION_ALCOHOL_GIGA
 		spawn_probability                 = "0.1,0.1,0.1,0.1", -- HITFX_EXPLOSION_ALCOHOL_GIGA
@@ -6062,6 +6276,7 @@ actions =
 		description = "$actiondesc_rocket_downwards",
 		sprite 		= "data/ui_gfx/gun_actions/rocket_downwards.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/rocket_downwards.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4", -- ROCKET_DOWNWARDS
 		spawn_probability                 = "0.2,1,1,1", -- ROCKET_DOWNWARDS
@@ -6079,6 +6294,7 @@ actions =
 		description = "$actiondesc_rocket_octagon",
 		sprite 		= "data/ui_gfx/gun_actions/rocket_octagon.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/rocket_octagon.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- ROCKET_DOWNWARDS
 		spawn_probability                 = "0.5,0.5,0.5", -- ROCKET_DOWNWARDS
@@ -6096,6 +6312,7 @@ actions =
 		description = "$actiondesc_fizzle",
 		sprite 		= "data/ui_gfx/gun_actions/fizzle.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/fizzle.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,5", -- CHAOTIC_ARC
 		spawn_probability                 = "0.1,0.1,0.1", -- CHAOTIC_ARC
@@ -6106,6 +6323,13 @@ actions =
 			c.extra_entities = c.extra_entities .. "data/entities/misc/fizzle.xml,"
 			c.speed_multiplier = c.speed_multiplier * 1.2
 			c.fire_rate_wait = c.fire_rate_wait - 10
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -6115,6 +6339,7 @@ actions =
 		description = "$actiondesc_bounce_explosion",
 		sprite 		= "data/ui_gfx/gun_actions/bounce_explosion.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/bounce_explosion.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5", -- BOUNCE_EXPLOSION
 		spawn_probability                 = "0.2,0.6,0.8,0.8", -- BOUNCE_EXPLOSION
@@ -6135,6 +6360,7 @@ actions =
 		description = "$actiondesc_bounce_spark",
 		sprite 		= "data/ui_gfx/gun_actions/bounce_spark.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/bounce_spark.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4", -- BOUNCE_SPARK
 		spawn_probability                 = "0.2,0.6,0.6,0.6", -- BOUNCE_SPARK
@@ -6155,6 +6381,7 @@ actions =
 		description = "$actiondesc_bounce_laser",
 		sprite 		= "data/ui_gfx/gun_actions/bounce_laser.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/bounce_laser.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,5", -- BOUNCE_SPARK
 		spawn_probability                 = "0.4,0.8,0.4", -- BOUNCE_SPARK
@@ -6175,6 +6402,7 @@ actions =
 		description = "$actiondesc_bounce_laser_emitter",
 		sprite 		= "data/ui_gfx/gun_actions/bounce_laser_emitter.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/bounce_laser_emitter.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,5", -- BOUNCE_SPARK
 		spawn_probability                 = "0.4,0.8,0.4", -- BOUNCE_SPARK
@@ -6195,6 +6423,7 @@ actions =
 		description = "$actiondesc_bounce_larpa",
 		sprite 		= "data/ui_gfx/gun_actions/bounce_larpa.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/sinewave_unidentified.png",
+		related_extra_entities = { "data/entities/misc/bounce_larpa.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "4,5,6", -- BOUNCE_SPARK
 		spawn_probability                 = "0.4,0.6,0.4", -- BOUNCE_SPARK
@@ -6215,6 +6444,7 @@ actions =
 		description = "$actiondesc_fireball_ray",
 		sprite 		= "data/ui_gfx/gun_actions/fireball_ray.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/fireball_ray.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5", -- FIREBALL_RAY
 		spawn_probability                 = "0.6,0.6,0.4,0.4", -- FIREBALL_RAY
@@ -6232,6 +6462,7 @@ actions =
 		description = "$actiondesc_lightning_ray",
 		sprite 		= "data/ui_gfx/gun_actions/lightning_ray.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/lightning_ray.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- LIGHTNING_RAY
 		spawn_probability                 = "0,0,0.4,0.4,0.4", -- LIGHTNING_RAY
@@ -6250,6 +6481,7 @@ actions =
 		description = "$actiondesc_tentacle_ray",
 		sprite 		= "data/ui_gfx/gun_actions/tentacle_ray.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/tentacle_ray.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- TENTACLE_RAY
 		spawn_probability                 = "0,0,0.4,0.4,0.4", -- TENTACLE_RAY
@@ -6267,6 +6499,7 @@ actions =
 		description = "$actiondesc_laser_emitter_ray",
 		sprite 		= "data/ui_gfx/gun_actions/laser_emitter_ray.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/laser_emitter_ray.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- TENTACLE_RAY
 		spawn_probability                 = "0,0,0.4,0.4,0.4", -- TENTACLE_RAY
@@ -6284,6 +6517,7 @@ actions =
 		description = "$actiondesc_fireball_ray_line",
 		sprite 		= "data/ui_gfx/gun_actions/fireball_ray_line.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/fireball_ray_line.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- FIREBALL_RAY_LINE
 		spawn_probability                 = "0.6,0.4,0.4,0.4,1", -- FIREBALL_RAY_LINE
@@ -6301,6 +6535,7 @@ actions =
 		description = "$actiondesc_fireball_ray_enemy",
 		sprite 		= "data/ui_gfx/gun_actions/fireball_ray_enemy.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_fireball_ray_enemy.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5", -- FIREBALL_RAY_ENEMY
 		spawn_probability                 = "0.6,0.6,0.4,0.4", -- FIREBALL_RAY_ENEMY
@@ -6318,6 +6553,7 @@ actions =
 		description = "$actiondesc_lightning_ray_enemy",
 		sprite 		= "data/ui_gfx/gun_actions/lightning_ray_enemy.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_lightning_ray_enemy.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- LIGHTNING_RAY_ENEMY
 		spawn_probability                 = "0,0,0.4,0.4,0.4", -- LIGHTNING_RAY_ENEMY
@@ -6336,6 +6572,7 @@ actions =
 		description = "$actiondesc_tentacle_ray_enemy",
 		sprite 		= "data/ui_gfx/gun_actions/tentacle_ray_enemy.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_tentacle_ray_enemy.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- TENTACLE_RAY_ENEMY
 		spawn_probability                 = "0,0,0.4,0.4,0.4", -- TENTACLE_RAY_ENEMY
@@ -6353,6 +6590,7 @@ actions =
 		description = "$actiondesc_gravity_field_enemy",
 		sprite 		= "data/ui_gfx/gun_actions/gravity_field_enemy.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_gravity_field_enemy.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5", -- GRAVITY_FIELD_ENEMY
 		spawn_probability                 = "0.6,0.6,0.4,0.4", -- GRAVITY_FIELD_ENEMY
@@ -6370,6 +6608,7 @@ actions =
 		description = "$actiondesc_curse",
 		sprite 		= "data/ui_gfx/gun_actions/curse.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_curse.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3", -- FIREBALL_RAY_ENEMY
 		spawn_probability                 = "0.6,0.8,0.4", -- FIREBALL_RAY_ENEMY
@@ -6381,11 +6620,80 @@ actions =
 		end,
 	},
 	{
+		id          = "CURSE_WITHER_PROJECTILE",
+		name 		= "$action_curse_wither_projectile",
+		description = "$actiondesc_curse_wither_projectile",
+		sprite 		= "data/ui_gfx/gun_actions/curse_wither_projectile.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_curse_wither_projectile.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "0,1,3,4", -- FIREBALL_RAY_ENEMY
+		spawn_probability                 = "0.2,0.4,0.9,0.9", -- FIREBALL_RAY_ENEMY
+		price = 100,
+		mana = 50,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/hitfx_curse_wither_projectile.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "CURSE_WITHER_EXPLOSION",
+		name 		= "$action_curse_wither_explosion",
+		description = "$actiondesc_curse_wither_explosion",
+		sprite 		= "data/ui_gfx/gun_actions/curse_wither_explosion.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_curse_wither_explosion.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "0,1,3,4", -- FIREBALL_RAY_ENEMY
+		spawn_probability                 = "0.2,0.4,0.9,0.9", -- FIREBALL_RAY_ENEMY
+		price = 100,
+		mana = 50,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/hitfx_curse_wither_explosion.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "CURSE_WITHER_MELEE",
+		name 		= "$action_curse_wither_melee",
+		description = "$actiondesc_curse_wither_melee",
+		sprite 		= "data/ui_gfx/gun_actions/curse_wither_melee.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_curse_wither_melee.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "0,1,3,4", -- FIREBALL_RAY_ENEMY
+		spawn_probability                 = "0.2,0.4,0.9,0.9", -- FIREBALL_RAY_ENEMY
+		price = 100,
+		mana = 50,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/hitfx_curse_wither_melee.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "CURSE_WITHER_ELECTRICITY",
+		name 		= "$action_curse_wither_electricity",
+		description = "$actiondesc_curse_wither_electricity",
+		sprite 		= "data/ui_gfx/gun_actions/curse_wither_electricity.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/hitfx_curse_wither_electricity.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "0,1,3,4", -- FIREBALL_RAY_ENEMY
+		spawn_probability                 = "0.2,0.4,0.9,0.9", -- FIREBALL_RAY_ENEMY
+		price = 100,
+		mana = 50,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/hitfx_curse_wither_electricity.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	{
 		id          = "ORBIT_DISCS",
 		name 		= "$action_orbit_discs",
 		description = "$actiondesc_orbit_discs",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_discs.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_discs.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "0,1,2,4,5", -- GRAVITY_FIELD_ENEMY
@@ -6403,6 +6711,7 @@ actions =
 		description = "$actiondesc_orbit_fireballs",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_fireballs.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_fireballs.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "0,1,2,4,5", -- GRAVITY_FIELD_ENEMY
@@ -6420,8 +6729,10 @@ actions =
 		description = "$actiondesc_orbit_nukes",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_nukes.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_nukes.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
+		ai_never_uses = true,
 		spawn_level                       = "2,4,5,6,10", -- GRAVITY_FIELD_ENEMY
 		spawn_probability                 = "0.1,0.1,0.1,0.2,1", -- GRAVITY_FIELD_ENEMY
 		price = 400,
@@ -6438,6 +6749,7 @@ actions =
 		description = "$actiondesc_orbit_lasers",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_lasers.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_lasers.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,4,5,10", -- GRAVITY_FIELD_ENEMY
@@ -6455,6 +6767,7 @@ actions =
 		description = "$actiondesc_orbit_larpa",
 		sprite 		= "data/ui_gfx/gun_actions/orbit_larpa.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/orbit_larpa.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,6,10", -- GRAVITY_FIELD_ENEMY
@@ -6472,6 +6785,7 @@ actions =
 		description = "$actiondesc_chain_shot",
 		sprite 		= "data/ui_gfx/gun_actions/chain_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/chain_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,5", -- AREA_DAMAGE
 		spawn_probability                 = "0.4,0.6,0.8", -- AREA_DAMAGE
@@ -6605,6 +6919,7 @@ actions =
 		description = "$actiondesc_arc_electric",
 		sprite 		= "data/ui_gfx/gun_actions/arc_electric.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/arc_electric_unidentified.png",
+		related_extra_entities = { "data/entities/misc/arc_electric.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- ARC_ELECTRIC
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.8", -- ARC_ELECTRIC
@@ -6623,6 +6938,7 @@ actions =
 		description = "$actiondesc_arc_fire",
 		sprite 		= "data/ui_gfx/gun_actions/arc_fire.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/arc_fire_unidentified.png",
+		related_extra_entities = { "data/entities/misc/arc_fire.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- ARC_FIRE
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- ARC_FIRE
@@ -6641,6 +6957,7 @@ actions =
 		description = "$actiondesc_arc_gunpowder",
 		sprite 		= "data/ui_gfx/gun_actions/arc_gunpowder.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/arc_fire_unidentified.png",
+		related_extra_entities = { "data/entities/misc/arc_gunpowder.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- ARC_GUNPOWDER
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- ARC_GUNPOWDER
@@ -6659,6 +6976,7 @@ actions =
 		description = "$actiondesc_arc_poison",
 		sprite 		= "data/ui_gfx/gun_actions/arc_poison.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/arc_fire_unidentified.png",
+		related_extra_entities = { "data/entities/misc/arc_poison.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- ARC_POISON
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- ARC_POISON
@@ -6677,6 +6995,7 @@ actions =
 		description = "$actiondesc_crumbling_earth_projectile",
 		sprite 		= "data/ui_gfx/gun_actions/crumbling_earth_projectile.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/arc_fire_unidentified.png",
+		related_extra_entities = { "data/entities/misc/crumbling_earth_projectile.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5", -- ARC_POISON
 		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- ARC_POISON
@@ -6968,6 +7287,7 @@ actions =
 		description = "$actiondesc_burn_trail",
 		sprite 		= "data/ui_gfx/gun_actions/burn_trail.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/burn_trail_unidentified.png",
+		related_extra_entities = { "data/entities/misc/burn.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "0,1,2", -- BURN_TRAIL
 		spawn_probability                 = "0.3,0.3,0.3", -- BURN_TRAIL
@@ -7051,6 +7371,7 @@ actions =
 		description = "$actiondesc_energy_shield_shot",
 		sprite 		= "data/ui_gfx/gun_actions/energy_shield_shot.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/energy_shield_shot_unidentified.png",
+		related_extra_entities = { "data/entities/misc/energy_shield_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- ENERGY_SHIELD_SHOT
 		spawn_probability                 = "0.3,0.3,0.3,0.3,0.3", -- ENERGY_SHIELD_SHOT
@@ -7059,6 +7380,13 @@ actions =
 		action 		= function()
 			c.speed_multiplier = c.speed_multiplier * 0.4
 			c.extra_entities = c.extra_entities .. "data/entities/misc/energy_shield_shot.xml,"
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+			
 			draw_actions( 1, true )
 		end,
 	},
@@ -8070,6 +8398,7 @@ actions =
 		description = "$actiondesc_larpa_chaos",
 		sprite 		= "data/ui_gfx/gun_actions/larpa_chaos.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/larpa_chaos.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,10", -- FIREBALL_RAY
 		spawn_probability                 = "0.1,0.2,0.3,0.4,0.2", -- FIREBALL_RAY
@@ -8088,6 +8417,7 @@ actions =
 		description = "$actiondesc_larpa_downwards",
 		sprite 		= "data/ui_gfx/gun_actions/larpa_downwards.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/larpa_downwards.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,10", -- FIREBALL_RAY
 		spawn_probability                 = "0.1,0.3,0.2,0.2,0.2", -- FIREBALL_RAY
@@ -8106,6 +8436,7 @@ actions =
 		description = "$actiondesc_larpa_upwards",
 		sprite 		= "data/ui_gfx/gun_actions/larpa_upwards.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/larpa_upwards.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,10", -- FIREBALL_RAY
 		spawn_probability                 = "0.1,0.1,0.2,0.4,0.2", -- FIREBALL_RAY
@@ -8125,6 +8456,7 @@ actions =
 		sprite 		= "data/ui_gfx/gun_actions/larpa_chaos_2.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
 		spawn_requires_flag = "card_unlocked_alchemy",
+		related_extra_entities = { "data/entities/misc/larpa_chaos_2.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,5,10", -- FIREBALL_RAY
 		spawn_probability                 = "0.1,0.4,0.1", -- FIREBALL_RAY
@@ -8143,6 +8475,7 @@ actions =
 		description = "$actiondesc_larpa_death",
 		sprite 		= "data/ui_gfx/gun_actions/larpa_death.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/electric_charge_unidentified.png",
+		related_extra_entities = { "data/entities/misc/larpa_death.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,10", -- FIREBALL_RAY
 		spawn_probability                 = "0.1,0.1,0.3,0.2,0.2", -- FIREBALL_RAY
@@ -8917,7 +9250,8 @@ actions =
 		description = "$actiondesc_meteor_rain",
 		sprite 		= "data/ui_gfx/gun_actions/meteor_rain.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
-		related_projectiles	= {"data/entities/projectiles/deck/meteor_rain_meteor.xml"},
+		related_projectiles	= { "data/entities/projectiles/deck/meteor_rain_meteor.xml" },
+		related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
 		spawn_requires_flag = "card_unlocked_rain",
 		never_unlimited		= true,
 		type 		= ACTION_TYPE_STATIC_PROJECTILE,
@@ -9387,6 +9721,7 @@ actions =
 		description = "$actiondesc_colour_red",
 		sprite 		= "data/ui_gfx/gun_actions/colour_red.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_red.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5,6", -- HOMING
 		spawn_probability                 = "0.2,0.2,0.2,0.2,0.2,0.2", -- HOMING
@@ -9396,7 +9731,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_red.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9410,6 +9745,7 @@ actions =
 		description = "$actiondesc_colour_orange",
 		sprite 		= "data/ui_gfx/gun_actions/colour_orange.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_orange.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9419,7 +9755,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_orange.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9433,6 +9769,7 @@ actions =
 		description = "$actiondesc_colour_green",
 		sprite 		= "data/ui_gfx/gun_actions/colour_green.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_green.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9442,7 +9779,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_green.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9456,6 +9793,7 @@ actions =
 		description = "$actiondesc_colour_yellow",
 		sprite 		= "data/ui_gfx/gun_actions/colour_yellow.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_yellow.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9465,7 +9803,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_yellow.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9479,6 +9817,7 @@ actions =
 		description = "$actiondesc_colour_purple",
 		sprite 		= "data/ui_gfx/gun_actions/colour_purple.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_purple.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9488,7 +9827,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_purple.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9502,6 +9841,7 @@ actions =
 		description = "$actiondesc_colour_blue",
 		sprite 		= "data/ui_gfx/gun_actions/colour_blue.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_blue.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9511,7 +9851,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_blue.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9525,6 +9865,7 @@ actions =
 		description = "$actiondesc_colour_rainbow",
 		sprite 		= "data/ui_gfx/gun_actions/colour_rainbow.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/particles/tinyspark_red.xml", "data/entities/misc/colour_rainbow.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9534,7 +9875,7 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/particles/tinyspark_red.xml,data/entities/misc/colour_rainbow.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
@@ -9548,6 +9889,7 @@ actions =
 		description = "$actiondesc_colour_invis",
 		sprite 		= "data/ui_gfx/gun_actions/colour_invis.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/colour_invis.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4", -- HOMING
 		spawn_probability                 = "0.1,0.1,0.1", -- HOMING
@@ -9557,13 +9899,35 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/colour_invis.xml,"
-			c.fire_rate_wait = c.fire_rate_wait - 1
+			c.fire_rate_wait = c.fire_rate_wait - 8
 			c.screenshake = c.screenshake - 2.5
 			if ( c.screenshake < 0 ) then
 				c.screenshake = 0
 			end
 			draw_actions( 1, true )
 		end,
+	},
+	{
+		id          = "RAINBOW_TRAIL",
+		name 		= "$action_rainbow_trail",
+		description = "$actiondesc_rainbow_trail",
+		sprite 		= "data/ui_gfx/gun_actions/rainbow_trail.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/oil_trail_unidentified.png",
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "10", -- rainbow_trail
+		spawn_probability                 = "0", -- rainbow_trail
+		spawn_requires_flag = "card_unlocked_rainbow_trail",
+		price = 100,
+		mana = 0,
+		--max_uses = 50,
+		custom_xml_file = "data/entities/misc/custom_cards/rainbow_trail.xml",
+		action 		= function()
+			c.game_effect_entities = c.game_effect_entities .. "data/entities/misc/effect_rainbow_farts.xml,"
+			c.trail_material = c.trail_material .. "material_rainbow,"
+			c.trail_material_amount = c.trail_material_amount + 20
+			draw_actions( 1, true )
+		end,
+
 	},
 }
 

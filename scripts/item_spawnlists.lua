@@ -3,9 +3,21 @@ spawnlists =
 	potion_spawnlist =
 	{
 		rnd_min = 1,
-		rnd_max = 89,
+		rnd_max = 95,
 		spawns = 
 		{
+			{
+				value_min = 94,
+				value_max = 95,
+				load_entity = "data/entities/items/pickup/stonestone.xml",
+				offset_y = -2,
+			},
+			{
+				value_min = 90,
+				value_max = 93,
+				load_entity = "data/entities/items/pickup/physics_gold_orb.xml",
+				offset_y = -2,
+			},
 			{
 				value_min = 86,
 				value_max = 89,

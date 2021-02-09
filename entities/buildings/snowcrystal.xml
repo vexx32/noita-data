@@ -88,12 +88,6 @@
     execute_every_n_frame="500"
     script_source_file="data/scripts/buildings/snowcrystal.lua" >
   </LuaComponent>
-  
-  <LuaComponent 
-    _enabled="1" 
-    execute_every_n_frame="-1"
-    script_death="data/scripts/animals/log_kill.lua" >
-  </LuaComponent>
 
 </Entity>
 

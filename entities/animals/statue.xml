@@ -41,7 +41,7 @@
 				explosion="0.0"
 				electricity="0.0"
 				slice="0.0"
-				freeze="0.0"
+				ice="0.0"
 				fire="0.0" >
 			</damage_multipliers>
 		</DamageModelComponent>

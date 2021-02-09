@@ -484,6 +484,23 @@ function perk_reroll_perks( entity_item )
 		if next_perk_index <= 0 then
 			next_perk_index = #perks
 		end
+		
+		local is_stackable = get_perk_stackable_status( perk_id )
+		local tries = 0
+		
+		while ( is_stackable == false ) and ( tries < 10 ) do
+			perk_id = perks[next_perk_index]
+			
+			next_perk_index = next_perk_index - 1
+			if next_perk_index <= 0 then
+				next_perk_index = #perks
+			end
+			
+			tries = tries + 1
+			
+			is_stackable = get_perk_stackable_status( perk_id )
+		end
+		
 		GlobalsSetValue( "TEMPLE_REROLL_PERK_INDEX", tostring(next_perk_index) )
 
 		GameAddFlagRun( get_perk_flag_name(perk_id) )
@@ -491,6 +508,25 @@ function perk_reroll_perks( entity_item )
 	end
 end
 
+function get_perk_stackable_status( perk_id )
+	for i,v in ipairs( perk_list ) do
+		if ( v.id == perk_id ) then
+			local result = perk_is_stackable( v )
+			
+			if ( result == false ) then
+				local flag_name = get_perk_picked_flag_name( perk_id )
+				
+				if GameHasFlagRun( flag_name ) then
+					return false
+				end
+			end
+			
+			return true
+		end
+	end
+	
+	return false
+end
 
 function DEBUG_PERKS()
 

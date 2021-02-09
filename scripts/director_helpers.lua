@@ -6,10 +6,26 @@ function check_newgame_plus_level( level )
 	return ( newgame_n >= level )
 end
 
-function init_total_prob( value )
+function check_parallel( status, x )
+	if status then
+		local pw = 0
+		
+		if ( x >= 0 ) then
+			pw = math.floor( ( x + 17920 ) / 35840 )
+		else
+			pw = math.floor( ( x - 17920 ) / 35840 )
+		end
+		
+		return ( pw ~= 0 )
+	end
+	
+	return false
+end
+
+function init_total_prob( value, x )
 	value.total_prob = 0
 	for i,v in ipairs(value) do
-		if ( v.prob ~= nil and ( v.spawn_check == nil or v.spawn_check() ) and ( v.ngpluslevel == nil or check_newgame_plus_level( v.ngpluslevel ) ) ) then
+		if ( v.prob ~= nil and ( v.spawn_check == nil or v.spawn_check() ) and ( v.ngpluslevel == nil or check_newgame_plus_level( v.ngpluslevel ) ) and ( v.parallel == nil or check_parallel( v.parallel, x ) ) ) then
 			value.total_prob = value.total_prob + v.prob
 		end
 	end
@@ -17,12 +33,12 @@ end
 
 function random_from_table( what, x, y )
 	if ( what.total_prob == 0 ) then
-		init_total_prob( what )
+		init_total_prob( what, x )
 	end
 
 	local r = ProceduralRandom(x,y) * what.total_prob
 	for i,v in ipairs(what) do
-		if( v.prob ~= nil and ( v.spawn_check == nil or v.spawn_check() ) and ( v.ngpluslevel == nil or check_newgame_plus_level( v.ngpluslevel ) ) ) then
+		if( v.prob ~= nil and ( v.spawn_check == nil or v.spawn_check() ) and ( v.ngpluslevel == nil or check_newgame_plus_level( v.ngpluslevel ) ) and ( v.parallel == nil or check_parallel( v.parallel, x ) ) ) then
 			if( r <= v.prob ) then
 				return v
 			end
@@ -176,7 +192,7 @@ end
 
 function load_random_pixel_scene( what, x, y )
 	if( what.total_prob == 0 ) then
-		init_total_prob( what )
+		init_total_prob( what, x )
 	end
 
 	local r = ProceduralRandom(x,y) * what.total_prob
@@ -208,7 +224,7 @@ function load_random_pixel_scene( what, x, y )
 					LoadPixelScene( v.material_file, v.visual_file, x, y, v.background_file, false, false, color_material_table, z_index )
 					if( v.is_unique == 1 ) then
 						what[i].prob = 0
-						init_total_prob( what )
+						init_total_prob( what, x )
 					end
 					return
 				end
@@ -239,7 +255,7 @@ end
 
 function load_random_background_sprite( what, x, y )
 	if( what.total_prob == 0 ) then
-		init_total_prob( what )
+		init_total_prob( what, x )
 	end
 
 	local r = ProceduralRandom(x,y) * what.total_prob

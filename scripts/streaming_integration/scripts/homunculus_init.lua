@@ -131,3 +131,7 @@ end
 if EntityHasTag( entity_id, "homing_target" ) then
 	EntityRemoveTag( entity_id, "homing_target" )
 end
+
+if EntityHasTag( entity_id, "enemy" ) then
+	EntityRemoveTag( entity_id, "enemy" )
+end

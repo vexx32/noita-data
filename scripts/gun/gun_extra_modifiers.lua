@@ -12,12 +12,11 @@ extra_modifiers =
 		c.damage_explosion_add = c.damage_explosion_add + 0.1
 		c.damage_projectile_add = c.damage_projectile_add + 0.6
 		c.speed_multiplier = c.speed_multiplier * 2.5
+		c.lifetime_add = c.lifetime_add + 20
 	end,
 	
-	powerful_shot_placeholder = function()
-		c.damage_explosion_add = c.damage_explosion_add + 1.0
-		c.lifetime_add = c.lifetime_add + 20
-		c.speed_multiplier = c.speed_multiplier * 2.5
+	food_clock = function()
+		c.extra_entities = c.extra_entities .. "data/entities/misc/perks/food_clock.xml,"
 	end,
 	
 	damage_plus_small = function()
