@@ -1,0 +1,16 @@
+<Entity>
+    <LoadEntitiesComponent
+        count.min="1"
+        count.max="1"
+        entity_file="data/entities/projectiles/deck/bounce_spark.xml"
+        kill_entity="1">
+    </LoadEntitiesComponent>
+
+    <!-- negative count.min for lowered odds of spawning -->
+    <LoadEntitiesComponent
+        count.min="-2"
+        count.max="1"
+        entity_file="data/entities/projectiles/deck/bounce_spark_silent.xml"
+        kill_entity="1">
+    </LoadEntitiesComponent>
+</Entity>

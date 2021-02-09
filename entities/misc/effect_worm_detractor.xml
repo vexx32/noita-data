@@ -1,0 +1,12 @@
+<Entity>
+	<InheritTransformComponent>
+    </InheritTransformComponent>	
+    
+    <GameEffectComponent 
+    	effect="WORM_DETRACTOR"
+    	frames="600"
+    >
+	</GameEffectComponent >
+	
+
+</Entity>
