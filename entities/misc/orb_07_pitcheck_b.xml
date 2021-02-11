@@ -3,12 +3,13 @@
 	  _enabled="0"
 	  _tags="disabled"
       width="96"
-      height="256" 
-      radius="256"
+      height="430" 
+      radius="430"
       destroy_this_entity_when_triggered="1"
       required_tag="player_unit" >
   	</CollisionTriggerComponent>
 
+    <!-- this spawns squidward -->
     <LuaComponent
 	  _enabled="0"
 	  _tags="disabled"

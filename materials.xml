@@ -2907,6 +2907,7 @@
     </Graphics>
   </CellData>
   
+  <!--
   <CellDataChild
   	_parent="steel_static"
   	_inherit_reactions="1"
@@ -2961,6 +2962,136 @@
 				do_only_horizontal_stripe="0" 
 				do_only_vertical_stripe="1" 
 				filename="data/materials_gfx/edge_files/edge_steelmoss_ver.png" 
+				min_angle="0" 
+				max_angle="45" />
+			</Images>
+		  </EdgeGraphics>
+		</Edge>
+    </Graphics>
+  </CellDataChild>
+-->
+
+  <CellDataChild
+  	_parent="steel_static"
+  	_inherit_reactions="1"
+  	name="steelmoss_static"
+  	<!-- steel_rusted -->
+	ui_name="$mat_steelrusted"	
+	wang_color="ff787A55" 
+	wang_noise_percent="0.0"
+	wang_curvature="0.5"
+	solid_friction="0.9"
+	electrical_conductivity="1"
+	durability="11"
+	show_in_creative_mode="1"
+	cell_holes_in_texture="1"
+	>
+  	<Graphics
+		texture_file="data/materials_gfx/steel_rusted.png"
+		color="ff787A55" >
+
+		<Edge>
+		  <EdgeGraphics 
+			color="ff233112" 
+			overwrite="0" 
+			percent="1" 
+			require_same_material="0" 
+			require_same_material_type="1" 
+			type="CARDINAL_DIRECTIONS" 
+			z="1" >
+			<Images>
+			  <Image 
+				do_only_horizontal_stripe="1" 
+				do_only_vertical_stripe="0" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
+				min_angle="45" 
+				max_angle="135" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
+				min_angle="135" 
+				max_angle="225" />
+			  <Image 
+				do_only_horizontal_stripe="1" 
+				do_only_vertical_stripe="0" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
+				min_angle="225" 
+				max_angle="315" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
+				min_angle="315" 
+				max_angle="360" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
+				min_angle="0" 
+				max_angle="45" />
+			</Images>
+		  </EdgeGraphics>
+		</Edge>
+    </Graphics>
+  </CellDataChild>
+
+  <CellDataChild
+  	_parent="steelmoss_static"
+  	_inherit_reactions="1"
+  	name="steel_rusted_no_holes"
+	ui_name="$mat_steelrusted"	
+	wang_color="ff904F3A" 
+	wang_noise_percent="0.0"
+	wang_curvature="0.5"
+	solid_friction="0.9"
+	electrical_conductivity="1"
+	durability="11"
+	show_in_creative_mode="1"
+	cell_holes_in_texture="0"
+	>
+  	<Graphics
+		texture_file="data/materials_gfx/steelpanelmoss.png"
+		color="ff904F3A" >
+
+		<Edge>
+		  <EdgeGraphics 
+			color="ff233112" 
+			overwrite="0" 
+			percent="1" 
+			require_same_material="0" 
+			require_same_material_type="1" 
+			type="CARDINAL_DIRECTIONS" 
+			z="1" >
+			<Images>
+			  <Image 
+				do_only_horizontal_stripe="1" 
+				do_only_vertical_stripe="0" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
+				min_angle="45" 
+				max_angle="135" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
+				min_angle="135" 
+				max_angle="225" />
+			  <Image 
+				do_only_horizontal_stripe="1" 
+				do_only_vertical_stripe="0" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
+				min_angle="225" 
+				max_angle="315" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
+				min_angle="315" 
+				max_angle="360" />
+			  <Image 
+				do_only_horizontal_stripe="0" 
+				do_only_vertical_stripe="1" 
+				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
 				min_angle="0" 
 				max_angle="45" />
 			</Images>
@@ -5686,7 +5817,6 @@
 	name="magic_liquid_unstable_teleportation"
 	ui_name="$mat_magic_liquid_unstable_teleportation"
   	tags="[liquid],[water],[magic_liquid],[impure]"
-
 	density="4.43"
 	cell_type="liquid"
 	wang_color="8000BEE4"
@@ -5707,7 +5837,8 @@
 	autoignition_temperature="10"
 	electrical_conductivity="1"
 	on_fire_smoke_material="blood_cold_vapour"
-
+	liquid_sprite_stains_status_threshold="0.2"
+	liquid_sprite_stains_check_offset="1"
 	>
 	<Graphics 
 		texture_file="data/materials_gfx/magic_liquid_unstable_telep.png" 
@@ -5754,14 +5885,14 @@
 	status_effects="TELEPORTATION"
 	audio_materialaudio_type="MAGICAL" 
 	show_in_creative_mode="1"
-
 	on_fire_smoke_material="blood_cold_vapour"
-
+	liquid_sprite_stains_status_threshold="0.2"
 	burnable="1"
 	on_fire_flame_material="fire_blue"
 	temperature_of_fire="95"
 	autoignition_temperature="10"
 	electrical_conductivity="1"
+	liquid_sprite_stains_check_offset="1"
 	>
 	<ParticleEffect
 		vel.y="17.14"
@@ -5885,11 +6016,12 @@
 	on_fire="0"
 	requires_oxygen="0"
 	liquid_stains="1"
-	liquid_sprite_stains_status_threshold="0.2"
+	liquid_sprite_stains_status_threshold="0.25"
 	liquid_sprite_stain_shaken_drop_chance="5"
 	status_effects="POLYMORPH"
 	audio_materialaudio_type="MAGICAL" 
 	show_in_creative_mode="1"
+	liquid_sprite_stains_check_offset="1"
 	>
 	<ParticleEffect
 		vel.y="-2.857"
@@ -5932,11 +6064,12 @@
 	on_fire="0"
 	requires_oxygen="0"
 	liquid_stains="1"
-	liquid_sprite_stains_status_threshold="0.2"
+	liquid_sprite_stains_status_threshold="0.25"
 	liquid_sprite_stain_shaken_drop_chance="5"
 	status_effects="POLYMORPH_RANDOM"
 	audio_materialaudio_type="MAGICAL" 
 	show_in_creative_mode="1"
+	liquid_sprite_stains_check_offset="1"
 	>
 	<ParticleEffect
 		vel.y="0"
@@ -5979,10 +6112,12 @@
 	on_fire="0"
 	requires_oxygen="0"
 	liquid_stains="1"
+	liquid_sprite_stains_status_threshold="0.25"
 	liquid_sprite_stain_shaken_drop_chance="2"
 	status_effects="POLYMORPH_UNSTABLE"
 	audio_materialaudio_type="MAGICAL" 
 	show_in_creative_mode="1"
+	liquid_sprite_stains_check_offset="1"
 	>
 	<Graphics 
 		texture_file="data/materials_gfx/polymorph_unstable.png" 

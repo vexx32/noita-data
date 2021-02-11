@@ -5,7 +5,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local x, y = EntityGetTransform( entity_id )
 	local flag_status = HasFlagPersistent( "card_unlocked_duplicate" )
 	
-	SetRandomSeed( 0, 60 )
+	local pw = check_parallel_pos( x )
+	SetRandomSeed( pw, 60 )
 	
 	local opts = { "ALPHA", "OMEGA", "GAMMA", "MU", "RESET", "ZETA", "PHI", "TAU", "SIGMA" }
 	local rnd = Random( 1, #opts )

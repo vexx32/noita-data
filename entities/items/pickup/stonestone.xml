@@ -38,18 +38,6 @@
   <VelocityComponent
     _tags="enabled_in_world"
   ></VelocityComponent>
-  
-  <GameEffectComponent 
-    _tags="enabled_in_hand"
-    effect="PROTECTION_RADIOACTIVITY"
-    frames="-1"
-  ></GameEffectComponent>
-
-  <GameEffectComponent 
-    _tags="enabled_in_hand"
-    effect="PROTECTION_MELEE"
-    frames="-1"
-  ></GameEffectComponent>
 
   <!-- steaming -->
 

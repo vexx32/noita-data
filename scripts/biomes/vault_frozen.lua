@@ -234,6 +234,18 @@ g_big_enemies =
 		entity 	= "data/entities/animals/spearbot.xml"
 	},
 	{
+		prob   		= 0.07,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/necrobot.xml"
+	},
+	{
+		prob   		= 0.01,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/necrobot_super.xml"
+	},
+	{
 		prob   		= 0.03,
 		min_count	= 1,
 		max_count	= 1,    

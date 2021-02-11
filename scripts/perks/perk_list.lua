@@ -321,6 +321,7 @@ perk_list =
 		game_effect = "STAINS_DROP_FASTER",
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
+		stackable_maximum = 8,
 		usable_by_enemies = true,
 	},
 	{
@@ -597,18 +598,6 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/worm_attractor.png",
 		perk_icon = "data/items_gfx/perks/worm_attractor.png",
 		game_effect = "WORM_ATTRACTOR",
-		stackable = STACKABLE_YES,
-		stackable_is_rare = true,
-		usable_by_enemies = true,
-	},
-
-	{
-		id = "WORM_DETRACTOR",
-		ui_name = "$perk_worm_detractor",
-		ui_description = "$perkdesc_worm_detractor",
-		ui_icon = "data/ui_gfx/perk_icons/worm_detractor.png",
-		perk_icon = "data/items_gfx/perks/worm_detractor.png",
-		game_effect = "WORM_DETRACTOR",
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
@@ -1471,6 +1460,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/worm_smaller_holes.png",
 		perk_icon = "data/items_gfx/perks/worm_smaller_holes.png",
 		stackable = STACKABLE_NO,
+		game_effect = "WORM_DETRACTOR",
 		func = function( entity_perk_item, entity_who_picked, item_name )
 		
 			EntityAddComponent( entity_who_picked, "LuaComponent", 

@@ -1,0 +1,1257 @@
+diff --git a/biome/_pixel_scenes.xml b/biome/_pixel_scenes.xml
+index 6360e33..41fba28 100644
+--- a/biome/_pixel_scenes.xml
++++ b/biome/_pixel_scenes.xml
+@@ -18,6 +18,8 @@
+ 
+     <File>data/biome_impl/spliced/moon.xml</File>
+ 	
++    <File>data/biome_impl/spliced/moon_dark.xml</File>
++	
+ 	<File>data/biome_impl/spliced/lavalake_pit_bottom.xml</File>
+ 	
+ 	<File>data/biome_impl/spliced/gourd_room.xml</File>
+diff --git a/biome/mestari_secret.xml b/biome/mestari_secret.xml
+index a8327b7..513f2f1 100644
+--- a/biome/mestari_secret.xml
++++ b/biome/mestari_secret.xml
+@@ -2,8 +2,15 @@
+   <Topology 
+     name="$biome_mestari_secret"
+     type="BIOME_WANG_TILE"
+-	background_use_neighbor="0"
+     background_image="data/weather_gfx/background_wizardcave.png"
++    background_edge_left="data/weather_gfx/edges/background_wizardcave_left.png"
++    background_edge_right="data/weather_gfx/edges/background_wizardcave_right.png"
++    background_edge_top="data/weather_gfx/edges/background_wizardcave_top.png"
++    background_edge_bottom="data/weather_gfx/edges/background_wizardcave_bottom.png"
++    background_edge_priority="10"
++    background_use_neighbor="0"
++    background_image_height="0"
++
+     wang_template_file="" 
+     lua_script="data/scripts/biomes/mestari_secret.lua"
+     wang_map_width="256"
+diff --git a/biome/rainforest_dark.xml b/biome/rainforest_dark.xml
+index 65452cf..8786f2e 100644
+--- a/biome/rainforest_dark.xml
++++ b/biome/rainforest_dark.xml
+@@ -7,7 +7,7 @@
+     background_edge_right="data/weather_gfx/edges/background_rainforest_dark_right.png"
+     background_edge_top="data/weather_gfx/edges/background_rainforest_dark_top.png"
+     background_edge_bottom="data/weather_gfx/edges/background_rainforest_dark_bottom.png"
+-    background_edge_priority="10"   
++    background_edge_priority="9"   
+     limit_background_image="0"
+ 
+     wang_template_file="data/wang_tiles/rainforest_dark.png" 
+diff --git a/biome_impl/biome_map_newgame_plus.lua b/biome_impl/biome_map_newgame_plus.lua
+index 519bf47..821facb 100644
+--- a/biome_impl/biome_map_newgame_plus.lua
++++ b/biome_impl/biome_map_newgame_plus.lua
+@@ -365,6 +365,17 @@ for i,v in pairs(orb_list) do
+ 	v[2] = y2
+ end
+ 
++-- boss arena
++-- end room 
++local color_end_room = 0xFF50EED7
++local color_boss_arena = 0xFF14EED7
++
++BiomeMapSetPixel( 44, 43, color_end_room )
++
++paint_biome_area( 35, 38, 5, 2, color_boss_arena )
++BiomeMapSetPixel( 37, 40, color_boss_arena )
++BiomeMapSetPixel( 38, 40, color_boss_arena )
++
+ local world_state_entity = GameGetWorldStateEntity()
+ local comp = EntityGetComponent( world_state_entity, "WorldStateComponent" )
+ 
+diff --git a/entities/animals/boss_alchemist/boss_alchemist.xml b/entities/animals/boss_alchemist/boss_alchemist.xml
+index 2598c3f..db1cb66 100644
+--- a/entities/animals/boss_alchemist/boss_alchemist.xml
++++ b/entities/animals/boss_alchemist/boss_alchemist.xml
+@@ -1,4 +1,4 @@
+-<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100">
++<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT">
+   
+ 	<Base file="data/entities/base_enemy_basic.xml" >
+ 		<ItemChestComponent level="2" > </ItemChestComponent>
+diff --git a/entities/animals/boss_alchemist/death.lua b/entities/animals/boss_alchemist/death.lua
+index 8c3466a..ec058dd 100644
+--- a/entities/animals/boss_alchemist/death.lua
++++ b/entities/animals/boss_alchemist/death.lua
+@@ -5,7 +5,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	local x, y = EntityGetTransform( entity_id )
+ 	local flag_status = HasFlagPersistent( "card_unlocked_duplicate" )
+ 	
+-	SetRandomSeed( 0, 60 )
++	local pw = check_parallel_pos( x )
++	SetRandomSeed( pw, 60 )
+ 	
+ 	local opts = { "ALPHA", "OMEGA", "GAMMA", "MU", "RESET", "ZETA", "PHI", "TAU", "SIGMA" }
+ 	local rnd = Random( 1, #opts )
+diff --git a/entities/animals/boss_centipede/boss_centipede.xml b/entities/animals/boss_centipede/boss_centipede.xml
+index 8e24edc..8e2cc37 100644
+--- a/entities/animals/boss_centipede/boss_centipede.xml
++++ b/entities/animals/boss_centipede/boss_centipede.xml
+@@ -1,4 +1,4 @@
+-<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,sampo_or_boss,boss_centipede,polymorphable_NOT,boss" name="$animal_boss_centipede">	
++<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,sampo_or_boss,boss_centipede,polymorphable_NOT,boss,necrobot_NOT" name="$animal_boss_centipede">	
+ 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
+ 
+ 	<!-- keeps the streaming alive -->
+diff --git a/entities/animals/boss_centipede/boss_centipede_minion.xml b/entities/animals/boss_centipede/boss_centipede_minion.xml
+index 0caa050..209674a 100644
+--- a/entities/animals/boss_centipede/boss_centipede_minion.xml
++++ b/entities/animals/boss_centipede/boss_centipede_minion.xml
+@@ -1,4 +1,8 @@
+ <Entity tags="boss_centipede_minion" name="$animal_boss_centipede_minion" >
++
++	<VariableStorageComponent
++		_tags="no_gold_drop">
++	</VariableStorageComponent>
+   
+   <PhysicsAIComponent
+ 		target_vec_max_len="15.0"
+diff --git a/entities/animals/boss_gate/gate_monster_a.xml b/entities/animals/boss_gate/gate_monster_a.xml
+index ba01630..86046f3 100644
+--- a/entities/animals/boss_gate/gate_monster_a.xml
++++ b/entities/animals/boss_gate/gate_monster_a.xml
+@@ -1,4 +1,4 @@
+-<Entity name="$animal_gate_monster_a" tags="gate_monster" >
++<Entity name="$animal_gate_monster_a" tags="gate_monster,necrobot_NOT" >
+ 
+ 	<PhysicsAIComponent
+ 		target_vec_max_len="15.0"
+diff --git a/entities/animals/boss_gate/gate_monster_death.lua b/entities/animals/boss_gate/gate_monster_death.lua
+index c9a9252..fa60c08 100644
+--- a/entities/animals/boss_gate/gate_monster_death.lua
++++ b/entities/animals/boss_gate/gate_monster_death.lua
+@@ -5,7 +5,19 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	local entity_id    = GetUpdatedEntityID()
+ 	local pos_x, pos_y = EntityGetTransform( entity_id )
+ 	
+-	SetRandomSeed( 0, 10 )
++	local name = EntityGetName(entity_id)
++	local seed_offset = 0
++	local pw = check_parallel_pos( pos_x )
++	
++	if ( name == "$animal_gate_monster_b" ) then
++		seed_offset = 1
++	elseif ( name == "$animal_gate_monster_c" ) then
++		seed_offset = 2
++	elseif ( name == "$animal_gate_monster_d" ) then
++		seed_offset = 3
++	end
++	
++	SetRandomSeed( seed_offset, 10 + pw )
+ 	
+ 	make_random_card(pos_x, pos_y)
+ 
+diff --git a/entities/animals/boss_limbs/boss_limbs.xml b/entities/animals/boss_limbs/boss_limbs.xml
+index 62b2cad..818bd3b 100644
+--- a/entities/animals/boss_limbs/boss_limbs.xml
++++ b/entities/animals/boss_limbs/boss_limbs.xml
+@@ -1,4 +1,4 @@
+-<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100" name="$animal_boss_limbs">
++<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100,necrobot_NOT" name="$animal_boss_limbs">
+ 	
+ 	<!-- art - main body ---------------------- -->
+ 
+diff --git a/entities/animals/boss_limbs/boss_limbs_death.lua b/entities/animals/boss_limbs/boss_limbs_death.lua
+index c81561f..3119694 100644
+--- a/entities/animals/boss_limbs/boss_limbs_death.lua
++++ b/entities/animals/boss_limbs/boss_limbs_death.lua
+@@ -9,7 +9,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	EntityLoad( "data/entities/items/pickup/heart.xml", pos_x - 16, pos_y )
+ 	EntityLoad( "data/entities/items/wand_unshuffle_04.xml", pos_x, pos_y )
+ 	
+-	SetRandomSeed( 0, 44 )
++	local pw = check_parallel_pos( pos_x )
++	SetRandomSeed( pw, 44 )
+ 	
+ 	local opts = { "ADD_TRIGGER", "ADD_TIMER", "ADD_DEATH_TRIGGER", "DAMAGE_RANDOM" }
+ 	
+diff --git a/entities/animals/boss_pit/boss_pit.xml b/entities/animals/boss_pit/boss_pit.xml
+index 55a61b6..e93d005 100644
+--- a/entities/animals/boss_pit/boss_pit.xml
++++ b/entities/animals/boss_pit/boss_pit.xml
+@@ -1,4 +1,4 @@
+-<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT" name="$animal_boss_pit">
++<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT" name="$animal_boss_pit">
+ 	
+ 	<!-- art - main body ---------------------- -->
+ 
+diff --git a/entities/animals/boss_pit/boss_pit_death.lua b/entities/animals/boss_pit/boss_pit_death.lua
+index 0d50553..eeb5f4a 100644
+--- a/entities/animals/boss_pit/boss_pit_death.lua
++++ b/entities/animals/boss_pit/boss_pit_death.lua
+@@ -5,7 +5,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	local x, y = EntityGetTransform( entity_id )
+ 	local flag_status = HasFlagPersistent( "card_unlocked_rain" )
+ 	
+-	SetRandomSeed( 0, 120 )
++	local pw = check_parallel_pos( x )
++	SetRandomSeed( pw, 120 )
+ 	
+ 	local opts = { "WORM_RAIN", "METEOR_RAIN" }
+ 	local rnd = Random( 1, #opts )
+diff --git a/entities/animals/boss_wizard/boss_wizard.xml b/entities/animals/boss_wizard/boss_wizard.xml
+index bfe8236..2cd884c 100644
+--- a/entities/animals/boss_wizard/boss_wizard.xml
++++ b/entities/animals/boss_wizard/boss_wizard.xml
+@@ -1,4 +1,4 @@
+-<Entity name="$animal_boss_wizard" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,boss_wizard">
++<Entity name="$animal_boss_wizard" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,boss_wizard,necrobot_NOT">
+   
+ 	<Base file="data/entities/base_enemy_basic.xml" >
+ 		<ItemChestComponent level="2" > </ItemChestComponent>
+diff --git a/entities/animals/boss_wizard/death.lua b/entities/animals/boss_wizard/death.lua
+index 10de466..dc5a62f 100644
+--- a/entities/animals/boss_wizard/death.lua
++++ b/entities/animals/boss_wizard/death.lua
+@@ -7,7 +7,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	
+ 	-- StatsLogPlayerKill( GetUpdatedEntityID() )
+ 	
+-	SetRandomSeed( 0, 30 )
++	local pw = check_parallel_pos( x )
++	SetRandomSeed( pw, 30 )
+ 	
+ 	local opts = { "DUPLICATE", "RANDOM_SPELL", "RANDOM_PROJECTILE", "RANDOM_MODIFIER", "RANDOM_STATIC_PROJECTILE", "DRAW_RANDOM", "DRAW_RANDOM_X3", "DRAW_3_RANDOM" }
+ 	local rnd = Random( 1, #opts )
+diff --git a/entities/animals/necromancer_super.xml b/entities/animals/necromancer_super.xml
+index 41815da..23cd528 100644
+--- a/entities/animals/necromancer_super.xml
++++ b/entities/animals/necromancer_super.xml
+@@ -110,7 +110,7 @@
+ 	</SpriteComponent>
+ 	
+ 	<AIAttackComponent
+-		min_distance="101"
++		min_distance="11"
+ 		max_distance="200"
+ 		frames_between="50"
+ 		frames_between_global="7"
+@@ -125,8 +125,9 @@
+ 	</AIAttackComponent>
+ 	
+ 	<AIAttackComponent
++		use_probability="70"
+ 		min_distance="0"
+-		max_distance="100"
++		max_distance="70"
+ 		frames_between="7"
+ 		frames_between_global="7"
+ 		attack_ranged_offset_x="21"
+diff --git a/entities/items/pickup/evil_eye.xml b/entities/items/pickup/evil_eye.xml
+index 8242d9b..4dd915c 100644
+--- a/entities/items/pickup/evil_eye.xml
++++ b/entities/items/pickup/evil_eye.xml
+@@ -60,6 +60,7 @@
+ 			</laser>
+ 		</LaserEmitterComponent>
+ 		<SpriteComponent
++			_enabled="0"
+ 			_tags="enabled_in_world,enabled_in_hand"
+ 			image_file="data/projectiles_gfx/orb_red.xml"
+ 			alpha="0.7"
+diff --git a/entities/items/pickup/stonestone.xml b/entities/items/pickup/stonestone.xml
+index b4151dd..6c880ee 100644
+--- a/entities/items/pickup/stonestone.xml
++++ b/entities/items/pickup/stonestone.xml
+@@ -38,18 +38,6 @@
+   <VelocityComponent
+     _tags="enabled_in_world"
+   ></VelocityComponent>
+-  
+-  <GameEffectComponent 
+-    _tags="enabled_in_hand"
+-    effect="PROTECTION_RADIOACTIVITY"
+-    frames="-1"
+-  ></GameEffectComponent>
+-
+-  <GameEffectComponent 
+-    _tags="enabled_in_hand"
+-    effect="PROTECTION_MELEE"
+-    frames="-1"
+-  ></GameEffectComponent>
+ 
+   <!-- steaming -->
+ 
+diff --git a/entities/misc/effect_worm_attractor.xml b/entities/misc/effect_worm_attractor.xml
+index 66ee295..67f17fa 100644
+--- a/entities/misc/effect_worm_attractor.xml
++++ b/entities/misc/effect_worm_attractor.xml
+@@ -1,8 +1,9 @@
+-<Entity>
++<Entity tags="effect_worm,effect_worm_attractor">
+ 	<InheritTransformComponent>
+     </InheritTransformComponent>	
+     
+-    <GameEffectComponent 
++    <GameEffectComponent
++		_tags="effect_worm,effect_worm_attractor"
+     	effect="WORM_ATTRACTOR"
+     	frames="600"
+     >
+diff --git a/entities/misc/effect_worm_detractor.xml b/entities/misc/effect_worm_detractor.xml
+index 255f9af..a580651 100644
+--- a/entities/misc/effect_worm_detractor.xml
++++ b/entities/misc/effect_worm_detractor.xml
+@@ -1,8 +1,9 @@
+-<Entity>
++<Entity tags="effect_worm,effect_worm_detractor" >
+ 	<InheritTransformComponent>
+     </InheritTransformComponent>	
+     
+-    <GameEffectComponent 
++    <GameEffectComponent
++		_tags="effect_worm,effect_worm_detractor"
+     	effect="WORM_DETRACTOR"
+     	frames="600"
+     >
+diff --git a/entities/misc/orb_07_pitcheck_a.xml b/entities/misc/orb_07_pitcheck_a.xml
+index 728ddc7..e7ab1de 100644
+--- a/entities/misc/orb_07_pitcheck_a.xml
++++ b/entities/misc/orb_07_pitcheck_a.xml
+@@ -1,8 +1,8 @@
+ <Entity  >
+     <CollisionTriggerComponent
+       width="96"
+-      height="96" 
+-      radius="48"
++      height="110" 
++      radius="60"
+       destroy_this_entity_when_triggered="1"
+       required_tag="player_unit" >
+   	</CollisionTriggerComponent>
+diff --git a/entities/misc/orb_07_pitcheck_b.xml b/entities/misc/orb_07_pitcheck_b.xml
+index 57cd1ab..fb0bdd0 100644
+--- a/entities/misc/orb_07_pitcheck_b.xml
++++ b/entities/misc/orb_07_pitcheck_b.xml
+@@ -3,12 +3,13 @@
+ 	  _enabled="0"
+ 	  _tags="disabled"
+       width="96"
+-      height="256" 
+-      radius="256"
++      height="430" 
++      radius="430"
+       destroy_this_entity_when_triggered="1"
+       required_tag="player_unit" >
+   	</CollisionTriggerComponent>
+ 
++    <!-- this spawns squidward -->
+     <LuaComponent
+ 	  _enabled="0"
+ 	  _tags="disabled"
+diff --git a/entities/projectiles/orb_pink.xml b/entities/projectiles/orb_pink.xml
+index 74261d0..367dc79 100644
+--- a/entities/projectiles/orb_pink.xml
++++ b/entities/projectiles/orb_pink.xml
+@@ -1,5 +1,6 @@
+ <Entity 
+   name="$projectile_default" 
++  tags="resist_repulsion"
+    >
+ 
+ 	<Base file="data/entities/base_projectile.xml" >
+diff --git a/entities/projectiles/orb_pink_big.xml b/entities/projectiles/orb_pink_big.xml
+index cc7663f..f9d1eee 100644
+--- a/entities/projectiles/orb_pink_big.xml
++++ b/entities/projectiles/orb_pink_big.xml
+@@ -1,5 +1,6 @@
+ <Entity 
+   name="$projectile_default" 
++  tags="resist_repulsion"
+    >
+ 
+ 	<Base file="data/entities/base_projectile.xml" >
+diff --git a/entities/projectiles/orb_pink_big_super.xml b/entities/projectiles/orb_pink_big_super.xml
+index 014af96..f562242 100644
+--- a/entities/projectiles/orb_pink_big_super.xml
++++ b/entities/projectiles/orb_pink_big_super.xml
+@@ -1,5 +1,6 @@
+ <Entity 
+-	name="$projectile_default" 
++	name="$projectile_default"
++	tags="resist_repulsion"
+ 	>
+ 
+ 	<Base file="data/entities/base_projectile.xml" >
+diff --git a/entities/projectiles/orb_pink_big_super_shrapnel.xml b/entities/projectiles/orb_pink_big_super_shrapnel.xml
+index ea63238..635e2cb 100644
+--- a/entities/projectiles/orb_pink_big_super_shrapnel.xml
++++ b/entities/projectiles/orb_pink_big_super_shrapnel.xml
+@@ -1,5 +1,6 @@
+ <Entity 
+-	name="$projectile_default" 
++	name="$projectile_default"
++	tags="resist_repulsion"
+ 	>
+ 
+ 	<Base file="data/entities/base_projectile.xml" >
+diff --git a/entities/projectiles/orb_pink_super.xml b/entities/projectiles/orb_pink_super.xml
+index 8b28892..8bf2048 100644
+--- a/entities/projectiles/orb_pink_super.xml
++++ b/entities/projectiles/orb_pink_super.xml
+@@ -1,5 +1,6 @@
+ <Entity 
+-	name="$projectile_default" 
++	name="$projectile_default"
++	tags="resist_repulsion"
+ 	>
+ 
+ 	<Base file="data/entities/base_projectile.xml" >
+@@ -15,14 +16,14 @@
+ 		_enabled="1" 
+ 		lob_min="0.8"
+ 		lob_max="1.0"
+-		speed_min="100"
+-		speed_max="120"
++		speed_min="160"
++		speed_max="200"
+ 		die_on_low_velocity="0"
+ 		on_death_explode="1"
+ 		on_death_gfx_leave_sprite="0" 
+ 		on_lifetime_out_explode="1"
+ 		explosion_dont_damage_shooter="1"
+-		damage="0.8"
++		damage="0.9"
+ 		go_through_this_material="crystal_purple"
+ 		on_collision_die="1"
+ 		lifetime="50"
+diff --git a/materials.xml b/materials.xml
+index 2b4816e..de4c23c 100644
+--- a/materials.xml
++++ b/materials.xml
+@@ -2907,6 +2907,7 @@
+     </Graphics>
+   </CellData>
+   
++  <!--
+   <CellDataChild
+   	_parent="steel_static"
+   	_inherit_reactions="1"
+@@ -2968,6 +2969,136 @@
+ 		</Edge>
+     </Graphics>
+   </CellDataChild>
++-->
++
++  <CellDataChild
++  	_parent="steel_static"
++  	_inherit_reactions="1"
++  	name="steelmoss_static"
++  	<!-- steel_rusted -->
++	ui_name="$mat_steelrusted"	
++	wang_color="ff787A55" 
++	wang_noise_percent="0.0"
++	wang_curvature="0.5"
++	solid_friction="0.9"
++	electrical_conductivity="1"
++	durability="11"
++	show_in_creative_mode="1"
++	cell_holes_in_texture="1"
++	>
++  	<Graphics
++		texture_file="data/materials_gfx/steel_rusted.png"
++		color="ff787A55" >
++
++		<Edge>
++		  <EdgeGraphics 
++			color="ff233112" 
++			overwrite="0" 
++			percent="1" 
++			require_same_material="0" 
++			require_same_material_type="1" 
++			type="CARDINAL_DIRECTIONS" 
++			z="1" >
++			<Images>
++			  <Image 
++				do_only_horizontal_stripe="1" 
++				do_only_vertical_stripe="0" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
++				min_angle="45" 
++				max_angle="135" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="135" 
++				max_angle="225" />
++			  <Image 
++				do_only_horizontal_stripe="1" 
++				do_only_vertical_stripe="0" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
++				min_angle="225" 
++				max_angle="315" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="315" 
++				max_angle="360" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="0" 
++				max_angle="45" />
++			</Images>
++		  </EdgeGraphics>
++		</Edge>
++    </Graphics>
++  </CellDataChild>
++
++  <CellDataChild
++  	_parent="steelmoss_static"
++  	_inherit_reactions="1"
++  	name="steel_rusted_no_holes"
++	ui_name="$mat_steelrusted"	
++	wang_color="ff904F3A" 
++	wang_noise_percent="0.0"
++	wang_curvature="0.5"
++	solid_friction="0.9"
++	electrical_conductivity="1"
++	durability="11"
++	show_in_creative_mode="1"
++	cell_holes_in_texture="0"
++	>
++  	<Graphics
++		texture_file="data/materials_gfx/steelpanelmoss.png"
++		color="ff904F3A" >
++
++		<Edge>
++		  <EdgeGraphics 
++			color="ff233112" 
++			overwrite="0" 
++			percent="1" 
++			require_same_material="0" 
++			require_same_material_type="1" 
++			type="CARDINAL_DIRECTIONS" 
++			z="1" >
++			<Images>
++			  <Image 
++				do_only_horizontal_stripe="1" 
++				do_only_vertical_stripe="0" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
++				min_angle="45" 
++				max_angle="135" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="135" 
++				max_angle="225" />
++			  <Image 
++				do_only_horizontal_stripe="1" 
++				do_only_vertical_stripe="0" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_hor.png" 
++				min_angle="225" 
++				max_angle="315" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="315" 
++				max_angle="360" />
++			  <Image 
++				do_only_horizontal_stripe="0" 
++				do_only_vertical_stripe="1" 
++				filename="data/materials_gfx/edge_files/edge_steel_rusted_ver.png" 
++				min_angle="0" 
++				max_angle="45" />
++			</Images>
++		  </EdgeGraphics>
++		</Edge>
++    </Graphics>
++  </CellDataChild>
+   
+   <CellDataChild
+   	_parent="steel_static"
+@@ -5686,7 +5817,6 @@
+ 	name="magic_liquid_unstable_teleportation"
+ 	ui_name="$mat_magic_liquid_unstable_teleportation"
+   	tags="[liquid],[water],[magic_liquid],[impure]"
+-
+ 	density="4.43"
+ 	cell_type="liquid"
+ 	wang_color="8000BEE4"
+@@ -5707,7 +5837,8 @@
+ 	autoignition_temperature="10"
+ 	electrical_conductivity="1"
+ 	on_fire_smoke_material="blood_cold_vapour"
+-
++	liquid_sprite_stains_status_threshold="0.2"
++	liquid_sprite_stains_check_offset="1"
+ 	>
+ 	<Graphics 
+ 		texture_file="data/materials_gfx/magic_liquid_unstable_telep.png" 
+@@ -5754,14 +5885,14 @@
+ 	status_effects="TELEPORTATION"
+ 	audio_materialaudio_type="MAGICAL" 
+ 	show_in_creative_mode="1"
+-
+ 	on_fire_smoke_material="blood_cold_vapour"
+-
++	liquid_sprite_stains_status_threshold="0.2"
+ 	burnable="1"
+ 	on_fire_flame_material="fire_blue"
+ 	temperature_of_fire="95"
+ 	autoignition_temperature="10"
+ 	electrical_conductivity="1"
++	liquid_sprite_stains_check_offset="1"
+ 	>
+ 	<ParticleEffect
+ 		vel.y="17.14"
+@@ -5885,11 +6016,12 @@
+ 	on_fire="0"
+ 	requires_oxygen="0"
+ 	liquid_stains="1"
+-	liquid_sprite_stains_status_threshold="0.2"
++	liquid_sprite_stains_status_threshold="0.25"
+ 	liquid_sprite_stain_shaken_drop_chance="5"
+ 	status_effects="POLYMORPH"
+ 	audio_materialaudio_type="MAGICAL" 
+ 	show_in_creative_mode="1"
++	liquid_sprite_stains_check_offset="1"
+ 	>
+ 	<ParticleEffect
+ 		vel.y="-2.857"
+@@ -5932,11 +6064,12 @@
+ 	on_fire="0"
+ 	requires_oxygen="0"
+ 	liquid_stains="1"
+-	liquid_sprite_stains_status_threshold="0.2"
++	liquid_sprite_stains_status_threshold="0.25"
+ 	liquid_sprite_stain_shaken_drop_chance="5"
+ 	status_effects="POLYMORPH_RANDOM"
+ 	audio_materialaudio_type="MAGICAL" 
+ 	show_in_creative_mode="1"
++	liquid_sprite_stains_check_offset="1"
+ 	>
+ 	<ParticleEffect
+ 		vel.y="0"
+@@ -5979,10 +6112,12 @@
+ 	on_fire="0"
+ 	requires_oxygen="0"
+ 	liquid_stains="1"
++	liquid_sprite_stains_status_threshold="0.25"
+ 	liquid_sprite_stain_shaken_drop_chance="2"
+ 	status_effects="POLYMORPH_UNSTABLE"
+ 	audio_materialaudio_type="MAGICAL" 
+ 	show_in_creative_mode="1"
++	liquid_sprite_stains_check_offset="1"
+ 	>
+ 	<Graphics 
+ 		texture_file="data/materials_gfx/polymorph_unstable.png" 
+diff --git a/scripts/animals/boss_dragon_death.lua b/scripts/animals/boss_dragon_death.lua
+index ec8aebd..1aa0af5 100644
+--- a/scripts/animals/boss_dragon_death.lua
++++ b/scripts/animals/boss_dragon_death.lua
+@@ -12,7 +12,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	AddFlagPersistent( "miniboss_dragon" )
+ 	AddFlagPersistent( "card_unlocked_dragon" )
+ 	
+-	SetRandomSeed( 0, 540 )
++	local pw = check_parallel_pos( pos_x )
++	SetRandomSeed( pw, 540 )
+ 	
+ 	local flag_status = HasFlagPersistent( "card_unlocked_dragon" )
+ 	local opts = { "ORBIT_DISCS", "ORBIT_FIREBALLS", "ORBIT_NUKES", "ORBIT_LASERS", "ORBIT_LARPA" }
+diff --git a/scripts/animals/necromancer_super_chase.lua b/scripts/animals/necromancer_super_chase.lua
+index 0e97ae7..80bea03 100644
+--- a/scripts/animals/necromancer_super_chase.lua
++++ b/scripts/animals/necromancer_super_chase.lua
+@@ -1,6 +1,6 @@
+ dofile_once("data/scripts/lib/utilities.lua")
+ 
+-local range_near = 70 -- if below, stop chase
++local range_near = 40 -- if below, stop chase
+ local range_far = 250
+ local range_max = 600 -- if above, stop chase
+ 
+diff --git a/scripts/biome_scripts.lua b/scripts/biome_scripts.lua
+index 3dac8cd..3a2a03e 100644
+--- a/scripts/biome_scripts.lua
++++ b/scripts/biome_scripts.lua
+@@ -93,12 +93,7 @@ end
+ 
+ function parallel_check( x, y )
+ 	if ( y < 0 ) then
+-		local pw = 0
+-		if ( x >= 0 ) then
+-			pw = math.floor( ( x + 17920 ) / 35840 )
+-		else
+-			pw = math.floor( ( math.abs( x ) + 17920 ) / 35840 )
+-		end
++		local pw = GetParallelWorldPosition( x, y )
+ 		
+ 		if ( pw ~= 0 ) then
+ 			local r = ProceduralRandom( x + 35, y - 253 )
+@@ -120,15 +115,35 @@ function parallel_check( x, y )
+ 	end
+ end
+ 
++function spawn_mimic_sign( x, y )
++	impl_raytrace_x = function( x0, y0, x_direction, max_length )
++		local hit_something,hit_x,hit_y = Raytrace( x0, y0, x0 + (x_direction * max_length), y0 )
++		return hit_x
++	end
++
++	local min_x = impl_raytrace_x( x, y, -1, 32 )
++	local max_x = impl_raytrace_x( x, y, 1, 32 )
++
++	if( ( x - min_x ) >= 24 and Raytrace( x - 16, y, x - 16, y - 26 ) == false ) then
++		local hit_something, temp_x, max_y = Raytrace( x - 16, y - 25, x - 16, y + 32 )
++		LoadPixelScene( "data/biome_impl/mimic_sign.png", "data/biome_impl/mimic_sign_visual.png", min_x, max_y - 23, "", true, true )
++	elseif( ( max_x - x ) >= 24 and Raytrace( x + 16, y, x + 16, y - 26 ) == false ) then
++		local hit_something, temp_x, max_y = Raytrace( x + 16, y - 25, x + 16, y + 32 )
++		LoadPixelScene( "data/biome_impl/mimic_sign.png", "data/biome_impl/mimic_sign_visual.png", max_x - 22, max_y - 23, "", true, true )
++	end
++end
++
++
+ function spawn_heart( x, y )
+ 	local r = ProceduralRandom( x, y )
+ 	SetRandomSeed( x, y )
+-	-- local r=1
+-	-- 2018.11.15 - Petri 
+-	-- changed this from 0.4 -> 0.7 quite a big upping of heart spawns
+-	-- done for testing 
++	local heart_spawn_percent = 0.7
++	
++	local year, month, day = GameGetDateAndTimeLocal()
++	if ( month == 2 ) and ( day == 14 ) then heart_spawn_percent = 0.35 end
+ 
+-	if (r > 0.7) then
++
++	if (r > heart_spawn_percent) then
+ 		local entity = EntityLoad( "data/entities/items/pickup/heart.xml", x, y)
+ 	elseif (r > 0.3) then
+ 		SetRandomSeed( x+45, y-2123 )
+@@ -137,6 +152,8 @@ function spawn_heart( x, y )
+ 		if (rnd <= 90) or (y < 512 * 3) then
+ 			rnd = Random( 1, 1000 )
+ 			
++			if( Random( 1, 300 ) == 1 ) then spawn_mimic_sign( x, y ) end
++
+ 			if ( rnd < 1000 ) then
+ 				local entity = EntityLoad( "data/entities/items/pickup/chest_random.xml", x, y)
+ 			else
+@@ -144,6 +161,8 @@ function spawn_heart( x, y )
+ 			end
+ 		else
+ 			rnd = Random( 1, 100 )
++			if( Random( 1, 30 ) == 1 ) then spawn_mimic_sign( x, y ) end
++
+ 			if( rnd <= 95 ) then
+ 				local entity = EntityLoad( "data/entities/animals/chest_mimic.xml", x, y)
+ 			else
+diff --git a/scripts/biomes/liquidcave.lua b/scripts/biomes/liquidcave.lua
+index 0d97d71..3d22b73 100644
+--- a/scripts/biomes/liquidcave.lua
++++ b/scripts/biomes/liquidcave.lua
+@@ -116,6 +116,13 @@ g_big_enemies =
+ 		entity 	= "data/entities/buildings/hpcrystal.xml",
+ 		ngpluslevel = 1,
+ 	},
++	{
++		prob   		= 0.05,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot_super.xml",
++		ngpluslevel = 2,
++	},
+ }
+ 
+ g_lamp =
+diff --git a/scripts/biomes/mountain_tree.lua b/scripts/biomes/mountain_tree.lua
+index bbc038d..835aa25 100644
+--- a/scripts/biomes/mountain_tree.lua
++++ b/scripts/biomes/mountain_tree.lua
+@@ -294,7 +294,7 @@ function spawn_pillars( x, y )
+ 	local flags = 
+ 	{
+ 		{ { "misc_chest_rain", "crain" }, { "misc_worm_rain", "wrain" }, { "misc_greed_rain", "grain" }, { "misc_altar_tablet", "train" }, { "misc_monk_bots", "mbots" }, { "secret_tower", "secrett" }, { "player_status_ghostly", "pghost" }, { "player_status_ratty", "prat" } },
+-		{ { "essence_fire", "essencef" }, { "essence_water", "essencew" }, { "essence_laser", "essencee" }, { "essence_air", "essencea" }, { "essence_alcohol", "essenceal" }, { "secret_moon", "moon" }, { "secret_moon2", "moona" }, { "special_mood", "moong" } },
++		{ { "essence_fire", "essencef" }, { "essence_water", "essencew" }, { "essence_laser", "essencee" }, { "essence_air", "essencea" }, { "essence_alcohol", "essenceal" }, { "secret_moon", "moon" }, { "secret_moon2", "moona" }, { "special_mood", "moong" }, { "secret_dmoon", "dmoon" }, { "dead_mood", "dmoong" } },
+ 		{ { "progress_ending0", "end0" }, { "progress_ending1_toxic", "endt" }, { "progress_ending1_gold", "endb" }, { "progress_ending2", "endg" }, { "progress_newgameplusplus3", "endp" }, { "progress_nightmare", "endn" } },
+ 		{ { "miniboss_dragon", "minid" }, { "miniboss_limbs", "minil" }, { "miniboss_pit", "minip" }, { "miniboss_alchemist", "minia" }, { "miniboss_wizard", "meme" }, { "miniboss_gate_monsters", "minigm" }, { "boss_centipede", "boss" } },
+ 		{ { "progress_orb_1", "orbf" }, { "progress_orb_evil", "orbe" }, { "progress_orb_all", "orba" }, { "progress_pacifist", "pacifist" }, { "progress_nogold", "nogold" }, { "progress_clock", "clock" }, { "progress_minit", "minit" }, { "progress_nohit", "nohit" } },
+diff --git a/scripts/biomes/rainforest_dark.lua b/scripts/biomes/rainforest_dark.lua
+index f3f498c..cdc8f77 100644
+--- a/scripts/biomes/rainforest_dark.lua
++++ b/scripts/biomes/rainforest_dark.lua
+@@ -130,6 +130,20 @@ g_big_enemies =
+ 		max_count	= 1,    
+ 		entity 	= "data/entities/animals/wizard_hearty.xml"
+ 	},
++	{
++		prob   		= 0.01,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot.xml",
++		ngpluslevel = 1,
++	},
++	{
++		prob   		= 0.01,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot_super.xml",
++		ngpluslevel = 2,
++	},
+ }
+ 
+ g_unique_enemy =
+diff --git a/scripts/biomes/snowcastle.lua b/scripts/biomes/snowcastle.lua
+index d6d230f..3230a7e 100644
+--- a/scripts/biomes/snowcastle.lua
++++ b/scripts/biomes/snowcastle.lua
+@@ -307,6 +307,20 @@ g_big_enemies =
+ 		entity 	= "data/entities/buildings/hpcrystal.xml",
+ 		ngpluslevel = 1,
+ 	},
++	{
++		prob   		= 0.075,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot.xml",
++		ngpluslevel = 2,
++	},
++	{
++		prob   		= 0.04,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot_super.xml",
++		ngpluslevel = 3,
++	},
+ }
+ 
+ ---------- UNIQUE ENCOUNTERS ---------------
+diff --git a/scripts/biomes/the_end.lua b/scripts/biomes/the_end.lua
+index 59e8f18..ab7ecbd 100644
+--- a/scripts/biomes/the_end.lua
++++ b/scripts/biomes/the_end.lua
+@@ -379,7 +379,11 @@ function spawn_potions( x, y ) end
+ function spawn_heart( x, y ) end
+ 
+ function spawn_moon( x, y )
+-	EntityLoad( "data/entities/buildings/moon_altar.xml", x, y )
++	if ( y <= 0 ) then
++		EntityLoad( "data/entities/buildings/moon_altar.xml", x, y )
++	else
++		EntityLoad( "data/entities/buildings/dark_moon_altar.xml", x, y )
++	end
+ end
+ 
+ function spawn_wands()
+diff --git a/scripts/biomes/tower.lua b/scripts/biomes/tower.lua
+index 32ef99b..131ebff 100644
+--- a/scripts/biomes/tower.lua
++++ b/scripts/biomes/tower.lua
+@@ -704,7 +704,7 @@ end
+ 
+ -- actual functions that get called from the wang generator
+ 
+-local enemy_list = { "acidshooter", "alchemist", "ant", "assassin", "barfer", "bat", "bigbat", "bigfirebug", "bigzombie", "blob", "bloodcrystal_physics", "bloom", "chest_mimic", "coward", "crystal_physics", "drone_physics",  "drone_shield", "enlightened_alchemist", "failed_alchemist", "failed_alchemist_b", "firebug", "firemage", "fireskull", "flamer", "fly", "frog", "frog_big", "fungus", "fungus_big", "gazer", "ghoul", "giant", "giantshooter", "healerdrone_physics", "icer", "iceskull", "lasershooter", "longleg", "maggot", "miner", "miner_fire", "missilecrab", "monk", "necromancer", "necromancer_shop", "necromancer_super", "phantom_a", "phantom_b", "rat", "roboguard", "scavenger_clusterbomb", "scavenger_heal", "scavenger_grenade", "scavenger_leader", "scavenger_mine", "scavenger_poison", "scavenger_smg", "shooterflower", "shotgunner", "skullfly", "skullrat", "slimeshooter", "sniper", "spitmonster", "statue_physics", "tank", "tank_rocket", "tank_super", "tentacler", "tentacler_small", "thundermage", "thundermage_big", "thunderskull", "turret_left", "turret_right", "wizard_dark", "wizard_hearty", "wizard_neutral", "wizard_poly", "wizard_returner", "wizard_swapper", "wizard_tele", "wizard_twitchy", "wizard_weaken", "wizard_wither", "wolf", "wraith", "wraith_glowing", "wraith_storm", "zombie", "skycrystal_physics", "scavenger_shield", "spearbot", "statue", "goblin_bomb", "buildings/snowcrystal", "buildings/hpcrystal" }
++local enemy_list = { "acidshooter", "alchemist", "ant", "assassin", "barfer", "bat", "bigbat", "bigfirebug", "bigzombie", "blob", "bloodcrystal_physics", "bloom", "chest_mimic", "coward", "crystal_physics", "drone_physics",  "drone_shield", "enlightened_alchemist", "failed_alchemist", "failed_alchemist_b", "firebug", "firemage", "fireskull", "flamer", "fly", "frog", "frog_big", "fungus", "fungus_big", "gazer", "ghoul", "giant", "giantshooter", "healerdrone_physics", "icer", "iceskull", "lasershooter", "longleg", "maggot", "miner", "miner_fire", "missilecrab", "monk", "necrobot", "necrobot_super", "necromancer", "necromancer_shop", "necromancer_super", "phantom_a", "phantom_b", "rat", "roboguard", "scavenger_clusterbomb", "scavenger_heal", "scavenger_grenade", "scavenger_leader", "scavenger_mine", "scavenger_poison", "scavenger_smg", "shooterflower", "shotgunner", "skullfly", "skullrat", "slimeshooter", "sniper", "spitmonster", "statue_physics", "tank", "tank_rocket", "tank_super", "tentacler", "tentacler_small", "thundermage", "thundermage_big", "thunderskull", "turret_left", "turret_right", "wizard_dark", "wizard_hearty", "wizard_neutral", "wizard_poly", "wizard_returner", "wizard_swapper", "wizard_tele", "wizard_twitchy", "wizard_weaken", "wizard_wither", "wolf", "wraith", "wraith_glowing", "wraith_storm", "zombie", "skycrystal_physics", "scavenger_shield", "spearbot", "statue", "goblin_bomb", "buildings/snowcrystal", "buildings/hpcrystal" }
+ 
+ function spawn_any_enemy( x, y )
+ 	SetRandomSeed( x, y )
+diff --git a/scripts/biomes/vault.lua b/scripts/biomes/vault.lua
+index 98049fd..0c5c623 100644
+--- a/scripts/biomes/vault.lua
++++ b/scripts/biomes/vault.lua
+@@ -311,6 +311,20 @@ g_big_enemies =
+ 			"data/entities/animals/vault/coward.xml",
+ 		},
+ 	},
++	{
++		prob   		= 0.075,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot.xml",
++		ngpluslevel = 1,
++	},
++	{
++		prob   		= 0.05,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot_super.xml",
++		ngpluslevel = 2,
++	},
+ }
+ 
+ g_lamp =
+diff --git a/scripts/biomes/vault_frozen.lua b/scripts/biomes/vault_frozen.lua
+index 5b6c4c1..141d996 100644
+--- a/scripts/biomes/vault_frozen.lua
++++ b/scripts/biomes/vault_frozen.lua
+@@ -233,6 +233,18 @@ g_big_enemies =
+ 		max_count	= 1,    
+ 		entity 	= "data/entities/animals/spearbot.xml"
+ 	},
++	{
++		prob   		= 0.07,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot.xml"
++	},
++	{
++		prob   		= 0.01,
++		min_count	= 1,
++		max_count	= 1,    
++		entity 	= "data/entities/animals/necrobot_super.xml"
++	},
+ 	{
+ 		prob   		= 0.03,
+ 		min_count	= 1,
+diff --git a/scripts/director_helpers.lua b/scripts/director_helpers.lua
+index b7d9155..75b7013 100644
+--- a/scripts/director_helpers.lua
++++ b/scripts/director_helpers.lua
+@@ -8,13 +8,7 @@ end
+ 
+ function check_parallel( status, x )
+ 	if status then
+-		local pw = 0
+-		
+-		if ( x >= 0 ) then
+-			pw = math.floor( ( x + 17920 ) / 35840 )
+-		else
+-			pw = math.floor( ( x - 17920 ) / 35840 )
+-		end
++		local pw = GetParallelWorldPosition( x, 0 )
+ 		
+ 		return ( pw ~= 0 )
+ 	end
+diff --git a/scripts/gun/gun_actions.lua b/scripts/gun/gun_actions.lua
+index d8f00d1..d7fcd74 100644
+--- a/scripts/gun/gun_actions.lua
++++ b/scripts/gun/gun_actions.lua
+@@ -3878,8 +3878,8 @@ actions =
+ 		sprite 		= "data/ui_gfx/gun_actions/lifetime.png",
+ 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+ 		type 		= ACTION_TYPE_MODIFIER,
+-		spawn_level                       = "3,4,5,6", -- LIFETIME
+-		spawn_probability                 = "0.5,0.5,0.5,0.5", -- LIFETIME
++		spawn_level                       = "3,4,5,6,10", -- LIFETIME
++		spawn_probability                 = "0.5,0.5,0.5,0.5,0.1", -- LIFETIME
+ 		price = 250,
+ 		mana = 40,
+ 		--max_uses = 150,
+@@ -3897,8 +3897,8 @@ actions =
+ 		sprite 		= "data/ui_gfx/gun_actions/lifetime_down.png",
+ 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+ 		type 		= ACTION_TYPE_MODIFIER,
+-		spawn_level                       = "3,4,5,6", -- LIFETIME_DOWN
+-		spawn_probability                 = "0.5,0.5,0.5,0.5", -- LIFETIME_DOWN
++		spawn_level                       = "3,4,5,6,10", -- LIFETIME_DOWN
++		spawn_probability                 = "0.5,0.5,0.5,0.5,0.1", -- LIFETIME_DOWN
+ 		price = 90,
+ 		mana = 10,
+ 		--max_uses = 150,
+diff --git a/scripts/init.lua b/scripts/init.lua
+index d682feb..aebadc6 100644
+--- a/scripts/init.lua
++++ b/scripts/init.lua
+@@ -16,7 +16,7 @@ local init_biome_modifiers = dofile_once( "data/scripts/biome_modifiers.lua")
+ 
+ -- weather config
+ 
+-local snowfall_chance = 1 / 2.5
++local snowfall_chance = 1 / 12
+ local rainfall_chance = 1 / 15
+ local rain_duration_on_run_start = 4 * 60 * 60
+ 
+@@ -123,7 +123,7 @@ function weather_init( year, month, day, hour, minute )
+ 	local rnd_time = random_create( hour+day, hour+day+1 )
+ 
+ 	-- pick weather type
+-	local snows1 = ( month == 11 ) and ( day >= 10 )
++	local snows1 = ( month >= 12 )
+ 	local snows2 = ( month <= 2 )
+ 	local snows = (snows1 or snows2) and (random_next( rnd_time, 0.0, 1.0 ) <= snowfall_chance) -- snow is based on real world time
+ 	local rains = (not snows) and (random_next( rnd, 0.0, 1.0 ) <= rainfall_chance) 			-- rain is based on world seed
+diff --git a/scripts/item_spawnlists.lua b/scripts/item_spawnlists.lua
+index a2baf29..b17ad02 100644
+--- a/scripts/item_spawnlists.lua
++++ b/scripts/item_spawnlists.lua
+@@ -3,18 +3,18 @@ spawnlists =
+ 	potion_spawnlist =
+ 	{
+ 		rnd_min = 1,
+-		rnd_max = 95,
++		rnd_max = 92,
+ 		spawns = 
+ 		{
+ 			{
+-				value_min = 94,
+-				value_max = 95,
++				value_min = 92,
++				value_max = 92,
+ 				load_entity = "data/entities/items/pickup/stonestone.xml",
+ 				offset_y = -2,
+ 			},
+ 			{
+ 				value_min = 90,
+-				value_max = 93,
++				value_max = 91,
+ 				load_entity = "data/entities/items/pickup/physics_gold_orb.xml",
+ 				offset_y = -2,
+ 			},
+diff --git a/scripts/items/potion.lua b/scripts/items/potion.lua
+index 7f847e2..713bbc3 100644
+--- a/scripts/items/potion.lua
++++ b/scripts/items/potion.lua
+@@ -141,6 +141,10 @@ function init( entity_id )
+ 		potion_material = "sima"
+ 	end
+ 
++	if ( month == 2 and day == 14 and Random( 0, 100 ) <= 8) then
++		potion_material = "magic_liquid_charm"
++	end
++
+ 	local total_capacity = tonumber( GlobalsGetValue( "EXTRA_POTION_CAPACITY_LEVEL", "1000" ) ) or 1000
+ 	if ( total_capacity > 1000 ) then
+ 		local comp = EntityGetFirstComponentIncludingDisabled( entity_id, "MaterialSuckerComponent" )
+diff --git a/scripts/lib/utilities.lua b/scripts/lib/utilities.lua
+index ca583f2..2962481 100644
+--- a/scripts/lib/utilities.lua
++++ b/scripts/lib/utilities.lua
+@@ -821,14 +821,12 @@ end
+ --
+ 
+ function check_parallel_pos( x )
+-	local mx = ( ( x + 17920 ) % 35840 ) - 17920
+-	local pw = 0
++	local pw = GetParallelWorldPosition( x, 0 )
+ 	
+-	if ( x >= 0 ) then
+-		pw = math.floor( ( x + 17920 ) / 35840 )
+-	else
+-		pw = math.floor( ( x - 17920 ) / 35840 )
+-	end
++	local mapwidth = BiomeMapGetSize() * 512
++	local half = mapwidth * 0.5
++	
++	local mx = ( x + half ) % mapwidth
+ 	
+ 	return pw,mx
+ end
+diff --git a/scripts/perks/perk_list.lua b/scripts/perks/perk_list.lua
+index 8c1e3b2..088fbe3 100644
+--- a/scripts/perks/perk_list.lua
++++ b/scripts/perks/perk_list.lua
+@@ -321,6 +321,7 @@ perk_list =
+ 		game_effect = "STAINS_DROP_FASTER",
+ 		stackable = STACKABLE_YES,
+ 		stackable_is_rare = true,
++		stackable_maximum = 8,
+ 		usable_by_enemies = true,
+ 	},
+ 	{
+@@ -601,18 +602,6 @@ perk_list =
+ 		stackable_is_rare = true,
+ 		usable_by_enemies = true,
+ 	},
+-
+-	{
+-		id = "WORM_DETRACTOR",
+-		ui_name = "$perk_worm_detractor",
+-		ui_description = "$perkdesc_worm_detractor",
+-		ui_icon = "data/ui_gfx/perk_icons/worm_detractor.png",
+-		perk_icon = "data/items_gfx/perks/worm_detractor.png",
+-		game_effect = "WORM_DETRACTOR",
+-		stackable = STACKABLE_YES,
+-		stackable_is_rare = true,
+-		usable_by_enemies = true,
+-	},
+ 	{
+ 		id = "RADAR_ENEMY",
+ 		ui_name = "$perk_radar_enemy",
+@@ -1471,6 +1460,7 @@ perk_list =
+ 		ui_icon = "data/ui_gfx/perk_icons/worm_smaller_holes.png",
+ 		perk_icon = "data/items_gfx/perks/worm_smaller_holes.png",
+ 		stackable = STACKABLE_NO,
++		game_effect = "WORM_DETRACTOR",
+ 		func = function( entity_perk_item, entity_who_picked, item_name )
+ 		
+ 			EntityAddComponent( entity_who_picked, "LuaComponent", 
+diff --git a/scripts/perks/projectile_repulsion.lua b/scripts/perks/projectile_repulsion.lua
+index 904b37c..93f74b6 100644
+--- a/scripts/perks/projectile_repulsion.lua
++++ b/scripts/perks/projectile_repulsion.lua
+@@ -20,6 +20,7 @@ if ( #projectiles > 0 ) then
+ 			
+ 			local gravity_percent = math.max(( distance_full - distance ) / distance_full, 0.01)
+ 			local gravity_coeff = 96
++			if EntityHasTag(projectile_id, "resist_repulsion") then gravity_coeff = gravity_coeff * 0.25 end
+ 			
+ 			if ( velocitycomponents ~= nil ) then
+ 				edit_component( projectile_id, "VelocityComponent", function(comp,vars)
+diff --git a/scripts/perks/projectile_repulsion_sector.lua b/scripts/perks/projectile_repulsion_sector.lua
+index 31efba1..9cc6843 100644
+--- a/scripts/perks/projectile_repulsion_sector.lua
++++ b/scripts/perks/projectile_repulsion_sector.lua
+@@ -31,6 +31,7 @@ if ( #projectiles > 0 ) then
+ 			
+ 			local gravity_percent = math.max(( distance_full - distance ) / distance_full, 0.01)
+ 			local gravity_coeff = 240
++			if EntityHasTag(projectile_id, "resist_repulsion") then gravity_coeff = gravity_coeff * 0.25 end
+ 			
+ 			if ( velocitycomponents ~= nil ) then
+ 				edit_component( projectile_id, "VelocityComponent", function(comp,vars)
+diff --git a/scripts/projectiles/homing_area.lua b/scripts/projectiles/homing_area.lua
+index 636e53f..86cde04 100644
+--- a/scripts/projectiles/homing_area.lua
++++ b/scripts/projectiles/homing_area.lua
+@@ -12,7 +12,8 @@ if ( comp ~= nil ) then
+ 	
+ 	for i,v in ipairs( targets ) do
+ 		if ( v ~= target ) then
+-			local tx, ty = EntityGetTransform( v )
++			local tx, ty = EntityGetFirstHitboxCenter( v )
++			
+ 			EntitySetTransform( root_id, tx, ty )
+ 			EntityApplyTransform( root_id, tx, ty )
+ 			break
+diff --git a/scripts/projectiles/teleport_cast.lua b/scripts/projectiles/teleport_cast.lua
+index 9053d41..2a0fe70 100644
+--- a/scripts/projectiles/teleport_cast.lua
++++ b/scripts/projectiles/teleport_cast.lua
+@@ -11,7 +11,7 @@ if ( #targets > 0 ) then
+ 	local rnd = Random(1, #targets)
+ 	local target_id = targets[rnd]
+ 	
+-	local tx, ty = EntityGetTransform( target_id )
++	local tx, ty = EntityGetFirstHitboxCenter( target_id )
+ 	
+ 	EntitySetTransform( entity_id, tx, ty )
+ end
+\ No newline at end of file
+diff --git a/scripts/projectiles/worm_shot_slowdown.lua b/scripts/projectiles/worm_shot_slowdown.lua
+index 3abc66e..0356b1b 100644
+--- a/scripts/projectiles/worm_shot_slowdown.lua
++++ b/scripts/projectiles/worm_shot_slowdown.lua
+@@ -2,6 +2,10 @@ dofile_once("data/scripts/lib/utilities.lua")
+ 
+ local entity_id = GetUpdatedEntityID()
+ local x, y = EntityGetTransform( entity_id )
++local radius = 240
++
++local c_id,c_x,c_y = EntityGetClosestWormAttractor( x, y )
++local f_id,f_x,f_y = EntityGetClosestWormDetractor( x, y )
+ 
+ edit_component( entity_id, "VelocityComponent", function(vcomp,vars)
+ 	local vel_x,vel_y = ComponentGetValueVector2( vcomp, "mVelocity")
+@@ -11,7 +15,47 @@ edit_component( entity_id, "VelocityComponent", function(vcomp,vars)
+ 	if ( dist > 450 ) then
+ 		vel_x = vel_x * 0.86
+ 		vel_y = vel_y * 0.86
++	end
++	
++	if ( f_id ~= nil ) and ( f_x ~= nil ) and ( f_y ~= nil ) then
++		local dist = get_distance2( x, y, f_x, f_y )
+ 		
+-		ComponentSetValueVector2( vcomp, "mVelocity", vel_x, vel_y )
++		if ( dist < radius ) then
++			local tx,ty = f_x,f_y
++			
++			if ( tx >= x ) then
++				vel_x = vel_x - ( 200 - math.abs( tx - x ) ) * 0.05
++			else
++				vel_x = vel_x + ( 200 - math.abs( tx - x ) ) * 0.05
++			end
++			
++			if ( ty >= y ) then
++				vel_y = vel_y - ( 200 - math.abs( ty - y ) ) * 0.05
++			else
++				vel_y = vel_y + ( 200 - math.abs( ty - y ) ) * 0.05
++			end
++		end
+ 	end
++	
++	if ( c_id ~= nil ) and ( c_x ~= nil ) and ( c_y ~= nil ) then
++		local dist = get_distance2( x, y, c_x, c_y )
++		
++		if ( dist < radius ) then
++			local tx,ty = c_x,c_y
++			
++			if ( tx >= x ) then
++				vel_x = vel_x + ( math.abs( tx - x ) ) * 0.05
++			else
++				vel_x = vel_x - ( math.abs( tx - x ) ) * 0.05
++			end
++			
++			if ( ty >= y ) then
++				vel_y = vel_y + ( math.abs( ty - y ) ) * 0.05
++			else
++				vel_y = vel_y - ( math.abs( ty - y ) ) * 0.05
++			end
++		end
++	end
++	
++	ComponentSetValueVector2( vcomp, "mVelocity", vel_x, vel_y )
+ end)
+\ No newline at end of file
+diff --git a/scripts/streaming_integration/event_list.lua b/scripts/streaming_integration/event_list.lua
+index 0ab92ca..01c6a3b 100644
+--- a/scripts/streaming_integration/event_list.lua
++++ b/scripts/streaming_integration/event_list.lua
+@@ -1949,32 +1949,40 @@ streaming_events =
+ 			end
+ 		end,
+ 	},
+-	--[[
+ 	{
+ 		id = "AREADAMAGE_PLAYER",
+ 		ui_name = "$streamingevent_areadamage_player",
+ 		ui_description = "$streamingeventdesc_areadamage_player",
+-		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
++		ui_icon = "data/ui_gfx/streaming_event_icons/tiny_ghost_enemy.png",
+ 		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
+-		weight = 0.01,
++		weight = 0.8,
+ 		kind = STREAMING_EVENT_GOOD,
+ 		action = function(event)
+-			GamePrint( "$streamingeventdesc_nothing" )
++			for _,enemy in pairs( get_players() ) do
++				local entity_id = EntityLoad( "data/scripts/streaming_integration/entities/contact_damage.xml" )
++				set_lifetime( entity_id, 1.25 )
++				EntityAddChild( enemy, entity_id )
++				
++				add_icon_in_hud( entity_id, "data/ui_gfx/status_indicators/contact_damage.png", event )
++			end
+ 		end,
+ 	},
+ 	{
+ 		id = "AREADAMAGE_ENEMY",
+ 		ui_name = "$streamingevent_areadamage_enemy",
+ 		ui_description = "$streamingeventdesc_areadamage_enemy",
+-		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
++		ui_icon = "data/ui_gfx/streaming_event_icons/tiny_ghost_enemy.png",
+ 		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
+-		weight = 0.01,
++		weight = 0.6,
+ 		kind = STREAMING_EVENT_BAD,
+ 		action = function(event)
+-			GamePrint( "$streamingeventdesc_nothing" )
++			for _,enemy in pairs(get_enemies_in_radius(400)) do
++				local entity_id = EntityLoad( "data/scripts/streaming_integration/entities/contact_damage_enemy.xml" )
++				set_lifetime( entity_id, 0.8 )
++				EntityAddChild( enemy, entity_id )
++			end
+ 		end,
+ 	},
+-	]]--
+ 	{
+ 		id = "TWITCHY",
+ 		ui_name = "$streamingevent_twitchy",
+diff --git a/wang_tiles/vault.png b/wang_tiles/vault.png
+index cdce1ff..6687d14 100644
+Binary files a/wang_tiles/vault.png and b/wang_tiles/vault.png differ

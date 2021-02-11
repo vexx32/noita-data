@@ -18,6 +18,8 @@
 
     <File>data/biome_impl/spliced/moon.xml</File>
 	
+    <File>data/biome_impl/spliced/moon_dark.xml</File>
+	
 	<File>data/biome_impl/spliced/lavalake_pit_bottom.xml</File>
 	
 	<File>data/biome_impl/spliced/gourd_room.xml</File>

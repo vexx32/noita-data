@@ -12,7 +12,8 @@ if ( comp ~= nil ) then
 	
 	for i,v in ipairs( targets ) do
 		if ( v ~= target ) then
-			local tx, ty = EntityGetTransform( v )
+			local tx, ty = EntityGetFirstHitboxCenter( v )
+			
 			EntitySetTransform( root_id, tx, ty )
 			EntityApplyTransform( root_id, tx, ty )
 			break

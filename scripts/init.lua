@@ -16,7 +16,7 @@ local init_biome_modifiers = dofile_once( "data/scripts/biome_modifiers.lua")
 
 -- weather config
 
-local snowfall_chance = 1 / 2.5
+local snowfall_chance = 1 / 12
 local rainfall_chance = 1 / 15
 local rain_duration_on_run_start = 4 * 60 * 60
 
@@ -123,7 +123,7 @@ function weather_init( year, month, day, hour, minute )
 	local rnd_time = random_create( hour+day, hour+day+1 )
 
 	-- pick weather type
-	local snows1 = ( month == 11 ) and ( day >= 10 )
+	local snows1 = ( month >= 12 )
 	local snows2 = ( month <= 2 )
 	local snows = (snows1 or snows2) and (random_next( rnd_time, 0.0, 1.0 ) <= snowfall_chance) -- snow is based on real world time
 	local rains = (not snows) and (random_next( rnd, 0.0, 1.0 ) <= rainfall_chance) 			-- rain is based on world seed

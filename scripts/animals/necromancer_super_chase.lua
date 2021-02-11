@@ -1,6 +1,6 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
-local range_near = 70 -- if below, stop chase
+local range_near = 40 -- if below, stop chase
 local range_far = 250
 local range_max = 600 -- if above, stop chase
 

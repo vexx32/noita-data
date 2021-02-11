@@ -93,12 +93,7 @@ end
 
 function parallel_check( x, y )
 	if ( y < 0 ) then
-		local pw = 0
-		if ( x >= 0 ) then
-			pw = math.floor( ( x + 17920 ) / 35840 )
-		else
-			pw = math.floor( ( math.abs( x ) + 17920 ) / 35840 )
-		end
+		local pw = GetParallelWorldPosition( x, y )
 		
 		if ( pw ~= 0 ) then
 			local r = ProceduralRandom( x + 35, y - 253 )
@@ -120,15 +115,35 @@ function parallel_check( x, y )
 	end
 end
 
+function spawn_mimic_sign( x, y )
+	impl_raytrace_x = function( x0, y0, x_direction, max_length )
+		local hit_something,hit_x,hit_y = Raytrace( x0, y0, x0 + (x_direction * max_length), y0 )
+		return hit_x
+	end
+
+	local min_x = impl_raytrace_x( x, y, -1, 32 )
+	local max_x = impl_raytrace_x( x, y, 1, 32 )
+
+	if( ( x - min_x ) >= 24 and Raytrace( x - 16, y, x - 16, y - 26 ) == false ) then
+		local hit_something, temp_x, max_y = Raytrace( x - 16, y - 25, x - 16, y + 32 )
+		LoadPixelScene( "data/biome_impl/mimic_sign.png", "data/biome_impl/mimic_sign_visual.png", min_x, max_y - 23, "", true, true )
+	elseif( ( max_x - x ) >= 24 and Raytrace( x + 16, y, x + 16, y - 26 ) == false ) then
+		local hit_something, temp_x, max_y = Raytrace( x + 16, y - 25, x + 16, y + 32 )
+		LoadPixelScene( "data/biome_impl/mimic_sign.png", "data/biome_impl/mimic_sign_visual.png", max_x - 22, max_y - 23, "", true, true )
+	end
+end
+
+
 function spawn_heart( x, y )
 	local r = ProceduralRandom( x, y )
 	SetRandomSeed( x, y )
-	-- local r=1
-	-- 2018.11.15 - Petri 
-	-- changed this from 0.4 -> 0.7 quite a big upping of heart spawns
-	-- done for testing 
+	local heart_spawn_percent = 0.7
+	
+	local year, month, day = GameGetDateAndTimeLocal()
+	if ( month == 2 ) and ( day == 14 ) then heart_spawn_percent = 0.35 end
 
-	if (r > 0.7) then
+
+	if (r > heart_spawn_percent) then
 		local entity = EntityLoad( "data/entities/items/pickup/heart.xml", x, y)
 	elseif (r > 0.3) then
 		SetRandomSeed( x+45, y-2123 )
@@ -137,6 +152,8 @@ function spawn_heart( x, y )
 		if (rnd <= 90) or (y < 512 * 3) then
 			rnd = Random( 1, 1000 )
 			
+			if( Random( 1, 300 ) == 1 ) then spawn_mimic_sign( x, y ) end
+
 			if ( rnd < 1000 ) then
 				local entity = EntityLoad( "data/entities/items/pickup/chest_random.xml", x, y)
 			else
@@ -144,6 +161,8 @@ function spawn_heart( x, y )
 			end
 		else
 			rnd = Random( 1, 100 )
+			if( Random( 1, 30 ) == 1 ) then spawn_mimic_sign( x, y ) end
+
 			if( rnd <= 95 ) then
 				local entity = EntityLoad( "data/entities/animals/chest_mimic.xml", x, y)
 			else

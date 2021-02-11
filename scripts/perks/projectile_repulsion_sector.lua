@@ -31,6 +31,7 @@ if ( #projectiles > 0 ) then
 			
 			local gravity_percent = math.max(( distance_full - distance ) / distance_full, 0.01)
 			local gravity_coeff = 240
+			if EntityHasTag(projectile_id, "resist_repulsion") then gravity_coeff = gravity_coeff * 0.25 end
 			
 			if ( velocitycomponents ~= nil ) then
 				edit_component( projectile_id, "VelocityComponent", function(comp,vars)

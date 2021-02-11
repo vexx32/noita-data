@@ -11,7 +11,7 @@ if ( #targets > 0 ) then
 	local rnd = Random(1, #targets)
 	local target_id = targets[rnd]
 	
-	local tx, ty = EntityGetTransform( target_id )
+	local tx, ty = EntityGetFirstHitboxCenter( target_id )
 	
 	EntitySetTransform( entity_id, tx, ty )
 end

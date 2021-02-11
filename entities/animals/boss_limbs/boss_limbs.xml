@@ -1,4 +1,4 @@
-<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100" name="$animal_boss_limbs">
+<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100,necrobot_NOT" name="$animal_boss_limbs">
 	
 	<!-- art - main body ---------------------- -->
 

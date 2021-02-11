@@ -110,7 +110,7 @@
 	</SpriteComponent>
 	
 	<AIAttackComponent
-		min_distance="101"
+		min_distance="11"
 		max_distance="200"
 		frames_between="50"
 		frames_between_global="7"
@@ -125,8 +125,9 @@
 	</AIAttackComponent>
 	
 	<AIAttackComponent
+		use_probability="70"
 		min_distance="0"
-		max_distance="100"
+		max_distance="70"
 		frames_between="7"
 		frames_between_global="7"
 		attack_ranged_offset_x="21"

@@ -365,6 +365,17 @@ for i,v in pairs(orb_list) do
 	v[2] = y2
 end
 
+-- boss arena
+-- end room 
+local color_end_room = 0xFF50EED7
+local color_boss_arena = 0xFF14EED7
+
+BiomeMapSetPixel( 44, 43, color_end_room )
+
+paint_biome_area( 35, 38, 5, 2, color_boss_arena )
+BiomeMapSetPixel( 37, 40, color_boss_arena )
+BiomeMapSetPixel( 38, 40, color_boss_arena )
+
 local world_state_entity = GameGetWorldStateEntity()
 local comp = EntityGetComponent( world_state_entity, "WorldStateComponent" )
 

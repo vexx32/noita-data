@@ -1,5 +1,6 @@
 <Entity 
-	name="$projectile_default" 
+	name="$projectile_default"
+	tags="resist_repulsion"
 	>
 
 	<Base file="data/entities/base_projectile.xml" >
@@ -15,14 +16,14 @@
 		_enabled="1" 
 		lob_min="0.8"
 		lob_max="1.0"
-		speed_min="100"
-		speed_max="120"
+		speed_min="160"
+		speed_max="200"
 		die_on_low_velocity="0"
 		on_death_explode="1"
 		on_death_gfx_leave_sprite="0" 
 		on_lifetime_out_explode="1"
 		explosion_dont_damage_shooter="1"
-		damage="0.8"
+		damage="0.9"
 		go_through_this_material="crystal_purple"
 		on_collision_die="1"
 		lifetime="50"

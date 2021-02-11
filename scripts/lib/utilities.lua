@@ -821,14 +821,12 @@ end
 --
 
 function check_parallel_pos( x )
-	local mx = ( ( x + 17920 ) % 35840 ) - 17920
-	local pw = 0
+	local pw = GetParallelWorldPosition( x, 0 )
 	
-	if ( x >= 0 ) then
-		pw = math.floor( ( x + 17920 ) / 35840 )
-	else
-		pw = math.floor( ( x - 17920 ) / 35840 )
-	end
+	local mapwidth = BiomeMapGetSize() * 512
+	local half = mapwidth * 0.5
+	
+	local mx = ( x + half ) % mapwidth
 	
 	return pw,mx
 end

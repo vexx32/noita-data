@@ -12,7 +12,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	AddFlagPersistent( "miniboss_dragon" )
 	AddFlagPersistent( "card_unlocked_dragon" )
 	
-	SetRandomSeed( 0, 540 )
+	local pw = check_parallel_pos( pos_x )
+	SetRandomSeed( pw, 540 )
 	
 	local flag_status = HasFlagPersistent( "card_unlocked_dragon" )
 	local opts = { "ORBIT_DISCS", "ORBIT_FIREBALLS", "ORBIT_NUKES", "ORBIT_LASERS", "ORBIT_LARPA" }

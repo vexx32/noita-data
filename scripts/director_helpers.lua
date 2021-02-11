@@ -8,13 +8,7 @@ end
 
 function check_parallel( status, x )
 	if status then
-		local pw = 0
-		
-		if ( x >= 0 ) then
-			pw = math.floor( ( x + 17920 ) / 35840 )
-		else
-			pw = math.floor( ( x - 17920 ) / 35840 )
-		end
+		local pw = GetParallelWorldPosition( x, 0 )
 		
 		return ( pw ~= 0 )
 	end

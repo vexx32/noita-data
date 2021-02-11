@@ -60,6 +60,7 @@
 			</laser>
 		</LaserEmitterComponent>
 		<SpriteComponent
+			_enabled="0"
 			_tags="enabled_in_world,enabled_in_hand"
 			image_file="data/projectiles_gfx/orb_red.xml"
 			alpha="0.7"

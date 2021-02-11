@@ -1949,32 +1949,40 @@ streaming_events =
 			end
 		end,
 	},
-	--[[
 	{
 		id = "AREADAMAGE_PLAYER",
 		ui_name = "$streamingevent_areadamage_player",
 		ui_description = "$streamingeventdesc_areadamage_player",
-		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
+		ui_icon = "data/ui_gfx/streaming_event_icons/tiny_ghost_enemy.png",
 		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
-		weight = 0.01,
+		weight = 0.8,
 		kind = STREAMING_EVENT_GOOD,
 		action = function(event)
-			GamePrint( "$streamingeventdesc_nothing" )
+			for _,enemy in pairs( get_players() ) do
+				local entity_id = EntityLoad( "data/scripts/streaming_integration/entities/contact_damage.xml" )
+				set_lifetime( entity_id, 1.25 )
+				EntityAddChild( enemy, entity_id )
+				
+				add_icon_in_hud( entity_id, "data/ui_gfx/status_indicators/contact_damage.png", event )
+			end
 		end,
 	},
 	{
 		id = "AREADAMAGE_ENEMY",
 		ui_name = "$streamingevent_areadamage_enemy",
 		ui_description = "$streamingeventdesc_areadamage_enemy",
-		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
+		ui_icon = "data/ui_gfx/streaming_event_icons/tiny_ghost_enemy.png",
 		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
-		weight = 0.01,
+		weight = 0.6,
 		kind = STREAMING_EVENT_BAD,
 		action = function(event)
-			GamePrint( "$streamingeventdesc_nothing" )
+			for _,enemy in pairs(get_enemies_in_radius(400)) do
+				local entity_id = EntityLoad( "data/scripts/streaming_integration/entities/contact_damage_enemy.xml" )
+				set_lifetime( entity_id, 0.8 )
+				EntityAddChild( enemy, entity_id )
+			end
 		end,
 	},
-	]]--
 	{
 		id = "TWITCHY",
 		ui_name = "$streamingevent_twitchy",

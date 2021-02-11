@@ -1,8 +1,9 @@
-<Entity>
+<Entity tags="effect_worm,effect_worm_detractor" >
 	<InheritTransformComponent>
     </InheritTransformComponent>	
     
-    <GameEffectComponent 
+    <GameEffectComponent
+		_tags="effect_worm,effect_worm_detractor"
     	effect="WORM_DETRACTOR"
     	frames="600"
     >

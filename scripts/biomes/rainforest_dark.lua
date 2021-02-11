@@ -130,6 +130,20 @@ g_big_enemies =
 		max_count	= 1,    
 		entity 	= "data/entities/animals/wizard_hearty.xml"
 	},
+	{
+		prob   		= 0.01,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/necrobot.xml",
+		ngpluslevel = 1,
+	},
+	{
+		prob   		= 0.01,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/necrobot_super.xml",
+		ngpluslevel = 2,
+	},
 }
 
 g_unique_enemy =

@@ -5,7 +5,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local x, y = EntityGetTransform( entity_id )
 	local flag_status = HasFlagPersistent( "card_unlocked_rain" )
 	
-	SetRandomSeed( 0, 120 )
+	local pw = check_parallel_pos( x )
+	SetRandomSeed( pw, 120 )
 	
 	local opts = { "WORM_RAIN", "METEOR_RAIN" }
 	local rnd = Random( 1, #opts )
