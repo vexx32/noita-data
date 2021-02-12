@@ -23,7 +23,7 @@ if ( #projectiles > 0 ) then
 		end
 	end
 	
-	print( tostring(entity_id) .. ", " .. tostring(enemy_id) )
+	-- print( tostring(entity_id) .. ", " .. tostring(enemy_id) )
 	
 	if ( ox ~= nil ) and ( oy ~= nil ) then
 		EntitySetTransform( enemy_id, ox, oy )

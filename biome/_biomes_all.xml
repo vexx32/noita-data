@@ -878,6 +878,12 @@
 	</Biome>
 	
 	<Biome 
+		biome_filename="data/biome/ghost_secret.xml" 
+		height_index="13"
+		color="ff1f3b64" >
+	</Biome>
+	
+	<Biome 
 		biome_filename="data/biome/clouds.xml" 
 		height_index="0"
 		color="ff36d5c9" >

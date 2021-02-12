@@ -8014,6 +8014,48 @@
 	color="ffE8BD5A" >
     </Graphics>
   </CellData>
+
+  <CellData 
+	name="glue"
+	ui_name="$mat_glue"
+  	tags="[liquid],[burnable],[alchemy],[impure]"
+	burnable="1"  
+	density="6"
+	durability="4"
+	hp="100"
+	cell_type="liquid" 
+	wang_color="fff6fce3"  
+	generates_smoke="0"
+	liquid_gravity="0.2"  
+	liquid_sand="1"  
+	liquid_viscosity="0"
+	liquid_damping="0.9"
+	liquid_sticks_to_ceiling="100"
+	liquid_flow_speed="0.1"
+	audio_physics_material_event="slime"
+	audio_physics_material_wall="slime"
+	audio_physics_material_solid="slime"
+	stickyness="1.0"
+	solid_friction="1.0"
+	fire_hp="50"
+	on_fire="0"
+	temperature_of_fire="95"
+	autoignition_temperature="10"
+	electrical_conductivity="0"
+	requires_oxygen="1"  
+	temperature_of_fire="10"
+	show_in_creative_mode="1"
+	>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="FOOD_POISONING" amount="0.2" />
+			<StatusEffect type="TRIP" amount="0.3" />
+		</Ingestion>
+	</StatusEffects>
+    <Graphics
+		color="fff6fce3" >
+    </Graphics>
+  </CellData>
   
   <CellData 
 	name="slime"
@@ -12360,6 +12402,20 @@
   <CellDataChild
   	_parent="gem_box2d"
   	_inherit_reactions="1"
+  	name="gem_box2d_white"
+	ui_name="$mat_gem_box2d_white"
+	gfx_glow_color="0xFFebeaef"
+	wang_color="ffebeaef"
+	show_in_creative_mode="1"
+	>
+  	<Graphics
+	color="ffebeaef" >
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="gem_box2d"
+  	_inherit_reactions="1"
   	name="gem_box2d_green"
 	ui_name="$mat_gem_box2d_green"
 	gfx_glow_color="0xFF00FF00"
@@ -14178,6 +14234,14 @@
 	input_cell1="[fire]" 		input_cell2="alcohol_gas"
 	output_cell1="alcohol_gas"	output_cell2="alcohol_gas">
   </Reaction>
+
+  <!-- glue. evaporates slowly and burns quick into poison gas -->
+  <Reaction probability="60"
+  	fast_reaction="1"
+	input_cell1="glue" 		input_cell2="[fire]"
+	output_cell1="[fire]"		output_cell2="poison_gas">
+  </Reaction>
+
 
 	<!-- =================================================================================================================  -->
 	<!-- [slime] reactions -->

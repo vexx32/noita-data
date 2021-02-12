@@ -172,6 +172,12 @@ g_small_enemies =
 			"data/entities/animals/vault/coward.xml",
 		}
 	},
+	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 3,    
+		entity 	= "data/entities/animals/scavenger_glue.xml",
+	},
 }
 
 g_big_enemies =
@@ -256,6 +262,11 @@ g_big_enemies =
 				min_count	= 1,
 				max_count	= 3,    
 				entity 	= "data/entities/animals/vault/scavenger_grenade.xml"
+			},
+			{
+				min_count	= 0,
+				max_count	= 3,    
+				entity 	= "data/entities/animals/vault/scavenger_glue.xml"
 			},
 			"data/entities/animals/vault/scavenger_leader.xml",
 			"data/entities/animals/vault/scavenger_heal.xml",

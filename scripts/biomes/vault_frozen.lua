@@ -134,6 +134,7 @@ g_small_enemies =
 			"data/entities/animals/vault/scavenger_leader.xml",
 			"data/entities/animals/vault/scavenger_smg.xml",
 			"data/entities/animals/vault/scavenger_grenade.xml",
+			"data/entities/animals/vault/scavenger_glue.xml",
 			"data/entities/animals/vault/coward.xml",
 		},
 	},

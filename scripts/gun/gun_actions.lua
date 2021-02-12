@@ -4488,12 +4488,30 @@ actions =
 		sprite_unidentified = "data/ui_gfx/gun_actions/bounce_unidentified.png",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- BOUNCE
-		spawn_probability                 = "1,1,1,1,1", -- BOUNCE
+		spawn_probability                 = "1,1,0.4,0.2,0.2", -- BOUNCE
 		price = 50,
 		mana = 0,
 		--max_uses = 150,
 		action 		= function()
 			c.bounces = c.bounces + 10
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "REMOVE_BOUNCE",
+		name 		= "$action_remove_bounce",
+		description = "$actiondesc_remove_bounce",
+		sprite 		= "data/ui_gfx/gun_actions/remove_bounce.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/bounce_unidentified.png",
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "2,3,4,5,6", -- BOUNCE
+		spawn_probability                 = "0.2,0.2,1,1,1", -- BOUNCE
+		price = 50,
+		mana = 0,
+		--max_uses = 150,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/remove_bounce.xml,"
+			c.bounces = 0
 			draw_actions( 1, true )
 		end,
 	},
