@@ -4,7 +4,7 @@ local kantele_songs = {
 	portal = { "a", "dis", "e", "g" },
 	bomb = { "g", "d", "e", "d" },
 	worm = { "d", "e", "a", "e", "dis" },
-	alchemy = { "f", "g", "f", "a2", "c", "g", "f", "gsharp" },
+	alchemy = { "f", "g", "f", "a2", "c" },
 }
 
 local entity_id = GetUpdatedEntityID()

@@ -267,12 +267,14 @@ perk_list =
 					local kick_damage = tonumber( ComponentGetMetaCustom( model, "kick_damage" ) ) + 2.4
 					local kick_knockback = tonumber( ComponentGetMetaCustom( model, "kick_knockback" ) ) + 250
 					local telekinesis_throw_speed = tonumber( ComponentGetValue2( model, "telekinesis_throw_speed") ) + 25
+					local kick_entities = tostring( ComponentGetValue2( model, "kick_entities" ) ) .. ",data/entities/misc/crack_ice.xml"
 
 					ComponentSetMetaCustom( model, "max_force", kick_force )
 					ComponentSetMetaCustom( model, "player_kickforce", player_kick_force )
 					ComponentSetMetaCustom( model, "kick_damage", kick_damage )
 					ComponentSetMetaCustom( model, "kick_knockback", kick_knockback )
 					ComponentSetValue2( model, "telekinesis_throw_speed", telekinesis_throw_speed )
+					ComponentSetValue2( model, "kick_entities", kick_entities )
 				end
 			end
 
@@ -1454,6 +1456,21 @@ perk_list =
 		end,
 	},
 	{
+		id = "MOLD",
+		ui_name = "$perk_mold",
+		ui_description = "$perkdesc_mold",
+		ui_icon = "data/ui_gfx/perk_icons/mold.png",
+		perk_icon = "data/items_gfx/perks/mold.png",
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local x,y = EntityGetTransform( entity_perk_item )
+			local child_id = EntityLoad( "data/entities/misc/perks/slime_fungus.xml", x, y )
+			EntityAddChild( entity_who_picked, child_id )
+			
+			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
+		end,
+	},
+	{
 		id = "WORM_SMALLER_HOLES",
 		ui_name = "$perk_worm_smaller_holes",
 		ui_description = "$perkdesc_worm_smaller_holes",
@@ -1763,12 +1780,28 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/attract_items.png",
 		usable_by_enemies = true,
 		stackable = STACKABLE_YES,
+		stackable_maximum = 6,
 		func = function( entity_perk_item, entity_who_picked, item_name )
+			local distance_full = tonumber( GlobalsGetValue( "PERK_ATTRACT_ITEMS_RANGE", "0" ) )
+			
+			if ( distance_full == 0 ) then
+				GlobalsSetValue( "PERK_ATTRACT_ITEMS_RANGE", "72" )
+				EntityAddComponent( entity_who_picked, "LuaComponent", 
+				{ 
+					script_source_file = "data/scripts/perks/attract_items.lua",
+					execute_every_n_frame = "2",
+				} )
+			else
+				distance_full = distance_full + 24
+				GlobalsSetValue( "PERK_ATTRACT_ITEMS_RANGE", tostring(distance_full) )
+			end
+		end,
+		func_enemy = function( entity_perk_item, entity_who_picked )
 			EntityAddComponent( entity_who_picked, "LuaComponent", 
 			{ 
-				script_source_file = "data/scripts/perks/attract_items.lua",
+				script_source_file = "data/scripts/perks/attract_items_enemy.lua",
 				execute_every_n_frame = "2",
-			} )	
+			} )
 		end,
 	},
 	{
@@ -2317,6 +2350,18 @@ perk_list =
 		end,
 	},
 	{
+		id = "GAMBLE",
+		ui_name = "$perk_gamble",
+		ui_description = "$perkdesc_gamble",
+		ui_icon = "data/ui_gfx/perk_icons/gamble.png", -- TODO
+		perk_icon = "data/items_gfx/perks/gamble.png", -- TODO
+		stackable = STACKABLE_YES,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local pos_x, pos_y = EntityGetTransform(entity_who_picked)
+			EntityLoad("data/entities/misc/perk_gamble_spawner.xml", pos_x, pos_y)
+		end,
+	},
+	{
 		id = "EXTRA_SHOP_ITEM",
 		ui_name = "$perk_extra_shop_item",
 		ui_description = "$perkdesc_extra_shop_item",
@@ -2408,6 +2453,22 @@ perk_list =
 			EntityAddComponent( entity_who_picked, "LuaComponent", 
 			{ 
 				script_source_file = "data/scripts/perks/mana_from_kills.lua",
+				execute_every_n_frame = "20",
+			} )
+		end,
+	},
+	{
+		id = "ANGRY_LEVITATION",
+		ui_name = "$perk_angry_levitation",
+		ui_description = "$perkdesc_angry_levitation",
+		ui_icon = "data/ui_gfx/perk_icons/angry_levitation.png",
+		perk_icon = "data/items_gfx/perks/angry_levitation.png",
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			
+			EntityAddComponent( entity_who_picked, "LuaComponent", 
+			{ 
+				script_source_file = "data/scripts/perks/angry_levitation.lua",
 				execute_every_n_frame = "20",
 			} )
 		end,

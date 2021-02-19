@@ -4,7 +4,7 @@ local ocarina_songs = {
 	portal = { "a", "f", "d", "e", "a2" },
 	bomb = { "f", "c", "d", "c" },
 	worm = { "gsharp", "f", "e", "b", "d" },
-	alchemy = { "a2", "d", "dis", "e", "a", "b", "c", "gsharp" },
+	alchemy = { "a2", "d", "dis", "e", "a" },
 }
 
 local entity_id = GetUpdatedEntityID()

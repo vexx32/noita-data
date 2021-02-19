@@ -1,6 +1,6 @@
 <Entity 
 	name="$animal_eel" 
-	tags="mortal,hittable,homing_target,destruction_target,enemy" >
+	tags="mortal,hittable,homing_target,destruction_target,enemy,glue_NOT" >
 	<_Transform 
 		position.x="0" 
 		position.y="0" 

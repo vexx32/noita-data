@@ -1,6 +1,6 @@
 <Entity 
   name="$animal_snowcrystal" 
-  tags="hittable,mortal" >
+  tags="hittable,mortal,glue_NOT" >
 
   <DamageModelComponent 
     _enabled="1" 

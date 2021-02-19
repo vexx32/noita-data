@@ -1192,9 +1192,14 @@ end
 
 function spawn_chest(x, y)
 	SetRandomSeed( x, y )
-	local rnd = Random(1,100)
+	local super_chest_spawn_rate = 2000
+	if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
+		super_chest_spawn_rate = 100
+	end
+
+	local rnd = Random(1,super_chest_spawn_rate)
 	
-	if (rnd >= 99) then
+	if (rnd >= super_chest_spawn_rate-1) then
 		EntityLoad( "data/entities/items/pickup/chest_random_super.xml", x, y)
 	else
 		EntityLoad( "data/entities/items/pickup/chest_random.xml", x, y)

@@ -1,4 +1,4 @@
-<Entity tags="prey">
+<Entity tags="prey,glue_NOT">
 	
 	<PhysicsAIComponent
 		target_vec_max_len="14.0"

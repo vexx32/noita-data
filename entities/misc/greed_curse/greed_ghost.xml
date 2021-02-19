@@ -1,4 +1,4 @@
-<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,greed_curse_ghost" name="$animal_greed_ghost">	
+<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,greed_curse_ghost,glue_NOT" name="$animal_greed_ghost">	
 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
 
 	<!-- keeps the streaming alive -->

@@ -1185,6 +1185,7 @@
 	ui_name="$mat_wood"
 	wang_color="ff005345"
 	hp="200000"
+	durability="12"
 	audio_physics_material_event="rock"
 	audio_physics_material_wall="woodwall"
 	audio_physics_material_solid="wood"
@@ -9668,6 +9669,66 @@
 		cell_explosion_radius_min="2"
 		explosion_sprite=""
 		load_this_entity="data/entities/misc/rat_powder.xml"
+		ray_energy="0"
+		audio_enabled="0"
+		create_cell_probability="0"
+		sparks_enabled="0"
+		light_enabled="0"
+		hole_enabled="1"
+		crack_count="0"
+		stains_enabled="0"
+		damage_mortals="0"
+		particle_effect="0"
+		>
+	</ExplosionConfig>
+    <Graphics
+	  texture_file="data/materials_gfx/meat_rotten.png"
+	  color="ffb89e57" >
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="POISONED" amount="0.15" />
+			<StatusEffect type="FOOD_POISONING" amount="0.05" />
+		</Ingestion>
+		<Stains>
+			<StatusEffect type="WET" />
+		</Stains>
+	</StatusEffects>
+  </CellData>
+  
+  <CellData
+	name="fungus_powder"
+	ui_name="$mat_fungisoil"
+  	tags="[sand_other]"
+	burnable="1"
+	density="7"
+	durability="3"
+	cell_type="liquid"
+	wang_color="ffbecafe"
+	generates_smoke="0"
+	liquid_gravity="2"
+	liquid_sand="1"
+	on_fire="1"
+	requires_oxygen="0"
+	temperature_of_fire="10"
+	autoignition_temperature="0"
+	generates_flames="0"
+	on_fire_flame_material="swamp"
+	hp="1000" 
+	fire_hp="20"
+	audio_physics_material_event="sand"
+	audio_physics_material_wall="sand"
+	audio_physics_material_solid="sand"
+	show_in_creative_mode="0"
+	lifetime="4.0"
+	>
+	<ExplosionConfig 
+		damage="0"
+		cell_explosion_power="2"
+		cell_explosion_damage_required="1"
+		cell_explosion_radius_min="2"
+		explosion_sprite=""
+		load_this_entity="data/entities/misc/fungus_powder.xml"
 		ray_energy="0"
 		audio_enabled="0"
 		create_cell_probability="0"

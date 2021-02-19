@@ -1,4 +1,4 @@
-<Entity tags="shaman" name="$animal_shaman">
+<Entity tags="shaman,glue_NOT" name="$animal_shaman">
 	<Base file="data/entities/base_enemy_basic.xml" >
 		<ItemChestComponent level="1" > </ItemChestComponent>
 

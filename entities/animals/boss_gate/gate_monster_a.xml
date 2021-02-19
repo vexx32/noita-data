@@ -1,4 +1,4 @@
-<Entity name="$animal_gate_monster_a" tags="gate_monster,necrobot_NOT" >
+<Entity name="$animal_gate_monster_a" tags="gate_monster,necrobot_NOT,glue_NOT" >
 
 	<PhysicsAIComponent
 		target_vec_max_len="15.0"

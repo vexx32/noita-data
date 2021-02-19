@@ -123,6 +123,12 @@
 		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png" material_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar.png" pos_x="-2446" pos_y="-223" skip_biome_checks="1" skip_edge_textures="1" >
 		</PixelScene>
 
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="data/biome_impl/rainbow_cloud.png" pos_x="-14059" pos_y="-2851" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+		
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/cliff_visual.png" material_filename="data/biome_impl/overworld/cliff.png" pos_x="-12400" pos_y="-400" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+
 		<!-- just load an entity -->
 		
 		<!-- music machines have copies on both directly adjacent parallel worlds -->
@@ -150,7 +156,6 @@
 		<PixelScene pos_x="-1695" pos_y="-1205" just_load_an_entity="data/entities/props/physics_fungus_small.xml" />
 		
 		<PixelScene pos_x="3608" pos_y="934" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
-		
 		<PixelScene pos_x="-9980" pos_y="-30" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
 		
 		<PixelScene pos_x="-6884" pos_y="-165" just_load_an_entity="data/entities/props/physics_protective_armour.xml" />
@@ -160,28 +165,33 @@
 		<PixelScene pos_x="-12441" pos_y="190" just_load_an_entity="data/entities/buildings/hut_check.xml" />
 		
 		<PixelScene pos_x="9990" pos_y="-1320" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-1576" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-1832" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-2088" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-2344" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-2600" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-2856" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-3112" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-3368" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-3624" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-3880" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-		
 		<PixelScene pos_x="9990" pos_y="-4136" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		
+		<PixelScene pos_x="-12180" pos_y="-540" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-796" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-1052" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-1308" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-1564" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-1820" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-2076" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-2332" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-2588" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-2844" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-3100" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-3356" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-3612" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-3868" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		<PixelScene pos_x="-12180" pos_y="-4124" just_load_an_entity="data/entities/misc/platform_wide.xml" />
 
 	</mBufferedPixelScenes>
 </PixelScenes>

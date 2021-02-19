@@ -1,4 +1,4 @@
-<Entity name="$animal_acidshooter">
+<Entity tags="glue_NOT" name="$animal_acidshooter">
   
 	<Base file="data/entities/base_enemy_flying.xml" >
 		<ItemChestComponent level="1" > </ItemChestComponent>

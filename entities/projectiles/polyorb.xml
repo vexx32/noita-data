@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,homing_target,polymorphable_NOT" name="$projectile_default">
+<Entity tags="mortal,hittable,homing_target,polymorphable_NOT,glue_NOT" name="$projectile_default">
 
 	<PhysicsAIComponent
 		target_vec_max_len="15.0"

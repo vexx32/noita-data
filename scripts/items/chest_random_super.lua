@@ -20,8 +20,9 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 	local count = 1
 
 	if( Random( 0, 100000) >= 100000 ) then
-		table.insert( entities, { "data/entities/animals/boss_centipede/sampo.xml" } )
+		EntityLoadEndGameItem( "data/entities/animals/boss_centipede/sampo.xml", x, y )
 		count = 0
+		return 
 	end
 
 

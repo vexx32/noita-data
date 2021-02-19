@@ -1,4 +1,4 @@
-<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT" name="$animal_boss_ghost">	
+<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT" name="$animal_boss_ghost">	
 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
 
 	<!-- art - main body ---------------------- -->
@@ -102,6 +102,8 @@
 		blood_spray_material="plasma_fading"
 		blood_sprite_directional=""
 		blood_sprite_large=""
+		air_needed="0"
+		falling_damages="0"
 		>
 		<damage_multipliers
 			projectile="0.0"
@@ -142,7 +144,7 @@
 	</PathFindingGridMarkerComponent>
 	
 	<GenomeDataComponent 
-		herd_id="ghost"
+		herd_id="ghost_boss"
 		food_chain_rank="10"
 		is_predator="1" >
 	</GenomeDataComponent>
@@ -162,7 +164,7 @@
 		target_vec_max_len="15.0"
 		force_coeff="14.0"
 		force_balancing_coeff="0.8"
-		force_max="160"
+		force_max="120"
 		torque_coeff="50"
 		torque_balancing_coeff="0.8"
 		torque_max="50.0"

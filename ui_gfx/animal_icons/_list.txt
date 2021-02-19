@@ -8,6 +8,7 @@ duck
 wolf
 deer
 elk
+eel
 zombie_weak
 zombie
 miner_weak
@@ -34,8 +35,8 @@ coward
 flamer
 icer
 bigzombie
-bigzombie_torso
-bigzombie_head
+bigzombietorso
+bigzombiehead
 slimeshooter_weak
 slimeshooter
 acidshooter_weak
@@ -136,9 +137,9 @@ crystal_physics
 bloodcrystal_physics
 skycrystal_physics
 chest_mimic
-chest_leggt
+chest_leggy
 necromancer_shop
-necromander_super
+necromancer_super
 boss_dragon
 boss_limbs
 boss_alchemist

@@ -7,14 +7,7 @@ SetRandomSeed( x * GameGetFrameNum(), y )
 
 local orbdata = orb_map_get()
 
-local mx = ( ( x + 17920 ) % 35840 ) - 17920
-local pw = x
-
-if ( x >= 0 ) then
-	pw = math.floor( ( x + 17920 ) / 35840 )
-else
-	pw = math.floor( ( x - 17920 ) / 35840 )
-end
+local pw,mx = check_parallel_pos( x )
 
 if ( Random( 1, 25 ) == 4 ) then
 	local closest = -1

@@ -128,6 +128,12 @@ g_small_enemies =
 	},
 	{
 		prob   		= 0.1,
+		min_count	= 2,
+		max_count	= 4,    
+		entity 	= "data/entities/animals/vault/scavenger_glue.xml",
+	},
+	{
+		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    
 		entities 	= {

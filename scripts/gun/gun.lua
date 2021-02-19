@@ -112,6 +112,7 @@ function clone_action( source, target )
 	target.type              = source.type
 	target.recursive         = source.recursive
 	target.related_projectiles = source.related_projectiles
+	target.related_extra_entities = source.related_extra_entities
 	target.action            = source.action
 	target.deck_index        = source.deck_index
 	target.custom_uses_logic = source.custom_uses_logic

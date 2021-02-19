@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,homing_target" >	
+<Entity tags="mortal,hittable,homing_target,glue_NOT" >	
 	<DamageModelComponent 
         hp="6.5"
         ragdoll_material="steel"

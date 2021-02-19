@@ -208,7 +208,7 @@
   <AudioLoopComponent
     _tags="sound_spray,enabled_in_world,enabled_in_hand"
     file="data/audio/Desktop/materials.bank"
-    event_name="materials/spray_potion" 
+    event_name="materials/spray_powder" 
     volume_autofade_speed="0.1" >
   </AudioLoopComponent>
 

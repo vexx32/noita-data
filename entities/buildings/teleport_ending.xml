@@ -175,7 +175,9 @@
 		file="data/audio/Desktop/misc.bank"
 		event_name="misc/teleport_end_loop"
 		calculate_material_lowpass="0"
-		auto_play="1" >
+		auto_play="0"
+		auto_play_if_enabled="1"
+		play_on_component_enable="1" >
 	</AudioLoopComponent>
 
 	<AudioLoopComponent
@@ -183,6 +185,8 @@
 		file="data/audio/Desktop/misc.bank"
 		event_name="misc/teleport_end_emitter_loop"
 		calculate_material_lowpass="0"
-		auto_play="1" >
+		auto_play="0"
+		auto_play_if_enabled="1"
+		play_on_component_enable="1" >
 	</AudioLoopComponent>
 </Entity>

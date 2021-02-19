@@ -10,7 +10,10 @@ if( orb_count > MAX_ORB_NAMES ) then orb_count = MAX_ORB_NAMES end
 local orb_name = "$item_mcguffin_" .. tostring(orb_count)
 local orb_desc = "$itemdesc_mcguffin_" .. tostring(orb_count)
 
-
+if( GameGetOrbCountThisRun() > 33 ) then
+	orb_name = "$item_mcguffin_33"
+	orb_desc = "$itemdesc_mcguffin_33"
+end
 
 local item_component = EntityGetFirstComponent( entity_id, "ItemComponent" )
 if( item_component ~= nil ) then

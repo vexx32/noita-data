@@ -1,4 +1,4 @@
-<Entity name="$animal_minipit" >
+<Entity tags="glue_NOT" name="$animal_minipit" >
   
   <PhysicsAIComponent
 		target_vec_max_len="15.0"

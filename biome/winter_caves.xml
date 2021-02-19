@@ -1,6 +1,6 @@
 <Biome>
   <Topology 
-    name="$biome_coalmine"
+    name="$biome_winter_caves"
     type="BIOME_WANG_TILE"
     background_image="data/weather_gfx/background_cave_04_alt.png"
     background_edge_left="data/weather_gfx/edges/background_cave_04_alt_left.png"

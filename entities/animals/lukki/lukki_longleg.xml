@@ -1,4 +1,4 @@
-<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_longleg">
+<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_longleg">
 
 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
 

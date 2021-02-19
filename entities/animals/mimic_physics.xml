@@ -1,4 +1,4 @@
-<Entity name="$animal_mimic_physics" >
+<Entity tags="glue_NOT" name="$animal_mimic_physics" >
   
   <PhysicsAIComponent
 		_enabled="0"

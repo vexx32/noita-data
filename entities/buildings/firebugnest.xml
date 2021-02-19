@@ -1,6 +1,6 @@
 <Entity 
   name="unknown" 
-  tags="mortal,nest,predator,hittable" >
+  tags="mortal,nest,predator,hittable,glue_NOT" >
 
   <DamageModelComponent 
     _enabled="1" 

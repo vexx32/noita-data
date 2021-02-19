@@ -1,4 +1,4 @@
-<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,hittable,mortal,boss_ghost_helper" name="$animal_ethereal_being">	
+<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,hittable,mortal,boss_ghost_helper,glue_NOT" name="$animal_ethereal_being">	
 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
 
 	<!-- art - main body ---------------------- -->

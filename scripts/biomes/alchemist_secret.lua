@@ -24,7 +24,7 @@ function spawn_potions( x, y ) end
 function spawn_wands( x, y ) end
 
 function init( x, y, w, h )
-	LoadPixelScene( "data/biome_impl/alchemist_secret.png", "data/biome_impl/alchemist_secret_visual.png", x, y, "data/biome_impl/alchemist_secret_background.png", true )
+	LoadPixelScene( "data/biome_impl/alchemist_secret.png", "data/biome_impl/alchemist_secret_visual.png", x, y, "", true )
 end
 
 function spawn_orb(x, y)

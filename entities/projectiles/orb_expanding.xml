@@ -66,12 +66,27 @@
 		</config_explosion>
 	</ProjectileComponent>
 
+	<!-- main sprite -->
 	<SpriteComponent
 		image_file="data/projectiles_gfx/orb_expanding.xml"
-		additive="1"
-		emissive="1" >
+		additive="0"
+		emissive="0" >
 	</SpriteComponent>
 
+	<!-- glow sprite -->
+	<Entity>
+		<InheritTransformComponent
+			only_position="1" >
+		</InheritTransformComponent>
+		<SpriteComponent
+			image_file="data/projectiles_gfx/orb_expanding_glow.xml"
+			additive="1"
+			emissive="1"
+			update_transform_rotation="0" >
+		</SpriteComponent>
+	</Entity>
+
+	<!-- launch flash -->
 	<SpriteComponent 
 		image_file="data/particles/explosion_016.xml" 
 		z_index="-1.1">
@@ -160,6 +175,7 @@
 	<ParticleEmitterComponent 
 		emitted_material_name="spark_yellow"
 		delay_frames="115"
+		emitter_lifetime_frames="2"
 		fade_based_on_lifetime="1"
 		render_on_grid="1"
 		x_pos_offset_min="0"

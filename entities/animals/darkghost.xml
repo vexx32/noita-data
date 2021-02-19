@@ -1,6 +1,6 @@
 <Entity 
   name="$animal_darkghost" 
-  tags="mortal,hittable,enemy" 
+  tags="mortal,hittable,enemy,glue_NOT" 
   serialize="0" >
 
   <_Transform 

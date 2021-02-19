@@ -46,7 +46,7 @@ if essence_1 and essence_2 and essence_3 and essence_4 then
 end
 
 local newgame_orbs_required = 5 + newgame_n
-if( orb_count ~= 33 
+if( orb_count < 33 
 	and 
 	( ( orb_count > ORB_COUNT_IN_WORLD and newgame_orbs_required >= ORB_COUNT_IN_WORLD and orb_count >= newgame_orbs_required ) or 
 	 ( orb_count >= newgame_orbs_required and orb_count < ORB_COUNT_IN_WORLD ) ) ) then
@@ -93,7 +93,7 @@ if( doing_newgame_plus == false ) then
 
 	print(tostring(endpoint_underground))
 
-	if( orb_count == 33 ) then
+	if( orb_count >= 33 ) then
 		-- ORBS >= 33 ENDINGs
 		-- on top -> new game+
 		AddFlagPersistent( "secret_amulet" )

@@ -82,7 +82,23 @@
 			mass="2.2"
 			>
 	    </CharacterDataComponent>
+
 	</Base>
+
+	<VariableStorageComponent 
+		_enabled="1" 
+		name="mimic_poop_count" 
+		value_bool="0" 
+		value_int="0" 
+		value_string="" >
+	</VariableStorageComponent>
+
+	<LuaComponent
+		_enabled="1"
+		script_source_file="data/scripts/animals/mimic_charm.lua"
+		execute_every_n_frame="183"
+		>
+	</LuaComponent>
 
 </Entity>
 

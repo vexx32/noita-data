@@ -1,4 +1,4 @@
-<Entity name="$animal_tank" >
+<Entity tags="glue_NOT" name="$animal_tank" >
   
 	<Base file="data/entities/base_enemy_robot.xml" >
 		<ItemChestComponent level="2" >

@@ -92,7 +92,7 @@
 		from_material_tag="[sand_ground]"
 		steps_per_frame="2"
 		to_material="gunpowder_unstable"
-		clean_stains="1"
+		clean_stains="0"
 		is_circle="1"
 		radius="64" 
 		loop="1"

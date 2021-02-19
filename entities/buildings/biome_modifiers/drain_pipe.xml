@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,teleportable_NOT,destruction_target">
+<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,glue_NOT">
 	<Base file="data/entities/base_item_physics2.xml" >
 		<PhysicsBody2Component 
 			is_static="1"

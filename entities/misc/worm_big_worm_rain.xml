@@ -1,5 +1,5 @@
 <Entity 
-	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm" 
+	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT" 
 	name="$animal_worm_big"
 	>
 	<_Transform 

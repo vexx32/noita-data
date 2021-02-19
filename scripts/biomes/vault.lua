@@ -37,6 +37,7 @@ RegisterSpawnFunction( 0xffaa42ff, "spawn_electricity_trap" )
 RegisterSpawnFunction( 0xff33934c, "spawn_shopitem" )
 
 RegisterSpawnFunction( 0xffacf14b, "spawn_laser_trap" )
+RegisterSpawnFunction( 0xffa45aff, "spawn_lab_puzzle" )
 
 
 ------------ small enemies -------------------------------
@@ -173,10 +174,10 @@ g_small_enemies =
 		}
 	},
 	{
-		prob   		= 0.05,
+		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 3,    
-		entity 	= "data/entities/animals/scavenger_glue.xml",
+		entity 	= "data/entities/animals/vault/scavenger_glue.xml",
 	},
 }
 
@@ -548,6 +549,14 @@ g_pixel_scene_02 =
 		visual_file		= "",
 		background_file	= "",
 		is_unique		= 0,
+	},
+	{
+		prob   			= 0.5,
+		material_file 	= "data/biome_impl/vault/lab_puzzle.png",
+		visual_file		= "data/biome_impl/vault/lab_puzzle_visual.png",
+		background_file	= "data/biome_impl/vault/lab_puzzle_background.png",
+		is_unique		= 0,
+		background_z_index = 38,
 	},
 }
 
@@ -1189,6 +1198,25 @@ end
 function spawn_shopitem( x, y )
 	generate_shop_item( x, y, false, nil )
 end
+
+function spawn_lab_puzzle(x, y)
+	SetRandomSeed(x, y)
+	local type_a = random_from_array({
+		"poly",
+		"tele",
+		"charm",
+		"berserk",
+	})
+	local type_b = random_from_array({
+		"protect",
+		"worm",
+		"invis",
+		"speed",
+	})
+	EntityLoad("data/entities/buildings/vault_lab_puzzle_" .. type_a .. ".xml", x - 10, y)
+	EntityLoad("data/entities/buildings/vault_lab_puzzle_" .. type_b .. ".xml", x + 11, y)
+end
+
 
 -----------------------------------------
 -- PIPES

@@ -1,4 +1,4 @@
-<Entity>
+<Entity tags="glue">
 	<VelocityComponent
 		gravity_y="0"
 		terminal_velocity="10"
@@ -35,7 +35,7 @@
 	</LuaComponent>
 
 	<LifetimeComponent
-		lifetime="600"
+		lifetime="500"
 		>
 	</LifetimeComponent>
 	<!--

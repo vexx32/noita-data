@@ -386,6 +386,14 @@ main_menu_items =
 		end,
 	},
 	{
+		ui_name="Test GameShootProjectile bug",
+		action = function()
+			local x,y = GameGetCameraPos()
+			local e = EntityLoad( "data/entities/items/pickup/goldnugget_200.xml" )
+			GameShootProjectile( 0, x, y, 0, 0, e, false )
+		end
+	},
+	{
 		ui_name="Close",
 		action = function() destroy = true end,
 	},

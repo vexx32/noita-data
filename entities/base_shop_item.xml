@@ -1,4 +1,4 @@
-<Entity tags="hittable,item,item_shop">
+<Entity tags="hittable,item,item_shop,glue_NOT">
 
     <!-- these two are used to make these shop items -->
     <ItemCostComponent cost="100" />

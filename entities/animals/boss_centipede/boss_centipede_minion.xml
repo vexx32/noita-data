@@ -1,4 +1,4 @@
-<Entity tags="boss_centipede_minion" name="$animal_boss_centipede_minion" >
+<Entity tags="boss_centipede_minion,glue_NOT" name="$animal_boss_centipede_minion" >
 
 	<VariableStorageComponent
 		_tags="no_gold_drop">

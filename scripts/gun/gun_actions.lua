@@ -1659,6 +1659,27 @@ actions =
 			c.spread_degrees = c.spread_degrees + 4.0
 		end,
 	},
+	{
+		id          = "ICEBALL",
+		name 		= "$action_iceball",
+		description = "$actiondesc_iceball",
+		sprite 		= "data/ui_gfx/gun_actions/iceball.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/fireball_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/iceball.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,6", -- FIREBALL
+		spawn_probability                 = "1,1,1,1", -- FIREBALL
+		price = 260,
+		mana = 90,
+		max_uses = 15,
+		custom_xml_file = "data/entities/misc/custom_cards/iceball.xml",
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/iceball.xml")
+			c.spread_degrees = c.spread_degrees + 8.0
+			c.fire_rate_wait = c.fire_rate_wait + 80
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 20.0
+		end,
+	},
 	--[[
 	{
 		id          = "ICETHROWER",
@@ -1903,6 +1924,24 @@ actions =
 			add_projectile("data/entities/projectiles/deck/spore_pod.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 40
 			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 30.0
+		end,
+	},
+	{
+		id          = "GLUE_SHOT",
+		name 		= "$action_glue_shot",
+		description = "$actiondesc_glue_shot",
+		sprite 		= "data/ui_gfx/gun_actions/glue_shot.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/dynamite_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/glue_shot.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,5", -- GLUE_SHOT
+		spawn_probability                 = "0.6,0.2,0.2,0.6", -- GLUE_SHOT
+		price = 140,
+		mana = 25,
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/glue_shot.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 30
+			c.spread_degrees = c.spread_degrees + 5.0
 		end,
 	},
 	{
@@ -4530,6 +4569,24 @@ actions =
 		--max_uses = 100,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/homing.xml,data/entities/particles/tinyspark_white.xml,"
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "HOMING_SHORT",
+		name 		= "$action_homing_short",
+		description = "$actiondesc_homing_short",
+		sprite 		= "data/ui_gfx/gun_actions/homing_short.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "data/entities/misc/homing_short.xml", "data/entities/particles/tinyspark_white_weak.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "1,2,3,4,5,6", -- HOMING
+		spawn_probability                 = "0.4,0.8,1,0.4,0.1,0.1", -- HOMING
+		price = 160,
+		mana = 40,
+		--max_uses = 100,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/homing_short.xml,data/entities/particles/tinyspark_white_weak.xml,"
 			draw_actions( 1, true )
 		end,
 	},
@@ -7366,6 +7423,7 @@ actions =
 		custom_xml_file = "data/entities/misc/custom_cards/energy_shield.xml",
 		action 		= function()
 			-- does nothing to the projectiles
+			draw_actions( 1, true )
 		end,
 	},
 	{
@@ -7381,6 +7439,7 @@ actions =
 		custom_xml_file = "data/entities/misc/custom_cards/energy_shield_sector.xml",
 		action 		= function()
 			-- does nothing to the projectiles
+			draw_actions( 1, true )
 		end,
 	},
 	{
@@ -8212,7 +8271,6 @@ actions =
 		description = "$actiondesc_summon_portal",
 		sprite 		= "data/ui_gfx/gun_actions/summon_portal.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
-		spawn_requires_flag = "card_unlocked_everything",
 		type 		= ACTION_TYPE_OTHER,
 		spawn_level                       = "10", -- MANA_REDUCE
 		spawn_probability                 = "0", -- MANA_REDUCE

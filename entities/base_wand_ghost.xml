@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,homing_target,teleportable_NOT,enemy" >
+<Entity tags="mortal,hittable,homing_target,teleportable_NOT,enemy,glue_NOT" >
 
 	<PhysicsAIComponent
 		target_vec_max_len="15.0"

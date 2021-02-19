@@ -1,5 +1,5 @@
 <Entity 
-	tags="enemy,mortal,hittable,teleportable_NOT,boss_dragon,homing_target" name="$animal_boss_dragon">
+	tags="enemy,mortal,hittable,teleportable_NOT,boss_dragon,homing_target,glue_NOT" name="$animal_boss_dragon">
 
 	<_Transform 
 		position.x="0" 

@@ -14,13 +14,19 @@ for _,anchor in ipairs(children) do
 	end
 end
 
--- identify target
+-- optimization: remove when it gets crowded
+if #EntityGetInRadiusWithTag( pos_x, pos_y, 80, "glue") > 10 then
+	EntityKill(entity_id)
+	return
+end
+
+-- identify target & check that it's valid
 local target = EntityGetClosestWithTag( pos_x, pos_y, tag)
 if target == nil or target == 0 then return end
 
 target = EntityGetRootEntity(target)
 local tx, ty = EntityGetTransform(target)
-if get_distance(pos_x, pos_y, tx, ty) > max_dist then return end
+if get_distance(pos_x, pos_y, tx, ty) > max_dist or EntityHasTag( target, "glue_NOT" ) then return end
 
 -- assign a target to glue anchor
 component_write( EntityGetFirstComponent( children[1], "VariableStorageComponent" ), { value_int = target } )

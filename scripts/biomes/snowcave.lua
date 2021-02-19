@@ -298,7 +298,7 @@ g_big_enemies =
 		entity 	= "data/entities/animals/thunderskull.xml"
 	},
 	{
-		prob   		= 0.01,
+		prob   		= 0.1,
 		min_count	= 2,
 		max_count	= 4,    
 		entity 	= "data/entities/animals/scavenger_glue.xml",

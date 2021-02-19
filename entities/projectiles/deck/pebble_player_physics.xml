@@ -1,4 +1,4 @@
-<Entity name="$animal_pebble_player" >
+<Entity tags="glue_NOT" name="$animal_pebble_player" >
 	<PhysicsAIComponent
 		target_vec_max_len="25.0"
 		force_coeff="28.0"

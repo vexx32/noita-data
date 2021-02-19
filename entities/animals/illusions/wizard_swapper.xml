@@ -1,4 +1,4 @@
-<Entity name="$animal_wizard_swapper" >
+<Entity tags="glue_NOT" name="$animal_wizard_swapper" >
   
 	<Base file="data/entities/base_enemy_basic.xml" >
 		<ItemChestComponent level="2" > </ItemChestComponent>

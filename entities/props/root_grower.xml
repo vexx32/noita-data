@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,root">
+<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,root,glue_NOT">
 	<HitboxComponent
 		aabb_min_x="-3"
 		aabb_max_x="3"

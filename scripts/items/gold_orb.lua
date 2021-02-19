@@ -13,7 +13,7 @@ function drop()
 		
 		SetRandomSeed( x + entity_id, y - GameGetFrameNum() )
 		
-		local outcome = Random( 1, 20 )
+		local outcome = Random( 1, 26 )
 		
 		if ( count == 1 ) then
 			outcome = 10

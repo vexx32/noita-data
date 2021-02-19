@@ -20,11 +20,10 @@ end)
 
 if target < 0 then
 	-- no target entity. add physics to tie to a surface
-	local physics_comp = EntityGetFirstComponent(entity_id, "PhysicsBody2Component")
-	if physics_comp == nil then
+	if EntityGetFirstComponent(entity_id, "PhysicsBody2Component") == nil then
 		EntityAddComponent2( entity_id, "PhysicsBody2Component",
 		{
-			angular_damping = 0.2,
+			angular_damping = 1.2,
 			destroy_body_if_entity_destroyed = true,
 		})
 		EntityAddComponent2( entity_id, "PhysicsImageShapeComponent",
@@ -62,38 +61,29 @@ if target_x ~= nil and target_x ~= 0 and target_y ~= 0 then
 	-- snap anchor to target
 	EntitySetTransform(entity_id, target_x, target_y - 2)
 	
-	-- pull target closer to anchor
-	local center_x, center_y = EntityGetTransform(EntityGetParent(entity_id))
-	
-	local vx = center_x - target_x
-	local vy = center_y - target_y
+	-- if target is anchor, don't apply force to both
+	if target > entity_id and EntityHasTag(target, "glue_anchor") then return end
 
-	-- prevent pulling into a wall by checking if glue center (parent) is inside platform
-	local dist = get_magnitude(vx, vy)
-	if dist < 8 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
-		--print("abort pull")
-		return
-	end
-
-	-- calculate force
-	local age_factor = map(t, 0, 300, 1, 0.25) -- glue pull gets weaker over time
-	vx, vy = vec_mult(vx, vy, force * age_factor)
-
-	-- use physics force if applicable
+	-- don't apply force physics objects since it gets messy
 	local comp = EntityGetFirstComponent(target, "PhysicsBodyComponent") or EntityGetFirstComponent(target, "PhysicsBody2Component")
-	if comp ~= nil and comp ~= 0 then
-		PhysicsApplyForce(target, target_x - vx, target_y - vy)
-	else
-		EntityApplyTransform(target, target_x + vx, target_y + vy)
-		--[[
-		-- apply to velocity comp
-		local velocitycomp = EntityGetFirstComponent(target, "VelocityComponent")
-		if velocitycomp ~= nil and velocitycomp ~= 0 then
-			vx,vy = vec_add(vx, vy, ComponentGetValue2( velocitycomp, "mVelocity"))
-			ComponentSetValue2( velocitycomp, "mVelocity", vx, vy)
-		else
-			print("no velocity component found")
+	if comp == nil or comp == 0 then
+		-- pull target closer to anchor
+		local center_x, center_y = EntityGetTransform(EntityGetParent(entity_id))
+		
+		local vx = center_x - target_x
+		local vy = center_y - target_y
+
+		-- prevent pulling into a wall by checking if glue center (parent) is inside platform
+		local dist = get_magnitude(vx, vy)
+		if dist < 8 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
+			--print("abort pull")
+			return
 		end
-		--]]
+
+		-- calculate force
+		local age_factor = map(t, 0, 300, 1, 0.25) -- glue pull gets weaker over time
+		vx, vy = vec_mult(vx, vy, force * age_factor)
+
+		EntityApplyTransform(target, target_x + vx, target_y + vy)
 	end
 end
