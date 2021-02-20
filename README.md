@@ -1,15 +1,10 @@
 HOW TO READ:
 
 FILE CHANGED => +++ b/biome/rainforest_dark.xml
-@@ -7,7 +7,7 @@
-background_edge_right="data/weather_gfx/edges/background_rainforest_dark_right.png"
-background_edge_top="data/weather_gfx/edges/background_rainforest_dark_top.png"
-background_edge_bottom="data/weather_gfx/edges/background_rainforest_dark_bottom.png"
-REMOVED CODE => - background_edge_priority="10"  
-NEW OR CHANGED CODE => + background_edge_priority="9"  
- limit_background_image="0"
 
-                         wang_template_file="data/wang_tiles/rainforest_dark.png"
+REMOVED CODE => - background_edge_priority="10"
+
+NEW OR CHANGED CODE => + background_edge_priority="9"
 
 ---
 
