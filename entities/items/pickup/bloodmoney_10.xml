@@ -22,6 +22,7 @@
 	<!-- Arvi: Increased this to 0.16 so that 10 hp nuggets are a bit better at healing relative to the others -->
 	
 	<VariableStorageComponent
+		_tags="enabled_in_world"
 		name="hp_value"
 		value_float="0.16" >
 	</VariableStorageComponent>

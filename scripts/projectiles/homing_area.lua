@@ -11,7 +11,7 @@ if ( comp ~= nil ) then
 	local target = ComponentGetValue2( comp, "mWhoShot" )
 	
 	for i,v in ipairs( targets ) do
-		if ( v ~= target ) then
+		if ( v ~= target ) and ( GameGetGameEffect( v, "CHARM" ) == 0 ) and ( EntityGetHerdRelation( target, v ) < 60 ) then
 			local tx, ty = EntityGetFirstHitboxCenter( v )
 			
 			EntitySetTransform( root_id, tx, ty )

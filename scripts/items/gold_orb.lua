@@ -6,6 +6,8 @@ function drop()
 	
 	local comp = EntityGetFirstComponent( entity_id, "VariableStorageComponent", "kick_count" )
 	
+	SetRandomSeed( GameGetFrameNum(), x + y + entity_id )
+	
 	if ( comp ~= nil ) then
 		local count = ComponentGetValue2( comp, "value_int" )
 		count = count + 1
@@ -28,15 +30,15 @@ function drop()
 			EntityKill( entity_id )
 			return
 		elseif ( outcome == 20 ) then
-			EntityLoad( "data/entities/items/pickup/goldnugget_200.xml", x, y )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_200.xml", x, y, Random(-40,40), Random(-40,40) )
 		elseif ( outcome == 15 ) then
-			EntityLoad( "data/entities/items/pickup/goldnugget_50.xml", x + 8, y )
-			EntityLoad( "data/entities/items/pickup/goldnugget_50.xml", x - 8, y )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_50.xml", x - 8, y, Random(-40,40), Random(-40,40) )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_50.xml", x + 8, y, Random(-40,40), Random(-40,40) )
 		elseif ( outcome < 10 ) then
-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x, y )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x, y, Random(-40,40), Random(-40,40) )
 		else
-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x + 8, y )
-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x - 8, y )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x - 8, y, Random(-40,40), Random(-40,40) )
+			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x + 8, y, Random(-40,40), Random(-40,40) )
 		end
 	end
 end

@@ -5,6 +5,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 RegisterSpawnFunction( 0xffffeedd, "init" )
 RegisterSpawnFunction( 0xff31d0b0, "spawn_fruit" )
+RegisterSpawnFunction( 0xff9dd0b0, "spawn_book" )
 
 function spawn_small_enemies( x, y ) end
 function spawn_big_enemies( x, y ) end
@@ -24,7 +25,7 @@ function spawn_potions( x, y ) end
 function spawn_wands( x, y ) end
 
 function init( x, y, w, h )
-	LoadPixelScene( "data/biome_impl/gourd_room.png", "", x, y, "", true )
+	--LoadPixelScene( "data/biome_impl/gourd_room.png", "", x, y, "", true )
 end
 
 function spawn_orb(x, y)
@@ -37,6 +38,12 @@ function spawn_fruit( x, y )
 	EntityLoad( "data/entities/items/pickup/gourd.xml", x, y - 12 )
 	EntityLoad( "data/entities/items/pickup/gourd.xml", x - 12, y )
 	EntityLoad( "data/entities/animals/shotgunner.xml", x + 24, y - 24 )
+end
+
+function spawn_book( x, y )
+	EntityLoad( "data/entities/items/books/book_music_c.xml", x, y )
+	EntityLoad( "data/entities/props/physics_skull_01.xml", x + 8, y )
+	EntityLoad( "data/entities/props/physics_bone_02.xml", x + 12, y - 16 )
 end
 
 g_lamp =

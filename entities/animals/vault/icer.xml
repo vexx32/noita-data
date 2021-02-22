@@ -8,6 +8,8 @@
   </Base>
   
 	<Entity>
+		<InheritTransformComponent />
+		
 	    <GameEffectComponent 
 	        effect="PROTECTION_FREEZE"
 	        frames="-1"

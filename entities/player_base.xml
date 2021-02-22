@@ -428,6 +428,18 @@
 		z_index="0.59"
 		_enabled="0"
 	></SpriteComponent>
+	
+	<SpriteComponent 
+		_tags="character,player_hat"
+		alpha="1" 
+		image_file="data/enemies_gfx/player_hat.xml" 
+		next_rect_animation="" 
+		offset_x="6" 
+		offset_y="14" 
+		rect_animation="walk" 
+		z_index="0.59"
+		_enabled="0"
+	></SpriteComponent>
 
 	<LuaComponent
 		script_source_file="data/scripts/magic/amulet.lua"

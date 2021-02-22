@@ -2152,6 +2152,21 @@ streaming_events =
 		end,
 	},
 	{
+		id = "ALL_ACCESS_TELEPORT",
+		ui_name = "$streamingevent_all_access_teleport",
+		ui_description = "$streamingeventdesc_all_access_teleport",
+		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
+		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
+		weight = 0.5,
+		kind = STREAMING_EVENT_BAD,
+		action = function(event)
+			for i,entity_id in pairs( get_enemies_in_radius(500) ) do
+				EntityRemoveTag( entity_id, "teleportable_NOT" )
+				EntityAddTag( entity_id, "teleportable" )
+			end
+		end,
+	},
+	{
 		id = "HOLIDAY_MOOD",
 		ui_name = "$streamingevent_holiday_mood",
 		ui_description = "$streamingeventdesc_holiday_mood",

@@ -3,19 +3,23 @@ spawnlists =
 	potion_spawnlist =
 	{
 		rnd_min = 1,
-		rnd_max = 92,
+		rnd_max = 91,
 		spawns = 
 		{
 			{
-				value_min = 92,
-				value_max = 92,
-				load_entity = "data/entities/items/pickup/stonestone.xml",
-				offset_y = -2,
-			},
-			{
 				value_min = 90,
 				value_max = 91,
-				load_entity = "data/entities/items/pickup/physics_gold_orb.xml",
+				load_entity_func = 
+					function( data, x, y )
+						local ox = data.offset_x or 0
+						local oy = data.offset_y or 0
+						
+						if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
+							EntityLoad( "data/entities/items/pickup/physics_gold_orb_greed.xml", x + ox, y + oy )
+						else
+							EntityLoad( "data/entities/items/pickup/physics_gold_orb.xml", x + ox, y + oy )
+						end
+					end,
 				offset_y = -2,
 			},
 			{

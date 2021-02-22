@@ -774,6 +774,26 @@ actions =
 		end,
 	},
 	{
+		id          = "POLLEN",
+		name 		= "$action_pollen",
+		description = "$actiondesc_pollen",
+		sprite 		= "data/ui_gfx/gun_actions/pollen.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/arrow_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/pollen.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "0,1,3,4", -- ARROW
+		spawn_probability                 = "0.6,1,1,0.8", -- ARROW
+		price = 110,
+		mana = 10,
+		--max_uses = 40,
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/pollen.xml")
+			-- damage = 0.3
+			c.fire_rate_wait = c.fire_rate_wait + 2
+			c.spread_degrees = c.spread_degrees + 20
+		end,
+	},
+	{
 		id          = "LANCE",
 		name 		= "$action_lance",
 		description = "$actiondesc_lance",
@@ -2112,6 +2132,42 @@ actions =
 		action 		= function()
 			add_projectile_trigger_death("data/entities/items/pickup/egg_hollow.xml", 1)
 			c.fire_rate_wait = c.fire_rate_wait - 12
+		end,
+	},
+	{
+		id          = "TNTBOX",
+		name 		= "$action_tntbox",
+		description = "$actiondesc_tntbox",
+		sprite 		= "data/ui_gfx/gun_actions/tntbox.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/tntbox.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "1,2,3,4,5", -- SUMMON_ROCK
+		spawn_probability                 = "0.8,0.8,0.8,0.8,0.8", -- SUMMON_ROCK
+		price = 150,
+		mana = 40, 
+		max_uses    = 15, 
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/tntbox.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 30
+		end,
+	},
+	{
+		id          = "TNTBOX_BIG",
+		name 		= "$action_tntbox_big",
+		description = "$actiondesc_tntbox_big",
+		sprite 		= "data/ui_gfx/gun_actions/tntbox_big.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/tntbox_big.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "1,2,3,4,5", -- SUMMON_ROCK
+		spawn_probability                 = "0.8,0.8,0.8,0.8,0.8", -- SUMMON_ROCK
+		price = 170,
+		mana = 40, 
+		max_uses    = 15, 
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/tntbox_big.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 30
 		end,
 	},
 	{
@@ -4670,7 +4726,7 @@ actions =
 		related_extra_entities = { "data/entities/misc/homing_cursor.xml", "data/entities/particles/tinyspark_white.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5,6", -- HOMING_ROTATE
-		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- HOMING_ROTATE
+		spawn_probability                 = "0.7,0.7,0.4,0.4,1.0", -- HOMING_ROTATE
 		price = 175,
 		mana = 30,
 		--max_uses = 100,
@@ -6771,10 +6827,10 @@ actions =
 		related_extra_entities = { "data/entities/misc/orbit_discs.xml" },
 		spawn_requires_flag = "card_unlocked_dragon",
 		type 		= ACTION_TYPE_MODIFIER,
-		spawn_level                       = "0,1,2,4,5", -- GRAVITY_FIELD_ENEMY
-		spawn_probability                 = "0.5,0.2,0.8,0.4,0.2", -- GRAVITY_FIELD_ENEMY
-		price = 140,
-		mana = 40,
+		spawn_level                       = "1,2,4,5", -- GRAVITY_FIELD_ENEMY
+		spawn_probability                 = "0.2,0.8,0.4,0.2", -- GRAVITY_FIELD_ENEMY
+		price = 200,
+		mana = 70,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "data/entities/misc/orbit_discs.xml,"
 			draw_actions( 1, true )

@@ -4,18 +4,22 @@ dofile( "data/scripts/perks/perk.lua" )
 
 local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform(entity_id)
+local player = EntityGetClosestWithTag(x, y, "player_unit")
 
-local w = 10
-local perks = {}
-perks[1] = perk_spawn_random(x - w, y - 10)
-perks[2] = perk_spawn_random(x + w, y - 10)
-
-for _,v in ipairs(perks) do
-	EntityAddComponent(v, "VariableStorageComponent", 
-	{ 
-		name = "perk_dont_remove_others",
-		value_bool = "1",
-	} )
+local count = 2
+while count > 0 do
+	local pid = perk_spawn_random(x,y)
+	-- rerandomize if picked perk is gamble
+	component_read( get_variable_storage_component(pid, "perk_id"), { value_string = "" }, function(comp)
+		print(comp.value_string)
+		if comp.value_string ~= "GAMBLE" then
+			perk_pickup(pid, player, "", false, false )
+			count = count - 1
+		else
+			--print("Gamble perk spawned another Gamble. Rerandomizing...")
+			EntityKill(pid)
+		end
+	end)
 end
 
 EntityKill(entity_id)

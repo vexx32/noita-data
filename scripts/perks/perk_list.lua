@@ -1456,6 +1456,44 @@ perk_list =
 		end,
 	},
 	{
+		id = "CORDYCEPS",
+		ui_name = "$perk_cordyceps",
+		ui_description = "$perkdesc_cordyceps",
+		ui_icon = "data/ui_gfx/perk_icons/cordyceps.png",
+		perk_icon = "data/items_gfx/perks/cordyceps.png",
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+		
+			EntityAddComponent( entity_who_picked, "LuaComponent", 
+			{ 
+				script_source_file = "data/scripts/perks/cordyceps.lua",
+				execute_every_n_frame = "20",
+			} )
+			
+			if ( GameHasFlagRun( "player_status_cordyceps" ) == false ) then
+				GameAddFlagRun( "player_status_cordyceps" )
+				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
+				funginess = funginess + 1
+				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
+				
+				if ( funginess == 3 ) then
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					
+					AddFlagPersistent( "player_status_funky" )
+					
+					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
+					if( damagemodels ~= nil ) then
+						for i,damagemodel in ipairs(damagemodels) do
+							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
+							explosion_resistance = explosion_resistance * 0.9
+							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
+						end
+					end
+				end
+			end
+		end,
+	},
+	{
 		id = "MOLD",
 		ui_name = "$perk_mold",
 		ui_description = "$perkdesc_mold",
@@ -1468,6 +1506,28 @@ perk_list =
 			EntityAddChild( entity_who_picked, child_id )
 			
 			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
+			
+			if ( GameHasFlagRun( "player_status_mold" ) == false ) then
+				GameAddFlagRun( "player_status_mold" )
+				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
+				funginess = funginess + 1
+				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
+				
+				if ( funginess == 3 ) then
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					
+					AddFlagPersistent( "player_status_funky" )
+					
+					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
+					if( damagemodels ~= nil ) then
+						for i,damagemodel in ipairs(damagemodels) do
+							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
+							explosion_resistance = explosion_resistance * 0.9
+							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
+						end
+					end
+				end
+			end
 		end,
 	},
 	{
@@ -1544,6 +1604,43 @@ perk_list =
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/risky_critical.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
+		end,
+	},
+	{
+		id = "FUNGAL_DISEASE",
+		ui_name = "$perk_fungal_disease",
+		ui_description = "$perkdesc_fungal_disease",
+		ui_icon = "data/ui_gfx/perk_icons/fungal_disease.png",
+		perk_icon = "data/items_gfx/perks/fungal_disease.png",
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
+		stackable_maximum = 3,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local x,y = EntityGetTransform( entity_who_picked )
+			local child_id = EntityLoad( "data/entities/misc/perks/fungal_disease.xml", x, y )
+			EntityAddChild( entity_who_picked, child_id )
+			
+			if ( GameHasFlagRun( "player_status_fungal_disease" ) == false ) then
+				GameAddFlagRun( "player_status_fungal_disease" )
+				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
+				funginess = funginess + 1
+				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
+				
+				if ( funginess == 3 ) then
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					
+					AddFlagPersistent( "player_status_funky" )
+					
+					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
+					if( damagemodels ~= nil ) then
+						for i,damagemodel in ipairs(damagemodels) do
+							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
+							explosion_resistance = explosion_resistance * 0.9
+							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
+						end
+					end
+				end
+			end
 		end,
 	},
 	{
@@ -1654,8 +1751,8 @@ perk_list =
 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
 					if( platformingcomponents ~= nil ) then
 						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
-							ComponentSetValue2( component, "fly_time_max", fly_time )
+							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
+							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
 						end
 					end
 				end
@@ -1693,8 +1790,8 @@ perk_list =
 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
 					if( platformingcomponents ~= nil ) then
 						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
-							ComponentSetValue2( component, "fly_time_max", fly_time )
+							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
+							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
 						end
 					end
 				end
@@ -1733,8 +1830,8 @@ perk_list =
 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
 					if( platformingcomponents ~= nil ) then
 						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
-							ComponentSetValue2( component, "fly_time_max", fly_time )
+							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
+							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
 						end
 					end
 				end

@@ -128,6 +128,17 @@
 		
 		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/cliff_visual.png" material_filename="data/biome_impl/overworld/cliff.png" pos_x="-12400" pos_y="-400" skip_biome_checks="1" skip_edge_textures="0" >
 		</PixelScene>
+		
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="-3408" pos_y="1712" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="5852" pos_y="-4944" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="15024" pos_y="1712" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="-1360" pos_y="9904" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="12976" pos_y="9904" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
 
 		<!-- just load an entity -->
 		
@@ -192,6 +203,13 @@
 		<PixelScene pos_x="-12180" pos_y="-3612" just_load_an_entity="data/entities/misc/platform_wide.xml" />
 		<PixelScene pos_x="-12180" pos_y="-3868" just_load_an_entity="data/entities/misc/platform_wide.xml" />
 		<PixelScene pos_x="-12180" pos_y="-4124" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+		
+		<PixelScene pos_x="-3328" pos_y="1792" just_load_an_entity="data/entities/items/books/book_hint.xml" />
+		<PixelScene pos_x="-3328" pos_y="1792" just_load_an_entity="data/entities/buildings/eyespot_a.xml" />
+		<PixelScene pos_x="5932" pos_y="-4864" just_load_an_entity="data/entities/buildings/eyespot_b.xml" />
+		<PixelScene pos_x="15104" pos_y="1792" just_load_an_entity="data/entities/buildings/eyespot_c.xml" />
+		<PixelScene pos_x="-1280" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_d.xml" />
+		<PixelScene pos_x="13056" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_e.xml" />
 
 	</mBufferedPixelScenes>
 </PixelScenes>

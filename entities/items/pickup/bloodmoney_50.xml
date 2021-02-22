@@ -20,6 +20,7 @@
 
 	<!-- 3*5 / 25 = 0.6 -->
 	<VariableStorageComponent
+		_tags="enabled_in_world"
 		name="hp_value"
 		value_float="0.4" >
 	</VariableStorageComponent>

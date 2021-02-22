@@ -1,4 +1,4 @@
-<Entity name="effect_tripping_balls">
+<Entity name="effect_tripping_balls" tags="tripping_extreme">
 
 	<InheritTransformComponent>
     </InheritTransformComponent>

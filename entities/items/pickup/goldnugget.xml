@@ -2,6 +2,7 @@
 
 	<!-- physical presence -->
 	<UIInfoComponent
+		_tags="enabled_in_world"
 		name="$item_goldnugget">
 	</UIInfoComponent>
 
@@ -18,7 +19,8 @@
 		on_death_leave_physics_body="1" >
 	</PhysicsBodyComponent>
 	
-	<PhysicsImageShapeComponent 
+	<PhysicsImageShapeComponent
+		_tags="enabled_in_world"
 		body_id="1"
 		centered="1"
 		image_file="data/items_gfx/goldnugget_01.png"
@@ -26,6 +28,7 @@
 	</PhysicsImageShapeComponent>
 
 	<VariableStorageComponent
+		_tags="enabled_in_world"
 		name="gold_value"
 		value_int="10" >
 	</VariableStorageComponent>
@@ -55,14 +58,17 @@
 	</HitboxComponent>
 
 	<LifetimeComponent
+		_tags="enabled_in_world"
 		lifetime="900" >
 	</LifetimeComponent>
 	
-	<LuaComponent 
+	<LuaComponent
+		_tags="enabled_in_world"
 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
 	</LuaComponent>
 	
-	<LuaComponent 
+	<LuaComponent
+		_tags="enabled_in_world"
 		script_source_file="data/scripts/perks/gold_explosion.lua" 
 		execute_on_added="1"
 		remove_after_executed="1"
@@ -71,6 +77,7 @@
 
 	<!-- particle glitter -->
 	<SpriteParticleEmitterComponent
+		_tags="enabled_in_world"
 		sprite_file="data/particles/shine_08.xml"
 		lifetime="0.2"
 		randomize_lifetime.min="0.1"

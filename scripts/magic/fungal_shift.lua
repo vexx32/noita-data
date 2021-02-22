@@ -8,11 +8,16 @@ materials_from =
 	{ probability = 1.0, materials = { "oil", "swamp", "peat" }, name_material = "oil" },
 	{ probability = 1.0, materials = { "blood" } },	-- NOTE(Olli): I'm not sure if it's a good idea to convert blood, because that often just feels buggy. but let's see.
 	{ probability = 1.0, materials = { "blood_fungi", "fungi", "fungisoil" }, name_material = "fungi" },
-	{ probability = 1.0, materials = { "blood_cold" } },
+	{ probability = 1.0, materials = { "blood_cold", "blood_worm" } },
 	{ probability = 1.0, materials = { "acid" } },
-	{ probability = 1.0, materials = { "magic_liquid_polymorph", "magic_liquid_unstable_polymorph" }, name_material = "magic_liquid_polymorph" },
-	{ probability = 1.0, materials = { "magic_liquid_teleportation", "magic_liquid_unstable_teleportation" }, name_material = "magic_liquid_teleportation" },
-	{ probability = 1.0, materials = { "magic_liquid_berserk", "magic_liquid_charm", "magic_liquid_invisibility" } },
+	{ probability = 0.4, materials = { "magic_liquid_polymorph", "magic_liquid_unstable_polymorph" }, name_material = "magic_liquid_polymorph" },
+	{ probability = 0.4, materials = { "magic_liquid_teleportation", "magic_liquid_unstable_teleportation" }, name_material = "magic_liquid_teleportation" },
+	{ probability = 0.4, materials = { "magic_liquid_berserk", "magic_liquid_charm", "magic_liquid_invisibility" } },
+	{ probability = 0.6, materials = { "diamond" } },
+	{ probability = 0.6, materials = { "silver", "brass", "copper" } },
+	{ probability = 0.05, materials = { "sand" } },
+	{ probability = 0.05, materials = { "snow_sticky" } },
+	{ probability = 0.001, materials = { "gold", "gold_box2d" }, name_material = "gold" },
 }
 
 materials_to = 
@@ -32,11 +37,20 @@ materials_to =
 	{ probability = 1.00, material = "vomit" },
 	{ probability = 1.00, material = "pea_soup" },
 	{ probability = 1.00, material = "fungi" },
+	{ probability = 0.80, material = "sand" },
+	{ probability = 0.80, material = "diamond" },
+	{ probability = 0.80, material = "silver" },
+	{ probability = 0.80, material = "steam" },
+	{ probability = 0.50, material = "rock_static" },
+	{ probability = 0.50, material = "material_darkness" },
+	{ probability = 0.50, material = "material_confusion" },
+	{ probability = 0.20, material = "rock_static_radioactive" },
 	{ probability = 0.02, material = "magic_liquid_polymorph" },
 	{ probability = 0.02, material = "magic_liquid_random_polymorph" },
 	{ probability = 0.15, material = "magic_liquid_teleportation" },
 	{ probability = 0.01, material = "urine" },
 	{ probability = 0.01, material = "poo" },
+	{ probability = 0.01, material = "cheese_static" },
 }
 
 log_messages = 
@@ -81,10 +95,6 @@ end
 -- TODO: pick one of the materials from cape
 -- TODO: pick one of the materials from a potion?
 function fungal_shift( entity, x, y, debug_no_limits )
-end
-
-function fungal_shift( entity, x, y, debug_no_limits )
-	--[[
 	local parent = EntityGetParent( entity )
 	if parent ~= 0 then
 		entity = parent
@@ -122,7 +132,7 @@ function fungal_shift( entity, x, y, debug_no_limits )
 		local to_material = CellFactory_GetType( to.material )
 		from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( from_material ) ) )
 		if from.name_material then
-			from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( from.name_material ) ) )
+			from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( CellFactory_GetType( from.name_material ) ) ) )
 		end
 
 		-- if a potion is equipped, use main material from potion as one of the materials
@@ -151,7 +161,7 @@ function fungal_shift( entity, x, y, debug_no_limits )
 	if converted_any then
 		-- audio
 		GameTriggerMusicFadeOutAndDequeueAll( 5.0 )
-		GameTriggerMusicEvent( "music/oneshot/tripping_balls", false, x, y )
+		GameTriggerMusicEvent( "music/oneshot/tripping_balls_01", false, x, y )
 
 		-- particle fx
 		local eye = EntityLoad( "data/entities/particles/treble_eye.xml", x,y-10 )
@@ -191,5 +201,4 @@ function fungal_shift( entity, x, y, debug_no_limits )
 			EntityAddChild( entity, icon_entity )
 		end
 	end
-	]]--
 end

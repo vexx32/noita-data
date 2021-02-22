@@ -26,14 +26,7 @@ function bullet_circle( which, count, speed, animal_, gold_ )
 		
 		local bid
 		
-		if ( gold == false ) then
-			bid = shoot_projectile( entity_id, target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12, vel_x, vel_y )
-		else
-			bid = EntityLoad( target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12 )
-			edit_component( bid, "VelocityComponent", function(comp,vars)
-				ComponentSetValueVector2( comp, "mVelocity", vel_x, vel_y )
-			end)
-		end
+		bid = shoot_projectile( entity_id, target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12, vel_x, vel_y )
 		
 		if ( bid ~= nil ) and animal then
 			EntityAddComponent( bid, "VariableStorageComponent", 

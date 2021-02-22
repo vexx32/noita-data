@@ -9,2076 +9,2659 @@ NEW OR CHANGED CODE => + background_edge_priority="9"
 ---
 
 Actual changes below:
-
-    diff --git a/biome/_pixel_scenes.xml b/biome/_pixel_scenes.xml
-    index 41fba28..49fc44a 100644
-    --- a/biome/_pixel_scenes.xml
-    +++ b/biome/_pixel_scenes.xml
-    @@ -123,6 +123,12 @@
-    		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png" material_filename="data/biome_impl/overworld/snowy_ruins_eye_pillar.png" pos_x="-2446" pos_y="-223" skip_biome_checks="1" skip_edge_textures="1" >
-    		</PixelScene>
-
-    +		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="data/biome_impl/rainbow_cloud.png" pos_x="-14059" pos_y="-2851" skip_biome_checks="1" skip_edge_textures="0" >
-    +		</PixelScene>
-    +
-    +		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/cliff_visual.png" material_filename="data/biome_impl/overworld/cliff.png" pos_x="-12400" pos_y="-400" skip_biome_checks="1" skip_edge_textures="0" >
-    +		</PixelScene>
-    +
-    		<!-- just load an entity -->
-
-    		<!-- music machines have copies on both directly adjacent parallel worlds -->
-    @@ -150,7 +156,6 @@
-    		<PixelScene pos_x="-1695" pos_y="-1205" just_load_an_entity="data/entities/props/physics_fungus_small.xml" />
-
-    		<PixelScene pos_x="3608" pos_y="934" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
-    -
-    		<PixelScene pos_x="-9980" pos_y="-30" just_load_an_entity="data/entities/props/physics/bridge_spawner.xml" />
-
-    		<PixelScene pos_x="-6884" pos_y="-165" just_load_an_entity="data/entities/props/physics_protective_armour.xml" />
-    @@ -160,28 +165,33 @@
-    		<PixelScene pos_x="-12441" pos_y="190" just_load_an_entity="data/entities/buildings/hut_check.xml" />
-
-    		<PixelScene pos_x="9990" pos_y="-1320" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-1576" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-1832" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-2088" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-2344" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-2600" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-2856" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-3112" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-3368" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-3624" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-3880" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    -
-    		<PixelScene pos_x="9990" pos_y="-4136" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +
-    +		<PixelScene pos_x="-12180" pos_y="-540" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-796" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-1052" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-1308" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-1564" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-1820" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-2076" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-2332" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-2588" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-2844" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-3100" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-3356" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-3612" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-3868" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-    +		<PixelScene pos_x="-12180" pos_y="-4124" just_load_an_entity="data/entities/misc/platform_wide.xml" />
-
-    	</mBufferedPixelScenes>
-    </PixelScenes>
-    diff --git a/biome/winter_caves.xml b/biome/winter_caves.xml
-    index 98e3d3a..599ca42 100644
-    --- a/biome/winter_caves.xml
-    +++ b/biome/winter_caves.xml
-    @@ -1,6 +1,6 @@
-    <Biome>
-    <Topology
-    -    name="$biome_coalmine"
-    +    name="$biome_winter_caves"
-    	type="BIOME_WANG_TILE"
-    	background_image="data/weather_gfx/background_cave_04_alt.png"
-    	background_edge_left="data/weather_gfx/edges/background_cave_04_alt_left.png"
-    diff --git a/biome_impl/coalmine/wandtrap_h_02.png b/biome_impl/coalmine/wandtrap_h_02.png
-    index e684f7f..362fb37 100644
-    Binary files a/biome_impl/coalmine/wandtrap_h_02.png and b/biome_impl/coalmine/wandtrap_h_02.png differ
-    diff --git a/biome_impl/coalmine/wandtrap_h_04.png b/biome_impl/coalmine/wandtrap_h_04.png
-    index e32f821..2a333fe 100644
-    Binary files a/biome_impl/coalmine/wandtrap_h_04.png and b/biome_impl/coalmine/wandtrap_h_04.png differ
-    diff --git a/biome_impl/coalmine/wandtrap_h_07.png b/biome_impl/coalmine/wandtrap_h_07.png
-    index d073a47..8588c89 100644
-    Binary files a/biome_impl/coalmine/wandtrap_h_07.png and b/biome_impl/coalmine/wandtrap_h_07.png differ
-    diff --git a/biome_impl/overworld/snowy_ruins_eye_pillar.png b/biome_impl/overworld/snowy_ruins_eye_pillar.png
-    index b6ef1a2..6101520 100644
-    Binary files a/biome_impl/overworld/snowy_ruins_eye_pillar.png and b/biome_impl/overworld/snowy_ruins_eye_pillar.png differ
-    diff --git a/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png b/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png
-    index f78a0ff..a5abc8d 100644
-    Binary files a/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png and b/biome_impl/overworld/snowy_ruins_eye_pillar_visual.png differ
-    diff --git a/entities/_debug/debug_menu.lua b/entities/_debug/debug_menu.lua
-    index 9322827..a296d40 100644
-    --- a/entities/_debug/debug_menu.lua
-    +++ b/entities/_debug/debug_menu.lua
-    @@ -385,6 +385,14 @@ main_menu_items =
-    			ConvertMaterialOnAreaInstantly( x-dim, y-dim, dim*2, dim*2, from, to, true, true )
-    		end,
-    	},
-    +	{
-    +		ui_name="Test GameShootProjectile bug",
-    +		action = function()
-    +			local x,y = GameGetCameraPos()
-    +			local e = EntityLoad( "data/entities/items/pickup/goldnugget_200.xml" )
-    +			GameShootProjectile( 0, x, y, 0, 0, e, false )
-    +		end
-    +	},
-    	{
-    		ui_name="Close",
-    		action = function() destroy = true end,
-    diff --git a/entities/animals/apparition/playerghost.xml b/entities/animals/apparition/playerghost.xml
-    index 4d089a7..bca3e8f 100644
-    --- a/entities/animals/apparition/playerghost.xml
-    +++ b/entities/animals/apparition/playerghost.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_playerghost">
-    +<Entity tags="glue_NOT" name="$animal_playerghost">
-    	<!-- NOTE! This is the file for the spawned ghost that has an old wand -->
-    	<!-- the other playerghost.xml is used as a polymorph target -->
-
-    diff --git a/entities/animals/bloodcrystal_physics.xml b/entities/animals/bloodcrystal_physics.xml
-    index 7b64202..d4d6fe2 100644
-    --- a/entities/animals/bloodcrystal_physics.xml
-    +++ b/entities/animals/bloodcrystal_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_bloodcrystal_physics" >
-    +<Entity tags="glue_NOT" name="$animal_bloodcrystal_physics" >
-
-    <PhysicsAIComponent
-    		target_vec_max_len="20.0"
-    diff --git a/entities/animals/boss_alchemist/boss_alchemist.xml b/entities/animals/boss_alchemist/boss_alchemist.xml
-    index db1cb66..1ac6f02 100644
-    --- a/entities/animals/boss_alchemist/boss_alchemist.xml
-    +++ b/entities/animals/boss_alchemist/boss_alchemist.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT">
-    +<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT,glue_NOT">
-
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/boss_book/book_physics.xml b/entities/animals/boss_book/book_physics.xml
-    index 557cceb..473d997 100644
-    --- a/entities/animals/boss_book/book_physics.xml
-    +++ b/entities/animals/boss_book/book_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity  >
-    +<Entity tags="glue_NOT" >
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/boss_centipede/boss_centipede.xml b/entities/animals/boss_centipede/boss_centipede.xml
-    index 8e2cc37..bc8325d 100644
-    --- a/entities/animals/boss_centipede/boss_centipede.xml
-    +++ b/entities/animals/boss_centipede/boss_centipede.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,sampo_or_boss,boss_centipede,polymorphable_NOT,boss,necrobot_NOT" name="$animal_boss_centipede">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,sampo_or_boss,boss_centipede,polymorphable_NOT,boss,necrobot_NOT,glue_NOT" name="$animal_boss_centipede">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<!-- keeps the streaming alive -->
-    diff --git a/entities/animals/boss_centipede/boss_centipede_minion.xml b/entities/animals/boss_centipede/boss_centipede_minion.xml
-    index 209674a..3bc1061 100644
-    --- a/entities/animals/boss_centipede/boss_centipede_minion.xml
-    +++ b/entities/animals/boss_centipede/boss_centipede_minion.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="boss_centipede_minion" name="$animal_boss_centipede_minion" >
-    +<Entity tags="boss_centipede_minion,glue_NOT" name="$animal_boss_centipede_minion" >
-
-    	<VariableStorageComponent
-    		_tags="no_gold_drop">
-    diff --git a/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua b/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua
-    index a043697..744cd11 100644
-    --- a/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua
-    +++ b/entities/animals/boss_centipede/ending/sampo_start_ending_sequence.lua
-    @@ -46,7 +46,7 @@ if essence_1 and essence_2 and essence_3 and essence_4 then
-    end
-
-    local newgame_orbs_required = 5 + newgame_n
-    -if( orb_count ~= 33
-    +if( orb_count < 33
-    	and
-    	( ( orb_count > ORB_COUNT_IN_WORLD and newgame_orbs_required >= ORB_COUNT_IN_WORLD and orb_count >= newgame_orbs_required ) or
-    	( orb_count >= newgame_orbs_required and orb_count < ORB_COUNT_IN_WORLD ) ) ) then
-    @@ -93,7 +93,7 @@ if( doing_newgame_plus == false ) then
-
-    	print(tostring(endpoint_underground))
-
-    -	if( orb_count == 33 ) then
-    +	if( orb_count >= 33 ) then
-    		-- ORBS >= 33 ENDINGs
-    		-- on top -> new game+
-    		AddFlagPersistent( "secret_amulet" )
-    diff --git a/entities/animals/boss_centipede/sampo_init.lua b/entities/animals/boss_centipede/sampo_init.lua
-    index 063410e..358661f 100644
-    --- a/entities/animals/boss_centipede/sampo_init.lua
-    +++ b/entities/animals/boss_centipede/sampo_init.lua
-    @@ -10,7 +10,10 @@ if( orb_count > MAX_ORB_NAMES ) then orb_count = MAX_ORB_NAMES end
-    local orb_name = "$item_mcguffin_" .. tostring(orb_count)
-    local orb_desc = "$itemdesc_mcguffin_" .. tostring(orb_count)
-
-    -
-    +if( GameGetOrbCountThisRun() > 33 ) then
-    +	orb_name = "$item_mcguffin_33"
-    +	orb_desc = "$itemdesc_mcguffin_33"
-    +end
-
-    local item_component = EntityGetFirstComponent( entity_id, "ItemComponent" )
-    if( item_component ~= nil ) then
-    diff --git a/entities/animals/boss_dragon.xml b/entities/animals/boss_dragon.xml
-    index e4be249..96a7db8 100644
-    --- a/entities/animals/boss_dragon.xml
-    +++ b/entities/animals/boss_dragon.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -	tags="enemy,mortal,hittable,teleportable_NOT,boss_dragon,homing_target" name="$animal_boss_dragon">
-    +	tags="enemy,mortal,hittable,teleportable_NOT,boss_dragon,homing_target,glue_NOT" name="$animal_boss_dragon">
-
-    	<_Transform
-    		position.x="0"
-    diff --git a/entities/animals/boss_gate/gate_monster_a.xml b/entities/animals/boss_gate/gate_monster_a.xml
-    index 86046f3..a05984d 100644
-    --- a/entities/animals/boss_gate/gate_monster_a.xml
-    +++ b/entities/animals/boss_gate/gate_monster_a.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_gate_monster_a" tags="gate_monster,necrobot_NOT" >
-    +<Entity name="$animal_gate_monster_a" tags="gate_monster,necrobot_NOT,glue_NOT" >
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/boss_ghost/boss_ghost.xml b/entities/animals/boss_ghost/boss_ghost.xml
-    index 6309f60..2faabdd 100644
-    --- a/entities/animals/boss_ghost/boss_ghost.xml
-    +++ b/entities/animals/boss_ghost/boss_ghost.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT" name="$animal_boss_ghost">
-    +<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT" name="$animal_boss_ghost">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<!-- art - main body ---------------------- -->
-    @@ -102,6 +102,8 @@
-    		blood_spray_material="plasma_fading"
-    		blood_sprite_directional=""
-    		blood_sprite_large=""
-    +		air_needed="0"
-    +		falling_damages="0"
-    		>
-    		<damage_multipliers
-    			projectile="0.0"
-    @@ -142,7 +144,7 @@
-    	</PathFindingGridMarkerComponent>
-
-    	<GenomeDataComponent
-    -		herd_id="ghost"
-    +		herd_id="ghost_boss"
-    		food_chain_rank="10"
-    		is_predator="1" >
-    	</GenomeDataComponent>
-    @@ -162,7 +164,7 @@
-    		target_vec_max_len="15.0"
-    		force_coeff="14.0"
-    		force_balancing_coeff="0.8"
-    -		force_max="160"
-    +		force_max="120"
-    		torque_coeff="50"
-    		torque_balancing_coeff="0.8"
-    		torque_max="50.0"
-    diff --git a/entities/animals/boss_limbs/boss_limbs.xml b/entities/animals/boss_limbs/boss_limbs.xml
-    index 818bd3b..fc43dc8 100644
-    --- a/entities/animals/boss_limbs/boss_limbs.xml
-    +++ b/entities/animals/boss_limbs/boss_limbs.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100,necrobot_NOT" name="$animal_boss_limbs">
-    +<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,polymorphable_NOT,miniboss,music_energy_100,necrobot_NOT,glue_NOT" name="$animal_boss_limbs">
-
-    	<!-- art - main body ---------------------- -->
-
-    diff --git a/entities/animals/boss_limbs/boss_limbs_physics.xml b/entities/animals/boss_limbs/boss_limbs_physics.xml
-    index cc23e5f..5e229e5 100644
-    --- a/entities/animals/boss_limbs/boss_limbs_physics.xml
-    +++ b/entities/animals/boss_limbs/boss_limbs_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_boss_limbs">
-    +<Entity tags="glue_NOT" name="$animal_boss_limbs">
-
-    	<LightComponent
-    		_enabled="1"
-    diff --git a/entities/animals/boss_pit/boss_pit.xml b/entities/animals/boss_pit/boss_pit.xml
-    index e93d005..8c053ed 100644
-    --- a/entities/animals/boss_pit/boss_pit.xml
-    +++ b/entities/animals/boss_pit/boss_pit.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT" name="$animal_boss_pit">
-    +<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT" name="$animal_boss_pit">
-
-    	<!-- art - main body ---------------------- -->
-
-    diff --git a/entities/animals/boss_wizard/boss_wizard.xml b/entities/animals/boss_wizard/boss_wizard.xml
-    index 2cd884c..af39edb 100644
-    --- a/entities/animals/boss_wizard/boss_wizard.xml
-    +++ b/entities/animals/boss_wizard/boss_wizard.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_boss_wizard" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,boss_wizard,necrobot_NOT">
-    +<Entity name="$animal_boss_wizard" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,boss_wizard,necrobot_NOT,glue_NOT">
-
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/chest_leggy.xml b/entities/animals/chest_leggy.xml
-    index 41007d2..08dc9a8 100644
-    --- a/entities/animals/chest_leggy.xml
-    +++ b/entities/animals/chest_leggy.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT" name="$animal_lukki" >
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,glue_NOT" name="$animal_lukki" >
-
-    <AnimalAIComponent
-    	_enabled="1"
-    diff --git a/entities/animals/chest_mimic.xml b/entities/animals/chest_mimic.xml
-    index 5b40b24..88affa1 100644
-    --- a/entities/animals/chest_mimic.xml
-    +++ b/entities/animals/chest_mimic.xml
-    @@ -82,7 +82,23 @@
-    			mass="2.2"
-    			>
-    		</CharacterDataComponent>
-    +
-    	</Base>
-
-    +	<VariableStorageComponent
-    +		_enabled="1"
-    +		name="mimic_poop_count"
-    +		value_bool="0"
-    +		value_int="0"
-    +		value_string="" >
-    +	</VariableStorageComponent>
-    +
-    +	<LuaComponent
-    +		_enabled="1"
-    +		script_source_file="data/scripts/animals/mimic_charm.lua"
-    +		execute_every_n_frame="183"
-    +		>
-    +	</LuaComponent>
-    +
-    </Entity>
-
-    diff --git a/entities/animals/crystal_physics.xml b/entities/animals/crystal_physics.xml
-    index 7752396..ef8d81a 100644
-    --- a/entities/animals/crystal_physics.xml
-    +++ b/entities/animals/crystal_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_crystal_physics" >
-    +<Entity tags="glue_NOT" name="$animal_crystal_physics" >
-
-    <PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/darkghost.xml b/entities/animals/darkghost.xml
-    index 05a6baf..4c0e80e 100644
-    --- a/entities/animals/darkghost.xml
-    +++ b/entities/animals/darkghost.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="$animal_darkghost"
-    -  tags="mortal,hittable,enemy"
-    +  tags="mortal,hittable,enemy,glue_NOT"
-    serialize="0" >
-
-    <_Transform
-    diff --git a/entities/animals/drone_physics.xml b/entities/animals/drone_physics.xml
-    index 4ec79f4..bb4fa65 100644
-    --- a/entities/animals/drone_physics.xml
-    +++ b/entities/animals/drone_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_drone_physics">
-    +<Entity tags="glue_NOT" name="$animal_drone_physics">
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/eel.xml b/entities/animals/eel.xml
-    index 3da4eaf..8064742 100644
-    --- a/entities/animals/eel.xml
-    +++ b/entities/animals/eel.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    	name="$animal_eel"
-    -	tags="mortal,hittable,homing_target,destruction_target,enemy" >
-    +	tags="mortal,hittable,homing_target,destruction_target,enemy,glue_NOT" >
-    	<_Transform
-    		position.x="0"
-    		position.y="0"
-    diff --git a/entities/animals/ethereal_being.xml b/entities/animals/ethereal_being.xml
-    index 046efc3..636a024 100644
-    --- a/entities/animals/ethereal_being.xml
-    +++ b/entities/animals/ethereal_being.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,hittable,mortal,boss_ghost_helper" name="$animal_ethereal_being">
-    +<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,hittable,mortal,boss_ghost_helper,glue_NOT" name="$animal_ethereal_being">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<!-- art - main body ---------------------- -->
-    diff --git a/entities/animals/ghost.xml b/entities/animals/ghost.xml
-    index 689e558..e4fd7fa 100644
-    --- a/entities/animals/ghost.xml
-    +++ b/entities/animals/ghost.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="$animal_ghost"
-    -  tags="mortal,hittable,music_energy_000_near,enemy"
-    +  tags="mortal,hittable,music_energy_000_near,enemy,glue_NOT"
-    serialize="0" >
-
-    <_Transform
-    diff --git a/entities/animals/healerdrone_physics.xml b/entities/animals/healerdrone_physics.xml
-    index 86da745..2626f8d 100644
-    --- a/entities/animals/healerdrone_physics.xml
-    +++ b/entities/animals/healerdrone_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_healerdrone_physics" >
-    +<Entity tags="glue_NOT" name="$animal_healerdrone_physics" >
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/illusions/acidshooter.xml b/entities/animals/illusions/acidshooter.xml
-    index f77ad3a..e525b6d 100644
-    --- a/entities/animals/illusions/acidshooter.xml
-    +++ b/entities/animals/illusions/acidshooter.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_acidshooter">
-    +<Entity tags="glue_NOT" name="$animal_acidshooter">
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="1" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/enlightened_alchemist.xml b/entities/animals/illusions/enlightened_alchemist.xml
-    index da0f126..77cf75b 100644
-    --- a/entities/animals/illusions/enlightened_alchemist.xml
-    +++ b/entities/animals/illusions/enlightened_alchemist.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_enlightened_alchemist" >
-    +<Entity tags="glue_NOT" name="$animal_enlightened_alchemist" >
-
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/scavenger_grenade.xml b/entities/animals/illusions/scavenger_grenade.xml
-    index bebb782..bbf1b84 100644
-    --- a/entities/animals/illusions/scavenger_grenade.xml
-    +++ b/entities/animals/illusions/scavenger_grenade.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_scavenger_grenade" >
-    +<Entity tags="glue_NOT" name="$animal_scavenger_grenade" >
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/scavenger_mine.xml b/entities/animals/illusions/scavenger_mine.xml
-    index 079f636..f9f8c02 100644
-    --- a/entities/animals/illusions/scavenger_mine.xml
-    +++ b/entities/animals/illusions/scavenger_mine.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_scavenger_mine" >
-    +<Entity tags="glue_NOT" name="$animal_scavenger_mine" >
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="3" enemy_drop="1" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/shaman.xml b/entities/animals/illusions/shaman.xml
-    index 6835cdd..1b0ed4f 100644
-    --- a/entities/animals/illusions/shaman.xml
-    +++ b/entities/animals/illusions/shaman.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="shaman" name="$animal_shaman">
-    +<Entity tags="shaman,glue_NOT" name="$animal_shaman">
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="1" > </ItemChestComponent>
-
-    diff --git a/entities/animals/illusions/tank.xml b/entities/animals/illusions/tank.xml
-    index ab34ec3..795705d 100644
-    --- a/entities/animals/illusions/tank.xml
-    +++ b/entities/animals/illusions/tank.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_tank" >
-    +<Entity tags="glue_NOT" name="$animal_tank" >
-
-    	<Base file="data/entities/base_enemy_robot.xml" >
-    		<ItemChestComponent level="2" >
-    diff --git a/entities/animals/illusions/tentacler.xml b/entities/animals/illusions/tentacler.xml
-    index 2ec67d2..ffb1463 100644
-    --- a/entities/animals/illusions/tentacler.xml
-    +++ b/entities/animals/illusions/tentacler.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_tentacler" >
-    +<Entity tags="glue_NOT" name="$animal_tentacler" >
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/thundermage.xml b/entities/animals/illusions/thundermage.xml
-    index 11a7e3f..0ffa088 100644
-    --- a/entities/animals/illusions/thundermage.xml
-    +++ b/entities/animals/illusions/thundermage.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_thundermage" tags="thundermage" >
-    +<Entity tags="glue_NOT" name="$animal_thundermage" tags="thundermage" >
-
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/wizard_swapper.xml b/entities/animals/illusions/wizard_swapper.xml
-    index f85508d..9306375 100644
-    --- a/entities/animals/illusions/wizard_swapper.xml
-    +++ b/entities/animals/illusions/wizard_swapper.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_wizard_swapper" >
-    +<Entity tags="glue_NOT" name="$animal_wizard_swapper" >
-
-    	<Base file="data/entities/base_enemy_basic.xml" >
-    		<ItemChestComponent level="2" > </ItemChestComponent>
-    diff --git a/entities/animals/illusions/worm_big.xml b/entities/animals/illusions/worm_big.xml
-    index e031c45..032fd74 100644
-    --- a/entities/animals/illusions/worm_big.xml
-    +++ b/entities/animals/illusions/worm_big.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    	name="$animal_worm_big"
-    	>
-    	<_Transform
-    diff --git a/entities/animals/lukki/lukki.xml b/entities/animals/lukki/lukki.xml
-    index 3d41677..75f0b34 100644
-    --- a/entities/animals/lukki/lukki.xml
-    +++ b/entities/animals/lukki/lukki.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki" >
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki" >
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<LuaComponent
-    diff --git a/entities/animals/lukki/lukki_creepy.xml b/entities/animals/lukki/lukki_creepy.xml
-    index 5dc5bd0..26b15e2 100644
-    --- a/entities/animals/lukki/lukki_creepy.xml
-    +++ b/entities/animals/lukki/lukki_creepy.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_creepy">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_creepy">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<LuaComponent
-    diff --git a/entities/animals/lukki/lukki_creepy_long.xml b/entities/animals/lukki/lukki_creepy_long.xml
-    index 66d0a5e..fab8c52 100644
-    --- a/entities/animals/lukki/lukki_creepy_long.xml
-    +++ b/entities/animals/lukki/lukki_creepy_long.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_creepy_long">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_creepy_long">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<LuaComponent
-    diff --git a/entities/animals/lukki/lukki_dark.xml b/entities/animals/lukki/lukki_dark.xml
-    index 585277d..c8055b9 100644
-    --- a/entities/animals/lukki/lukki_dark.xml
-    +++ b/entities/animals/lukki/lukki_dark.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_dark">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_dark">
-
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    diff --git a/entities/animals/lukki/lukki_longleg.xml b/entities/animals/lukki/lukki_longleg.xml
-    index 5c952e5..85c54dd 100644
-    --- a/entities/animals/lukki/lukki_longleg.xml
-    +++ b/entities/animals/lukki/lukki_longleg.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_longleg">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_longleg">
-
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    diff --git a/entities/animals/lukki/lukki_tiny.xml b/entities/animals/lukki/lukki_tiny.xml
-    index 86ede25..6e537f6 100644
-    --- a/entities/animals/lukki/lukki_tiny.xml
-    +++ b/entities/animals/lukki/lukki_tiny.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki" name="$animal_lukki_tiny">
-    +<Entity tags="enemy,mortal,hittable,homing_target,teleportable_NOT,music_energy_100,lukki,glue_NOT" name="$animal_lukki_tiny">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<LuaComponent
-    diff --git a/entities/animals/mimic_physics.xml b/entities/animals/mimic_physics.xml
-    index 8da511d..43c45db 100644
-    --- a/entities/animals/mimic_physics.xml
-    +++ b/entities/animals/mimic_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_mimic_physics" >
-    +<Entity tags="glue_NOT" name="$animal_mimic_physics" >
-
-    <PhysicsAIComponent
-    		_enabled="0"
-    diff --git a/entities/animals/parallel/tentacles/parallel_tentacles.xml b/entities/animals/parallel/tentacles/parallel_tentacles.xml
-    index d595dba..b9627fb 100644
-    --- a/entities/animals/parallel/tentacles/parallel_tentacles.xml
-    +++ b/entities/animals/parallel/tentacles/parallel_tentacles.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,touchmagic_immunity,polymorphable_NOT" name="$animal_parallel_tentacles">
-    +<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,touchmagic_immunity,polymorphable_NOT,glue_NOT" name="$animal_parallel_tentacles">
-
-    	<!-- art - main body ---------------------- -->
-
-    diff --git a/entities/animals/pebble_physics.xml b/entities/animals/pebble_physics.xml
-    index 4e4ba78..173dfd2 100644
-    --- a/entities/animals/pebble_physics.xml
-    +++ b/entities/animals/pebble_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_pebble">
-    +<Entity tags="glue_NOT" name="$animal_pebble">
-    	<PhysicsAIComponent
-    		target_vec_max_len="25.0"
-    		force_coeff="28.0"
-    diff --git a/entities/animals/phantom_a.xml b/entities/animals/phantom_a.xml
-    index 6e76ce7..5789428 100644
-    --- a/entities/animals/phantom_a.xml
-    +++ b/entities/animals/phantom_a.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_phantom_a" >
-    +<Entity tags="glue_NOT" name="$animal_phantom_a" >
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="5" enemy_drop="1" > </ItemChestComponent>
-    diff --git a/entities/animals/phantom_b.xml b/entities/animals/phantom_b.xml
-    index d13c004..e5fd6cf 100644
-    --- a/entities/animals/phantom_b.xml
-    +++ b/entities/animals/phantom_b.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_phantom_b" >
-    +<Entity tags="glue_NOT" name="$animal_phantom_b" >
-
-    	<Base file="data/entities/base_enemy_flying.xml" >
-    		<ItemChestComponent level="5" enemy_drop="1" > </ItemChestComponent>
-    diff --git a/entities/animals/playerghost.xml b/entities/animals/playerghost.xml
-    index c8aff23..417b83d 100644
-    --- a/entities/animals/playerghost.xml
-    +++ b/entities/animals/playerghost.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_playerghost">
-    +<Entity tags="glue_NOT" name="$animal_playerghost">
-    	<!-- NOTE! This file is used for polymorph purpouses only -->
-    	<!-- the spawned player ghost (that has an old wand) is now at entities/animals/apparition/playerghost.xml -->
-
-    diff --git a/entities/animals/skycrystal_physics.xml b/entities/animals/skycrystal_physics.xml
-    index e083d00..d16d47d 100644
-    --- a/entities/animals/skycrystal_physics.xml
-    +++ b/entities/animals/skycrystal_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_skycrystal_physics" >
-    +<Entity tags="glue_NOT" name="$animal_skycrystal_physics" >
-
-    <PhysicsAIComponent
-    		target_vec_max_len="18.0"
-    diff --git a/entities/animals/special/minipit.xml b/entities/animals/special/minipit.xml
-    index fc25a89..0f7bbb6 100644
-    --- a/entities/animals/special/minipit.xml
-    +++ b/entities/animals/special/minipit.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_minipit" >
-    +<Entity tags="glue_NOT" name="$animal_minipit" >
-
-    <PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/statue_physics.xml b/entities/animals/statue_physics.xml
-    index b355482..5f19d52 100644
-    --- a/entities/animals/statue_physics.xml
-    +++ b/entities/animals/statue_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_statue_physics" >
-    +<Entity tags="glue_NOT" name="$animal_statue_physics" >
-
-    <PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/animals/worm.xml b/entities/animals/worm.xml
-    index 8bc1210..87977d0 100644
-    --- a/entities/animals/worm.xml
-    +++ b/entities/animals/worm.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    	name="$animal_worm"
-    	>
-    	<_Transform
-    diff --git a/entities/animals/worm_big.xml b/entities/animals/worm_big.xml
-    index 6096952..0888820 100644
-    --- a/entities/animals/worm_big.xml
-    +++ b/entities/animals/worm_big.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    	name="$animal_worm_big"
-    	>
-    	<_Transform
-    diff --git a/entities/animals/worm_end.xml b/entities/animals/worm_end.xml
-    index 5cce086..89a0366 100644
-    --- a/entities/animals/worm_end.xml
-    +++ b/entities/animals/worm_end.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    name="$animal_worm_end"
-    >
-    <_Transform
-    diff --git a/entities/animals/worm_skull.xml b/entities/animals/worm_skull.xml
-    index ca9d79d..2bb43ad 100644
-    --- a/entities/animals/worm_skull.xml
-    +++ b/entities/animals/worm_skull.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,music_energy_000"
-    +  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,music_energy_000,glue_NOT"
-    name="$animal_worm_skull"
-    >
-    <_Transform
-    diff --git a/entities/animals/worm_tiny.xml b/entities/animals/worm_tiny.xml
-    index abe40f0..f383e17 100644
-    --- a/entities/animals/worm_tiny.xml
-    +++ b/entities/animals/worm_tiny.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +  tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    name="$animal_worm_tiny"
-    >
-    <_Transform
-    diff --git a/entities/base_apparition.xml b/entities/base_apparition.xml
-    index 83165b0..3019c48 100644
-    --- a/entities/base_apparition.xml
-    +++ b/entities/base_apparition.xml
-    @@ -41,7 +41,7 @@
-    				projectile="0.5"
-    				explosion="1.0"
-    				electricity="1.0"
-    -				freeze="1.0"
-    +				ice="1.0"
-    				fire="0.1" >
-    			</damage_multipliers>
-    		</DamageModelComponent>
-    diff --git a/entities/base_shop_item.xml b/entities/base_shop_item.xml
-    index 164c6b2..6479482 100644
-    --- a/entities/base_shop_item.xml
-    +++ b/entities/base_shop_item.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="hittable,item,item_shop">
-    +<Entity tags="hittable,item,item_shop,glue_NOT">
-
-    	<!-- these two are used to make these shop items -->
-    	<ItemCostComponent cost="100" />
-    diff --git a/entities/base_wand_ghost.xml b/entities/base_wand_ghost.xml
-    index 8e77dc7..8031a44 100644
-    --- a/entities/base_wand_ghost.xml
-    +++ b/entities/base_wand_ghost.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable,homing_target,teleportable_NOT,enemy" >
-    +<Entity tags="mortal,hittable,homing_target,teleportable_NOT,enemy,glue_NOT" >
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/buildings/arrowtrap_left.xml b/entities/buildings/arrowtrap_left.xml
-    index a67f640..9e74332 100644
-    --- a/entities/buildings/arrowtrap_left.xml
-    +++ b/entities/buildings/arrowtrap_left.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable" >
-    +<Entity tags="mortal,hittable,glue_NOT" >
-
-    	<AnimalAIComponent
-    		_enabled="1"
-    diff --git a/entities/buildings/biome_modifiers/drain_pipe.xml b/entities/buildings/biome_modifiers/drain_pipe.xml
-    index f3269e7..9415bc5 100644
-    --- a/entities/buildings/biome_modifiers/drain_pipe.xml
-    +++ b/entities/buildings/biome_modifiers/drain_pipe.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable,teleportable_NOT,destruction_target">
-    +<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,glue_NOT">
-    	<Base file="data/entities/base_item_physics2.xml" >
-    		<PhysicsBody2Component
-    			is_static="1"
-    diff --git a/entities/buildings/firebugnest.xml b/entities/buildings/firebugnest.xml
-    index bbbc54b..36d6f90 100644
-    --- a/entities/buildings/firebugnest.xml
-    +++ b/entities/buildings/firebugnest.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="unknown"
-    -  tags="mortal,nest,predator,hittable" >
-    +  tags="mortal,nest,predator,hittable,glue_NOT" >
-
-    <DamageModelComponent
-    	_enabled="1"
-    diff --git a/entities/buildings/firetrap_left.xml b/entities/buildings/firetrap_left.xml
-    index 98e6079..0c03236 100644
-    --- a/entities/buildings/firetrap_left.xml
-    +++ b/entities/buildings/firetrap_left.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable" >
-    +<Entity tags="mortal,hittable,glue_NOT" >
-
-    	<AnimalAIComponent
-    		_enabled="1"
-    diff --git a/entities/buildings/flynest.xml b/entities/buildings/flynest.xml
-    index c3b000e..7abb17a 100644
-    --- a/entities/buildings/flynest.xml
-    +++ b/entities/buildings/flynest.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="unknown"
-    -  tags="mortal,nest,predator,hittable" >
-    +  tags="mortal,nest,predator,hittable,glue_NOT" >
-
-    <DamageModelComponent
-    	_enabled="1"
-    diff --git a/entities/buildings/lasergun.xml b/entities/buildings/lasergun.xml
-    index bb07ad7..e86f0d5 100644
-    --- a/entities/buildings/lasergun.xml
-    +++ b/entities/buildings/lasergun.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable,homing_target" >
-    +<Entity tags="mortal,hittable,homing_target,glue_NOT" >
-    	<DamageModelComponent
-    		hp="6.5"
-    		ragdoll_material="steel"
-    diff --git a/entities/buildings/lukki_eggs.xml b/entities/buildings/lukki_eggs.xml
-    index 7e61362..f0deb58 100644
-    --- a/entities/buildings/lukki_eggs.xml
-    +++ b/entities/buildings/lukki_eggs.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable" >
-    +<Entity tags="mortal,hittable,glue_NOT" >
-
-    <!-- mortal is required so it can explode -->
-
-    diff --git a/entities/buildings/snowcrystal.xml b/entities/buildings/snowcrystal.xml
-    index d9135f2..a561c0a 100644
-    --- a/entities/buildings/snowcrystal.xml
-    +++ b/entities/buildings/snowcrystal.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="$animal_snowcrystal"
-    -  tags="hittable,mortal" >
-    +  tags="hittable,mortal,glue_NOT" >
-
-    <DamageModelComponent
-    	_enabled="1"
-    diff --git a/entities/buildings/spidernest.xml b/entities/buildings/spidernest.xml
-    index 6ddb831..e734abc 100644
-    --- a/entities/buildings/spidernest.xml
-    +++ b/entities/buildings/spidernest.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    name="unknown"
-    -  tags="mortal,nest,predator,hittable" >
-    +  tags="mortal,nest,predator,hittable,glue_NOT" >
-
-    <DamageModelComponent
-    	_enabled="1"
-    diff --git a/entities/buildings/spittrap_left.xml b/entities/buildings/spittrap_left.xml
-    index 07b95d9..ed65c5d 100644
-    --- a/entities/buildings/spittrap_left.xml
-    +++ b/entities/buildings/spittrap_left.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable" >
-    +<Entity tags="mortal,hittable,glue_NOT" >
-
-    	<AnimalAIComponent
-    		_enabled="1"
-    diff --git a/entities/buildings/statue_trap_left.xml b/entities/buildings/statue_trap_left.xml
-    index 204731a..ed87c3f 100644
-    --- a/entities/buildings/statue_trap_left.xml
-    +++ b/entities/buildings/statue_trap_left.xml
-    @@ -1,6 +1,6 @@
-    <Entity
-    	name="unknown"
-    -	tags="hittable,mortal" >
-    +	tags="hittable,mortal,glue_NOT" >
-
-    	<Base file="data/entities/buildings/statue_trap_right.xml">
-    		<SpriteComponent
-    diff --git a/entities/buildings/teleport_ending.xml b/entities/buildings/teleport_ending.xml
-    index f319256..8841add 100644
-    --- a/entities/buildings/teleport_ending.xml
-    +++ b/entities/buildings/teleport_ending.xml
-    @@ -175,7 +175,9 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_end_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-
-    	<AudioLoopComponent
-    @@ -183,6 +185,8 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_end_emitter_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-    </Entity>
-    \ No newline at end of file
-    diff --git a/entities/buildings/teleport_liquid_powered.xml b/entities/buildings/teleport_liquid_powered.xml
-    index f7853a0..907621a 100644
-    --- a/entities/buildings/teleport_liquid_powered.xml
-    +++ b/entities/buildings/teleport_liquid_powered.xml
-    @@ -119,7 +119,9 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-
-    	<AudioLoopComponent
-    @@ -127,7 +129,9 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_emitter_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-
-    	<!-- teleporter powered by teleportium beneath -->
-    diff --git a/entities/buildings/teleport_snowcave_buried_eye.xml b/entities/buildings/teleport_snowcave_buried_eye.xml
-    index 35fd9d3..08bfe5a 100644
-    --- a/entities/buildings/teleport_snowcave_buried_eye.xml
-    +++ b/entities/buildings/teleport_snowcave_buried_eye.xml
-    @@ -120,7 +120,9 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-
-    	<AudioLoopComponent
-    @@ -128,7 +130,9 @@
-    		file="data/audio/Desktop/misc.bank"
-    		event_name="misc/teleport_emitter_loop"
-    		calculate_material_lowpass="0"
-    -		auto_play="1" >
-    +		auto_play="0"
-    +		auto_play_if_enabled="1"
-    +		play_on_component_enable="1" >
-    	</AudioLoopComponent>
-
-    	<!-- teleporter powered by teleportium beneath -->
-    diff --git a/entities/buildings/thundertrap_left.xml b/entities/buildings/thundertrap_left.xml
-    index 10f3833..0c5ba81 100644
-    --- a/entities/buildings/thundertrap_left.xml
-    +++ b/entities/buildings/thundertrap_left.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable" >
-    +<Entity tags="mortal,hittable,glue_NOT" >
-
-    	<AnimalAIComponent
-    		_enabled="1"
-    diff --git a/entities/items/orbs/orb_particles_base.xml b/entities/items/orbs/orb_particles_base.xml
-    index 4ea48d2..3b3341d 100644
-    --- a/entities/items/orbs/orb_particles_base.xml
-    +++ b/entities/items/orbs/orb_particles_base.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="hittable,teleportable_NOT">
-    +<Entity tags="hittable,teleportable_NOT,glue_NOT">
-    	<ParticleEmitterComponent
-    		emitted_material_name="spark_blue"
-    		gravity.y="0.0"
-    diff --git a/entities/items/pickup/powder_stash.xml b/entities/items/pickup/powder_stash.xml
-    index 4f309d0..57f2c53 100644
-    --- a/entities/items/pickup/powder_stash.xml
-    +++ b/entities/items/pickup/powder_stash.xml
-    @@ -208,7 +208,7 @@
-    <AudioLoopComponent
-    	_tags="sound_spray,enabled_in_world,enabled_in_hand"
-    	file="data/audio/Desktop/materials.bank"
-    -    event_name="materials/spray_potion"
-    +    event_name="materials/spray_powder"
-    	volume_autofade_speed="0.1" >
-    </AudioLoopComponent>
-
-    diff --git a/entities/items/pickup/sunseed.xml b/entities/items/pickup/sunseed.xml
-    index 2046554..c182afb 100644
-    --- a/entities/items/pickup/sunseed.xml
-    +++ b/entities/items/pickup/sunseed.xml
-    @@ -92,7 +92,7 @@
-    		from_material_tag="[sand_ground]"
-    		steps_per_frame="2"
-    		to_material="gunpowder_unstable"
-    -		clean_stains="1"
-    +		clean_stains="0"
-    		is_circle="1"
-    		radius="64"
-    		loop="1"
-    diff --git a/entities/misc/greed_curse/greed_ghost.xml b/entities/misc/greed_curse/greed_ghost.xml
-    index 82463c5..59f4547 100644
-    --- a/entities/misc/greed_curse/greed_ghost.xml
-    +++ b/entities/misc/greed_curse/greed_ghost.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,greed_curse_ghost" name="$animal_greed_ghost">
-    +<Entity tags="enemy,teleportable_NOT,polymorphable_NOT,greed_curse_ghost,glue_NOT" name="$animal_greed_ghost">
-    	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
-
-    	<!-- keeps the streaming alive -->
-    diff --git a/entities/misc/physics_poltergeist_ai.xml b/entities/misc/physics_poltergeist_ai.xml
-    index 8bef1fe..d9f2353 100644
-    --- a/entities/misc/physics_poltergeist_ai.xml
-    +++ b/entities/misc/physics_poltergeist_ai.xml
-    @@ -1,4 +1,4 @@
-    -<Entity>
-    +<Entity tags="glue_NOT">
-
-    <PhysicsAIComponent
-    	target_vec_max_len="20.0"
-    diff --git a/entities/misc/physics_ragdoll_ai.xml b/entities/misc/physics_ragdoll_ai.xml
-    index 3c27d17..84e7ea9 100644
-    --- a/entities/misc/physics_ragdoll_ai.xml
-    +++ b/entities/misc/physics_ragdoll_ai.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="prey">
-    +<Entity tags="prey,glue_NOT">
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="14.0"
-    diff --git a/entities/misc/worm_big_worm_rain.xml b/entities/misc/worm_big_worm_rain.xml
-    index 3b301c1..4468b39 100644
-    --- a/entities/misc/worm_big_worm_rain.xml
-    +++ b/entities/misc/worm_big_worm_rain.xml
-    @@ -1,5 +1,5 @@
-    <Entity
-    -	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm"
-    +	tags="mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT"
-    	name="$animal_worm_big"
-    	>
-    	<_Transform
-    diff --git a/entities/projectiles/deck/pebble_player_physics.xml b/entities/projectiles/deck/pebble_player_physics.xml
-    index f1c986b..cc9d6a1 100644
-    --- a/entities/projectiles/deck/pebble_player_physics.xml
-    +++ b/entities/projectiles/deck/pebble_player_physics.xml
-    @@ -1,4 +1,4 @@
-    -<Entity name="$animal_pebble_player" >
-    +<Entity tags="glue_NOT" name="$animal_pebble_player" >
-    	<PhysicsAIComponent
-    		target_vec_max_len="25.0"
-    		force_coeff="28.0"
-    diff --git a/entities/projectiles/glue.xml b/entities/projectiles/glue.xml
-    index bfd1e06..20bb7e5 100644
-    --- a/entities/projectiles/glue.xml
-    +++ b/entities/projectiles/glue.xml
-    @@ -1,4 +1,4 @@
-    -<Entity>
-    +<Entity tags="glue">
-    	<VelocityComponent
-    		gravity_y="0"
-    		terminal_velocity="10"
-    @@ -35,7 +35,7 @@
-    	</LuaComponent>
-
-    	<LifetimeComponent
-    -		lifetime="600"
-    +		lifetime="500"
-    		>
-    	</LifetimeComponent>
-    	<!--
-    diff --git a/entities/projectiles/orb_expanding.xml b/entities/projectiles/orb_expanding.xml
-    index ab2068a..e57f737 100644
-    --- a/entities/projectiles/orb_expanding.xml
-    +++ b/entities/projectiles/orb_expanding.xml
-    @@ -66,12 +66,27 @@
-    		</config_explosion>
-    	</ProjectileComponent>
-
-    +	<!-- main sprite -->
-    	<SpriteComponent
-    		image_file="data/projectiles_gfx/orb_expanding.xml"
-    -		additive="1"
-    -		emissive="1" >
-    +		additive="0"
-    +		emissive="0" >
-    	</SpriteComponent>
-
-    +	<!-- glow sprite -->
-    +	<Entity>
-    +		<InheritTransformComponent
-    +			only_position="1" >
-    +		</InheritTransformComponent>
-    +		<SpriteComponent
-    +			image_file="data/projectiles_gfx/orb_expanding_glow.xml"
-    +			additive="1"
-    +			emissive="1"
-    +			update_transform_rotation="0" >
-    +		</SpriteComponent>
-    +	</Entity>
-    +
-    +	<!-- launch flash -->
-    	<SpriteComponent
-    		image_file="data/particles/explosion_016.xml"
-    		z_index="-1.1">
-    @@ -160,6 +175,7 @@
-    	<ParticleEmitterComponent
-    		emitted_material_name="spark_yellow"
-    		delay_frames="115"
-    +		emitter_lifetime_frames="2"
-    		fade_based_on_lifetime="1"
-    		render_on_grid="1"
-    		x_pos_offset_min="0"
-    diff --git a/entities/projectiles/polyorb.xml b/entities/projectiles/polyorb.xml
-    index 8c548c8..1ce997a 100644
-    --- a/entities/projectiles/polyorb.xml
-    +++ b/entities/projectiles/polyorb.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable,homing_target,polymorphable_NOT" name="$projectile_default">
-    +<Entity tags="mortal,hittable,homing_target,polymorphable_NOT,glue_NOT" name="$projectile_default">
-
-    	<PhysicsAIComponent
-    		target_vec_max_len="15.0"
-    diff --git a/entities/projectiles/polyshot.xml b/entities/projectiles/polyshot.xml
-    index 7d807be..092a201 100644
-    --- a/entities/projectiles/polyshot.xml
-    +++ b/entities/projectiles/polyshot.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="hittable" name="$projectile_default">
-    +<Entity tags="hittable,glue_NOT" name="$projectile_default">
-
-    	<Base file="data/entities/base_projectile.xml" >
-    		<VelocityComponent
-    diff --git a/entities/props/root_grower.xml b/entities/props/root_grower.xml
-    index 5682e0a..7aef6b0 100644
-    --- a/entities/props/root_grower.xml
-    +++ b/entities/props/root_grower.xml
-    @@ -1,4 +1,4 @@
-    -<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,root">
-    +<Entity tags="mortal,hittable,teleportable_NOT,destruction_target,root,glue_NOT">
-    	<HitboxComponent
-    		aabb_min_x="-3"
-    		aabb_max_x="3"
-    diff --git a/genome_relations.csv b/genome_relations.csv
-    index 1eb9e00..ff11f41 100644
-    --- a/genome_relations.csv
-    +++ b/genome_relations.csv
-    @@ -1,34 +1,35 @@
-    -HERD,player,-1,slimes,ant,robot,fly,boss_dragon,crawler,helpless,eel,fire,fungus,ghoul,giant,ice,spider,orcs,rat,electricity,wolf,worm,zombie,nest,mage,flower,ghost,boss_limbs,healer,apparition,bat,mage_swapper,curse,trap
-    -      player,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-    --1,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,100,0,0,0
-    -      slimes,0,0,100,80,95,90,0,0,0,90,90,90,90,90,90,95,95,30,90,90,90,90,100,90,90,90,0,100,50,100,90,100,100
-    -         ant,0,0,80,100,40,90,0,0,0,0,0,100,0,0,0,95,40,50,0,0,0,90,100,90,90,90,0,100,50,100,90,100,100
-    -       robot,0,0,95,90,100,80,0,90,0,90,95,95,90,90,0,95,95,0,90,0,90,95,100,95,90,90,0,100,50,100,95,100,100
-    -         fly,0,0,90,90,90,100,0,0,0,0,90,90,90,0,0,90,90,60,90,0,0,90,100,80,90,90,0,100,50,100,80,100,100
-    - boss_dragon,0,0,0,0,0,0,100,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -     crawler,0,0,0,0,90,0,0,100,0,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -    helpless,0,0,0,0,0,0,0,0,100,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -         eel,0,0,0,0,0,0,0,0,0,100,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -        fire,0,0,90,80,90,100,0,0,0,0,100,90,90,0,20,90,96,0,0,0,0,90,100,95,90,90,0,100,50,100,95,100,100
-    -      fungus,0,0,75,80,70,90,0,0,0,0,80,100,0,0,80,95,95,95,80,0,0,70,100,90,90,90,0,100,50,100,90,100,100
-    -       ghoul,0,0,0,0,90,50,0,0,0,0,0,0,100,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -       giant,0,0,0,0,90,50,0,0,0,0,0,0,0,100,100,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -         ice,0,0,0,0,0,0,0,0,0,0,20,80,0,100,100,90,50,0,0,0,0,90,100,99,90,90,0,100,50,100,99,100,100
-    -      spider,0,0,95,95,95,90,0,95,95,0,95,95,0,95,0,100,95,95,95,95,90,95,100,95,90,90,0,100,50,100,95,100,100
-    -        orcs,2,0,80,80,95,90,0,30,40,100,90,90,0,90,40,95,100,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -         rat,0,0,50,50,50,0,0,0,0,0,0,90,0,0,0,95,50,100,0,0,0,50,100,90,90,90,0,100,50,0,90,100,100
-    - electricity,0,0,0,80,90,90,0,0,0,0,0,80,0,0,0,90,0,0,100,0,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -        wolf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,100,0,0,100,90,90,90,0,100,50,100,90,100,100
-    -        worm,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,100,0,100,90,90,90,0,100,50,100,90,100,100
-    -      zombie,0,0,90,80,90,90,0,0,10,100,90,90,0,0,90,95,95,70,0,0,0,100,100,90,90,90,0,100,50,100,90,100,100
-    -nest,0,0,100,100,100,100,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0,100,50,100,100,100,100
-    -mage,0,0,90,80,90,90,0,0,0,0,90,90,90,0,95,95,90,0,0,0,0,90,100,100,90,90,0,100,50,100,100,100,100
-    -flower,0,0,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,100,90,100,90,0,100,50,100,90,100,100
-    -ghost,0,0,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,100,90,90,100,0,100,50,100,90,100,100
-    -boss_limbs,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,100,100,50,100,0,100,100
-    -healer,0,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0,100,100,100,100,100,100,100,100,100,100,50,100,100,100,100
-    -apparition,0,0,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,100,100,50,100,100
-    -bat,0,0,100,80,95,90,0,0,0,90,90,90,90,90,90,95,95,30,90,90,90,90,100,90,90,90,0,100,50,100,90,100,100
-    -mage_swapper,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,100
-    -curse,0,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100
-    -trap,0,0,80,80,50,100,100,100,0,0,100,50,100,100,100,100,100,0,100,0,100,100,100,100,100,100,100,100,100,100,100,100,100
-    +HERD,player,-1,slimes,ant,robot,fly,boss_dragon,crawler,helpless,eel,fire,fungus,ghoul,giant,ice,spider,orcs,rat,electricity,wolf,worm,zombie,nest,mage,flower,ghost,boss_limbs,healer,apparition,bat,mage_swapper,curse,trap,ghost_boss
-    +      player,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-    +-1,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,100,0,0,0,0
-    +      slimes,0,0,100,80,95,90,0,0,0,90,90,90,90,90,90,95,95,30,90,90,90,90,100,90,90,90,0,100,50,100,90,100,100,100
-    +         ant,0,0,80,100,40,90,0,0,0,0,0,100,0,0,0,95,40,50,0,0,0,90,100,90,90,90,0,100,50,100,90,100,100,100
-    +       robot,0,0,95,90,100,80,0,90,0,90,95,95,90,90,0,95,95,0,90,0,90,95,100,95,90,90,0,100,50,100,95,100,100,100
-    +         fly,0,0,90,90,90,100,0,0,0,0,90,90,90,0,0,90,90,60,90,0,0,90,100,80,90,90,0,100,50,100,80,100,100,100
-    + boss_dragon,0,0,0,0,0,0,100,0,0,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +     crawler,0,0,0,0,90,0,0,100,0,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +    helpless,0,0,0,0,0,0,0,0,100,0,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +         eel,0,0,0,0,0,0,0,0,0,100,0,0,0,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +        fire,0,0,90,80,90,100,0,0,0,0,100,90,90,0,20,90,96,0,0,0,0,90,100,95,90,90,0,100,50,100,95,100,100,100
-    +      fungus,0,0,75,80,70,90,0,0,0,0,80,100,0,0,80,95,95,95,80,0,0,70,100,90,90,90,0,100,50,100,90,100,100,100
-    +       ghoul,0,0,0,0,90,50,0,0,0,0,0,0,100,0,0,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +       giant,0,0,0,0,90,50,0,0,0,0,0,0,0,100,100,90,0,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +         ice,0,0,0,0,0,0,0,0,0,0,20,80,0,100,100,90,50,0,0,0,0,90,100,99,90,90,0,100,50,100,99,100,100,100
-    +      spider,0,0,95,95,95,90,0,95,95,0,95,95,0,95,0,100,95,95,95,95,90,95,100,95,90,90,0,100,50,100,95,100,100,100
-    +        orcs,2,0,80,80,95,90,0,30,40,100,90,90,0,90,40,95,100,0,0,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +         rat,0,0,50,50,50,0,0,0,0,0,0,90,0,0,0,95,50,100,0,0,0,50,100,90,90,90,0,100,50,0,90,100,100,100
-    + electricity,0,0,0,80,90,90,0,0,0,0,0,80,0,0,0,90,0,0,100,0,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +        wolf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,100,0,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +        worm,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,0,100,0,100,90,90,90,0,100,50,100,90,100,100,100
-    +      zombie,0,0,90,80,90,90,0,0,10,100,90,90,0,0,90,95,95,70,0,0,0,100,100,90,90,90,0,100,50,100,90,100,100,100
-    +nest,0,0,100,100,100,100,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0,100,50,100,100,100,100,100
-    +mage,0,0,90,80,90,90,0,0,0,0,90,90,90,0,95,95,90,0,0,0,0,90,100,100,90,90,0,100,50,100,100,100,100,100
-    +flower,0,0,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,100,90,100,90,0,100,50,100,90,100,100,100
-    +ghost,0,0,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,100,90,90,100,0,100,50,100,90,100,100,100
-    +boss_limbs,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,90,0,0,0,100,100,50,100,0,100,100,100
-    +healer,0,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0,100,100,100,100,100,100,100,100,100,100,50,100,100,100,100,100
-    +apparition,0,0,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,100,100,50,100,100,100
-    +bat,0,0,100,80,95,90,0,0,0,90,90,90,90,90,90,95,95,30,90,90,90,90,100,90,90,90,0,100,50,100,90,100,100,100
-    +mage_swapper,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,100,100
-    +curse,0,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100
-    +trap,0,0,80,80,50,100,100,100,0,0,100,50,100,100,100,100,100,0,100,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100
-    +ghost_boss,0,0,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100
-    diff --git a/magic_numbers.xml b/magic_numbers.xml
-    index d7df988..d1b846e 100644
-    --- a/magic_numbers.xml
-    +++ b/magic_numbers.xml
-    @@ -153,10 +153,10 @@
-    INVENTORY_ICON_SIZE="20"
-    INVENTORY_STASH_X="370"
-    INVENTORY_STASH_Y="80"
-    -  INVENTORY_DEBUG_X="180"
-    -  INVENTORY_DEBUG_Y="55"
-    -  DEBUG_UI_ALL_THE_CARDS_HEIGHT="15"
-    -  DEBUG_UI_ALL_THE_CARDS_WIDTH="23"
-    +  INVENTORY_DEBUG_X="165"
-    +  INVENTORY_DEBUG_Y="45"
-    +  DEBUG_UI_ALL_THE_CARDS_HEIGHT="16"
-    +  DEBUG_UI_ALL_THE_CARDS_WIDTH="24"
-    UI_BARS_POS_X="20"
-    UI_BARS_POS_Y="20"
-    UI_BARS2_OFFSET_X="-40"
-    diff --git a/materials.xml b/materials.xml
-    index c9f6e7f..314d445 100644
-    --- a/materials.xml
-    +++ b/materials.xml
-    @@ -1185,6 +1185,7 @@
-    	ui_name="$mat_wood"
-    	wang_color="ff005345"
-    	hp="200000"
-    +	durability="12"
-    	audio_physics_material_event="rock"
-    	audio_physics_material_wall="woodwall"
-    	audio_physics_material_solid="wood"
-    @@ -9695,6 +9696,66 @@
-    	</StatusEffects>
-    </CellData>
-
-    +  <CellData
-    +	name="fungus_powder"
-    +	ui_name="$mat_fungisoil"
-    +  	tags="[sand_other]"
-    +	burnable="1"
-    +	density="7"
-    +	durability="3"
-    +	cell_type="liquid"
-    +	wang_color="ffbecafe"
-    +	generates_smoke="0"
-    +	liquid_gravity="2"
-    +	liquid_sand="1"
-    +	on_fire="1"
-    +	requires_oxygen="0"
-    +	temperature_of_fire="10"
-    +	autoignition_temperature="0"
-    +	generates_flames="0"
-    +	on_fire_flame_material="swamp"
-    +	hp="1000"
-    +	fire_hp="20"
-    +	audio_physics_material_event="sand"
-    +	audio_physics_material_wall="sand"
-    +	audio_physics_material_solid="sand"
-    +	show_in_creative_mode="0"
-    +	lifetime="4.0"
-    +	>
-    +	<ExplosionConfig
-    +		damage="0"
-    +		cell_explosion_power="2"
-    +		cell_explosion_damage_required="1"
-    +		cell_explosion_radius_min="2"
-    +		explosion_sprite=""
-    +		load_this_entity="data/entities/misc/fungus_powder.xml"
-    +		ray_energy="0"
-    +		audio_enabled="0"
-    +		create_cell_probability="0"
-    +		sparks_enabled="0"
-    +		light_enabled="0"
-    +		hole_enabled="1"
-    +		crack_count="0"
-    +		stains_enabled="0"
-    +		damage_mortals="0"
-    +		particle_effect="0"
-    +		>
-    +	</ExplosionConfig>
-    +    <Graphics
-    +	  texture_file="data/materials_gfx/meat_rotten.png"
-    +	  color="ffb89e57" >
-    +    </Graphics>
-    +	<StatusEffects>
-    +		<Ingestion>
-    +			<StatusEffect type="POISONED" amount="0.15" />
-    +			<StatusEffect type="FOOD_POISONING" amount="0.05" />
-    +		</Ingestion>
-    +		<Stains>
-    +			<StatusEffect type="WET" />
-    +		</Stains>
-    +	</StatusEffects>
-    +  </CellData>
-    +
-    <CellData
-    	name="orb_powder"
-    	ui_name="$mat_orb_powder"
-    diff --git a/projectiles_gfx/orb_expanding.png b/projectiles_gfx/orb_expanding.png
-    index eef2c57..3de6371 100644
-    Binary files a/projectiles_gfx/orb_expanding.png and b/projectiles_gfx/orb_expanding.png differ
-    diff --git a/projectiles_gfx/orb_expanding.xml b/projectiles_gfx/orb_expanding.xml
-    index 585fe5f..42992c4 100644
-    --- a/projectiles_gfx/orb_expanding.xml
-    +++ b/projectiles_gfx/orb_expanding.xml
-    @@ -1,7 +1,7 @@
-    <Sprite
-    filename="data/projectiles_gfx/orb_expanding.png"
-    - offset_x="10"
-    - offset_y="10"
-    + offset_x="8"
-    + offset_y="8"
-    default_animation="fireball" >
-
-    <!-- animation -->
-    @@ -10,8 +10,8 @@
-    pos_x="0"
-    pos_y="0"
-    frame_count="12"
-    -  frame_width="20"
-    -  frame_height="20"
-    +  frame_width="16"
-    +  frame_height="16"
-    frame_wait="0.16"
-    frames_per_row="12"
-    loop="0"   >
-    diff --git a/scripts/biomes/alchemist_secret.lua b/scripts/biomes/alchemist_secret.lua
-    index 381491d..b884bff 100644
-    --- a/scripts/biomes/alchemist_secret.lua
-    +++ b/scripts/biomes/alchemist_secret.lua
-    @@ -24,7 +24,7 @@ function spawn_potions( x, y ) end
-    function spawn_wands( x, y ) end
-
-    function init( x, y, w, h )
-    -	LoadPixelScene( "data/biome_impl/alchemist_secret.png", "data/biome_impl/alchemist_secret_visual.png", x, y, "data/biome_impl/alchemist_secret_background.png", true )
-    +	LoadPixelScene( "data/biome_impl/alchemist_secret.png", "data/biome_impl/alchemist_secret_visual.png", x, y, "", true )
-    end
-
-    function spawn_orb(x, y)
-    diff --git a/scripts/biomes/coalmine.lua b/scripts/biomes/coalmine.lua
-    index 40237f3..1e0b886 100644
-    --- a/scripts/biomes/coalmine.lua
-    +++ b/scripts/biomes/coalmine.lua
-    @@ -1192,9 +1192,14 @@ end
-
-    function spawn_chest(x, y)
-    	SetRandomSeed( x, y )
-    -	local rnd = Random(1,100)
-    +	local super_chest_spawn_rate = 2000
-    +	if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
-    +		super_chest_spawn_rate = 100
-    +	end
-    +
-    +	local rnd = Random(1,super_chest_spawn_rate)
-
-    -	if (rnd >= 99) then
-    +	if (rnd >= super_chest_spawn_rate-1) then
-    		EntityLoad( "data/entities/items/pickup/chest_random_super.xml", x, y)
-    	else
-    		EntityLoad( "data/entities/items/pickup/chest_random.xml", x, y)
-    diff --git a/scripts/biomes/lake.lua b/scripts/biomes/lake.lua
-    index 8c3ee70..227dec9 100644
-    --- a/scripts/biomes/lake.lua
-    +++ b/scripts/biomes/lake.lua
-    @@ -8,6 +8,7 @@ RegisterSpawnFunction( 0xffb2a700, "spawn_bunker2" )
-    RegisterSpawnFunction( 0xffb27600, "spawn_bunker" )
-    RegisterSpawnFunction( 0xff390000, "spawn_alchemist" )
-    RegisterSpawnFunction( 0xffffeedd, "init" )
-    +RegisterSpawnFunction( 0xFF5078C8, "spawn_rainbow_card")
-
-    ------------ SMALL ENEMIES ----------------------------------------------------
-
-    @@ -243,4 +244,8 @@ end
-
-    function spawn_teleport_back( x, y )
-    	EntityLoad( "data/entities/buildings/teleport_bunker_back.xml", x, y )
-    +end
-    +
-    +function spawn_rainbow_card( x, y )
-    +	CreateItemActionEntity( "RAINBOW_TRAIL", x, y )
-    end
-    \ No newline at end of file
-    diff --git a/scripts/biomes/snowcave.lua b/scripts/biomes/snowcave.lua
-    index 482f14b..e092964 100644
-    --- a/scripts/biomes/snowcave.lua
-    +++ b/scripts/biomes/snowcave.lua
-    @@ -298,7 +298,7 @@ g_big_enemies =
-    		entity 	= "data/entities/animals/thunderskull.xml"
-    	},
-    	{
-    -		prob   		= 0.01,
-    +		prob   		= 0.1,
-    		min_count	= 2,
-    		max_count	= 4,
-    		entity 	= "data/entities/animals/scavenger_glue.xml",
-    diff --git a/scripts/biomes/vault.lua b/scripts/biomes/vault.lua
-    index 6f55e9f..01080e9 100644
-    --- a/scripts/biomes/vault.lua
-    +++ b/scripts/biomes/vault.lua
-    @@ -37,6 +37,7 @@ RegisterSpawnFunction( 0xffaa42ff, "spawn_electricity_trap" )
-    RegisterSpawnFunction( 0xff33934c, "spawn_shopitem" )
-
-    RegisterSpawnFunction( 0xffacf14b, "spawn_laser_trap" )
-    +RegisterSpawnFunction( 0xffa45aff, "spawn_lab_puzzle" )
-
-
-    ------------ small enemies -------------------------------
-    @@ -173,10 +174,10 @@ g_small_enemies =
-    		}
-    	},
-    	{
-    -		prob   		= 0.05,
-    +		prob   		= 0.1,
-    		min_count	= 1,
-    		max_count	= 3,
-    -		entity 	= "data/entities/animals/scavenger_glue.xml",
-    +		entity 	= "data/entities/animals/vault/scavenger_glue.xml",
-    	},
-    }
-
-    @@ -549,6 +550,14 @@ g_pixel_scene_02 =
-    		background_file	= "",
-    		is_unique		= 0,
-    	},
-    +	{
-    +		prob   			= 0.5,
-    +		material_file 	= "data/biome_impl/vault/lab_puzzle.png",
-    +		visual_file		= "data/biome_impl/vault/lab_puzzle_visual.png",
-    +		background_file	= "data/biome_impl/vault/lab_puzzle_background.png",
-    +		is_unique		= 0,
-    +		background_z_index = 38,
-    +	},
-    }
-
-    g_pixel_scene_wide =
-    @@ -1190,6 +1199,25 @@ function spawn_shopitem( x, y )
-    	generate_shop_item( x, y, false, nil )
-    end
-
-    +function spawn_lab_puzzle(x, y)
-    +	SetRandomSeed(x, y)
-    +	local type_a = random_from_array({
-    +		"poly",
-    +		"tele",
-    +		"charm",
-    +		"berserk",
-    +	})
-    +	local type_b = random_from_array({
-    +		"protect",
-    +		"worm",
-    +		"invis",
-    +		"speed",
-    +	})
-    +	EntityLoad("data/entities/buildings/vault_lab_puzzle_" .. type_a .. ".xml", x - 10, y)
-    +	EntityLoad("data/entities/buildings/vault_lab_puzzle_" .. type_b .. ".xml", x + 11, y)
-    +end
-    +
-    +
-    -----------------------------------------
-    -- PIPES
-    -----------------------------------------
-    diff --git a/scripts/biomes/vault_frozen.lua b/scripts/biomes/vault_frozen.lua
-    index fba4988..b3fe087 100644
-    --- a/scripts/biomes/vault_frozen.lua
-    +++ b/scripts/biomes/vault_frozen.lua
-    @@ -126,6 +126,12 @@ g_small_enemies =
-    		max_count	= 1,
-    		entity 	= "data/entities/animals/drone_shield.xml"
-    	},
-    +	{
-    +		prob   		= 0.1,
-    +		min_count	= 2,
-    +		max_count	= 4,
-    +		entity 	= "data/entities/animals/vault/scavenger_glue.xml",
-    +	},
-    	{
-    		prob   		= 0.1,
-    		min_count	= 1,
-    diff --git a/scripts/buildings/orb_07_pitcheck_b.lua b/scripts/buildings/orb_07_pitcheck_b.lua
-    index fdf138b..cc1273b 100644
-    --- a/scripts/buildings/orb_07_pitcheck_b.lua
-    +++ b/scripts/buildings/orb_07_pitcheck_b.lua
-    @@ -1,9 +1,11 @@
-    dofile_once("data/scripts/lib/utilities.lua")
-
-    -function collision_trigger()
-    +function collision_trigger( colliding_entity )
-    	local entity_id    = GetUpdatedEntityID()
-    	local x, y = EntityGetTransform( entity_id )
-
-    +	if( IsInvisible( colliding_entity ) ) then return end
-    +
-    	local pid = EntityLoad( "data/entities/animals/boss_pit/boss_pit.xml", x - 160, y + 256 )
-    	PhysicsApplyForce( pid, 0, -80 )
-    end
-    \ No newline at end of file
-    diff --git a/scripts/gun/gun.lua b/scripts/gun/gun.lua
-    index f08d53d..dd700af 100644
-    --- a/scripts/gun/gun.lua
-    +++ b/scripts/gun/gun.lua
-    @@ -112,6 +112,7 @@ function clone_action( source, target )
-    	target.type              = source.type
-    	target.recursive         = source.recursive
-    	target.related_projectiles = source.related_projectiles
-    +	target.related_extra_entities = source.related_extra_entities
-    	target.action            = source.action
-    	target.deck_index        = source.deck_index
-    	target.custom_uses_logic = source.custom_uses_logic
-    diff --git a/scripts/gun/gun_actions.lua b/scripts/gun/gun_actions.lua
-    index 72a5a92..3ef1f90 100644
-    --- a/scripts/gun/gun_actions.lua
-    +++ b/scripts/gun/gun_actions.lua
-    @@ -1659,6 +1659,27 @@ actions =
-    			c.spread_degrees = c.spread_degrees + 4.0
-    		end,
-    	},
-    +	{
-    +		id          = "ICEBALL",
-    +		name 		= "$action_iceball",
-    +		description = "$actiondesc_iceball",
-    +		sprite 		= "data/ui_gfx/gun_actions/iceball.png",
-    +		sprite_unidentified = "data/ui_gfx/gun_actions/fireball_unidentified.png",
-    +		related_projectiles	= {"data/entities/projectiles/deck/iceball.xml"},
-    +		type 		= ACTION_TYPE_PROJECTILE,
-    +		spawn_level                       = "2,3,4,6", -- FIREBALL
-    +		spawn_probability                 = "1,1,1,1", -- FIREBALL
-    +		price = 260,
-    +		mana = 90,
-    +		max_uses = 15,
-    +		custom_xml_file = "data/entities/misc/custom_cards/iceball.xml",
-    +		action 		= function()
-    +			add_projectile("data/entities/projectiles/deck/iceball.xml")
-    +			c.spread_degrees = c.spread_degrees + 8.0
-    +			c.fire_rate_wait = c.fire_rate_wait + 80
-    +			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 20.0
-    +		end,
-    +	},
-    	--[[
-    	{
-    		id          = "ICETHROWER",
-    @@ -1905,6 +1926,24 @@ actions =
-    			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 30.0
-    		end,
-    	},
-    +	{
-    +		id          = "GLUE_SHOT",
-    +		name 		= "$action_glue_shot",
-    +		description = "$actiondesc_glue_shot",
-    +		sprite 		= "data/ui_gfx/gun_actions/glue_shot.png",
-    +		sprite_unidentified = "data/ui_gfx/gun_actions/dynamite_unidentified.png",
-    +		related_projectiles	= {"data/entities/projectiles/deck/glue_shot.xml"},
-    +		type 		= ACTION_TYPE_PROJECTILE,
-    +		spawn_level                       = "2,3,4,5", -- GLUE_SHOT
-    +		spawn_probability                 = "0.6,0.2,0.2,0.6", -- GLUE_SHOT
-    +		price = 140,
-    +		mana = 25,
-    +		action 		= function()
-    +			add_projectile("data/entities/projectiles/deck/glue_shot.xml")
-    +			c.fire_rate_wait = c.fire_rate_wait + 30
-    +			c.spread_degrees = c.spread_degrees + 5.0
-    +		end,
-    +	},
-    	{
-    		id          = "BOMB_HOLY",
-    		name 		= "$action_bomb_holy",
-    @@ -4533,6 +4572,24 @@ actions =
-    			draw_actions( 1, true )
-    		end,
-    	},
-    +	{
-    +		id          = "HOMING_SHORT",
-    +		name 		= "$action_homing_short",
-    +		description = "$actiondesc_homing_short",
-    +		sprite 		= "data/ui_gfx/gun_actions/homing_short.png",
-    +		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
-    +		related_extra_entities = { "data/entities/misc/homing_short.xml", "data/entities/particles/tinyspark_white_weak.xml" },
-    +		type 		= ACTION_TYPE_MODIFIER,
-    +		spawn_level                       = "1,2,3,4,5,6", -- HOMING
-    +		spawn_probability                 = "0.4,0.8,1,0.4,0.1,0.1", -- HOMING
-    +		price = 160,
-    +		mana = 40,
-    +		--max_uses = 100,
-    +		action 		= function()
-    +			c.extra_entities = c.extra_entities .. "data/entities/misc/homing_short.xml,data/entities/particles/tinyspark_white_weak.xml,"
-    +			draw_actions( 1, true )
-    +		end,
-    +	},
-    	{
-    		id          = "HOMING_ROTATE",
-    		name 		= "$action_homing_rotate",
-    @@ -7366,6 +7423,7 @@ actions =
-    		custom_xml_file = "data/entities/misc/custom_cards/energy_shield.xml",
-    		action 		= function()
-    			-- does nothing to the projectiles
-    +			draw_actions( 1, true )
-    		end,
-    	},
-    	{
-    @@ -7381,6 +7439,7 @@ actions =
-    		custom_xml_file = "data/entities/misc/custom_cards/energy_shield_sector.xml",
-    		action 		= function()
-    			-- does nothing to the projectiles
-    +			draw_actions( 1, true )
-    		end,
-    	},
-    	{
-    @@ -8212,7 +8271,6 @@ actions =
-    		description = "$actiondesc_summon_portal",
-    		sprite 		= "data/ui_gfx/gun_actions/summon_portal.png",
-    		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
-    -		spawn_requires_flag = "card_unlocked_everything",
-    		type 		= ACTION_TYPE_OTHER,
-    		spawn_level                       = "10", -- MANA_REDUCE
-    		spawn_probability                 = "0", -- MANA_REDUCE
-    diff --git a/scripts/items/chest_random_super.lua b/scripts/items/chest_random_super.lua
-    index 821b4a0..bb05805 100644
-    --- a/scripts/items/chest_random_super.lua
-    +++ b/scripts/items/chest_random_super.lua
-    @@ -20,8 +20,9 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
-    	local count = 1
-
-    	if( Random( 0, 100000) >= 100000 ) then
-    -		table.insert( entities, { "data/entities/animals/boss_centipede/sampo.xml" } )
-    +		EntityLoadEndGameItem( "data/entities/animals/boss_centipede/sampo.xml", x, y )
-    		count = 0
-    +		return
-    	end
-
-
-    diff --git a/scripts/items/gold_orb.lua b/scripts/items/gold_orb.lua
-    index f7277ca..beba6a2 100644
-    --- a/scripts/items/gold_orb.lua
-    +++ b/scripts/items/gold_orb.lua
-    @@ -13,7 +13,7 @@ function drop()
-
-    		SetRandomSeed( x + entity_id, y - GameGetFrameNum() )
-
-    -		local outcome = Random( 1, 20 )
-    +		local outcome = Random( 1, 26 )
-
-    		if ( count == 1 ) then
-    			outcome = 10
-    diff --git a/scripts/magic/kantele.lua b/scripts/magic/kantele.lua
-    index 5ab1378..83926b6 100644
-    --- a/scripts/magic/kantele.lua
-    +++ b/scripts/magic/kantele.lua
-    @@ -4,7 +4,7 @@ local kantele_songs = {
-    	portal = { "a", "dis", "e", "g" },
-    	bomb = { "g", "d", "e", "d" },
-    	worm = { "d", "e", "a", "e", "dis" },
-    -	alchemy = { "f", "g", "f", "a2", "c", "g", "f", "gsharp" },
-    +	alchemy = { "f", "g", "f", "a2", "c" },
-    }
-
-    local entity_id = GetUpdatedEntityID()
-    diff --git a/scripts/magic/ocarina.lua b/scripts/magic/ocarina.lua
-    index 1e4f66d..374212e 100644
-    --- a/scripts/magic/ocarina.lua
-    +++ b/scripts/magic/ocarina.lua
-    @@ -4,7 +4,7 @@ local ocarina_songs = {
-    	portal = { "a", "f", "d", "e", "a2" },
-    	bomb = { "f", "c", "d", "c" },
-    	worm = { "gsharp", "f", "e", "b", "d" },
-    -	alchemy = { "a2", "d", "dis", "e", "a", "b", "c", "gsharp" },
-    +	alchemy = { "a2", "d", "dis", "e", "a" },
-    }
-
-    local entity_id = GetUpdatedEntityID()
-    diff --git a/scripts/magic/orb_line.lua b/scripts/magic/orb_line.lua
-    index ffd4102..da63c84 100644
-    --- a/scripts/magic/orb_line.lua
-    +++ b/scripts/magic/orb_line.lua
-    @@ -7,14 +7,7 @@ SetRandomSeed( x * GameGetFrameNum(), y )
-
-    local orbdata = orb_map_get()
-
-    -local mx = ( ( x + 17920 ) % 35840 ) - 17920
-    -local pw = x
-    -
-    -if ( x >= 0 ) then
-    -	pw = math.floor( ( x + 17920 ) / 35840 )
-    -else
-    -	pw = math.floor( ( x - 17920 ) / 35840 )
-    -end
-    +local pw,mx = check_parallel_pos( x )
-
-    if ( Random( 1, 25 ) == 4 ) then
-    	local closest = -1
-    diff --git a/scripts/perks/attract_items.lua b/scripts/perks/attract_items.lua
-    index 11b86b8..7fe7cc3 100644
-    --- a/scripts/perks/attract_items.lua
-    +++ b/scripts/perks/attract_items.lua
-    @@ -4,13 +4,14 @@ local entity_id = GetUpdatedEntityID()
-    local x, y = EntityGetTransform( entity_id )
-
-    local items = EntityGetWithTag( "gold_nugget" )
-    +local distance_full = tonumber( GlobalsGetValue( "PERK_ATTRACT_ITEMS_RANGE", "72" ) )
-    +local power = math.min( distance_full / 8, 20 )
-
-    if ( #items > 0 ) then
-    	for i,item_id in ipairs(items) do
-    		local px, py = EntityGetTransform( item_id )
-
-    		local distance = math.abs( x - px ) + math.abs( y - py )
-    -		local distance_full = 72
-
-    		if ( distance < distance_full * 1.25 ) then
-    			distance = math.sqrt( ( x - px ) ^ 2 + ( y - py ) ^ 2 )
-    @@ -20,8 +21,8 @@ if ( #items > 0 ) then
-    				local physicscomponents = EntityGetComponent( item_id, "PhysicsBodyComponent" )
-
-    				if ( physicscomponents ~= nil ) then
-    -					local vel_x = math.cos( direction ) * 9
-    -					local vel_y = 0 - math.sin( direction ) * 9
-    +					local vel_x = math.cos( direction ) * power
-    +					local vel_y = 0 - math.sin( direction ) * power
-
-    					PhysicsApplyForce( item_id, vel_x, vel_y )
-    				end
-    diff --git a/scripts/perks/mana_from_kills.lua b/scripts/perks/mana_from_kills.lua
-    index 2f3b8ee..d038919 100644
-    --- a/scripts/perks/mana_from_kills.lua
-    +++ b/scripts/perks/mana_from_kills.lua
-    @@ -3,35 +3,39 @@ dofile_once("data/scripts/lib/utilities.lua")
-    local entity_id = GetUpdatedEntityID()
-    local x, y = EntityGetTransform( entity_id )
-
-    -local targets = EntityGetInRadiusWithTag( x, y, 160, "homing_target" )
-    +local targets = EntityGetInRadiusWithTag( x, y, 240, "homing_target" )
-
-    if ( #targets > 0 ) then
-    	for i,target_id in ipairs( targets ) do
-    		local variablestorages = EntityGetComponent( target_id, "VariableStorageComponent" )
-    		local found = false
-
-    -		if ( variablestorages ~= nil ) then
-    -			for j,storage_id in ipairs( variablestorages ) do
-    -				local var_name = ComponentGetValue( storage_id, "name" )
-    -				if ( var_name == "mana_from_kills" ) then
-    -					found = true
-    -					break
-    +		if ( EntityHasTag( target_id, "mana_from_kills" ) == false ) then
-    +			if ( variablestorages ~= nil ) then
-    +				for j,storage_id in ipairs( variablestorages ) do
-    +					local var_name = ComponentGetValue( storage_id, "name" )
-    +					if ( var_name == "mana_from_kills" ) then
-    +						found = true
-    +						break
-    +					end
-    				end
-    			end
-    -		end
-
-    -		if ( found == false and ( EntityHasTag( target_id, "polymorphed") == false) ) then
-    -			EntityAddComponent( target_id, "VariableStorageComponent",
-    -			{
-    -				name = "mana_from_kills",
-    -				value_int = entity_id,
-    -			} )
-    -
-    -			EntityAddComponent( target_id, "LuaComponent",
-    -			{
-    -				script_death = "data/scripts/perks/mana_from_kills_death.lua",
-    -				execute_every_n_frame = "-1",
-    -			} )
-    +			if ( found == false and ( EntityHasTag( target_id, "polymorphed") == false) ) then
-    +				EntityAddTag( target_id, "mana_from_kills" )
-    +
-    +				EntityAddComponent( target_id, "VariableStorageComponent",
-    +				{
-    +					name = "mana_from_kills",
-    +					value_int = entity_id,
-    +				} )
-    +
-    +				EntityAddComponent( target_id, "LuaComponent",
-    +				{
-    +					script_death = "data/scripts/perks/mana_from_kills_death.lua",
-    +					execute_every_n_frame = "-1",
-    +				} )
-    +			end
-    		end
-    	end
-    end
-    \ No newline at end of file
-    diff --git a/scripts/perks/perk_list.lua b/scripts/perks/perk_list.lua
-    index 088fbe3..ec53058 100644
-    --- a/scripts/perks/perk_list.lua
-    +++ b/scripts/perks/perk_list.lua
-    @@ -267,12 +267,14 @@ perk_list =
-    					local kick_damage = tonumber( ComponentGetMetaCustom( model, "kick_damage" ) ) + 2.4
-    					local kick_knockback = tonumber( ComponentGetMetaCustom( model, "kick_knockback" ) ) + 250
-    					local telekinesis_throw_speed = tonumber( ComponentGetValue2( model, "telekinesis_throw_speed") ) + 25
-    +					local kick_entities = tostring( ComponentGetValue2( model, "kick_entities" ) ) .. ",data/entities/misc/crack_ice.xml"
-
-    					ComponentSetMetaCustom( model, "max_force", kick_force )
-    					ComponentSetMetaCustom( model, "player_kickforce", player_kick_force )
-    					ComponentSetMetaCustom( model, "kick_damage", kick_damage )
-    					ComponentSetMetaCustom( model, "kick_knockback", kick_knockback )
-    					ComponentSetValue2( model, "telekinesis_throw_speed", telekinesis_throw_speed )
-    +					ComponentSetValue2( model, "kick_entities", kick_entities )
-    				end
-    			end
-
-    @@ -1453,6 +1455,21 @@ perk_list =
-    			--GenomeSetHerdId( entity_who_picked, "rat" )
-    		end,
-    	},
-    +	{
-    +		id = "MOLD",
-    +		ui_name = "$perk_mold",
-    +		ui_description = "$perkdesc_mold",
-    +		ui_icon = "data/ui_gfx/perk_icons/mold.png",
-    +		perk_icon = "data/items_gfx/perks/mold.png",
-    +		stackable = STACKABLE_NO,
-    +		func = function( entity_perk_item, entity_who_picked, item_name )
-    +			local x,y = EntityGetTransform( entity_perk_item )
-    +			local child_id = EntityLoad( "data/entities/misc/perks/slime_fungus.xml", x, y )
-    +			EntityAddChild( entity_who_picked, child_id )
-    +
-    +			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
-    +		end,
-    +	},
-    	{
-    		id = "WORM_SMALLER_HOLES",
-    		ui_name = "$perk_worm_smaller_holes",
-    @@ -1763,12 +1780,28 @@ perk_list =
-    		perk_icon = "data/items_gfx/perks/attract_items.png",
-    		usable_by_enemies = true,
-    		stackable = STACKABLE_YES,
-    +		stackable_maximum = 6,
-    		func = function( entity_perk_item, entity_who_picked, item_name )
-    +			local distance_full = tonumber( GlobalsGetValue( "PERK_ATTRACT_ITEMS_RANGE", "0" ) )
-    +
-    +			if ( distance_full == 0 ) then
-    +				GlobalsSetValue( "PERK_ATTRACT_ITEMS_RANGE", "72" )
-    +				EntityAddComponent( entity_who_picked, "LuaComponent",
-    +				{
-    +					script_source_file = "data/scripts/perks/attract_items.lua",
-    +					execute_every_n_frame = "2",
-    +				} )
-    +			else
-    +				distance_full = distance_full + 24
-    +				GlobalsSetValue( "PERK_ATTRACT_ITEMS_RANGE", tostring(distance_full) )
-    +			end
-    +		end,
-    +		func_enemy = function( entity_perk_item, entity_who_picked )
-    			EntityAddComponent( entity_who_picked, "LuaComponent",
-    			{
-    -				script_source_file = "data/scripts/perks/attract_items.lua",
-    +				script_source_file = "data/scripts/perks/attract_items_enemy.lua",
-    				execute_every_n_frame = "2",
-    -			} )
-    +			} )
-    		end,
-    	},
-    	{
-    @@ -2316,6 +2349,18 @@ perk_list =
-    			GlobalsSetValue( "TEMPLE_PERK_DESTROY_CHANCE", tostring(perk_destroy_chance) )
-    		end,
-    	},
-    +	{
-    +		id = "GAMBLE",
-    +		ui_name = "$perk_gamble",
-    +		ui_description = "$perkdesc_gamble",
-    +		ui_icon = "data/ui_gfx/perk_icons/gamble.png", -- TODO
-    +		perk_icon = "data/items_gfx/perks/gamble.png", -- TODO
-    +		stackable = STACKABLE_YES,
-    +		func = function( entity_perk_item, entity_who_picked, item_name )
-    +			local pos_x, pos_y = EntityGetTransform(entity_who_picked)
-    +			EntityLoad("data/entities/misc/perk_gamble_spawner.xml", pos_x, pos_y)
-    +		end,
-    +	},
-    	{
-    		id = "EXTRA_SHOP_ITEM",
-    		ui_name = "$perk_extra_shop_item",
-    @@ -2412,6 +2457,22 @@ perk_list =
-    			} )
-    		end,
-    	},
-    +	{
-    +		id = "ANGRY_LEVITATION",
-    +		ui_name = "$perk_angry_levitation",
-    +		ui_description = "$perkdesc_angry_levitation",
-    +		ui_icon = "data/ui_gfx/perk_icons/angry_levitation.png",
-    +		perk_icon = "data/items_gfx/perks/angry_levitation.png",
-    +		stackable = STACKABLE_NO,
-    +		func = function( entity_perk_item, entity_who_picked, item_name )
-    +
-    +			EntityAddComponent( entity_who_picked, "LuaComponent",
-    +			{
-    +				script_source_file = "data/scripts/perks/angry_levitation.lua",
-    +				execute_every_n_frame = "20",
-    +			} )
-    +		end,
-    +	},
-    	{
-    		id = "LASER_AIM",
-    		ui_name = "$perk_laser_aim",
-    diff --git a/scripts/projectiles/glue_anchor.lua b/scripts/projectiles/glue_anchor.lua
-    index ae9bd7e..18a6662 100644
-    --- a/scripts/projectiles/glue_anchor.lua
-    +++ b/scripts/projectiles/glue_anchor.lua
-    @@ -20,11 +20,10 @@ end)
-
-    if target < 0 then
-    	-- no target entity. add physics to tie to a surface
-    -	local physics_comp = EntityGetFirstComponent(entity_id, "PhysicsBody2Component")
-    -	if physics_comp == nil then
-    +	if EntityGetFirstComponent(entity_id, "PhysicsBody2Component") == nil then
-    		EntityAddComponent2( entity_id, "PhysicsBody2Component",
-    		{
-    -			angular_damping = 0.2,
-    +			angular_damping = 1.2,
-    			destroy_body_if_entity_destroyed = true,
-    		})
-    		EntityAddComponent2( entity_id, "PhysicsImageShapeComponent",
-    @@ -62,38 +61,29 @@ if target_x ~= nil and target_x ~= 0 and target_y ~= 0 then
-    	-- snap anchor to target
-    	EntitySetTransform(entity_id, target_x, target_y - 2)
-
-    -	-- pull target closer to anchor
-    -	local center_x, center_y = EntityGetTransform(EntityGetParent(entity_id))
-    -
-    -	local vx = center_x - target_x
-    -	local vy = center_y - target_y
-    +	-- if target is anchor, don't apply force to both
-    +	if target > entity_id and EntityHasTag(target, "glue_anchor") then return end
-
-    -	-- prevent pulling into a wall by checking if glue center (parent) is inside platform
-    -	local dist = get_magnitude(vx, vy)
-    -	if dist < 8 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
-    -		--print("abort pull")
-    -		return
-    -	end
-    +	-- don't apply force physics objects since it gets messy
-    +	local comp = EntityGetFirstComponent(target, "PhysicsBodyComponent") or EntityGetFirstComponent(target, "PhysicsBody2Component")
-    +	if comp == nil or comp == 0 then
-    +		-- pull target closer to anchor
-    +		local center_x, center_y = EntityGetTransform(EntityGetParent(entity_id))
-    +
-    +		local vx = center_x - target_x
-    +		local vy = center_y - target_y
-
-    -	-- calculate force
-    -	local age_factor = map(t, 0, 300, 1, 0.25) -- glue pull gets weaker over time
-    -	vx, vy = vec_mult(vx, vy, force * age_factor)
-    +		-- prevent pulling into a wall by checking if glue center (parent) is inside platform
-    +		local dist = get_magnitude(vx, vy)
-    +		if dist < 8 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
-    +			--print("abort pull")
-    +			return
-    +		end
-    +
-    +		-- calculate force
-    +		local age_factor = map(t, 0, 300, 1, 0.25) -- glue pull gets weaker over time
-    +		vx, vy = vec_mult(vx, vy, force * age_factor)
-
-    -	-- use physics force if applicable
-    -	local comp = EntityGetFirstComponent(target, "PhysicsBodyComponent") or EntityGetFirstComponent(target, "PhysicsBody2Component")
-    -	if comp ~= nil and comp ~= 0 then
-    -		PhysicsApplyForce(target, target_x - vx, target_y - vy)
-    -	else
-    		EntityApplyTransform(target, target_x + vx, target_y + vy)
-    -		--[[
-    -		-- apply to velocity comp
-    -		local velocitycomp = EntityGetFirstComponent(target, "VelocityComponent")
-    -		if velocitycomp ~= nil and velocitycomp ~= 0 then
-    -			vx,vy = vec_add(vx, vy, ComponentGetValue2( velocitycomp, "mVelocity"))
-    -			ComponentSetValue2( velocitycomp, "mVelocity", vx, vy)
-    -		else
-    -			print("no velocity component found")
-    -		end
-    -		--]]
-    	end
-    end
-    diff --git a/scripts/projectiles/glue_init.lua b/scripts/projectiles/glue_init.lua
-    index ce51612..1734054 100644
-    --- a/scripts/projectiles/glue_init.lua
-    +++ b/scripts/projectiles/glue_init.lua
-    @@ -14,13 +14,19 @@ for _,anchor in ipairs(children) do
-    	end
-    end
-
-    --- identify target
-    +-- optimization: remove when it gets crowded
-    +if #EntityGetInRadiusWithTag( pos_x, pos_y, 80, "glue") > 10 then
-    +	EntityKill(entity_id)
-    +	return
-    +end
-    +
-    +-- identify target & check that it's valid
-    local target = EntityGetClosestWithTag( pos_x, pos_y, tag)
-    if target == nil or target == 0 then return end
-
-    target = EntityGetRootEntity(target)
-    local tx, ty = EntityGetTransform(target)
-    -if get_distance(pos_x, pos_y, tx, ty) > max_dist then return end
-    +if get_distance(pos_x, pos_y, tx, ty) > max_dist or EntityHasTag( target, "glue_NOT" ) then return end
-
-    -- assign a target to glue anchor
-    component_write( EntityGetFirstComponent( children[1], "VariableStorageComponent" ), { value_int = target } )
-    diff --git a/scripts/status_effects/effect_curse_cloud_thunder.lua b/scripts/status_effects/effect_curse_cloud_thunder.lua
-    index 4e410ba..1a6624c 100644
-    --- a/scripts/status_effects/effect_curse_cloud_thunder.lua
-    +++ b/scripts/status_effects/effect_curse_cloud_thunder.lua
-    @@ -7,5 +7,4 @@ SetRandomSeed( GameGetFrameNum(), pos_x + pos_y + entity_id )
-
-    local offset_x = Random( -32, 32 )
-
-    -shoot_projectile( entity_id, "data/entities/projectiles/deck/lightning_extra_arcs.xml", pos_x + offset_x, pos_y - 42, 0, 4000 )
-    -
-    +shoot_projectile( entity_id, "data/entities/projectiles/deck/lightning_extra_arcs.xml", pos_x + offset_x, pos_y - 32, 0, 4000 )
-    diff --git a/ui_gfx/animal_icons/_list.txt b/ui_gfx/animal_icons/_list.txt
-    index a37617c..8e0b77f 100644
-    --- a/ui_gfx/animal_icons/_list.txt
-    +++ b/ui_gfx/animal_icons/_list.txt
-    @@ -8,6 +8,7 @@ duck
-    wolf
-    deer
-    elk
-    +eel
-    zombie_weak
-    zombie
-    miner_weak
-    @@ -34,8 +35,8 @@ coward
-    flamer
-    icer
-    bigzombie
-    -bigzombie_torso
-    -bigzombie_head
-    +bigzombietorso
-    +bigzombiehead
-    slimeshooter_weak
-    slimeshooter
-    acidshooter_weak
-    @@ -136,9 +137,9 @@ crystal_physics
-    bloodcrystal_physics
-    skycrystal_physics
-    chest_mimic
-    -chest_leggt
-    +chest_leggy
-    necromancer_shop
-    -necromander_super
-    +necromancer_super
-    boss_dragon
-    boss_limbs
-    boss_alchemist
+diff --git a/biome/\_pixel_scenes.xml b/biome/\_pixel_scenes.xml
+index 49fc44a..5c53879 100644
+--- a/biome/\_pixel_scenes.xml
++++ b/biome/\_pixel_scenes.xml
+@@ -128,6 +128,17 @@
+<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/cliff_visual.png" material_filename="data/biome_impl/overworld/cliff.png" pos_x="-12400" pos_y="-400" skip_biome_checks="1" skip_edge_textures="0" >
+</PixelScene>
+
+-
+-     <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="-3408" pos_y="1712" skip_biome_checks="1" skip_edge_textures="0" >
+-     </PixelScene>
+-     <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="5852" pos_y="-4944" skip_biome_checks="1" skip_edge_textures="0" >
+-     </PixelScene>
+-     <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="15024" pos_y="1712" skip_biome_checks="1" skip_edge_textures="0" >
+-     </PixelScene>
+-     <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="-1360" pos_y="9904" skip_biome_checks="1" skip_edge_textures="0" >
+-     </PixelScene>
+-     <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="12976" pos_y="9904" skip_biome_checks="1" skip_edge_textures="0" >
+-     </PixelScene>
+
+      <!-- just load an entity -->
+
+@@ -192,6 +203,13 @@
+<PixelScene pos_x="-12180" pos_y="-3612" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+<PixelScene pos_x="-12180" pos_y="-3868" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+<PixelScene pos_x="-12180" pos_y="-4124" just_load_an_entity="data/entities/misc/platform_wide.xml" />
+
+-
+-     <PixelScene pos_x="-3328" pos_y="1792" just_load_an_entity="data/entities/items/books/book_hint.xml" />
+-     <PixelScene pos_x="-3328" pos_y="1792" just_load_an_entity="data/entities/buildings/eyespot_a.xml" />
+-     <PixelScene pos_x="5932" pos_y="-4864" just_load_an_entity="data/entities/buildings/eyespot_b.xml" />
+-     <PixelScene pos_x="15104" pos_y="1792" just_load_an_entity="data/entities/buildings/eyespot_c.xml" />
+-     <PixelScene pos_x="-1280" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_d.xml" />
+-     <PixelScene pos_x="13056" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_e.xml" />
+ 	</mBufferedPixelScenes>
+ </PixelScenes>
+diff --git a/biome_impl/spliced/gourd_room.png b/biome_impl/spliced/gourd_room.png
+index d018205..17bd46d 100644
+Binary files a/biome_impl/spliced/gourd_room.png and b/biome_impl/spliced/gourd_room.png differ
+diff --git a/biome_impl/spliced/gourd_room/4.plz b/biome_impl/spliced/gourd_room/4.plz
+index 0eacb04..abae6cd 100644
+Binary files a/biome_impl/spliced/gourd_room/4.plz and b/biome_impl/spliced/gourd_room/4.plz differ
+diff --git a/biome_impl/temple/altar_vault_capsule.png b/biome_impl/temple/altar_vault_capsule.png
+index 6a3e665..947f454 100644
+Binary files a/biome_impl/temple/altar_vault_capsule.png and b/biome_impl/temple/altar_vault_capsule.png differ
+diff --git a/entities/_debug/debug_menu.lua b/entities/_debug/debug_menu.lua
+index a296d40..917b2cb 100644
+--- a/entities/_debug/debug_menu.lua
++++ b/entities/_debug/debug_menu.lua
+@@ -365,7 +365,7 @@ main_menu_items =
+ 		end,
+ 	},
+ 	{
+
+*     ui_name="Convert material",
+
+-     ui_name="Fungal shift",
+  action = function()
+  local x, y = GameGetCameraPos()
+  local player_entity = EntityGetClosestWithTag( x, y, "player_unit" )
+  @@ -375,6 +375,18 @@ main_menu_items =
+  fungal_shift( player_entity, x, y, true )
+  end,
+  },
+- {
+-     ui_name="Fungal shift lava->water",
+-     action = function()
+-     	ConvertMaterialEverywhere( CellFactory_GetType( "lava" ), CellFactory_GetType( "water" ) )
+-     end
+- },
+- {
+-     ui_name="Fungal shift lava->radioactive_liquid",
+-     action = function()
+-     	ConvertMaterialEverywhere( CellFactory_GetType( "lava" ), CellFactory_GetType( "radioactive_liquid" ) )
+-     end
+- },
+  {
+  ui_name="ConvertMaterialOnAreaInstantly() - test near camera",
+  action = function()
+  diff --git a/entities/animals/apparition/playerghost.xml b/entities/animals/apparition/playerghost.xml
+  index bca3e8f..00a50b8 100644
+  --- a/entities/animals/apparition/playerghost.xml
+  +++ b/entities/animals/apparition/playerghost.xml
+  @@ -22,6 +22,8 @@
+  </AudioLoopComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  diff --git a/entities/animals/assassin.xml b/entities/animals/assassin.xml
+  index 15bcc70..b0d0c75 100644
+  --- a/entities/animals/assassin.xml
+  +++ b/entities/animals/assassin.xml
+  @@ -134,6 +134,8 @@
+  </AudioLoopComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  diff --git a/entities/animals/boss_alchemist/boss_alchemist.xml b/entities/animals/boss_alchemist/boss_alchemist.xml
+  index 1ac6f02..21dca17 100644
+  --- a/entities/animals/boss_alchemist/boss_alchemist.xml
+  +++ b/entities/animals/boss_alchemist/boss_alchemist.xml
+  @@ -181,6 +181,8 @@
+  </VariableStorageComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -189,6 +191,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION*ELECTRICITY"
+  frames="-1"
+  diff --git a/entities/animals/boss_centipede/sampo_init.lua b/entities/animals/boss_centipede/sampo_init.lua
+  index 358661f..e84b99a 100644
+  --- a/entities/animals/boss_centipede/sampo_init.lua
+  +++ b/entities/animals/boss_centipede/sampo_init.lua
+  @@ -10,7 +10,7 @@ if( orb_count > MAX_ORB_NAMES ) then orb_count = MAX_ORB_NAMES end
+  local orb_name = "$item_mcguffin*" .. tostring(orb*count)
+  local orb_desc = "$itemdesc_mcguffin*" .. tostring(orb_count)
+
+-if( GameGetOrbCountThisRun() > 33 ) then
++if( GameGetOrbCountThisRun() >= 33 ) then
+orb_name = "$item_mcguffin_33"
+ 	orb_desc = "$itemdesc_mcguffin_33"
+end
+diff --git a/entities/animals/boss_ghost/boss_ghost.xml b/entities/animals/boss_ghost/boss_ghost.xml
+index 2faabdd..6f39de7 100644
+--- a/entities/animals/boss_ghost/boss_ghost.xml
++++ b/entities/animals/boss_ghost/boss_ghost.xml
+@@ -390,6 +390,8 @@
+</HealthBarComponent>
+<Entity>
+
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -398,6 +400,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ELECTRICITY"
+  frames="-1"
+  diff --git a/entities/animals/boss_ghost/polyp_shot.xml b/entities/animals/boss_ghost/polyp_shot.xml
+  index 4128a58..5b860ee 100644
+  --- a/entities/animals/boss_ghost/polyp_shot.xml
+  +++ b/entities/animals/boss_ghost/polyp_shot.xml
+  @@ -1,4 +1,4 @@ -<Entity tags="hittable,resist_repulsion" name="$boss_ghost_polyp" > +<Entity tags="hittable,resist_repulsion" name="$animal_boss_ghost_polyp" >
+   	<Base file="data/entities/base_projectile.xml" >
+   		<VelocityComponent
+  diff --git a/entities/animals/boss_pit/boss_pit.xml b/entities/animals/boss_pit/boss_pit.xml
+  index 8c053ed..6fa2c0e 100644
+  --- a/entities/animals/boss_pit/boss_pit.xml
+  +++ b/entities/animals/boss_pit/boss_pit.xml
+  @@ -292,6 +292,8 @@
+   	<Entity><Base file="data/entities/animals/boss_pit/tentacle.xml"> <InheritTransformComponent><Transform position.x="0"  position.y="4" ></Transform></InheritTransformComponent> </Base></Entity>
+   	
+   	<Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -300,6 +302,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ELECTRICITY"
+  frames="-1"
+  diff --git a/entities/animals/boss_wizard/boss_wizard.xml b/entities/animals/boss_wizard/boss_wizard.xml
+  index af39edb..80ec5ee 100644
+  --- a/entities/animals/boss_wizard/boss_wizard.xml
+  +++ b/entities/animals/boss_wizard/boss_wizard.xml
+  @@ -261,6 +261,8 @@
+  </LuaComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -269,6 +271,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ELECTRICITY"
+  frames="-1"
+  @@ -277,6 +281,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ALL"
+  frames="101"
+  diff --git a/entities/animals/boss_wizard/wizard_orb_blood.xml b/entities/animals/boss_wizard/wizard_orb_blood.xml
+  index 2c50a61..cf21465 100644
+  --- a/entities/animals/boss_wizard/wizard_orb_blood.xml
+  +++ b/entities/animals/boss_wizard/wizard_orb_blood.xml
+  @@ -89,6 +89,8 @@
+  </DamageModelComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -97,6 +99,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ELECTRICITY"
+  frames="-1"
+  diff --git a/entities/animals/boss_wizard/wizard_orb_death.xml b/entities/animals/boss_wizard/wizard_orb_death.xml
+  index b13219b..071af17 100644
+  --- a/entities/animals/boss_wizard/wizard_orb_death.xml
+  +++ b/entities/animals/boss_wizard/wizard_orb_death.xml
+  @@ -89,6 +89,8 @@
+  </DamageModelComponent>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_FREEZE"
+  frames="-1"
+  @@ -97,6 +99,8 @@
+  </Entity>
+  <Entity>
+-     <InheritTransformComponent />
+- <GameEffectComponent
+  effect="PROTECTION_ELECTRICITY"
+  frames="-1"
+  diff --git a/entities/animals/crypt/phantom_a.xml b/entities/animals/crypt/phantom_a.xml
+  index a171003..7b71d6c 100644
+  --- a/entities/animals/crypt/phantom_a.xml
+  +++ b/entities/animals/crypt/phantom_a.xml
+  @@ -8,6 +8,8 @@
+     </Base>
+
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/crypt/phantom_b.xml b/entities/animals/crypt/phantom_b.xml
+index d40e1ce..6a7e901 100644
+--- a/entities/animals/crypt/phantom_b.xml
++++ b/entities/animals/crypt/phantom_b.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/crypt/wizard_neutral.xml b/entities/animals/crypt/wizard_neutral.xml
+index 27b09e9..b1f5f05 100644
+--- a/entities/animals/crypt/wizard_neutral.xml
++++ b/entities/animals/crypt/wizard_neutral.xml
+@@ -17,6 +17,8 @@
+     </Entity>
+   
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -25,6 +27,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/animals/crypt/worm_skull.xml b/entities/animals/crypt/worm_skull.xml
+index ee5b54b..bdacdd6 100644
+--- a/entities/animals/crypt/worm_skull.xml
++++ b/entities/animals/crypt/worm_skull.xml
+@@ -7,6 +7,8 @@
+   </Base>
+   
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/drone.xml b/entities/animals/drone.xml
+index 149e600..d7303cc 100644
+--- a/entities/animals/drone.xml
++++ b/entities/animals/drone.xml
+@@ -93,6 +93,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/drone_lasership.xml b/entities/animals/drone_lasership.xml
+index 96e8346..3368147 100644
+--- a/entities/animals/drone_lasership.xml
++++ b/entities/animals/drone_lasership.xml
+@@ -120,6 +120,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/drone_physics.xml b/entities/animals/drone_physics.xml
+index bb4fa65..87861b7 100644
+--- a/entities/animals/drone_physics.xml
++++ b/entities/animals/drone_physics.xml
+@@ -183,6 +183,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/drone_shield.xml b/entities/animals/drone_shield.xml
+index 5a2b931..a356bcc 100644
+--- a/entities/animals/drone_shield.xml
++++ b/entities/animals/drone_shield.xml
+@@ -107,6 +107,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/giant.xml b/entities/animals/giant.xml
+index fb734d9..5d6a998 100644
+--- a/entities/animals/giant.xml
++++ b/entities/animals/giant.xml
+@@ -37,6 +37,7 @@
+ 			ragdoll_blood_amount_absolute="0"
+ 			blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_blue_$[1-3].xml"
+ 			blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_blue_$[1-3].xml"
++			healing_particle_effect_entity="data/entities/particles/heal_effect.xml"
+ 			>
+ 			<damage_multipliers
+ 				explosion="0.2"
+diff --git a/entities/animals/healerdrone_physics.xml b/entities/animals/healerdrone_physics.xml
+index 2626f8d..18e4da8 100644
+--- a/entities/animals/healerdrone_physics.xml
++++ b/entities/animals/healerdrone_physics.xml
+@@ -180,6 +180,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/icer.xml b/entities/animals/icer.xml
+index 5b68600..26ab1cb 100644
+--- a/entities/animals/icer.xml
++++ b/entities/animals/icer.xml
+@@ -153,6 +153,8 @@
+     </ItemPickUpperComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/missilecrab.xml b/entities/animals/missilecrab.xml
+index b1f0f0d..0d37112 100644
+--- a/entities/animals/missilecrab.xml
++++ b/entities/animals/missilecrab.xml
+@@ -128,6 +128,8 @@
+ 	</SpriteComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/monk.xml b/entities/animals/monk.xml
+index 3b6b108..a196f65 100644
+--- a/entities/animals/monk.xml
++++ b/entities/animals/monk.xml
+@@ -130,6 +130,8 @@
+ 	</AudioComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/necrobot.xml b/entities/animals/necrobot.xml
+index 9949e46..81010bd 100644
+--- a/entities/animals/necrobot.xml
++++ b/entities/animals/necrobot.xml
+@@ -141,6 +141,8 @@
+ 	</AudioComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/necrobot_super.xml b/entities/animals/necrobot_super.xml
+index e9b1c14..de2085d 100644
+--- a/entities/animals/necrobot_super.xml
++++ b/entities/animals/necrobot_super.xml
+@@ -141,6 +141,8 @@
+ 	</AudioComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/necromancer_super.xml b/entities/animals/necromancer_super.xml
+index 23cd528..628a488 100644
+--- a/entities/animals/necromancer_super.xml
++++ b/entities/animals/necromancer_super.xml
+@@ -182,13 +182,18 @@
+ 
+ 	<!-- protections -->
+ 	<Entity>
++		<InheritTransformComponent />
++		
+         <GameEffectComponent 
+             effect="PROTECTION_FREEZE"
+             frames="-1"
+         >
+         </GameEffectComponent >
+     </Entity>
++	
+     <Entity>
++		<InheritTransformComponent />
++		
+         <GameEffectComponent 
+             effect="PROTECTION_ELECTRICITY"
+             frames="-1"
+diff --git a/entities/animals/parallel/alchemist/parallel_alchemist.xml b/entities/animals/parallel/alchemist/parallel_alchemist.xml
+index b78000b..dd569a9 100644
+--- a/entities/animals/parallel/alchemist/parallel_alchemist.xml
++++ b/entities/animals/parallel/alchemist/parallel_alchemist.xml
+@@ -176,6 +176,8 @@
+ 	</VariableStorageComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -184,6 +186,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/animals/parallel/tentacles/parallel_tentacles.xml b/entities/animals/parallel/tentacles/parallel_tentacles.xml
+index b9627fb..327f3c6 100644
+--- a/entities/animals/parallel/tentacles/parallel_tentacles.xml
++++ b/entities/animals/parallel/tentacles/parallel_tentacles.xml
+@@ -246,6 +246,8 @@
+ 	<Entity><Base file="data/entities/animals/parallel/tentacles/tentacle.xml"> <InheritTransformComponent><Transform position.x="0"  position.y="4" ></Transform></InheritTransformComponent> </Base></Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -254,6 +256,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/animals/pebble_physics.xml b/entities/animals/pebble_physics.xml
+index 173dfd2..a00709a 100644
+--- a/entities/animals/pebble_physics.xml
++++ b/entities/animals/pebble_physics.xml
+@@ -58,6 +58,7 @@
+ 			blood_spray_material="blood_cold"
+ 			blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_blue_$[1-3].xml"
+ 			blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_blue_$[1-3].xml"
++			healing_particle_effect_entity="data/entities/particles/heal_effect.xml"
+ 			>
+ 			<damage_multipliers
+ 				melee="0.0"
+diff --git a/entities/animals/phantom_a.xml b/entities/animals/phantom_a.xml
+index 5789428..24aff3b 100644
+--- a/entities/animals/phantom_a.xml
++++ b/entities/animals/phantom_a.xml
+@@ -124,6 +124,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/phantom_b.xml b/entities/animals/phantom_b.xml
+index e5fd6cf..0f4c303 100644
+--- a/entities/animals/phantom_b.xml
++++ b/entities/animals/phantom_b.xml
+@@ -124,6 +124,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/playerghost.xml b/entities/animals/playerghost.xml
+index 417b83d..45656b7 100644
+--- a/entities/animals/playerghost.xml
++++ b/entities/animals/playerghost.xml
+@@ -28,6 +28,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/roboguard.xml b/entities/animals/roboguard.xml
+index 1583f18..ca65d45 100644
+--- a/entities/animals/roboguard.xml
++++ b/entities/animals/roboguard.xml
+@@ -92,6 +92,8 @@
+ 
+ 	<!-- protection from FREEZING -->
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/spearbot.xml b/entities/animals/spearbot.xml
+index 18a8556..17983d4 100644
+--- a/entities/animals/spearbot.xml
++++ b/entities/animals/spearbot.xml
+@@ -132,6 +132,8 @@
+ 	</AudioComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -140,6 +142,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_EXPLOSION"
+ 	        frames="-1"
+diff --git a/entities/animals/tank.xml b/entities/animals/tank.xml
+index d3d914c..ed2c36e 100644
+--- a/entities/animals/tank.xml
++++ b/entities/animals/tank.xml
+@@ -205,6 +205,8 @@
+ 
+ 	<!-- protection from FREEZING -->
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/tank_rocket.xml b/entities/animals/tank_rocket.xml
+index 26a448d..4ba9d0d 100644
+--- a/entities/animals/tank_rocket.xml
++++ b/entities/animals/tank_rocket.xml
+@@ -206,6 +206,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/tank_super.xml b/entities/animals/tank_super.xml
+index 852addf..7152d09 100644
+--- a/entities/animals/tank_super.xml
++++ b/entities/animals/tank_super.xml
+@@ -204,6 +204,8 @@
+ 	
+ 	<!-- protection from FREEZING -->
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/the_end/spearbot.xml b/entities/animals/the_end/spearbot.xml
+index d09bcd2..3ff6ce7 100644
+--- a/entities/animals/the_end/spearbot.xml
++++ b/entities/animals/the_end/spearbot.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -16,6 +18,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_EXPLOSION"
+ 	        frames="-1"
+diff --git a/entities/animals/thundermage_big.xml b/entities/animals/thundermage_big.xml
+index 4526784..cb2de8d 100644
+--- a/entities/animals/thundermage_big.xml
++++ b/entities/animals/thundermage_big.xml
+@@ -165,6 +165,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -173,6 +175,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/animals/turret_left.xml b/entities/animals/turret_left.xml
+index 10f92fd..c831f97 100644
+--- a/entities/animals/turret_left.xml
++++ b/entities/animals/turret_left.xml
+@@ -9,6 +9,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/turret_right.xml b/entities/animals/turret_right.xml
+index a698318..66499a0 100644
+--- a/entities/animals/turret_right.xml
++++ b/entities/animals/turret_right.xml
+@@ -176,6 +176,8 @@
+ 	</SpriteComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/assassin.xml b/entities/animals/vault/assassin.xml
+index ff39ec8..6982f47 100644
+--- a/entities/animals/vault/assassin.xml
++++ b/entities/animals/vault/assassin.xml
+@@ -13,6 +13,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/drone_physics.xml b/entities/animals/vault/drone_physics.xml
+index 5e567eb..eff2e99 100644
+--- a/entities/animals/vault/drone_physics.xml
++++ b/entities/animals/vault/drone_physics.xml
+@@ -18,6 +18,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/healerdrone_physics.xml b/entities/animals/vault/healerdrone_physics.xml
+index 3b30353..6001ac4 100644
+--- a/entities/animals/vault/healerdrone_physics.xml
++++ b/entities/animals/vault/healerdrone_physics.xml
+@@ -20,6 +20,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/icer.xml b/entities/animals/vault/icer.xml
+index 56a6595..6cea79e 100644
+--- a/entities/animals/vault/icer.xml
++++ b/entities/animals/vault/icer.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/missilecrab.xml b/entities/animals/vault/missilecrab.xml
+index f0f2fa0..dae40ec 100644
+--- a/entities/animals/vault/missilecrab.xml
++++ b/entities/animals/vault/missilecrab.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/roboguard.xml b/entities/animals/vault/roboguard.xml
+index 05ae0f2..3faf715 100644
+--- a/entities/animals/vault/roboguard.xml
++++ b/entities/animals/vault/roboguard.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/tank.xml b/entities/animals/vault/tank.xml
+index cbe21e6..5ce9d07 100644
+--- a/entities/animals/vault/tank.xml
++++ b/entities/animals/vault/tank.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/tank_rocket.xml b/entities/animals/vault/tank_rocket.xml
+index 39ad3c5..58907b0 100644
+--- a/entities/animals/vault/tank_rocket.xml
++++ b/entities/animals/vault/tank_rocket.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/tank_super.xml b/entities/animals/vault/tank_super.xml
+index 876c945..d7f00bd 100644
+--- a/entities/animals/vault/tank_super.xml
++++ b/entities/animals/vault/tank_super.xml
+@@ -205,6 +205,8 @@
+ 	</AudioLoopComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/turret_left.xml b/entities/animals/vault/turret_left.xml
+index e077c8c..b18ddab 100644
+--- a/entities/animals/vault/turret_left.xml
++++ b/entities/animals/vault/turret_left.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/vault/turret_right.xml b/entities/animals/vault/turret_right.xml
+index 90a5f9d..b4cad8c 100644
+--- a/entities/animals/vault/turret_right.xml
++++ b/entities/animals/vault/turret_right.xml
+@@ -8,6 +8,8 @@
+   </Base>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/wizard_neutral.xml b/entities/animals/wizard_neutral.xml
+index 63900be..586e380 100644
+--- a/entities/animals/wizard_neutral.xml
++++ b/entities/animals/wizard_neutral.xml
+@@ -166,6 +166,8 @@
+ 	</SpriteComponent>
+     
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -174,6 +176,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/animals/wizard_wither.xml b/entities/animals/wizard_wither.xml
+index e0556c5..120595f 100644
+--- a/entities/animals/wizard_wither.xml
++++ b/entities/animals/wizard_wither.xml
+@@ -111,6 +111,8 @@
+     </Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/animals/worm_skull.xml b/entities/animals/worm_skull.xml
+index 2bb43ad..d87800f 100644
+--- a/entities/animals/worm_skull.xml
++++ b/entities/animals/worm_skull.xml
+@@ -342,6 +342,8 @@
+   </AudioComponent>
+   
+   <Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/buildings/arrowtrap_left.xml b/entities/buildings/arrowtrap_left.xml
+index 9e74332..3b2acde 100644
+--- a/entities/buildings/arrowtrap_left.xml
++++ b/entities/buildings/arrowtrap_left.xml
+@@ -86,6 +86,8 @@
+ 	</CameraBoundComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 		<GameEffectComponent 
+ 			effect="PROTECTION_FREEZE"
+ 			frames="-1"
+@@ -94,6 +96,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 		<GameEffectComponent 
+ 			effect="PROTECTION_ELECTRICITY"
+ 			frames="-1"
+diff --git a/entities/buildings/arrowtrap_right.xml b/entities/buildings/arrowtrap_right.xml
+index a4e56e2..735c73a 100644
+--- a/entities/buildings/arrowtrap_right.xml
++++ b/entities/buildings/arrowtrap_right.xml
+@@ -27,6 +27,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 		<GameEffectComponent 
+ 			effect="PROTECTION_FREEZE"
+ 			frames="-1"
+@@ -35,6 +37,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 		<GameEffectComponent 
+ 			effect="PROTECTION_ELECTRICITY"
+ 			frames="-1"
+diff --git a/entities/buildings/failed_alchemist_orb.xml b/entities/buildings/failed_alchemist_orb.xml
+index c5bdd6b..cd3e581 100644
+--- a/entities/buildings/failed_alchemist_orb.xml
++++ b/entities/buildings/failed_alchemist_orb.xml
+@@ -88,6 +88,8 @@
+   </AudioLoopComponent>
+   
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+@@ -96,6 +98,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+diff --git a/entities/buildings/firetrap_left.xml b/entities/buildings/firetrap_left.xml
+index 0c03236..ec543d9 100644
+--- a/entities/buildings/firetrap_left.xml
++++ b/entities/buildings/firetrap_left.xml
+@@ -87,6 +87,8 @@
+ 	</CameraBoundComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -95,6 +97,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/firetrap_right.xml b/entities/buildings/firetrap_right.xml
+index e067b97..d9610ef 100644
+--- a/entities/buildings/firetrap_right.xml
++++ b/entities/buildings/firetrap_right.xml
+@@ -27,6 +27,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -35,6 +37,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/spittrap_left.xml b/entities/buildings/spittrap_left.xml
+index ed65c5d..3c2bc00 100644
+--- a/entities/buildings/spittrap_left.xml
++++ b/entities/buildings/spittrap_left.xml
+@@ -87,6 +87,8 @@
+ 	</CameraBoundComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -95,6 +97,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/spittrap_right.xml b/entities/buildings/spittrap_right.xml
+index c68359f..085257c 100644
+--- a/entities/buildings/spittrap_right.xml
++++ b/entities/buildings/spittrap_right.xml
+@@ -27,6 +27,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -35,6 +37,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/thundertrap_left.xml b/entities/buildings/thundertrap_left.xml
+index 0c5ba81..8d8e4e0 100644
+--- a/entities/buildings/thundertrap_left.xml
++++ b/entities/buildings/thundertrap_left.xml
+@@ -87,6 +87,8 @@
+ 	</CameraBoundComponent>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -95,6 +97,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/thundertrap_right.xml b/entities/buildings/thundertrap_right.xml
+index 0d30c04..6f99321 100644
+--- a/entities/buildings/thundertrap_right.xml
++++ b/entities/buildings/thundertrap_right.xml
+@@ -27,6 +27,8 @@
+ 	</Base>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_FREEZE"
+ 	        frames="-1"
+@@ -35,6 +37,8 @@
+ 	</Entity>
+ 	
+ 	<Entity>
++		<InheritTransformComponent />
++		
+ 	    <GameEffectComponent 
+ 	        effect="PROTECTION_ELECTRICITY"
+ 	        frames="-1"
+diff --git a/entities/buildings/vault_lab_puzzle_worm.xml b/entities/buildings/vault_lab_puzzle_worm.xml
+index d539920..a2ecc6b 100644
+--- a/entities/buildings/vault_lab_puzzle_worm.xml
++++ b/entities/buildings/vault_lab_puzzle_worm.xml
+@@ -2,7 +2,7 @@
+ 	<Base file="data/entities/buildings/vault_lab_puzzle_protect.xml">
+ 		<MaterialAreaCheckerComponent
+ 			material="magic_liquid_worm_attractor"
+-			material2="magic_liquid_worm_attractor" >
++			material2="blood_worm" >
+ 		</MaterialAreaCheckerComponent>
+ 		<PixelSceneComponent
+ 			pixel_scene_background="data/biome_impl/vault/lab_puzzle_worm_background.png" >
+diff --git a/entities/items/pickup/bloodmoney_10.xml b/entities/items/pickup/bloodmoney_10.xml
+index 0d1dbb8..97d8732 100644
+--- a/entities/items/pickup/bloodmoney_10.xml
++++ b/entities/items/pickup/bloodmoney_10.xml
+@@ -22,6 +22,7 @@
+ 	<!-- Arvi: Increased this to 0.16 so that 10 hp nuggets are a bit better at healing relative to the others -->
+ 	
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="hp_value"
+ 		value_float="0.16" >
+ 	</VariableStorageComponent>
+diff --git a/entities/items/pickup/bloodmoney_1000.xml b/entities/items/pickup/bloodmoney_1000.xml
+index d01e970..af57ec5 100644
+--- a/entities/items/pickup/bloodmoney_1000.xml
++++ b/entities/items/pickup/bloodmoney_1000.xml
+@@ -20,6 +20,7 @@
+ 
+ 	<!-- 3*100 / 25 = 12.0 -->
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="hp_value"
+ 		value_float="0.6" >
+ 	</VariableStorageComponent>
+diff --git a/entities/items/pickup/bloodmoney_10000.xml b/entities/items/pickup/bloodmoney_10000.xml
+index f6bd3e2..57fd540 100644
+--- a/entities/items/pickup/bloodmoney_10000.xml
++++ b/entities/items/pickup/bloodmoney_10000.xml
+@@ -20,6 +20,7 @@
+ 
+ 	<!-- 3*100 / 25 = 12.0 -->
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="hp_value"
+ 		value_float="0.6" >
+ 	</VariableStorageComponent>
+diff --git a/entities/items/pickup/bloodmoney_200.xml b/entities/items/pickup/bloodmoney_200.xml
+index 30d20d4..0d3befe 100644
+--- a/entities/items/pickup/bloodmoney_200.xml
++++ b/entities/items/pickup/bloodmoney_200.xml
+@@ -20,6 +20,7 @@
+ 
+ 	<!-- 3*20 / 25 = 0.6 -->
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="hp_value"
+ 		value_float="0.6" >
+ 	</VariableStorageComponent>
+diff --git a/entities/items/pickup/bloodmoney_50.xml b/entities/items/pickup/bloodmoney_50.xml
+index 11cd309..60eace3 100644
+--- a/entities/items/pickup/bloodmoney_50.xml
++++ b/entities/items/pickup/bloodmoney_50.xml
+@@ -20,6 +20,7 @@
+ 
+ 	<!-- 3*5 / 25 = 0.6 -->
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="hp_value"
+ 		value_float="0.4" >
+ 	</VariableStorageComponent>
+diff --git a/entities/items/pickup/goldnugget.xml b/entities/items/pickup/goldnugget.xml
+index f988d5b..f2b64eb 100644
+--- a/entities/items/pickup/goldnugget.xml
++++ b/entities/items/pickup/goldnugget.xml
+@@ -2,6 +2,7 @@
+ 
+ 	<!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+@@ -18,7 +19,8 @@
+ 		on_death_leave_physics_body="1" >
+ 	</PhysicsBodyComponent>
+ 	
+-	<PhysicsImageShapeComponent 
++	<PhysicsImageShapeComponent
++		_tags="enabled_in_world"
+ 		body_id="1"
+ 		centered="1"
+ 		image_file="data/items_gfx/goldnugget_01.png"
+@@ -26,6 +28,7 @@
+ 	</PhysicsImageShapeComponent>
+ 
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="gold_value"
+ 		value_int="10" >
+ 	</VariableStorageComponent>
+@@ -55,14 +58,17 @@
+ 	</HitboxComponent>
+ 
+ 	<LifetimeComponent
++		_tags="enabled_in_world"
+ 		lifetime="900" >
+ 	</LifetimeComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -71,6 +77,7 @@
+ 
+ 	<!-- particle glitter -->
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_08.xml"
+ 		lifetime="0.2"
+ 		randomize_lifetime.min="0.1"
+diff --git a/entities/items/pickup/goldnugget_10.xml b/entities/items/pickup/goldnugget_10.xml
+index 9f7c3f2..c8203ad 100644
+--- a/entities/items/pickup/goldnugget_10.xml
++++ b/entities/items/pickup/goldnugget_10.xml
+@@ -2,10 +2,11 @@
+ 
+ 	<!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+-	<PhysicsBodyComponent 
++	<PhysicsBodyComponent
+ 		_tags="enabled_in_world"
+ 		uid="1" 
+ 		allow_sleep="1" 
+@@ -18,7 +19,8 @@
+ 		on_death_leave_physics_body="1" >
+ 	</PhysicsBodyComponent>
+ 	
+-	<PhysicsImageShapeComponent 
++	<PhysicsImageShapeComponent
++		_tags="enabled_in_world"
+ 		body_id="1"
+ 		centered="1"
+ 		image_file="data/items_gfx/goldnugget_6px.png"
+@@ -26,6 +28,7 @@
+ 	</PhysicsImageShapeComponent>
+ 
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="gold_value"
+ 		value_int="10" >
+ 	</VariableStorageComponent>
+@@ -55,14 +58,17 @@
+ 	</HitboxComponent>
+ 
+ 	<LifetimeComponent
++		_tags="enabled_in_world"
+ 		lifetime="900" >
+ 	</LifetimeComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -71,6 +77,7 @@
+ 
+ 	<!-- particle glitter -->
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_08.xml"
+ 		lifetime="0.2"
+ 		randomize_lifetime.min="0.1"
+diff --git a/entities/items/pickup/goldnugget_1000.xml b/entities/items/pickup/goldnugget_1000.xml
+index 852a034..e718ced 100644
+--- a/entities/items/pickup/goldnugget_1000.xml
++++ b/entities/items/pickup/goldnugget_1000.xml
+@@ -2,10 +2,11 @@
+ 
+ 	<!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+-	<PhysicsBodyComponent 
++	<PhysicsBodyComponent
+ 		_tags="enabled_in_world"
+ 		uid="1" 
+ 		allow_sleep="1" 
+@@ -18,7 +19,8 @@
+ 		on_death_leave_physics_body="1" >
+ 	</PhysicsBodyComponent>
+ 	
+-	<PhysicsImageShapeComponent 
++	<PhysicsImageShapeComponent
++		_tags="enabled_in_world"
+ 		body_id="1"
+ 		centered="1"
+ 		image_file="data/items_gfx/goldnugget_20px.png"
+@@ -26,6 +28,7 @@
+ 	</PhysicsImageShapeComponent>
+ 
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="gold_value"
+ 		value_int="1000" >
+ 	</VariableStorageComponent>
+@@ -55,14 +58,17 @@
+ 	</HitboxComponent>
+ 
+ 	<LifetimeComponent
++		_tags="enabled_in_world"
+ 		lifetime="900" >
+ 	</LifetimeComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -71,6 +77,7 @@
+ 
+ 	<!-- particle glitter -->
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_07.xml"
+ 		lifetime="0.3"
+ 		emission_interval_min_frames="20"
+@@ -96,6 +103,7 @@
+ 	</SpriteParticleEmitterComponent>
+ 
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_08.xml"
+ 		lifetime="0.2"
+ 		randomize_lifetime.min="0.1"
+@@ -123,6 +131,7 @@
+ 	</SpriteParticleEmitterComponent>
+ 
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_06.xml"
+ 		lifetime="0.56"
+ 		emission_interval_min_frames="100"
+diff --git a/entities/items/pickup/goldnugget_10000.xml b/entities/items/pickup/goldnugget_10000.xml
+index b709015..0747d49 100644
+--- a/entities/items/pickup/goldnugget_10000.xml
++++ b/entities/items/pickup/goldnugget_10000.xml
+@@ -2,6 +2,7 @@
+ 
+   <!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+@@ -19,7 +20,8 @@
+   </PhysicsBodyComponent>
+   
+   <!-- Thank you Derek! -->
+-  <PhysicsImageShapeComponent 
++  <PhysicsImageShapeComponent
++	_tags="enabled_in_world"
+     body_id="1"
+     centered="1"
+     image_file="data/items_gfx/easter/golden_idol.png"
+@@ -27,6 +29,7 @@
+   </PhysicsImageShapeComponent>
+ 
+   <VariableStorageComponent
++	_tags="enabled_in_world"
+     name="gold_value"
+     value_int="10000" >
+   </VariableStorageComponent>
+@@ -56,14 +59,17 @@
+   </HitboxComponent>
+ 
+   <LifetimeComponent
++	_tags="enabled_in_world"
+     lifetime="900" >
+   </LifetimeComponent>
+   
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -72,6 +78,7 @@
+ 
+       <!-- particle glitter -->
+   <SpriteParticleEmitterComponent
++	_tags="enabled_in_world"
+     sprite_file="data/particles/shine_07.xml"
+     lifetime="0.3"
+     emission_interval_min_frames="20"
+@@ -97,6 +104,7 @@
+   </SpriteParticleEmitterComponent>
+ 
+   <SpriteParticleEmitterComponent
++	_tags="enabled_in_world"
+     sprite_file="data/particles/shine_08.xml"
+     lifetime="0.2"
+     randomize_lifetime.min="0.1"
+@@ -124,6 +132,7 @@
+   </SpriteParticleEmitterComponent>
+ 
+   <SpriteParticleEmitterComponent
++	_tags="enabled_in_world"
+     sprite_file="data/particles/shine_06.xml"
+     lifetime="0.56"
+     emission_interval_min_frames="100"
+diff --git a/entities/items/pickup/goldnugget_200.xml b/entities/items/pickup/goldnugget_200.xml
+index 092d134..9704fd5 100644
+--- a/entities/items/pickup/goldnugget_200.xml
++++ b/entities/items/pickup/goldnugget_200.xml
+@@ -2,10 +2,11 @@
+ 
+ 	<!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+-	<PhysicsBodyComponent 
++	<PhysicsBodyComponent
+ 		_tags="enabled_in_world"
+ 		uid="1" 
+ 		allow_sleep="1" 
+@@ -18,7 +19,8 @@
+ 		on_death_leave_physics_body="1" >
+ 	</PhysicsBodyComponent>
+ 	
+-	<PhysicsImageShapeComponent 
++	<PhysicsImageShapeComponent
++		_tags="enabled_in_world"
+ 		body_id="1"
+ 		centered="1"
+ 		image_file="data/items_gfx/goldnugget_12px.png"
+@@ -26,6 +28,7 @@
+ 	</PhysicsImageShapeComponent>
+ 
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="gold_value"
+ 		value_int="200" >
+ 	</VariableStorageComponent>
+@@ -55,14 +58,17 @@
+ 	</HitboxComponent>
+ 
+ 	<LifetimeComponent
++		_tags="enabled_in_world"
+ 		lifetime="900" >
+ 	</LifetimeComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -71,6 +77,7 @@
+ 
+ 	<!-- particle glitter -->
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_07.xml"
+ 		lifetime="0.3"
+ 		emission_interval_min_frames="50"
+@@ -96,6 +103,7 @@
+ 	</SpriteParticleEmitterComponent>
+ 
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_08.xml"
+ 		lifetime="0.2"
+ 		randomize_lifetime.min="0.1"
+diff --git a/entities/items/pickup/goldnugget_50.xml b/entities/items/pickup/goldnugget_50.xml
+index 9b4cb4c..3d76d99 100644
+--- a/entities/items/pickup/goldnugget_50.xml
++++ b/entities/items/pickup/goldnugget_50.xml
+@@ -2,10 +2,11 @@
+ 
+ 	<!-- physical presence -->
+ 	<UIInfoComponent
++		_tags="enabled_in_world"
+ 		name="$item_goldnugget">
+ 	</UIInfoComponent>
+ 
+-	<PhysicsBodyComponent 
++	<PhysicsBodyComponent
+ 		_tags="enabled_in_world"
+ 		uid="1" 
+ 		allow_sleep="1" 
+@@ -18,7 +19,8 @@
+ 		on_death_leave_physics_body="1" >
+ 	</PhysicsBodyComponent>
+ 	
+-	<PhysicsImageShapeComponent 
++	<PhysicsImageShapeComponent
++		_tags="enabled_in_world"
+ 		body_id="1"
+ 		centered="1"
+ 		image_file="data/items_gfx/goldnugget_9px.png"
+@@ -26,6 +28,7 @@
+ 	</PhysicsImageShapeComponent>
+ 
+ 	<VariableStorageComponent
++		_tags="enabled_in_world"
+ 		name="gold_value"
+ 		value_int="50" >
+ 	</VariableStorageComponent>
+@@ -55,14 +58,17 @@
+ 	</HitboxComponent>
+ 
+ 	<LifetimeComponent
++		_tags="enabled_in_world"
+ 		lifetime="900" >
+ 	</LifetimeComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_item_picked_up="data/scripts/items/gold_pickup.lua" >
+ 	</LuaComponent>
+ 	
+-	<LuaComponent 
++	<LuaComponent
++		_tags="enabled_in_world"
+ 		script_source_file="data/scripts/perks/gold_explosion.lua" 
+ 		execute_on_added="1"
+ 		remove_after_executed="1"
+@@ -71,6 +77,7 @@
+ 
+ 	<!-- particle glitter -->
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_07.xml"
+ 		lifetime="0.3"
+ 		emission_interval_min_frames="100"
+@@ -96,6 +103,7 @@
+ 	</SpriteParticleEmitterComponent>
+ 
+ 	<SpriteParticleEmitterComponent
++		_tags="enabled_in_world"
+ 		sprite_file="data/particles/shine_08.xml"
+ 		lifetime="0.2"
+ 		randomize_lifetime.min="0.1"
+diff --git a/entities/misc/effect_trip_03.xml b/entities/misc/effect_trip_03.xml
+index 1ff4dc5..043ed3e 100644
+--- a/entities/misc/effect_trip_03.xml
++++ b/entities/misc/effect_trip_03.xml
+@@ -1,4 +1,4 @@
+-<Entity name="effect_tripping_balls">
++<Entity name="effect_tripping_balls" tags="tripping_extreme">
+ 
+ 	<InheritTransformComponent>
+     </InheritTransformComponent>
+diff --git a/entities/player_base.xml b/entities/player_base.xml
+index 2e60357..ad5ff78 100644
+--- a/entities/player_base.xml
++++ b/entities/player_base.xml
+@@ -428,6 +428,18 @@
+ 		z_index="0.59"
+ 		_enabled="0"
+ 	></SpriteComponent>
++	
++	<SpriteComponent 
++		_tags="character,player_hat"
++		alpha="1" 
++		image_file="data/enemies_gfx/player_hat.xml" 
++		next_rect_animation="" 
++		offset_x="6" 
++		offset_y="14" 
++		rect_animation="walk" 
++		z_index="0.59"
++		_enabled="0"
++	></SpriteComponent>
+ 
+ 	<LuaComponent
+ 		script_source_file="data/scripts/magic/amulet.lua"
+diff --git a/entities/projectiles/deck/iceball.xml b/entities/projectiles/deck/iceball.xml
+index f9adafe..2807b88 100644
+--- a/entities/projectiles/deck/iceball.xml
++++ b/entities/projectiles/deck/iceball.xml
+@@ -195,13 +195,128 @@
+   </LightComponent>
+ 
+   <MagicConvertMaterialComponent
+-        from_material=""
+-        to_material=""
+-        steps_per_frame="5"
+-		extinguish_fire="1"
++        from_material="fire"
++        to_material="air"
++        steps_per_frame="20"
+         loop="1"
+-        is_circle="1"
+-        radius="15" >
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="lava"
++        to_material="rock_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++    <MagicConvertMaterialComponent
++        from_material="water"
++        to_material="ice_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++
++    <MagicConvertMaterialComponent
++        from_material="water_ice"
++        to_material="ice_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++
++    <MagicConvertMaterialComponent
++        from_material="water_salt"
++        to_material="ice_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++
++    <MagicConvertMaterialComponent
++        from_material="water_static"
++        to_material="ice_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++
++    <MagicConvertMaterialComponent
++        from_material="water_swamp"
++        to_material="ice_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="radioactive_liquid"
++        to_material="ice_radioactive_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="acid"
++        to_material="ice_acid_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="blood_cold"
++        to_material="ice_cold_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="blood"
++        to_material="ice_blood_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="poison"
++        to_material="ice_poison_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++	
++	<MagicConvertMaterialComponent
++        from_material="slime"
++        to_material="ice_slime_static"
++        steps_per_frame="20"
++        loop="1"
++		is_circle="1"
++        radius="20" >
++    </MagicConvertMaterialComponent>
++    
++    <MagicConvertMaterialComponent
++      kill_when_finished="0"
++      extinguish_fire="1"
++      is_circle="1"
++      loop="1"
++      radius="30" >
+     </MagicConvertMaterialComponent>
+ 
+   <AudioComponent
+diff --git a/entities/projectiles/deck/pebble_player_physics.xml b/entities/projectiles/deck/pebble_player_physics.xml
+index cc9d6a1..33f3aff 100644
+--- a/entities/projectiles/deck/pebble_player_physics.xml
++++ b/entities/projectiles/deck/pebble_player_physics.xml
+@@ -64,6 +64,7 @@
+ 			blood_spray_material="blood_cold"
+ 			blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_blue_$[1-3].xml"
+ 			blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_blue_$[1-3].xml"
++			healing_particle_effect_entity="data/entities/particles/heal_effect.xml"
+ 			>
+ 			<damage_multipliers
+ 				melee="0.0"
+diff --git a/entities/projectiles/deck/powerdigger.xml b/entities/projectiles/deck/powerdigger.xml
+index 09a049e..ade36e4 100644
+--- a/entities/projectiles/deck/powerdigger.xml
++++ b/entities/projectiles/deck/powerdigger.xml
+@@ -69,8 +69,6 @@
+       is_digger="1"
+       audio_enabled="0" >
+     </config_explosion>
+-    <damage_by_type drill="0.01" >
+-    </damage_by_type>
+   </ProjectileComponent>
+   
+   <SpriteParticleEmitterComponent
+diff --git a/genome_relations.csv b/genome_relations.csv
+index ff11f41..13aeb3c 100644
+--- a/genome_relations.csv
++++ b/genome_relations.csv
+@@ -1,5 +1,5 @@
+ HERD,player,-1,slimes,ant,robot,fly,boss_dragon,crawler,helpless,eel,fire,fungus,ghoul,giant,ice,spider,orcs,rat,electricity,wolf,worm,zombie,nest,mage,flower,ghost,boss_limbs,healer,apparition,bat,mage_swapper,curse,trap,ghost_boss
+-      player,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
++      player,100,0,0,0,0,0,0,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ -1,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,100,0,0,0,0
+       slimes,0,0,100,80,95,90,0,0,0,90,90,90,90,90,90,95,95,30,90,90,90,90,100,90,90,90,0,100,50,100,90,100,100,100
+          ant,0,0,80,100,40,90,0,0,0,0,0,100,0,0,0,95,40,50,0,0,0,90,100,90,90,90,0,100,50,100,90,100,100,100
+diff --git a/items_gfx/wands/custom/skull_01.png b/items_gfx/wands/custom/skull_01.png
+index 68f099b..45cf132 100644
+Binary files a/items_gfx/wands/custom/skull_01.png and b/items_gfx/wands/custom/skull_01.png differ
+diff --git a/materials.xml b/materials.xml
+index 314d445..3680fe6 100644
+--- a/materials.xml
++++ b/materials.xml
+@@ -2976,7 +2976,6 @@
+   	_parent="steel_static"
+   	_inherit_reactions="1"
+   	name="steelmoss_static"
+-  	<!-- steel_rusted -->
+ 	ui_name="$mat_steelrusted"	
+ 	wang_color="ff787A55" 
+ 	wang_noise_percent="0.0"
+@@ -8040,7 +8039,6 @@
+ 	solid_friction="1.0"
+ 	fire_hp="50"
+ 	on_fire="0"
+-	temperature_of_fire="95"
+ 	autoignition_temperature="10"
+ 	electrical_conductivity="0"
+ 	requires_oxygen="1"  
+@@ -9640,7 +9638,7 @@
+ 	name="rat_powder"
+ 	ui_name="$mat_rat_powder"
+   	tags="[sand_other]"
+-	burnable="1"
++	burnable="0"
+ 	density="7"
+ 	durability="3"
+ 	cell_type="liquid"
+@@ -9648,7 +9646,7 @@
+ 	generates_smoke="0"
+ 	liquid_gravity="2"
+ 	liquid_sand="1"
+-	on_fire="1"
++	on_fire="0"
+ 	requires_oxygen="0"
+ 	temperature_of_fire="10"
+ 	autoignition_temperature="0"
+@@ -9662,25 +9660,6 @@
+ 	show_in_creative_mode="0"
+ 	lifetime="4.0"
+ 	>
+-	<ExplosionConfig 
+-		damage="0"
+-		cell_explosion_power="2"
+-		cell_explosion_damage_required="1"
+-		cell_explosion_radius_min="2"
+-		explosion_sprite=""
+-		load_this_entity="data/entities/misc/rat_powder.xml"
+-		ray_energy="0"
+-		audio_enabled="0"
+-		create_cell_probability="0"
+-		sparks_enabled="0"
+-		light_enabled="0"
+-		hole_enabled="1"
+-		crack_count="0"
+-		stains_enabled="0"
+-		damage_mortals="0"
+-		particle_effect="0"
+-		>
+-	</ExplosionConfig>
+     <Graphics
+ 	  texture_file="data/materials_gfx/meat_rotten.png"
+ 	  color="ffb89e57" >
+@@ -9700,7 +9679,7 @@
+ 	name="fungus_powder"
+ 	ui_name="$mat_fungisoil"
+   	tags="[sand_other]"
+-	burnable="1"
++	burnable="0"
+ 	density="7"
+ 	durability="3"
+ 	cell_type="liquid"
+@@ -9708,7 +9687,7 @@
+ 	generates_smoke="0"
+ 	liquid_gravity="2"
+ 	liquid_sand="1"
+-	on_fire="1"
++	on_fire="0"
+ 	requires_oxygen="0"
+ 	temperature_of_fire="10"
+ 	autoignition_temperature="0"
+@@ -9722,25 +9701,6 @@
+ 	show_in_creative_mode="0"
+ 	lifetime="4.0"
+ 	>
+-	<ExplosionConfig 
+-		damage="0"
+-		cell_explosion_power="2"
+-		cell_explosion_damage_required="1"
+-		cell_explosion_radius_min="2"
+-		explosion_sprite=""
+-		load_this_entity="data/entities/misc/fungus_powder.xml"
+-		ray_energy="0"
+-		audio_enabled="0"
+-		create_cell_probability="0"
+-		sparks_enabled="0"
+-		light_enabled="0"
+-		hole_enabled="1"
+-		crack_count="0"
+-		stains_enabled="0"
+-		damage_mortals="0"
+-		particle_effect="0"
+-		>
+-	</ExplosionConfig>
+     <Graphics
+ 	  texture_file="data/materials_gfx/meat_rotten.png"
+ 	  color="ffb89e57" >
+@@ -11434,6 +11394,7 @@
+ 	density="8"
+ 	cell_type="solid"
+ 	wang_color="ffab5e4f"
++	durability="11"
+ 	generates_smoke="0"
+ 	on_fire="0"
+ 	requires_oxygen="1"
+@@ -11441,12 +11402,13 @@
+ 	autoignition_temperature="85"
+ 	fire_hp="600"
+ 	solid_friction="0.9"
+-	hp="500"
++	hp="10000"
+ 	audio_physics_material_wall="gravel"
+ 	audio_physics_material_solid="wood"
+ 	show_in_creative_mode="1"
+ 	>
+-	<ExplosionConfig 
++	<ExplosionConfig
++		damage="5"
+       	camera_shake="10" 
+ 		cell_explosion_power="40"
+ 		cell_explosion_damage_required="30"
+@@ -13362,15 +13324,17 @@
+ 	color="80c1dba5" >
+     </Graphics>
+ 	<ParticleEffect
+-		vel.y="17.14"
+-		vel_random.min_y="-100"
+-		vel_random.max_y="25.71"
++		vel.y="2.14"
++		vel_random.min_y="-55"
++		vel_random.max_y="25"
+ 		lifetime.min="0"
+-		gravity.y="-8.57"
++		gravity.y="0"
+ 		render_on_grid="1"
++		airflow_force="3"
++		airflow_scale="0.1"
+ 		draw_as_long="1"
+-		friction="-3.429"
+-		probability="0.0518"
++		friction="0.04"
++		probability="0.0118"
+ 	>
+ 	</ParticleEffect>
+   </CellData>
+@@ -14880,6 +14844,21 @@
+ 		output_cell1="metal_sand_molten" output_cell2="[lava]"
+ 		>
+ 	</Reaction>
+-
++	
++	<!-- Special powders -->
++	
++	<Reaction probability="100"
++		input_cell1="rat_powder" input_cell2="air"
++		output_cell1="air" output_cell2="air"
++		entity="data/entities/misc/rat_powder.xml"
++		>
++	</Reaction>
++	
++	<Reaction probability="100"
++		input_cell1="fungus_powder" input_cell2="air"
++		output_cell1="air" output_cell2="air"
++		entity="data/entities/misc/fungus_powder.xml"
++		>
++	</Reaction>
+ 
+ </Materials>
+diff --git a/scripts/animals/fungus_powder.lua b/scripts/animals/fungus_powder.lua
+index d3b8de0..1b6091a 100644
+--- a/scripts/animals/fungus_powder.lua
++++ b/scripts/animals/fungus_powder.lua
+@@ -7,7 +7,7 @@ SetRandomSeed( x, y )
+ local rats = EntityGetWithTag( "perk_fungus_tiny" )
+ 
+ if ( #rats < 20 ) then
+-	if ( Random( 1, 15 ) == 5 ) then
++	if ( Random( 1, 20 ) == 5 ) then
+ 		local eid = EntityLoad( "data/entities/misc/perks/fungus.xml", x, y )
+ 		EntityRemoveTag( eid, "enemy" )
+ 	end
+diff --git a/scripts/animals/rat_powder.lua b/scripts/animals/rat_powder.lua
+index 90b56de..309c3ff 100644
+--- a/scripts/animals/rat_powder.lua
++++ b/scripts/animals/rat_powder.lua
+@@ -7,7 +7,7 @@ SetRandomSeed( x, y )
+ local rats = EntityGetWithTag( "plague_rat" )
+ 
+ if ( #rats < 20 ) then
+-	if ( Random( 1, 15 ) == 5 ) then
++	if ( Random( 1, 20 ) == 5 ) then
+ 		EntityLoad( "data/entities/misc/perks/plague_rats_rat.xml", x, y )
+ 	end
+ end
+diff --git a/scripts/biomes/gourd_room.lua b/scripts/biomes/gourd_room.lua
+index c466b68..cb9ee3e 100644
+--- a/scripts/biomes/gourd_room.lua
++++ b/scripts/biomes/gourd_room.lua
+@@ -5,6 +5,7 @@ dofile_once("data/scripts/lib/utilities.lua")
+ 
+ RegisterSpawnFunction( 0xffffeedd, "init" )
+ RegisterSpawnFunction( 0xff31d0b0, "spawn_fruit" )
++RegisterSpawnFunction( 0xff9dd0b0, "spawn_book" )
+ 
+ function spawn_small_enemies( x, y ) end
+ function spawn_big_enemies( x, y ) end
+@@ -24,7 +25,7 @@ function spawn_potions( x, y ) end
+ function spawn_wands( x, y ) end
+ 
+ function init( x, y, w, h )
+-	LoadPixelScene( "data/biome_impl/gourd_room.png", "", x, y, "", true )
++	--LoadPixelScene( "data/biome_impl/gourd_room.png", "", x, y, "", true )
+ end
+ 
+ function spawn_orb(x, y)
+@@ -39,6 +40,12 @@ function spawn_fruit( x, y )
+ 	EntityLoad( "data/entities/animals/shotgunner.xml", x + 24, y - 24 )
+ end
+ 
++function spawn_book( x, y )
++	EntityLoad( "data/entities/items/books/book_music_c.xml", x, y )
++	EntityLoad( "data/entities/props/physics_skull_01.xml", x + 8, y )
++	EntityLoad( "data/entities/props/physics_bone_02.xml", x + 12, y - 16 )
++end
++
+ g_lamp =
+ {
+ 	total_prob = 0,
+diff --git a/scripts/biomes/mountain_tree.lua b/scripts/biomes/mountain_tree.lua
+index 47f851d..4cbd5a7 100644
+--- a/scripts/biomes/mountain_tree.lua
++++ b/scripts/biomes/mountain_tree.lua
+@@ -293,7 +293,7 @@ function spawn_pillars( x, y )
+ 	SetRandomSeed( x, y )
+ 	local flags = 
+ 	{
+-		{ { "misc_chest_rain", "crain" }, { "misc_worm_rain", "wrain" }, { "misc_greed_rain", "grain" }, { "misc_altar_tablet", "train" }, { "misc_monk_bots", "mbots" }, { "secret_tower", "secrett" }, { "player_status_ghostly", "pghost" }, { "player_status_ratty", "prat" } },
++		{ { "misc_chest_rain", "crain" }, { "misc_worm_rain", "wrain" }, { "misc_greed_rain", "grain" }, { "misc_altar_tablet", "train" }, { "misc_monk_bots", "mbots" }, { "secret_tower", "secrett" }, { "player_status_ghostly", "pghost" }, { "player_status_ratty", "prat" }, { "player_status_funky", "pfungi" } },
+ 		{ { "essence_fire", "essencef" }, { "essence_water", "essencew" }, { "essence_laser", "essencee" }, { "essence_air", "essencea" }, { "essence_alcohol", "essenceal" }, { "secret_moon", "moon" }, { "secret_moon2", "moona" }, { "special_mood", "moong" }, { "secret_dmoon", "dmoon" }, { "dead_mood", "dmoong" } },
+ 		{ { "progress_ending0", "end0" }, { "progress_ending1_toxic", "endt" }, { "progress_ending1_gold", "endb" }, { "progress_ending2", "endg" }, { "progress_newgameplusplus3", "endp" }, { "progress_nightmare", "endn" } },
+ 		{ { "miniboss_dragon", "minid" }, { "miniboss_limbs", "minil" }, { "miniboss_ghost", "minigh" }, { "miniboss_pit", "minip" }, { "miniboss_alchemist", "minia" }, { "miniboss_wizard", "meme" }, { "miniboss_gate_monsters", "minigm" }, { "boss_centipede", "boss" } },
+diff --git a/scripts/biomes/pyramid.lua b/scripts/biomes/pyramid.lua
+index 16e5fc7..3e47e10 100644
+--- a/scripts/biomes/pyramid.lua
++++ b/scripts/biomes/pyramid.lua
+@@ -668,4 +668,5 @@ end
+ 
+ function spawn_boss_limbs_trigger( x, y )
+ 	EntityLoad("data/entities/animals/boss_limbs/boss_limbs_trigger.xml", x, y )
++	EntityLoad("data/entities/items/books/book_music_b.xml", x, y )
+ end
+\ No newline at end of file
+diff --git a/scripts/biomes/vault.lua b/scripts/biomes/vault.lua
+index 01080e9..e6be826 100644
+--- a/scripts/biomes/vault.lua
++++ b/scripts/biomes/vault.lua
+@@ -551,7 +551,7 @@ g_pixel_scene_02 =
+ 		is_unique		= 0,
+ 	},
+ 	{
+-		prob   			= 0.5,
++		prob   			= 0.3,
+ 		material_file 	= "data/biome_impl/vault/lab_puzzle.png",
+ 		visual_file		= "data/biome_impl/vault/lab_puzzle_visual.png",
+ 		background_file	= "data/biome_impl/vault/lab_puzzle_background.png",
+diff --git a/scripts/buildings/vault_lab_puzzle_check.lua b/scripts/buildings/vault_lab_puzzle_check.lua
+index 688a81f..7da2601 100644
+--- a/scripts/buildings/vault_lab_puzzle_check.lua
++++ b/scripts/buildings/vault_lab_puzzle_check.lua
+@@ -7,12 +7,17 @@ function material_area_checker_success( pos_x, pos_y )
+ 	local spawn_x = x + 70
+ 	local spawn_y = y + 10
+ 	
+-	EntityLoad( "data/entities/items/pickup/chest_random.xml", spawn_x, spawn_y)
++	-- reward
+ 	EntityLoad("data/entities/particles/image_emitters/magical_symbol.xml", spawn_x, spawn_y)
+ 	GamePlaySound( "data/audio/Desktop/projectiles.snd", "player_projectiles/crumbling_earth/create", spawn_x, spawn_y)
+-	
+-	print("puzzle done")
+-	
++	if ProceduralRandomf(x,y) > 0.3 then
++		--EntityLoad( "data/entities/items/pickup/chest_random.xml", spawn_x, spawn_y)
++		EntityLoad( "data/entities/items/wand_arpaluu.xml", spawn_x, spawn_y)
++	else
++		EntityLoad( "data/entities/items/wand_varpuluuta.xml", spawn_x, spawn_y)
++	end
++
++	-- cleanup
+ 	for _,v in ipairs(EntityGetInRadiusWithTag( x, y, 30,"vault_lab_puzzle")) do
+ 		EntityKill(v)
+ 	end
+diff --git a/scripts/gun/gun_actions.lua b/scripts/gun/gun_actions.lua
+index 3ef1f90..1af6dd2 100644
+--- a/scripts/gun/gun_actions.lua
++++ b/scripts/gun/gun_actions.lua
+@@ -773,6 +773,26 @@ actions =
+ 			shot_effects.recoil_knockback = 30.0
+ 		end,
+ 	},
++	{
++		id          = "POLLEN",
++		name 		= "$action_pollen",
++		description = "$actiondesc_pollen",
++		sprite 		= "data/ui_gfx/gun_actions/pollen.png",
++		sprite_unidentified = "data/ui_gfx/gun_actions/arrow_unidentified.png",
++		related_projectiles	= {"data/entities/projectiles/deck/pollen.xml"},
++		type 		= ACTION_TYPE_PROJECTILE,
++		spawn_level                       = "0,1,3,4", -- ARROW
++		spawn_probability                 = "0.6,1,1,0.8", -- ARROW
++		price = 110,
++		mana = 10,
++		--max_uses = 40,
++		action 		= function()
++			add_projectile("data/entities/projectiles/deck/pollen.xml")
++			-- damage = 0.3
++			c.fire_rate_wait = c.fire_rate_wait + 2
++			c.spread_degrees = c.spread_degrees + 20
++		end,
++	},
+ 	{
+ 		id          = "LANCE",
+ 		name 		= "$action_lance",
+@@ -2114,6 +2134,42 @@ actions =
+ 			c.fire_rate_wait = c.fire_rate_wait - 12
+ 		end,
+ 	},
++	{
++		id          = "TNTBOX",
++		name 		= "$action_tntbox",
++		description = "$actiondesc_tntbox",
++		sprite 		= "data/ui_gfx/gun_actions/tntbox.png",
++		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
++		related_projectiles	= {"data/entities/projectiles/deck/tntbox.xml"},
++		type 		= ACTION_TYPE_PROJECTILE,
++		spawn_level                       = "1,2,3,4,5", -- SUMMON_ROCK
++		spawn_probability                 = "0.8,0.8,0.8,0.8,0.8", -- SUMMON_ROCK
++		price = 150,
++		mana = 40, 
++		max_uses    = 15, 
++		action 		= function()
++			add_projectile("data/entities/projectiles/deck/tntbox.xml")
++			c.fire_rate_wait = c.fire_rate_wait + 30
++		end,
++	},
++	{
++		id          = "TNTBOX_BIG",
++		name 		= "$action_tntbox_big",
++		description = "$actiondesc_tntbox_big",
++		sprite 		= "data/ui_gfx/gun_actions/tntbox_big.png",
++		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
++		related_projectiles	= {"data/entities/projectiles/deck/tntbox_big.xml"},
++		type 		= ACTION_TYPE_PROJECTILE,
++		spawn_level                       = "1,2,3,4,5", -- SUMMON_ROCK
++		spawn_probability                 = "0.8,0.8,0.8,0.8,0.8", -- SUMMON_ROCK
++		price = 170,
++		mana = 40, 
++		max_uses    = 15, 
++		action 		= function()
++			add_projectile("data/entities/projectiles/deck/tntbox_big.xml")
++			c.fire_rate_wait = c.fire_rate_wait + 30
++		end,
++	},
+ 	{
+ 		id          = "SWARM_FLY",
+ 		name 		= "$action_swarm_fly",
+@@ -4670,7 +4726,7 @@ actions =
+ 		related_extra_entities = { "data/entities/misc/homing_cursor.xml", "data/entities/particles/tinyspark_white.xml" },
+ 		type 		= ACTION_TYPE_MODIFIER,
+ 		spawn_level                       = "2,3,4,5,6", -- HOMING_ROTATE
+-		spawn_probability                 = "0.4,0.4,0.4,0.4,0.4", -- HOMING_ROTATE
++		spawn_probability                 = "0.7,0.7,0.4,0.4,1.0", -- HOMING_ROTATE
+ 		price = 175,
+ 		mana = 30,
+ 		--max_uses = 100,
+@@ -6771,10 +6827,10 @@ actions =
+ 		related_extra_entities = { "data/entities/misc/orbit_discs.xml" },
+ 		spawn_requires_flag = "card_unlocked_dragon",
+ 		type 		= ACTION_TYPE_MODIFIER,
+-		spawn_level                       = "0,1,2,4,5", -- GRAVITY_FIELD_ENEMY
+-		spawn_probability                 = "0.5,0.2,0.8,0.4,0.2", -- GRAVITY_FIELD_ENEMY
+-		price = 140,
+-		mana = 40,
++		spawn_level                       = "1,2,4,5", -- GRAVITY_FIELD_ENEMY
++		spawn_probability                 = "0.2,0.8,0.4,0.2", -- GRAVITY_FIELD_ENEMY
++		price = 200,
++		mana = 70,
+ 		action 		= function()
+ 			c.extra_entities = c.extra_entities .. "data/entities/misc/orbit_discs.xml,"
+ 			draw_actions( 1, true )
+diff --git a/scripts/item_spawnlists.lua b/scripts/item_spawnlists.lua
+index b17ad02..ac97ca7 100644
+--- a/scripts/item_spawnlists.lua
++++ b/scripts/item_spawnlists.lua
+@@ -3,19 +3,23 @@ spawnlists =
+ 	potion_spawnlist =
+ 	{
+ 		rnd_min = 1,
+-		rnd_max = 92,
++		rnd_max = 91,
+ 		spawns = 
+ 		{
+-			{
+-				value_min = 92,
+-				value_max = 92,
+-				load_entity = "data/entities/items/pickup/stonestone.xml",
+-				offset_y = -2,
+-			},
+ 			{
+ 				value_min = 90,
+ 				value_max = 91,
+-				load_entity = "data/entities/items/pickup/physics_gold_orb.xml",
++				load_entity_func = 
++					function( data, x, y )
++						local ox = data.offset_x or 0
++						local oy = data.offset_y or 0
++						
++						if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
++							EntityLoad( "data/entities/items/pickup/physics_gold_orb_greed.xml", x + ox, y + oy )
++						else
++							EntityLoad( "data/entities/items/pickup/physics_gold_orb.xml", x + ox, y + oy )
++						end
++					end,
+ 				offset_y = -2,
+ 			},
+ 			{
+diff --git a/scripts/items/chest_random.lua b/scripts/items/chest_random.lua
+index 0c54d53..bda5ff3 100644
+--- a/scripts/items/chest_random.lua
++++ b/scripts/items/chest_random.lua
+@@ -189,7 +189,11 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
+ 				
+ 				opt = "data/entities/items/pickup/runestones/runestone_" .. r_opt .. ".xml"
+ 			elseif ( opt == "orb" ) then
+-				opt = "data/entities/items/pickup/physics_gold_orb.xml"
++				if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
++					opt = "data/entities/items/pickup/physics_gold_orb_greed.xml"
++				else
++					opt = "data/entities/items/pickup/physics_gold_orb.xml"
++				end
+ 			end
+ 			
+ 			table.insert( entities, { opt, x, y - 10 } )
+diff --git a/scripts/items/gold_orb.lua b/scripts/items/gold_orb.lua
+index beba6a2..8f29f1a 100644
+--- a/scripts/items/gold_orb.lua
++++ b/scripts/items/gold_orb.lua
+@@ -6,6 +6,8 @@ function drop()
+ 	
+ 	local comp = EntityGetFirstComponent( entity_id, "VariableStorageComponent", "kick_count" )
+ 	
++	SetRandomSeed( GameGetFrameNum(), x + y + entity_id )
++	
+ 	if ( comp ~= nil ) then
+ 		local count = ComponentGetValue2( comp, "value_int" )
+ 		count = count + 1
+@@ -28,15 +30,15 @@ function drop()
+ 			EntityKill( entity_id )
+ 			return
+ 		elseif ( outcome == 20 ) then
+-			EntityLoad( "data/entities/items/pickup/goldnugget_200.xml", x, y )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_200.xml", x, y, Random(-40,40), Random(-40,40) )
+ 		elseif ( outcome == 15 ) then
+-			EntityLoad( "data/entities/items/pickup/goldnugget_50.xml", x + 8, y )
+-			EntityLoad( "data/entities/items/pickup/goldnugget_50.xml", x - 8, y )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_50.xml", x - 8, y, Random(-40,40), Random(-40,40) )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_50.xml", x + 8, y, Random(-40,40), Random(-40,40) )
+ 		elseif ( outcome < 10 ) then
+-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x, y )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x, y, Random(-40,40), Random(-40,40) )
+ 		else
+-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x + 8, y )
+-			EntityLoad( "data/entities/items/pickup/goldnugget_10.xml", x - 8, y )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x - 8, y, Random(-40,40), Random(-40,40) )
++			shoot_projectile( entity_id, "data/entities/items/pickup/goldnugget_10.xml", x + 8, y, Random(-40,40), Random(-40,40) )
+ 		end
+ 	end
+ end
+diff --git a/scripts/items/greed_die_status.lua b/scripts/items/greed_die_status.lua
+index 42eef46..e58a573 100644
+--- a/scripts/items/greed_die_status.lua
++++ b/scripts/items/greed_die_status.lua
+@@ -26,14 +26,7 @@ function bullet_circle( which, count, speed, animal_, gold_ )
+ 		
+ 		local bid
+ 		
+-		if ( gold == false ) then
+-			bid = shoot_projectile( entity_id, target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12, vel_x, vel_y )
+-		else
+-			bid = EntityLoad( target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12 )
+-			edit_component( bid, "VelocityComponent", function(comp,vars)
+-				ComponentSetValueVector2( comp, "mVelocity", vel_x, vel_y )
+-			end)
+-		end
++		bid = shoot_projectile( entity_id, target, pos_x + math.cos( theta ) * 12, pos_y - math.sin( theta ) * 12, vel_x, vel_y )
+ 		
+ 		if ( bid ~= nil ) and animal then
+ 			EntityAddComponent( bid, "VariableStorageComponent", 
+diff --git a/scripts/magic/fungal_shift.lua b/scripts/magic/fungal_shift.lua
+index c3be6d0..ee73498 100644
+--- a/scripts/magic/fungal_shift.lua
++++ b/scripts/magic/fungal_shift.lua
+@@ -8,11 +8,16 @@ materials_from =
+ 	{ probability = 1.0, materials = { "oil", "swamp", "peat" }, name_material = "oil" },
+ 	{ probability = 1.0, materials = { "blood" } },	-- NOTE(Olli): I'm not sure if it's a good idea to convert blood, because that often just feels buggy. but let's see.
+ 	{ probability = 1.0, materials = { "blood_fungi", "fungi", "fungisoil" }, name_material = "fungi" },
+-	{ probability = 1.0, materials = { "blood_cold" } },
++	{ probability = 1.0, materials = { "blood_cold", "blood_worm" } },
+ 	{ probability = 1.0, materials = { "acid" } },
+-	{ probability = 1.0, materials = { "magic_liquid_polymorph", "magic_liquid_unstable_polymorph" }, name_material = "magic_liquid_polymorph" },
+-	{ probability = 1.0, materials = { "magic_liquid_teleportation", "magic_liquid_unstable_teleportation" }, name_material = "magic_liquid_teleportation" },
+-	{ probability = 1.0, materials = { "magic_liquid_berserk", "magic_liquid_charm", "magic_liquid_invisibility" } },
++	{ probability = 0.4, materials = { "magic_liquid_polymorph", "magic_liquid_unstable_polymorph" }, name_material = "magic_liquid_polymorph" },
++	{ probability = 0.4, materials = { "magic_liquid_teleportation", "magic_liquid_unstable_teleportation" }, name_material = "magic_liquid_teleportation" },
++	{ probability = 0.4, materials = { "magic_liquid_berserk", "magic_liquid_charm", "magic_liquid_invisibility" } },
++	{ probability = 0.6, materials = { "diamond" } },
++	{ probability = 0.6, materials = { "silver", "brass", "copper" } },
++	{ probability = 0.05, materials = { "sand" } },
++	{ probability = 0.05, materials = { "snow_sticky" } },
++	{ probability = 0.001, materials = { "gold", "gold_box2d" }, name_material = "gold" },
+ }
+ 
+ materials_to = 
+@@ -32,11 +37,20 @@ materials_to =
+ 	{ probability = 1.00, material = "vomit" },
+ 	{ probability = 1.00, material = "pea_soup" },
+ 	{ probability = 1.00, material = "fungi" },
++	{ probability = 0.80, material = "sand" },
++	{ probability = 0.80, material = "diamond" },
++	{ probability = 0.80, material = "silver" },
++	{ probability = 0.80, material = "steam" },
++	{ probability = 0.50, material = "rock_static" },
++	{ probability = 0.50, material = "material_darkness" },
++	{ probability = 0.50, material = "material_confusion" },
++	{ probability = 0.20, material = "rock_static_radioactive" },
+ 	{ probability = 0.02, material = "magic_liquid_polymorph" },
+ 	{ probability = 0.02, material = "magic_liquid_random_polymorph" },
+ 	{ probability = 0.15, material = "magic_liquid_teleportation" },
+ 	{ probability = 0.01, material = "urine" },
+ 	{ probability = 0.01, material = "poo" },
++	{ probability = 0.01, material = "cheese_static" },
+ }
+ 
+ log_messages = 
+@@ -81,10 +95,6 @@ end
+ -- TODO: pick one of the materials from cape
+ -- TODO: pick one of the materials from a potion?
+ function fungal_shift( entity, x, y, debug_no_limits )
+-end
+-
+-function fungal_shift( entity, x, y, debug_no_limits )
+-	--[[
+ 	local parent = EntityGetParent( entity )
+ 	if parent ~= 0 then
+ 		entity = parent
+@@ -122,7 +132,7 @@ function fungal_shift( entity, x, y, debug_no_limits )
+ 		local to_material = CellFactory_GetType( to.material )
+ 		from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( from_material ) ) )
+ 		if from.name_material then
+-			from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( from.name_material ) ) )
++			from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( CellFactory_GetType( from.name_material ) ) ) )
+ 		end
+ 
+ 		-- if a potion is equipped, use main material from potion as one of the materials
+@@ -151,7 +161,7 @@ function fungal_shift( entity, x, y, debug_no_limits )
+ 	if converted_any then
+ 		-- audio
+ 		GameTriggerMusicFadeOutAndDequeueAll( 5.0 )
+-		GameTriggerMusicEvent( "music/oneshot/tripping_balls", false, x, y )
++		GameTriggerMusicEvent( "music/oneshot/tripping_balls_01", false, x, y )
+ 
+ 		-- particle fx
+ 		local eye = EntityLoad( "data/entities/particles/treble_eye.xml", x,y-10 )
+@@ -191,5 +201,4 @@ function fungal_shift( entity, x, y, debug_no_limits )
+ 			EntityAddChild( entity, icon_entity )
+ 		end
+ 	end
+-	]]--
+ end
+diff --git a/scripts/perks/angry_levitation_death.lua b/scripts/perks/angry_levitation_death.lua
+index 3898f5b..2833c7c 100644
+--- a/scripts/perks/angry_levitation_death.lua
++++ b/scripts/perks/angry_levitation_death.lua
+@@ -6,6 +6,9 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 	
+ 	SetRandomSeed( GameGetFrameNum(), pos_x + pos_y + entity_id )
+ 	
++	local perk_flag = "PERK_PICKED_HOVER_BOOST"
++	local pickup_count = tonumber( GlobalsGetValue( perk_flag .. "_PICKUP_COUNT", "0" ) ) + 1
++	
+ 	local player_id = 0
+ 	
+ 	local models = EntityGetComponent( entity_id, "VariableStorageComponent" )
+@@ -21,10 +24,11 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
+ 		
+ 		if ( comp ~= nil ) then
+ 			local flight = ComponentGetValue2( comp, "mFlyingTimeLeft" )
+-			local maxflight = ComponentGetValue2( comp, "fly_time_max" )
++			local maxflight = ComponentGetValue2( comp, "fly_time_max" ) or 3.0
+ 			
+-			-- print( tostring(flight) .. ", " .. tostring(maxflight))
++			maxflight = 2 ^ pickup_count + ( 2 ^ ( pickup_count - 1 ) )
+ 			
++			-- print( tostring(flight) .. ", " .. tostring(maxflight))
+ 			flight = math.min( maxflight, flight + 1.2 )
+ 			
+ 			ComponentSetValue2( comp, "mFlyingTimeLeft", flight )
+diff --git a/scripts/perks/perk_gamble_spawn.lua b/scripts/perks/perk_gamble_spawn.lua
+index 694d141..e52e7dc 100644
+--- a/scripts/perks/perk_gamble_spawn.lua
++++ b/scripts/perks/perk_gamble_spawn.lua
+@@ -4,18 +4,22 @@ dofile( "data/scripts/perks/perk.lua" )
+ 
+ local entity_id = GetUpdatedEntityID()
+ local x, y = EntityGetTransform(entity_id)
++local player = EntityGetClosestWithTag(x, y, "player_unit")
+ 
+-local w = 10
+-local perks = {}
+-perks[1] = perk_spawn_random(x - w, y - 10)
+-perks[2] = perk_spawn_random(x + w, y - 10)
+-
+-for _,v in ipairs(perks) do
+-	EntityAddComponent(v, "VariableStorageComponent", 
+-	{ 
+-		name = "perk_dont_remove_others",
+-		value_bool = "1",
+-	} )
++local count = 2
++while count > 0 do
++	local pid = perk_spawn_random(x,y)
++	-- rerandomize if picked perk is gamble
++	component_read( get_variable_storage_component(pid, "perk_id"), { value_string = "" }, function(comp)
++		print(comp.value_string)
++		if comp.value_string ~= "GAMBLE" then
++			perk_pickup(pid, player, "", false, false )
++			count = count - 1
++		else
++			--print("Gamble perk spawned another Gamble. Rerandomizing...")
++			EntityKill(pid)
++		end
++	end)
+ end
+ 
+ EntityKill(entity_id)
+diff --git a/scripts/perks/perk_list.lua b/scripts/perks/perk_list.lua
+index ec53058..348eb69 100644
+--- a/scripts/perks/perk_list.lua
++++ b/scripts/perks/perk_list.lua
+@@ -1455,6 +1455,44 @@ perk_list =
+ 			--GenomeSetHerdId( entity_who_picked, "rat" )
+ 		end,
+ 	},
++	{
++		id = "CORDYCEPS",
++		ui_name = "$perk_cordyceps",
++		ui_description = "$perkdesc_cordyceps",
++		ui_icon = "data/ui_gfx/perk_icons/cordyceps.png",
++		perk_icon = "data/items_gfx/perks/cordyceps.png",
++		stackable = STACKABLE_NO,
++		func = function( entity_perk_item, entity_who_picked, item_name )
++		
++			EntityAddComponent( entity_who_picked, "LuaComponent", 
++			{ 
++				script_source_file = "data/scripts/perks/cordyceps.lua",
++				execute_every_n_frame = "20",
++			} )
++			
++			if ( GameHasFlagRun( "player_status_cordyceps" ) == false ) then
++				GameAddFlagRun( "player_status_cordyceps" )
++				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
++				funginess = funginess + 1
++				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
++				
++				if ( funginess == 3 ) then
++					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
++					
++					AddFlagPersistent( "player_status_funky" )
++					
++					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
++					if( damagemodels ~= nil ) then
++						for i,damagemodel in ipairs(damagemodels) do
++							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
++							explosion_resistance = explosion_resistance * 0.9
++							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
++						end
++					end
++				end
++			end
++		end,
++	},
+ 	{
+ 		id = "MOLD",
+ 		ui_name = "$perk_mold",
+@@ -1468,6 +1506,28 @@ perk_list =
+ 			EntityAddChild( entity_who_picked, child_id )
+ 			
+ 			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
++			
++			if ( GameHasFlagRun( "player_status_mold" ) == false ) then
++				GameAddFlagRun( "player_status_mold" )
++				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
++				funginess = funginess + 1
++				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
++				
++				if ( funginess == 3 ) then
++					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
++					
++					AddFlagPersistent( "player_status_funky" )
++					
++					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
++					if( damagemodels ~= nil ) then
++						for i,damagemodel in ipairs(damagemodels) do
++							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
++							explosion_resistance = explosion_resistance * 0.9
++							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
++						end
++					end
++				end
++			end
+ 		end,
+ 	},
+ 	{
+@@ -1546,6 +1606,43 @@ perk_list =
+ 			EntityAddChild( entity_who_picked, child_id )
+ 		end,
+ 	},
++	{
++		id = "FUNGAL_DISEASE",
++		ui_name = "$perk_fungal_disease",
++		ui_description = "$perkdesc_fungal_disease",
++		ui_icon = "data/ui_gfx/perk_icons/fungal_disease.png",
++		perk_icon = "data/items_gfx/perks/fungal_disease.png",
++		stackable = STACKABLE_YES,
++		stackable_is_rare = true,
++		stackable_maximum = 3,
++		func = function( entity_perk_item, entity_who_picked, item_name )
++			local x,y = EntityGetTransform( entity_who_picked )
++			local child_id = EntityLoad( "data/entities/misc/perks/fungal_disease.xml", x, y )
++			EntityAddChild( entity_who_picked, child_id )
++			
++			if ( GameHasFlagRun( "player_status_fungal_disease" ) == false ) then
++				GameAddFlagRun( "player_status_fungal_disease" )
++				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
++				funginess = funginess + 1
++				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
++				
++				if ( funginess == 3 ) then
++					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
++					
++					AddFlagPersistent( "player_status_funky" )
++					
++					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
++					if( damagemodels ~= nil ) then
++						for i,damagemodel in ipairs(damagemodels) do
++							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
++							explosion_resistance = explosion_resistance * 0.9
++							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
++						end
++					end
++				end
++			end
++		end,
++	},
+ 	{
+ 		id = "PROJECTILE_SLOW_FIELD",
+ 		ui_name = "$perk_projectile_slow_field",
+@@ -1654,8 +1751,8 @@ perk_list =
+ 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
+ 					if( platformingcomponents ~= nil ) then
+ 						for i,component in ipairs(platformingcomponents) do
+-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
+-							ComponentSetValue2( component, "fly_time_max", fly_time )
++							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
++							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
+ 						end
+ 					end
+ 				end
+@@ -1693,8 +1790,8 @@ perk_list =
+ 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
+ 					if( platformingcomponents ~= nil ) then
+ 						for i,component in ipairs(platformingcomponents) do
+-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
+-							ComponentSetValue2( component, "fly_time_max", fly_time )
++							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
++							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
+ 						end
+ 					end
+ 				end
+@@ -1733,8 +1830,8 @@ perk_list =
+ 					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
+ 					if( platformingcomponents ~= nil ) then
+ 						for i,component in ipairs(platformingcomponents) do
+-							local fly_time = ComponentGetValue2( component, "fly_time_max" ) * 1.15
+-							ComponentSetValue2( component, "fly_time_max", fly_time )
++							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
++							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
+ 						end
+ 					end
+ 				end
+diff --git a/scripts/perks/plague_rats_init.lua b/scripts/perks/plague_rats_init.lua
+index 498e266..6fd9a4a 100644
+--- a/scripts/perks/plague_rats_init.lua
++++ b/scripts/perks/plague_rats_init.lua
+@@ -7,6 +7,7 @@ local extra_hp = math.max( 0, pos_y * 0.0002 )
+ local extra_damage = math.max( 0, pos_y * 0.0001 )
+ 	
+ EntityRemoveTag( entity_id, "homing_target" )
++EntityRemoveTag( entity_id, "enemy" )
+ 
+ edit_component( entity_id, "DamageModelComponent", function(comp,vars)
+ 	local hp = tonumber(ComponentGetValue( comp, "hp"))
+diff --git a/scripts/projectiles/homing_area.lua b/scripts/projectiles/homing_area.lua
+index 86cde04..e88e161 100644
+--- a/scripts/projectiles/homing_area.lua
++++ b/scripts/projectiles/homing_area.lua
+@@ -11,7 +11,7 @@ if ( comp ~= nil ) then
+ 	local target = ComponentGetValue2( comp, "mWhoShot" )
+ 	
+ 	for i,v in ipairs( targets ) do
+-		if ( v ~= target ) then
++		if ( v ~= target ) and ( GameGetGameEffect( v, "CHARM" ) == 0 ) and ( EntityGetHerdRelation( target, v ) < 60 ) then
+ 			local tx, ty = EntityGetFirstHitboxCenter( v )
+ 			
+ 			EntitySetTransform( root_id, tx, ty )
+diff --git a/scripts/streaming_integration/event_list.lua b/scripts/streaming_integration/event_list.lua
+index 01c6a3b..7db9ddc 100644
+--- a/scripts/streaming_integration/event_list.lua
++++ b/scripts/streaming_integration/event_list.lua
+@@ -2151,6 +2151,21 @@ streaming_events =
+ 			end
+ 		end,
+ 	},
++	{
++		id = "ALL_ACCESS_TELEPORT",
++		ui_name = "$streamingevent_all_access_teleport",
++		ui_description = "$streamingeventdesc_all_access_teleport",
++		ui_icon = "data/ui_gfx/streaming_event_icons/speedy_enemies.png",
++		ui_author = STREAMING_EVENT_AUTHOR_NOLLAGAMES,
++		weight = 0.5,
++		kind = STREAMING_EVENT_BAD,
++		action = function(event)
++			for i,entity_id in pairs( get_enemies_in_radius(500) ) do
++				EntityRemoveTag( entity_id, "teleportable_NOT" )
++				EntityAddTag( entity_id, "teleportable" )
++			end
++		end,
++	},
+ 	{
+ 		id = "HOLIDAY_MOOD",
+ 		ui_name = "$streamingevent_holiday_mood",
+diff --git a/ui_gfx/decorations/3piece_fungal_shift.png b/ui_gfx/decorations/3piece_fungal_shift.png
+index 143870d..9a3ed4a 100644
+Binary files a/ui_gfx/decorations/3piece_fungal_shift.png and b/ui_gfx/decorations/3piece_fungal_shift.png differ

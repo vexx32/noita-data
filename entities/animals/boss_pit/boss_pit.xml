@@ -292,6 +292,8 @@
 	<Entity><Base file="data/entities/animals/boss_pit/tentacle.xml"> <InheritTransformComponent><Transform position.x="0"  position.y="4" ></Transform></InheritTransformComponent> </Base></Entity>
 	
 	<Entity>
+		<InheritTransformComponent />
+		
 	    <GameEffectComponent 
 	        effect="PROTECTION_FREEZE"
 	        frames="-1"
@@ -300,6 +302,8 @@
 	</Entity>
 	
 	<Entity>
+		<InheritTransformComponent />
+		
 	    <GameEffectComponent 
 	        effect="PROTECTION_ELECTRICITY"
 	        frames="-1"

@@ -551,7 +551,7 @@ g_pixel_scene_02 =
 		is_unique		= 0,
 	},
 	{
-		prob   			= 0.5,
+		prob   			= 0.3,
 		material_file 	= "data/biome_impl/vault/lab_puzzle.png",
 		visual_file		= "data/biome_impl/vault/lab_puzzle_visual.png",
 		background_file	= "data/biome_impl/vault/lab_puzzle_background.png",

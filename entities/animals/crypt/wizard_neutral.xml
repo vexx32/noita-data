@@ -17,6 +17,8 @@
     </Entity>
   
   <Entity>
+		<InheritTransformComponent />
+		
 	    <GameEffectComponent 
 	        effect="PROTECTION_FREEZE"
 	        frames="-1"
@@ -25,6 +27,8 @@
 	</Entity>
 	
 	<Entity>
+		<InheritTransformComponent />
+		
 	    <GameEffectComponent 
 	        effect="PROTECTION_ELECTRICITY"
 	        frames="-1"

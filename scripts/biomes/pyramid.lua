@@ -668,4 +668,5 @@ end
 
 function spawn_boss_limbs_trigger( x, y )
 	EntityLoad("data/entities/animals/boss_limbs/boss_limbs_trigger.xml", x, y )
+	EntityLoad("data/entities/items/books/book_music_b.xml", x, y )
 end

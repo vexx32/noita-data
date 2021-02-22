@@ -2976,7 +2976,6 @@
   	_parent="steel_static"
   	_inherit_reactions="1"
   	name="steelmoss_static"
-  	<!-- steel_rusted -->
 	ui_name="$mat_steelrusted"	
 	wang_color="ff787A55" 
 	wang_noise_percent="0.0"
@@ -8040,7 +8039,6 @@
 	solid_friction="1.0"
 	fire_hp="50"
 	on_fire="0"
-	temperature_of_fire="95"
 	autoignition_temperature="10"
 	electrical_conductivity="0"
 	requires_oxygen="1"  
@@ -9640,7 +9638,7 @@
 	name="rat_powder"
 	ui_name="$mat_rat_powder"
   	tags="[sand_other]"
-	burnable="1"
+	burnable="0"
 	density="7"
 	durability="3"
 	cell_type="liquid"
@@ -9648,7 +9646,7 @@
 	generates_smoke="0"
 	liquid_gravity="2"
 	liquid_sand="1"
-	on_fire="1"
+	on_fire="0"
 	requires_oxygen="0"
 	temperature_of_fire="10"
 	autoignition_temperature="0"
@@ -9662,25 +9660,6 @@
 	show_in_creative_mode="0"
 	lifetime="4.0"
 	>
-	<ExplosionConfig 
-		damage="0"
-		cell_explosion_power="2"
-		cell_explosion_damage_required="1"
-		cell_explosion_radius_min="2"
-		explosion_sprite=""
-		load_this_entity="data/entities/misc/rat_powder.xml"
-		ray_energy="0"
-		audio_enabled="0"
-		create_cell_probability="0"
-		sparks_enabled="0"
-		light_enabled="0"
-		hole_enabled="1"
-		crack_count="0"
-		stains_enabled="0"
-		damage_mortals="0"
-		particle_effect="0"
-		>
-	</ExplosionConfig>
     <Graphics
 	  texture_file="data/materials_gfx/meat_rotten.png"
 	  color="ffb89e57" >
@@ -9700,7 +9679,7 @@
 	name="fungus_powder"
 	ui_name="$mat_fungisoil"
   	tags="[sand_other]"
-	burnable="1"
+	burnable="0"
 	density="7"
 	durability="3"
 	cell_type="liquid"
@@ -9708,7 +9687,7 @@
 	generates_smoke="0"
 	liquid_gravity="2"
 	liquid_sand="1"
-	on_fire="1"
+	on_fire="0"
 	requires_oxygen="0"
 	temperature_of_fire="10"
 	autoignition_temperature="0"
@@ -9722,25 +9701,6 @@
 	show_in_creative_mode="0"
 	lifetime="4.0"
 	>
-	<ExplosionConfig 
-		damage="0"
-		cell_explosion_power="2"
-		cell_explosion_damage_required="1"
-		cell_explosion_radius_min="2"
-		explosion_sprite=""
-		load_this_entity="data/entities/misc/fungus_powder.xml"
-		ray_energy="0"
-		audio_enabled="0"
-		create_cell_probability="0"
-		sparks_enabled="0"
-		light_enabled="0"
-		hole_enabled="1"
-		crack_count="0"
-		stains_enabled="0"
-		damage_mortals="0"
-		particle_effect="0"
-		>
-	</ExplosionConfig>
     <Graphics
 	  texture_file="data/materials_gfx/meat_rotten.png"
 	  color="ffb89e57" >
@@ -11434,6 +11394,7 @@
 	density="8"
 	cell_type="solid"
 	wang_color="ffab5e4f"
+	durability="11"
 	generates_smoke="0"
 	on_fire="0"
 	requires_oxygen="1"
@@ -11441,12 +11402,13 @@
 	autoignition_temperature="85"
 	fire_hp="600"
 	solid_friction="0.9"
-	hp="500"
+	hp="10000"
 	audio_physics_material_wall="gravel"
 	audio_physics_material_solid="wood"
 	show_in_creative_mode="1"
 	>
-	<ExplosionConfig 
+	<ExplosionConfig
+		damage="5"
       	camera_shake="10" 
 		cell_explosion_power="40"
 		cell_explosion_damage_required="30"
@@ -13362,15 +13324,17 @@
 	color="80c1dba5" >
     </Graphics>
 	<ParticleEffect
-		vel.y="17.14"
-		vel_random.min_y="-100"
-		vel_random.max_y="25.71"
+		vel.y="2.14"
+		vel_random.min_y="-55"
+		vel_random.max_y="25"
 		lifetime.min="0"
-		gravity.y="-8.57"
+		gravity.y="0"
 		render_on_grid="1"
+		airflow_force="3"
+		airflow_scale="0.1"
 		draw_as_long="1"
-		friction="-3.429"
-		probability="0.0518"
+		friction="0.04"
+		probability="0.0118"
 	>
 	</ParticleEffect>
   </CellData>
@@ -14880,6 +14844,21 @@
 		output_cell1="metal_sand_molten" output_cell2="[lava]"
 		>
 	</Reaction>
-
+	
+	<!-- Special powders -->
+	
+	<Reaction probability="100"
+		input_cell1="rat_powder" input_cell2="air"
+		output_cell1="air" output_cell2="air"
+		entity="data/entities/misc/rat_powder.xml"
+		>
+	</Reaction>
+	
+	<Reaction probability="100"
+		input_cell1="fungus_powder" input_cell2="air"
+		output_cell1="air" output_cell2="air"
+		entity="data/entities/misc/fungus_powder.xml"
+		>
+	</Reaction>
 
 </Materials>

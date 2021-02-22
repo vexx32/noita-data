@@ -189,7 +189,11 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 				
 				opt = "data/entities/items/pickup/runestones/runestone_" .. r_opt .. ".xml"
 			elseif ( opt == "orb" ) then
-				opt = "data/entities/items/pickup/physics_gold_orb.xml"
+				if GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) then
+					opt = "data/entities/items/pickup/physics_gold_orb_greed.xml"
+				else
+					opt = "data/entities/items/pickup/physics_gold_orb.xml"
+				end
 			end
 			
 			table.insert( entities, { opt, x, y - 10 } )

@@ -365,7 +365,7 @@ main_menu_items =
 		end,
 	},
 	{
-		ui_name="Convert material",
+		ui_name="Fungal shift",
 		action = function()
 			local x, y = GameGetCameraPos()
 			local player_entity = EntityGetClosestWithTag( x, y, "player_unit" )
@@ -374,6 +374,18 @@ main_menu_items =
 			end
 			fungal_shift( player_entity, x, y, true )
 		end,
+	},
+	{
+		ui_name="Fungal shift lava->water",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "lava" ), CellFactory_GetType( "water" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift lava->radioactive_liquid",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "lava" ), CellFactory_GetType( "radioactive_liquid" ) )
+		end
 	},
 	{
 		ui_name="ConvertMaterialOnAreaInstantly() - test near camera",

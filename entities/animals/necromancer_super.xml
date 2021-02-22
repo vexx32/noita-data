@@ -182,13 +182,18 @@
 
 	<!-- protections -->
 	<Entity>
+		<InheritTransformComponent />
+		
         <GameEffectComponent 
             effect="PROTECTION_FREEZE"
             frames="-1"
         >
         </GameEffectComponent >
     </Entity>
+	
     <Entity>
+		<InheritTransformComponent />
+		
         <GameEffectComponent 
             effect="PROTECTION_ELECTRICITY"
             frames="-1"

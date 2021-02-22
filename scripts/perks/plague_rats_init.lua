@@ -7,6 +7,7 @@ local extra_hp = math.max( 0, pos_y * 0.0002 )
 local extra_damage = math.max( 0, pos_y * 0.0001 )
 	
 EntityRemoveTag( entity_id, "homing_target" )
+EntityRemoveTag( entity_id, "enemy" )
 
 edit_component( entity_id, "DamageModelComponent", function(comp,vars)
 	local hp = tonumber(ComponentGetValue( comp, "hp"))

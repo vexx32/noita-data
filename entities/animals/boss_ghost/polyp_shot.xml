@@ -1,4 +1,4 @@
-<Entity tags="hittable,resist_repulsion" name="$boss_ghost_polyp" >
+<Entity tags="hittable,resist_repulsion" name="$animal_boss_ghost_polyp" >
 
 	<Base file="data/entities/base_projectile.xml" >
 		<VelocityComponent
