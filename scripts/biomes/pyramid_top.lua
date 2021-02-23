@@ -37,4 +37,5 @@ end
 function spawn_orb(x, y)
 	EntityLoad( "data/entities/items/orbs/orb_01.xml", x, y )
 	EntityLoad( "data/entities/items/books/book_01.xml", x+24, y )
+	EntityLoad( "data/entities/buildings/sun/spot_1.xml", x+24, y )
 end

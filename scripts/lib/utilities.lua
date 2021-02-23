@@ -440,7 +440,12 @@ function shoot_projectile_from_projectile( who_shot, entity_file, x, y, vel_x, v
 	local entity_id = EntityLoad( entity_file, x, y )
 	local herd_id   = get_herd_id( who_shot )
 
-	GameShootProjectile( who_shot, x, y, x+vel_x, y+vel_y, entity_id )
+	local who_shot_creature = 0
+	edit_component( who_shot, "ProjectileComponent", function(comp,vars)
+		who_shot_creature = ComponentGetValue2( comp, "mWhoShot" )
+	end)
+
+	GameShootProjectile( who_shot_creature, x, y, x+vel_x, y+vel_y, entity_id )
 
 	edit_component( entity_id, "ProjectileComponent", function(comp,vars)
 		vars.mWhoShot       = component_get_value_int( who_shot, "ProjectileComponent", "mWhoShot", 0 )

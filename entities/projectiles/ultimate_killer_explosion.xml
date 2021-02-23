@@ -29,7 +29,7 @@
 	  damage="1"
       explosion_radius="305" 
       explosion_sprite="data/particles/explosion_040_poof.xml" 
-	  load_this_entity="data/entities/particles/particle_explosion/main_large.xml,data/entities/misc/loose_chunks.xml"
+	  load_this_entity="data/entities/particles/particle_explosion/main_large.xml,data/entities/misc/loose_chunks.xml,data/entities/misc/explosion_was_here.xml"
       explosion_sprite_lifetime="0" 
 	  explosion_sprite_random_rotation="0"
       create_cell_probability="20" 

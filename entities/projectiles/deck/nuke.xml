@@ -43,7 +43,7 @@
       camera_shake="60" 
       explosion_radius="250" 
       explosion_sprite="data/particles/explosion_032.xml"
-	  load_this_entity="data/entities/particles/particle_explosion/main_large.xml,data/entities/misc/loose_chunks.xml"
+	  load_this_entity="data/entities/particles/particle_explosion/main_large.xml,data/entities/misc/loose_chunks.xml,data/entities/misc/explosion_was_here.xml"
       explosion_sprite_lifetime="0" 
       create_cell_probability="5" 
       hole_destroy_liquid="0" 

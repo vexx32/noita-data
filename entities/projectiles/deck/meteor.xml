@@ -47,7 +47,7 @@
       create_cell_probability="100" 
       create_cell_material="fire" 
       hole_destroy_liquid="0"
-      load_this_entity="data/entities/particles/particle_explosion/main.xml,data/entities/misc/loose_ground.xml"
+      load_this_entity="data/entities/particles/particle_explosion/main.xml,data/entities/misc/loose_ground.xml,data/entities/misc/explosion_was_here.xml"
       ray_energy="7500000"
       hole_enabled="1" 
       hole_image="data/temp/explosion_hole.png" 

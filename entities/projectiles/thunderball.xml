@@ -41,7 +41,7 @@
       camera_shake="30.5" 
       explosion_radius="50" 
       explosion_sprite="data/particles/explosion_032_electric.xml"
-	  load_this_entity="data/entities/particles/particle_explosion/main_blue.xml,data/entities/misc/loose_ground.xml"
+	  load_this_entity="data/entities/particles/particle_explosion/main_blue.xml,data/entities/misc/loose_ground.xml,data/entities/misc/explosion_was_here.xml"
       explosion_sprite_lifetime="0.0" 
       create_cell_probability="4" 
       create_cell_material="plasma_fading" 

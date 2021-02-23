@@ -22,7 +22,7 @@
 		  explosion_radius="180" 
 		  explosion_sprite="data/particles/explosion_128.xml" 
 		  explosion_sprite_lifetime="0" 
-		  load_this_entity="data/entities/particles/particle_explosion/main_large_radius.xml,data/entities/misc/loose_ground.xml"
+		  load_this_entity="data/entities/particles/particle_explosion/main_large_radius.xml,data/entities/misc/loose_ground.xml,data/entities/misc/explosion_was_here.xml"
 		  create_cell_probability="40" 
 		  hole_destroy_liquid="0" 
 		  hole_enabled="1" 

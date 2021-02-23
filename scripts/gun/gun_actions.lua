@@ -4010,7 +4010,7 @@ actions =
 		description = "$actiondesc_nolla",
 		sprite 		= "data/ui_gfx/gun_actions/nolla.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
-		spawn_requires_flag = "card_unlocked_duplicate",
+		spawn_requires_flag = "card_unlocked_mestari",
 		related_extra_entities = { "data/entities/misc/nolla.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,4,5,6,10", -- LIFETIME_DOWN
@@ -4201,8 +4201,8 @@ actions =
 					
 					c.extra_entities = c.extra_entities .. "data/entities/particles/gold_sparks.xml,"
 					
-					local money = money - damage
-					local moneyspent = moneyspent + damage
+					money = money - damage
+					moneyspent = moneyspent + damage
 					ComponentSetValue2( dcomp, "money", money )
 					ComponentSetValue2( dcomp, "money_spent", moneyspent )
 					
@@ -9428,7 +9428,7 @@ actions =
 		description = "$actiondesc_reset",
 		sprite 		= "data/ui_gfx/gun_actions/reset.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
-		spawn_requires_flag = "card_unlocked_maths",
+		spawn_requires_flag = "card_unlocked_mestari",
 		type 		= ACTION_TYPE_UTILITY,
 		recursive	= true,
 		spawn_level                       = "10", -- BOMB

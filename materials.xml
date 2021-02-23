@@ -12379,6 +12379,39 @@
 	color="ff5787E7" >
     </Graphics>
   </CellDataChild>
+  
+  <CellDataChild
+  	_parent="gem_box2d"
+  	_inherit_reactions="1"
+  	name="gem_box2d_yellow_sun"
+	ui_name="$mat_gem_box2d_red"
+	gfx_glow_color="0xffff9919"
+	gfx_glow="255"
+	wang_color="ffff9919"
+	show_in_creative_mode="0"
+	solid_gravity_scale="0"
+	durability="15"
+	>
+  	<Graphics
+	color="ffffc74e" >
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="gem_box2d"
+  	_inherit_reactions="1"
+  	name="gem_box2d_red_float"
+	ui_name="$mat_gem_box2d_red"
+	gfx_glow_color="0xFFFF0000"
+	wang_color="fffd2d7d"
+	show_in_creative_mode="0"
+	solid_gravity_scale="0.2"
+	durability="15"
+	>
+  	<Graphics
+	color="ffE72850" >
+    </Graphics>
+  </CellDataChild>
 
   <CellDataChild
   	_parent="gem_box2d"

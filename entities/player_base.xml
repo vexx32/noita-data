@@ -87,6 +87,7 @@
     flying_recharge_removal_frames="8"
     gravity="0"
     buoyancy_check_offset_y="-7"
+    send_transform_update_message="1"
   ></CharacterDataComponent>
 
   <GenomeDataComponent 

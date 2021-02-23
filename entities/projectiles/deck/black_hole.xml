@@ -110,7 +110,8 @@
 	
 	<CellEaterComponent
 		radius="12"
-		eat_dynamic_physics_bodies="1" 
+		eat_dynamic_physics_bodies="1"
+		ignored_material="gem_box2d_yellow_sun"
 		>
 	</CellEaterComponent>
 

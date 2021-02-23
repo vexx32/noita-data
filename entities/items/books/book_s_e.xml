@@ -15,13 +15,13 @@
 		></PhysicsImageShapeComponent>
 
 		<UIInfoComponent
-			name="$item_book_s_e"
+			name="$item_book_s_a"
 			>
 		</UIInfoComponent>
 		
 		<ItemComponent
 			ui_sprite="data/items_gfx/book_s.png"
-			item_name="$item_book_s_e"
+			item_name="$item_book_s_a"
 			ui_description="$itemdesc_book_s_e"
 			>
 		</ItemComponent>
@@ -31,7 +31,7 @@
 		></SpriteComponent>
 		
 		<AbilityComponent
-			ui_name="$item_book_s_e"
+			ui_name="$item_book_s_a"
 			>
 		</AbilityComponent>
 	</Base>

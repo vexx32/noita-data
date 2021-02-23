@@ -18,7 +18,7 @@ edit_component( entity_id, "VelocityComponent", function(vcomp,vars)
 	end
 	
 	if ( f_id ~= nil ) and ( f_x ~= nil ) and ( f_y ~= nil ) then
-		local dist = get_distance2( x, y, f_x, f_y )
+		dist = get_distance2( x, y, f_x, f_y )
 		
 		if ( dist < radius ) then
 			local tx,ty = f_x,f_y
@@ -38,7 +38,7 @@ edit_component( entity_id, "VelocityComponent", function(vcomp,vars)
 	end
 	
 	if ( c_id ~= nil ) and ( c_x ~= nil ) and ( c_y ~= nil ) then
-		local dist = get_distance2( x, y, c_x, c_y )
+		dist = get_distance2( x, y, c_x, c_y )
 		
 		if ( dist < radius ) then
 			local tx,ty = c_x,c_y

@@ -101,8 +101,8 @@ function parallel_check( x, y )
 			
 			SetRandomSeed( x + 35, y - 253 )
 			
-			local r = Random( 1, 100 )
-			local rx = Random( 0, 512 )
+			r = Random( 1, 100 )
+			rx = Random( 0, 512 )
 			
 			if ( r >= 98 ) then
 				print( "ALCHEMIST AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
