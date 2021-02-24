@@ -1,1 +1,7 @@
 .diff
+.ts
+.bat
+.ps1
+/node_modules
+package.json
+package-lock.json
