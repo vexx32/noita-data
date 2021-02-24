@@ -452,6 +452,12 @@
 		height_index="10"
 		color="ff3d5a4f" >
 	</Biome>
+
+	<Biome 
+		biome_filename="data/biome/lavalake_racing.xml" 
+		height_index="10"
+		color="ff4118d6" >
+	</Biome>
 	
 	<Biome 
 		biome_filename="data/biome/shop_room.xml" 

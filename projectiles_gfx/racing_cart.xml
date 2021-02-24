@@ -1,0 +1,29 @@
+<Sprite 
+	filename="data/projectiles_gfx/racing_cart.png" 
+	offset_x="7" 
+	offset_y="7"
+	default_animation="float" >
+
+	<RectAnimation 
+		name="float" 
+		frame_width="14" 
+		frame_height="15" 
+		frame_count="4" 
+		frame_wait="0.12" 
+		frames_per_row="4" 
+		pos_x="0" 
+		pos_y="0" >
+	</RectAnimation>
+
+	<RectAnimation 
+		name="fly" 
+		frame_width="14" 
+		frame_height="15" 
+		frame_count="4" 
+		frame_wait="0.06" 
+		frames_per_row="4" 
+		pos_x="0" 
+		pos_y="15" >
+	</RectAnimation>
+</Sprite>
+

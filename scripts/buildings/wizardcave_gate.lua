@@ -9,7 +9,8 @@ local x_orig = x
 local y_orig = y
 
 -- center position drifts around
-local t = GameGetFrameNum() * 0.02
+local time = GameGetFrameNum()
+local t = time * 0.02
 x = x + math.sin(t) * 20
 y = y + math.cos(t) * 20
 
@@ -83,10 +84,10 @@ for _,id in ipairs(EntityGetInRadiusWithTag(x, y, 70, "egg_item")) do
 		-- check egg count
 		component_readwrite( get_variable_storage_component(entity_id, "egg_count"), { value_int = 0 }, function(comp)
 			comp.value_int = comp.value_int + 1
-			if comp.value_int >= max_egg_count and ( GameHasFlagRun( "gate_monster_spawned" ) == false ) then
+			if comp.value_int == max_egg_count then
 				-- spawn monster spawner
 				EntityLoad("data/entities/buildings/wizardcave_gate_monster_spawner.xml", x_orig, y_orig)
-				GameAddFlagRun( "gate_monster_spawned" )
+
 				-- audio
 				GamePlaySound( "data/audio/Desktop/projectiles.snd", "player_projectiles/crumbling_earth/create", x_orig, y_orig )
 				GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

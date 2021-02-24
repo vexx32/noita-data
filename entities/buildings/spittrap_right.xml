@@ -1,4 +1,4 @@
-<Entity  >
+<Entity>
   
 	<Base file="data/entities/buildings/spittrap_left.xml" >
 		<AnimalAIComponent

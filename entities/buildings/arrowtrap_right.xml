@@ -1,4 +1,4 @@
-<Entity  >
+<Entity>
   
 	<Base file="data/entities/buildings/arrowtrap_left.xml" >
 		<AnimalAIComponent

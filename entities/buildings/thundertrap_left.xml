@@ -1,4 +1,4 @@
-<Entity tags="mortal,hittable,glue_NOT" >
+<Entity tags="hittable,glue_NOT" >
   
 	<AnimalAIComponent 
 		_enabled="1" 

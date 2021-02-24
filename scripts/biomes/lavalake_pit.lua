@@ -54,7 +54,11 @@ function spawn_wands(x, y)
 end
 
 function init( x, y, w, h )
-	LoadPixelScene( "data/biome_impl/lavalake_pit.png", "", x, y, "", true )
+	if y > 2000 and y < 2400 then
+		LoadPixelScene( "data/biome_impl/lavalake_pit_cracked.png", "", x, y, "", true )
+	else
+		LoadPixelScene( "data/biome_impl/lavalake_pit.png", "", x, y, "", true )
+	end
 end
 
 function spawn_metportal( x, y )

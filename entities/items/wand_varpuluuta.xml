@@ -15,11 +15,18 @@
 		>
 	</LuaComponent>
 	
-	<CellEaterComponent
-		_tags="enabled_in_world,enabled_in_hand"
-		radius="20"
-		eat_probability="10"
-		only_stain="1"
-		>
-	</CellEaterComponent>
+	<Entity>
+		<InheritTransformComponent
+			_tags="enabled_in_world,enabled_in_hand"
+			only_position="1"
+			parent_hotspot_tag="shoot_pos" >
+		</InheritTransformComponent>
+		<CellEaterComponent
+			_tags="enabled_in_world,enabled_in_hand"
+			radius="20"
+			eat_probability="10"
+			only_stain="1"
+			>
+		</CellEaterComponent>
+	</Entity>
 </Entity>
