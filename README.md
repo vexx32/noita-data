@@ -10,3 +10,6 @@ HOW TO READ:
 
  Actual changes below: 
 
+diff --git a/test2.txt b/test2.txt
+new file mode 100644
+index 0000000..e69de29
