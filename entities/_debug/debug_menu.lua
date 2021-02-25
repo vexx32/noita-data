@@ -388,6 +388,32 @@ main_menu_items =
 		end
 	},
 	{
+		ui_name="Fungal shift water->rock_static",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "water" ), CellFactory_GetType( "rock_static" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift radioactive_liquid->magic_liquid_protection_all",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "radioactive_liquid" ), CellFactory_GetType( "magic_liquid_protection_all" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift acid->sima",
+		action = function()
+			print(to_string(CellFactory_GetType( "acid" )))
+			ConvertMaterialEverywhere( CellFactory_GetType( "acid" ), CellFactory_GetType( "sima" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift acid->blood",
+		action = function()
+			print(to_string(CellFactory_GetType( "acid" )))
+			ConvertMaterialEverywhere( CellFactory_GetType( "acid" ), CellFactory_GetType( "blood" ) )
+		end
+	},
+	{
 		ui_name="ConvertMaterialOnAreaInstantly() - test near camera",
 		action = function()
 			local x,y = GameGetCameraPos()

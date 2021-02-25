@@ -135,9 +135,9 @@ function fungal_shift( entity, x, y, debug_no_limits )
 			from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( CellFactory_GetType( from.name_material ) ) ) )
 		end
 
-		-- if a potion is equipped, use main material from potion as one of the materials
-		if held_material > 0 then
-			if random_nexti( rnd, 1, 100 ) > 50 then
+		-- if a potion is equipped, randomly use main material from potion as one of the materials
+		if held_material > 0 and random_nexti( rnd, 1, 100 ) <= 75 then
+			if random_nexti( rnd, 1, 100 ) <= 50 then
 				from_material = held_material
 				from_material_name = string.upper( GameTextGetTranslatedOrNot( CellFactory_GetUIName( from_material ) ) )
 			else
