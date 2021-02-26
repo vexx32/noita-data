@@ -130,7 +130,7 @@ if ( comp ~= nil ) and ( comp2 ~= nil ) then
 		EntitySetComponentsWithTagEnabled( entity_id, "sunbaby_stage_2", false )
 	end
 	
-	if ( found == 4 )
+	if ( found == 4 ) then
 		if ( ohno == false ) then
 			EntityLoad("data/entities/items/pickup/sun/newsun.xml", x, y)
 			GamePrintImportant( "$log_new_step", "$itemdesc_seed_e" )

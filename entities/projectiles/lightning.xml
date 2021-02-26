@@ -1,5 +1,5 @@
 <Entity 
-  name="$projectile_default" >
+  name="$projectile_default" tags="projectile_lightning" >
 
 	<Base file="data/entities/base_projectile.xml" >
       <VelocityComponent

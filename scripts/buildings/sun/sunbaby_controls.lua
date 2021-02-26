@@ -8,7 +8,7 @@ local targets = EntityGetInRadiusWithTag( x, y, 56, "projectile" )
 local vel_x,vel_y = 0,0
 
 for i,v in ipairs( targets ) do
-	if ( i == 1 ) then
+	if ( i == 1 ) and ( EntityHasTag( v, "projectile_lightning" ) == false ) then
 		edit_component( v, "VelocityComponent", function(comp,vars)
 			vel_x,vel_y = ComponentGetValueVector2( comp, "mVelocity")
 		end)

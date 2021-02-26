@@ -140,18 +140,4 @@
 		></gun_config>
 	</AbilityComponent>
 	
-	<MagicConvertMaterialComponent
-		_tags="enabled_in_world,enabled_in_hand"
-		kill_when_finished="1"
-		from_material=""
-		from_material_tag="[water]"
-		steps_per_frame="2"
-		to_material="steam"
-		clean_stains="0"
-		is_circle="1"
-		radius="64" 
-		loop="1"
-		>
-	</MagicConvertMaterialComponent>
-	
 </Entity>

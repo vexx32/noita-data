@@ -234,7 +234,7 @@
 	
 	<LuaComponent
 		script_source_file="data/scripts/buildings/sun/sun_dark_effect.lua"
-		execute_every_n_frame="40"
+		execute_every_n_frame="41"
 		>
 	</LuaComponent>
 </Entity>

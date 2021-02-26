@@ -12,7 +12,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local opts = { "ADD_TRIGGER", "ADD_TIMER", "ADD_DEATH_TRIGGER", "RESET", "DUPLICATE" }
 	
 	for i=1,4 do
-		CreateItemActionEntity( opts[i], pos_x - 8 * 4 + (i-1) * 16, pos_y )
+		CreateItemActionEntity( opts[i], x - 8 * 4 + (i-1) * 16, y )
 	end
 	
 	EntityLoad( "data/entities/items/books/book_mestari.xml",  x - 16, y )

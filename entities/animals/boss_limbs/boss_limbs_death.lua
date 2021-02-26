@@ -19,16 +19,16 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	if flag_status then
 		for i=1,4 do
 			rnd = Random( 1, #opts )
-			CreateItemActionEntity( opts[rnd], x - 8 * 4 + (i-1) * 16, y )
+			CreateItemActionEntity( opts[rnd], pos_x - 8 * 4 + (i-1) * 16, pos_y )
 			table.remove( opts, rnd )
 		end
 	else
 		for i=1,4 do
 			rnd = Random( 1, #opts )
-			CreateItemActionEntity( opts[rnd], x - 8 * 4 + (i-1) * 16, y )
+			CreateItemActionEntity( opts[rnd], pos_x - 8 * 4 + (i-1) * 16, pos_y )
 			table.remove( opts, rnd )
 		end
-		EntityLoad( "data/entities/items/pickup/heart_fullhp.xml",  x, y )
+		EntityLoad( "data/entities/items/pickup/heart_fullhp.xml",  pos_x, pos_y )
 	end
 	
 	AddFlagPersistent( "card_unlocked_pyramid" )
