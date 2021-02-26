@@ -14,8 +14,10 @@ essence_5 = false
 
 local players = EntityGetWithTag( "player_unit" )
 local players_ = EntityGetWithTag( test )
+local sun = EntityGetInRadiusWithTag( x, y, 56, "seed_e" )
+local sun2 = EntityGetInRadiusWithTag( x, y, 56, "seed_f" )
 
-if essence_1 and essence_2 and essence_3 and essence_4 and ( #players_ == 0 ) then
+if essence_1 and essence_2 and essence_3 and essence_4 and ( #players_ == 0 ) and ( #sun == 0 ) and ( #sun2 == 0 ) then
 	local do_effect = false
 	
 	if ( #players > 0 ) then
@@ -36,4 +38,35 @@ if essence_1 and essence_2 and essence_3 and essence_4 and ( #players_ == 0 ) th
 		
 		EntityKill( entity_id )
 	end
+end
+
+if ( #sun > 0 ) or ( #sun2 > 0 ) then
+	local flag = GameHasFlagRun( "secret_sun_collision_1" )
+	EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
+	
+	if ( flag == false ) then
+		GameAddFlagRun( "secret_sun_collision_1" )
+		
+		if ( #sun > 0 ) then
+			EntityLoad("data/entities/misc/moon_effect_sun.xml", x, y)
+		elseif ( #sun2 > 0 ) then
+			EntityLoad("data/entities/misc/moon_effect_darksun.xml", x, y)
+		end
+		
+		GamePrintImportant( "$log_collision_1", "$logdesc_collision_1" )
+	else
+		GameAddFlagRun( "secret_sun_collision_2" )
+		
+		if ( #sun > 0 ) then
+			EntityLoad("data/entities/misc/moon_effect_sun.xml", x, y)
+			GamePrintImportant( "$log_collision_2", "$logdesc_collision_2" )
+			AddFlagPersistent( "secret_sun_collision" )
+		elseif ( #sun2 > 0 ) then
+			EntityLoad("data/entities/misc/moon_effect_darksun.xml", x, y)
+			GamePrintImportant( "$log_collision_3", "$logdesc_collision_3" )
+			AddFlagPersistent( "secret_darksun_collision" )
+		end
+	end
+	
+	EntityKill( entity_id )
 end

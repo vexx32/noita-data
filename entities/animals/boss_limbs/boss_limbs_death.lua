@@ -4,6 +4,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	-- kill self
 	local entity_id    = GetUpdatedEntityID()
 	local pos_x, pos_y = EntityGetTransform( entity_id )
+	local flag_status = HasFlagPersistent( "card_unlocked_pyramid" )
 
 	-- do some kind of an effect? throw some particles into the air?
 	EntityLoad( "data/entities/items/pickup/heart.xml", pos_x - 16, pos_y )
@@ -12,10 +13,22 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local pw = check_parallel_pos( pos_x )
 	SetRandomSeed( pw, 44 )
 	
-	local opts = { "ADD_TRIGGER", "ADD_TIMER", "ADD_DEATH_TRIGGER", "DAMAGE_RANDOM" }
+	local opts = { "NOLLA", "DAMAGE_RANDOM", "RANDOM_SPELL", "RANDOM_PROJECTILE", "RANDOM_MODIFIER", "RANDOM_STATIC_PROJECTILE", "DRAW_RANDOM", "DRAW_RANDOM_X3", "DRAW_3_RANDOM" }
+	local rnd = Random( 1, #opts )
 	
-	for i=1,4 do
-		CreateItemActionEntity( opts[i], pos_x - 8 * 4 + (i-1) * 16, pos_y )
+	if flag_status then
+		for i=1,4 do
+			rnd = Random( 1, #opts )
+			CreateItemActionEntity( opts[rnd], x - 8 * 4 + (i-1) * 16, y )
+			table.remove( opts, rnd )
+		end
+	else
+		for i=1,4 do
+			rnd = Random( 1, #opts )
+			CreateItemActionEntity( opts[rnd], x - 8 * 4 + (i-1) * 16, y )
+			table.remove( opts, rnd )
+		end
+		EntityLoad( "data/entities/items/pickup/heart_fullhp.xml",  x, y )
 	end
 	
 	AddFlagPersistent( "card_unlocked_pyramid" )

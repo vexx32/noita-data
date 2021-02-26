@@ -38,7 +38,7 @@ if ( #projectile_file > 0 ) and ( math.abs( vel_x ) + math.abs( vel_y ) > 50 ) t
 		
 		angle = angle + angle_inc
 
-		local eid = shoot_projectile( entity_id, projectile_file, pos_x + shot_vel_x * 0.05, pos_y + shot_vel_y * 0.05, shot_vel_x, shot_vel_y, false )
+		local eid = shoot_projectile_from_projectile( entity_id, projectile_file, pos_x + shot_vel_x * 0.05, pos_y + shot_vel_y * 0.05, shot_vel_x, shot_vel_y, false )
 		EntityAddTag( eid, "projectile_cloned" )
 	end
 	

@@ -14,6 +14,7 @@ if ( #enemies > 0 ) then
 		
 		if ( dist < 300 ) and ( EntityHasTag( enemy_id, "boss" ) == false ) then
 			EntityLoad( "data/entities/particles/destruction.xml", ex, ey )
+			EntityLoad( "data/entities/misc/explosion_was_here.xml", ex, ey )
 			EntityKill( enemy_id )
 		end
 	end
@@ -24,6 +25,7 @@ if ( #players > 0 ) then
 		local px, py = EntityGetTransform( player_id )
 		
 		EntityLoad( "data/entities/particles/destruction.xml", px, py )
+		EntityLoad( "data/entities/misc/explosion_was_here.xml", px, py )
 		
 		local damagemodels = EntityGetComponent( player_id, "DamageModelComponent" )
 		

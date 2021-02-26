@@ -108,6 +108,13 @@
   </LuaComponent>
   
   <LuaComponent
+    script_source_file="data/scripts/perks/fungus_init.lua"
+	execute_on_added="1"
+	remove_after_executed="1"
+    >
+  </LuaComponent>
+  
+  <LuaComponent
 	    execute_on_removed="0"
 	    execute_every_n_frame="-1"
 		script_collision_trigger_timer_finished="data/scripts/animals/fungus_death.lua"

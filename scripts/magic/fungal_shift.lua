@@ -10,13 +10,16 @@ materials_from =
 	{ probability = 1.0, materials = { "blood_fungi", "fungi", "fungisoil" }, name_material = "fungi" },
 	{ probability = 1.0, materials = { "blood_cold", "blood_worm" } },
 	{ probability = 1.0, materials = { "acid" } },
+	{ probability = 0.4, materials = { "acid_gas", "acid_gas_static", "poison_gas", "fungal_gas", "radioactive_gas", "radioactive_gas_static" }, name_material = "acid_gas" },
 	{ probability = 0.4, materials = { "magic_liquid_polymorph", "magic_liquid_unstable_polymorph" }, name_material = "magic_liquid_polymorph" },
 	{ probability = 0.4, materials = { "magic_liquid_teleportation", "magic_liquid_unstable_teleportation" }, name_material = "magic_liquid_teleportation" },
 	{ probability = 0.4, materials = { "magic_liquid_berserk", "magic_liquid_charm", "magic_liquid_invisibility" } },
 	{ probability = 0.6, materials = { "diamond" } },
 	{ probability = 0.6, materials = { "silver", "brass", "copper" } },
-	{ probability = 0.05, materials = { "sand" } },
-	{ probability = 0.05, materials = { "snow_sticky" } },
+	{ probability = 0.2, materials = { "steam", "smoke" } },
+	{ probability = 0.4, materials = { "sand" } },
+	{ probability = 0.4, materials = { "snow_sticky" } },
+	{ probability = 0.05, materials = { "rock_static" } },
 	{ probability = 0.001, materials = { "gold", "gold_box2d" }, name_material = "gold" },
 }
 
@@ -42,6 +45,7 @@ materials_to =
 	{ probability = 0.80, material = "silver" },
 	{ probability = 0.80, material = "steam" },
 	{ probability = 0.50, material = "rock_static" },
+	{ probability = 0.50, material = "gunpowder" },
 	{ probability = 0.50, material = "material_darkness" },
 	{ probability = 0.50, material = "material_confusion" },
 	{ probability = 0.20, material = "rock_static_radioactive" },
@@ -50,6 +54,7 @@ materials_to =
 	{ probability = 0.15, material = "magic_liquid_teleportation" },
 	{ probability = 0.01, material = "urine" },
 	{ probability = 0.01, material = "poo" },
+	{ probability = 0.01, material = "void_liquid" },
 	{ probability = 0.01, material = "cheese_static" },
 }
 

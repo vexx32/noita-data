@@ -1,5 +1,6 @@
 <Entity tags="seed_a_process">
-
+	<InheritTransformComponent />
+	
 	<!-- buildup -->
 	<ParticleEmitterComponent 
 		_tags="buildup_particles"

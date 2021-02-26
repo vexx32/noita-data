@@ -924,4 +924,16 @@
 		height_index="0"
 		color="ff375c00" >
 	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/funroom.xml" 
+		height_index="0"
+		color="ff0a95a4" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/rock_room.xml" 
+		height_index="0"
+		color="ff326655" >
+	</Biome>
 </BiomesToLoad>

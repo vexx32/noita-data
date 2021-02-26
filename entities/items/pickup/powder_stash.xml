@@ -1,7 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics" >
-
-  <!-- tested would it be viable to add a pouch to the game that sucks up powders ... ? -->
-  <!-- it kinda works, but there's a bunch of polish that would have to be done for it -->
+<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup" >
 
   <!-- physical presence -->
   
@@ -41,7 +38,6 @@
   ></VelocityComponent>
   
   <!-- potion logic -->
-  
   <!--
   <LuaComponent 
     execute_on_added="1"
@@ -50,7 +46,6 @@
     script_source_file="data/scripts/items/potion.lua" 
   ></LuaComponent>
   -->
-
 	<LuaComponent 
 		remove_after_executed="1"
 		script_item_picked_up="data/scripts/items/potion_effect.lua"

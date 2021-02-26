@@ -27,7 +27,7 @@ function init( x, y, w, h )
 end
 
 function spawn_orb(x, y)
-	EntityLoad( "data/entities/animals/boss_ghost/boss_ghost.xml", x, y )
+	EntityLoad( "data/entities/animals/boss_ghost/ghost_spawn_check.xml", x, y )
 	EntityLoad( "data/entities/buildings/hpcrystal.xml", x - 64, y )
 	EntityLoad( "data/entities/buildings/hpcrystal.xml", x + 64, y )
 	EntityLoad( "data/entities/buildings/snowcrystal.xml", x, y )

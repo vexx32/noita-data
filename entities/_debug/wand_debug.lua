@@ -15,6 +15,7 @@ function DEBUG_wand_add_random_cards( gun, entity_id, level )
 
 	local deck_capacity = gun["deck_capacity"]
 	local card = ""
+	local is_rare = 0
 
 	if( Random( 0, 100 ) < 4 or is_rare == 1 ) then
 		local p = Random(0,100) 

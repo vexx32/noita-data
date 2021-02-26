@@ -76,8 +76,20 @@ g_big_enemies =
 	{
 		prob   		= 0.2,
 		min_count	= 1,
-		max_count	= 1,    
+		max_count	= 1,
 		entity 	= "data/entities/animals/thundermage.xml"
+	},
+	{
+		prob   		= 0.15,
+		min_count	= 1,
+		max_count	= 1,
+		entity 	= "data/entities/animals/phantom_a.xml"
+	},
+	{
+		prob   		= 0.15,
+		min_count	= 1,
+		max_count	= 1,
+		entity 	= "data/entities/animals/phantom_b.xml"
 	},
 	{
 		prob   		= 0.2,
@@ -92,7 +104,7 @@ g_big_enemies =
 		entity 	= "data/entities/animals/thundermage_big.xml"
 	},
 	{
-		prob   		= 0.4,
+		prob   		= 0.3,
 		min_count	= 1,
 		max_count	= 1,    
 		entity 	= "data/entities/buildings/snowcrystal.xml"
@@ -110,7 +122,7 @@ g_big_enemies =
 		entity 	= "data/entities/animals/ethereal_being.xml"
 	},
 	{
-		prob   		= 0.1,
+		prob   		= 0.2,
 		min_count	= 1,
 		max_count	= 1,    
 		entity 	= "data/entities/buildings/ghost_crystal.xml"

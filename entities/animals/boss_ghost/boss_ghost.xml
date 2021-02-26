@@ -64,6 +64,7 @@
 		can_fly="1" 
 		aggressiveness_min="1"
 		aggressiveness_max="100"
+		sense_creatures_through_walls="1"
 		>
 	</AnimalAIComponent>
 

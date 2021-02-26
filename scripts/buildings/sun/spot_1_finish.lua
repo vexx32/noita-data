@@ -12,7 +12,7 @@ for _,id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 70, "seed_a")) do
 	if EntityGetRootEntity(id) == id then
 		local x,y = EntityGetTransform(id)
 		EntityLoad("data/entities/items/pickup/sun/sunstone.xml", x, y)
-		EntityLoad("data/entities/projectiles/explosion.xml", x, y)
+		EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 		EntityKill(id)
 		converted = true
 	end

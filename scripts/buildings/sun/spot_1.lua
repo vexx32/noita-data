@@ -12,7 +12,8 @@ for _,id in pairs(EntityGetInRadiusWithTag(pos_x, pos_y, 64, "seed_a")) do
 	if EntityGetRootEntity(id) == id then
 		-- start conversion
 		local x,y = EntityGetTransform( id )
-		EntityLoad("data/entities/buildings/sun/spot_1_process.xml", x, y)
+		local eid = EntityLoad("data/entities/buildings/sun/spot_1_process.xml", x, y)
+		EntityAddChild( id, eid )
 		GamePlaySound( "data/audio/Desktop/projectiles.snd", "projectiles/magic/create", x, y )
 		return
 	end

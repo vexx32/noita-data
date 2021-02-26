@@ -10,6 +10,7 @@
 		entities_with_tag="homing_target"
 		death_cause="$damage_rock_curse"
 		damage_type="DAMAGE_PROJECTILE"
+		circle_radius="16"
 		>
 	</AreaDamageComponent>
 	

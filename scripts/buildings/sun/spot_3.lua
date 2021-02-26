@@ -32,7 +32,7 @@ if ( comp ~= nil ) then
 	
 	if ( kills >= 100 ) then
 		EntityLoad("data/entities/items/pickup/sun/sunbaby.xml", x, y)
-		EntityLoad("data/entities/projectiles/explosion.xml", x, y)
+		EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 		EntityKill(entity_id)
 		
 		GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

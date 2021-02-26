@@ -46,7 +46,7 @@ function collision_trigger(colliding_id)
 
 					-- update best time display
 					-- TODO: fx on watch
-					local stopwatch_id = EntityGetClosestWithTag(pos_x, pos_y, "stopwatch_best_lap")
+					stopwatch_id = EntityGetClosestWithTag(pos_x, pos_y, "stopwatch_best_lap")
 					if stopwatch_id ~= nil then
 						ComponentSetValue2(get_variable_storage_component(stopwatch_id, "time"), "value_int", best_time)
 					end

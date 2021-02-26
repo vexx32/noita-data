@@ -31,7 +31,7 @@ local explosions = EntityGetInRadiusWithTag( x, y, 120, "big_explosion" )
 
 if ( #explosions > 5 ) then
 	EntityLoad("data/entities/items/pickup/sun/sunegg.xml", x, y)
-	EntityLoad("data/entities/projectiles/explosion.xml", x, y)
+	EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 	EntityKill(entity_id)
 	
 	GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

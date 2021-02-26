@@ -139,6 +139,9 @@
 		</PixelScene>
 		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/eyespot_visual.png" material_filename="data/biome_impl/eyespot.png" pos_x="12976" pos_y="9904" skip_biome_checks="1" skip_edge_textures="0" >
 		</PixelScene>
+		
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/desert_ruins_base_01_visual_fungus.png" material_filename="data/biome_impl/overworld/desert_ruins_base_01.png" pos_x="5890" pos_y="0" skip_biome_checks="1" skip_edge_textures="0" >
+		</PixelScene>
 
 		<!-- just load an entity -->
 		

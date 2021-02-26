@@ -46,13 +46,13 @@ if ( projtype ~= nil ) and ( projspeed ~= nil ) then
 				
 				local comp = EntityGetFirstComponent( eid, "ProjectileComponent" )
 				if ( comp ~= nil ) then
-					ComponentSetValue2( comp, "lifetime", 9999 )
+					ComponentSetValue2( comp, "lifetime", 7200 )
 					ComponentSetValue2( comp, "die_on_low_velocity", false )
 				end
 				
 				comp = EntityGetFirstComponent( eid, "LifetimeComponent" )
 				if ( comp ~= nil ) then
-					ComponentSetValue2( comp, "lifetime", 9999 )
+					ComponentSetValue2( comp, "lifetime", 7200 )
 				end
 			end
 		end
