@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,seed_c" >
+<Entity tags="hittable,teleportable_NOT,seed_c" >
 	<Base file="data/entities/base_item_projectile.xml" />
 
 	<!-- physical presence -->
@@ -196,4 +196,9 @@
 		event_name="misc/sun/size_1_loop"
 		auto_play="1">
     </AudioLoopComponent>
+	
+	<CameraBoundComponent
+	  max_count="5"
+	  distance="2000">
+	</CameraBoundComponent>
 </Entity>

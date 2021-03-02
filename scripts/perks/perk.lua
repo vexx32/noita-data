@@ -212,13 +212,16 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 	GlobalsSetValue( flag_name .. "_PICKUP_COUNT", tostring( pickup_count ) )
 
 	-- load perk for entity_who_picked -----------------------------------
+	local add_progress_flags = not GameHasFlagRun( "no_progress_flags_perk" )
 	
-	local flag_name_persistent = string.lower( flag_name )
-	if ( HasFlagPersistent( flag_name_persistent ) == false ) then
-		GameAddFlagRun( "new_" .. flag_name_persistent )
+	if add_progress_flags then
+		local flag_name_persistent = string.lower( flag_name )
+		if ( not HasFlagPersistent( flag_name_persistent ) ) then
+			GameAddFlagRun( "new_" .. flag_name_persistent )
+		end
+		AddFlagPersistent( flag_name_persistent )
 	end
 	GameAddFlagRun( flag_name )
-	AddFlagPersistent( flag_name_persistent )
 
 	-- add game effect
 	if perk_data.game_effect ~= nil then

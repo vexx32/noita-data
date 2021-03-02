@@ -1,4 +1,6 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,seed_d" >
+<Entity tags="hittable,teleportable_NOT,seed_d" >
+	<StreamingKeepAliveComponent />
+	
 	<Base file="data/entities/base_item_projectile.xml" />
 
 	<!-- physical presence -->
@@ -18,8 +20,8 @@
 	
 	<PhysicsShapeComponent
 		is_circle="1"
-		radius_x="64"
-		radius_y="64"
+		radius_x="42"
+		radius_y="42"
 		>
 	</PhysicsShapeComponent>
 

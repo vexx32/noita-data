@@ -1,4 +1,4 @@
-<Schema hash="613831e95c898860b669bfa8eeed9bee" >
+<Schema hash="1b5fcb8e057004269f9afbce8012d765" >
   <Component component_name="AIAttackComponent" >
     <Var name="use_probability" size="4" type="int" >
     </Var>
@@ -2619,6 +2619,8 @@
     <Var name="velocity_updates_animation" size="4" type="float" >
     </Var>
     <Var name="ground_penetration_coeff" size="4" type="float" >
+    </Var>
+    <Var name="ground_penetration_max_durability_to_destroy" size="4" type="int" >
     </Var>
     <Var name="go_through_this_material" size="24" type="class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >" >
     </Var>

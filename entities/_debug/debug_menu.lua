@@ -414,6 +414,36 @@ main_menu_items =
 		end
 	},
 	{
+		ui_name="Fungal shift water->blood",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "water" ), CellFactory_GetType( "blood" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift water->oil",
+		action = function()
+			ConvertMaterialEverywhere( CellFactory_GetType( "water" ), CellFactory_GetType( "oil" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift #1",
+		action = function()
+			local x, y = GameGetCameraPos()
+			local player_entity = EntityGetClosestWithTag( x, y, "player_unit" )
+			local mat = get_held_item_material( player_entity )
+			ConvertMaterialEverywhere( mat, CellFactory_GetType( "blood" ) )
+		end
+	},
+	{
+		ui_name="Fungal shift #2",
+		action = function()
+			local x, y = GameGetCameraPos()
+			local player_entity = EntityGetClosestWithTag( x, y, "player_unit" )
+			local mat = get_held_item_material( player_entity )
+			ConvertMaterialEverywhere( mat, CellFactory_GetType( "oil" ) )
+		end
+	},
+	{
 		ui_name="ConvertMaterialOnAreaInstantly() - test near camera",
 		action = function()
 			local x,y = GameGetCameraPos()

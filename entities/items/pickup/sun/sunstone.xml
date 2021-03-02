@@ -190,4 +190,9 @@
 		execute_every_n_frame="10"
 		>
 	</LuaComponent>
+	
+	<CameraBoundComponent
+	  max_count="5"
+	  distance="2000">
+	</CameraBoundComponent>
 </Entity>

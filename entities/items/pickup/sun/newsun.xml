@@ -1,4 +1,6 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,seed_e" >
+<Entity tags="hittable,teleportable_NOT,seed_e" >
+	<StreamingKeepAliveComponent />
+	
 	<Base file="data/entities/base_item_projectile.xml" />
 
 	<!-- physical presence -->

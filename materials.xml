@@ -5418,6 +5418,9 @@
 	>
     </Graphics>
 	<StatusEffects>
+		<Stains>
+			<StatusEffect type="WET" />
+		</Stains>
 		<Ingestion>
 			<StatusEffect type="INGESTION_DRUNK" amount="0.01" />
 		</Ingestion>
@@ -12241,7 +12244,7 @@
   <CellDataChild
   	_parent="aluminium"
   	_inherit_reactions="1"
-	tags="[box2d],[solid]"
+	tags="[box2d],[solid],[sunbaby_ignore_list]"
   	name="poop_box2d_hard"
 	ui_name="$mat_rock_box2d_hard"
 	platform_type="1"

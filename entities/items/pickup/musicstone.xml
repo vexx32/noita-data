@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup" >
+<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,moon_energy" >
 	<Base file="data/entities/base_item_projectile.xml" />
 
 	<!-- physical presence -->
@@ -139,5 +139,15 @@
 			deck_capacity="0"
 		></gun_config>
 	</AbilityComponent>
+	
+	<LightComponent
+		_tags="enabled_in_world,enabled_in_hand"
+		radius="12"
+		r="255"
+		g="255"
+		b="255"
+		fade_out_time="0.1"
+		>
+	</LightComponent>
 	
 </Entity>

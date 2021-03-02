@@ -146,4 +146,9 @@
 		render_ultrabright="1"
 		is_emitting="1" >
 	</ParticleEmitterComponent>
+	
+	<CameraBoundComponent
+	  max_count="5"
+	  distance="2000">
+	</CameraBoundComponent>
 </Entity>
