@@ -4,7 +4,7 @@ local entity_id    = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
 
 local targets = EntityGetInRadiusWithTag( x, y, 56, "projectile" )
-local targets2 = EntityGetInRadiusWithTag( x, y, 220, "moon_energy" )
+local targets2 = EntityGetInRadiusWithTag( x, y, 400, "moon_energy" )
 
 local vel_x,vel_y = 0,0
 
@@ -15,7 +15,7 @@ for i,v in ipairs( targets ) do
 		end)
 		
 		if ( vel_x ~= 0 ) or ( vel_y ~= 0 ) then
-			PhysicsApplyForce( entity_id, vel_x * 1.2, vel_y * 1.2 )
+			PhysicsApplyForce( entity_id, vel_x * 2.0, vel_y * 2.0 )
 		end
 	end
 	
@@ -29,8 +29,8 @@ for i,v in ipairs( targets2 ) do
 	if ( test ~= nil ) then
 		local dir = 0 - math.atan2( ty - y, tx - x )
 		
-		vel_x = math.cos( dir ) * 180
-		vel_y = 0 - math.sin( dir ) * 180
+		vel_x = math.cos( dir ) * 240
+		vel_y = 0 - math.sin( dir ) * 240
 		
 		PhysicsApplyForce( entity_id, vel_x, vel_y )
 	end

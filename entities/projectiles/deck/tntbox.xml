@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,mortal,item_physics" >
+<Entity tags="hittable,teleportable_NOT,mortal,item_physics,projectile" >
 
   <!-- physical presence -->
   
@@ -50,10 +50,39 @@
       >
     </config_explosion>
   </ProjectileComponent>
+  
+  <ExplosionComponent
+	trigger="ON_DEATH"
+	>
+	<config_explosion
+      never_cache="0"
+      damage="5"
+      camera_shake="10" 
+      explosion_radius="40" 
+      explosion_sprite="data/particles/explosion_032.xml"
+	  load_this_entity="data/entities/particles/particle_explosion/main_gunpowder_tiny.xml"
+      explosion_sprite_lifetime="0" 
+      create_cell_probability="80" 
+      hole_destroy_liquid="1"
+	  ray_energy="350000"
+      hole_enabled="1"
+      particle_effect="1" 
+      damage_mortals="1" 
+      physics_throw_enabled="1"
+      shake_vegetation="0" 
+      sparks_enabled="1" 
+      stains_enabled="0" 
+      >
+    </config_explosion>
+	</ExplosionComponent>
+
+  <PhysicsThrowableComponent
+    throw_force_coeff="1" >
+  </PhysicsThrowableComponent>
 
   <VelocityComponent
-    _tags="enabled_in_world"
-  ></VelocityComponent>
+    affect_physics_bodies="1">
+  </VelocityComponent>
 
   <!-- item -->
 

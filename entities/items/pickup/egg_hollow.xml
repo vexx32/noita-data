@@ -30,6 +30,7 @@
 
   <VelocityComponent
     _tags="enabled_in_world"
+	affect_physics_bodies="1"
   ></VelocityComponent>
   
   <!-- potion logic -->

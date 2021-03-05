@@ -1478,6 +1478,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					
@@ -1515,6 +1516,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					
@@ -1628,6 +1630,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					

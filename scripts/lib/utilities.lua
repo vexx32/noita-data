@@ -831,7 +831,7 @@ function check_parallel_pos( x )
 	local mapwidth = BiomeMapGetSize() * 512
 	local half = mapwidth * 0.5
 	
-	local mx = ( x + half ) % mapwidth
+	local mx = x % mapwidth
 	
 	return pw,mx
 end

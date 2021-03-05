@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,seed_f" >
+<Entity tags="hittable,teleportable_NOT,seed_f,new_sun" >
 	<StreamingKeepAliveComponent />
 	
 	<Base file="data/entities/base_item_projectile.xml" />
@@ -98,7 +98,7 @@
 		damage_per_frame="2.14"
 		update_every_n_frame="1"
 		entities_with_tag="mortal"
-		death_cause="$damage_sun"
+		death_cause="$damage_darksun"
 		damage_type="DAMAGE_CURSE"
 		>
 	</AreaDamageComponent>
@@ -111,7 +111,7 @@
 		damage_per_frame="1.05"
 		update_every_n_frame="1"
 		entities_with_tag="mortal"
-		death_cause="$damage_sun"
+		death_cause="$damage_darksun"
 		damage_type="DAMAGE_ICE"
 		>
 	</AreaDamageComponent>
@@ -124,7 +124,7 @@
 		damage_per_frame="0.61"
 		update_every_n_frame="1"
 		entities_with_tag="mortal"
-		death_cause="$damage_sun"
+		death_cause="$damage_darksun"
 		damage_type="DAMAGE_ELECTRICITY"
 		>
 	</AreaDamageComponent>

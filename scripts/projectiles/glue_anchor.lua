@@ -75,7 +75,7 @@ if target_x ~= nil and target_x ~= 0 and target_y ~= 0 then
 
 		-- prevent pulling into a wall by checking if glue center (parent) is inside platform
 		local dist = get_magnitude(vx, vy)
-		if dist < 8 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
+		if dist < 8 or dist > 130 or RaytracePlatforms(center_x, center_y, center_x + 1, center_y) then
 			--print("abort pull")
 			return
 		end

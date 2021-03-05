@@ -40,7 +40,7 @@ if essence_1 and essence_2 and essence_3 and essence_4 and ( #players_ == 0 ) an
 	end
 end
 
-if ( #sun > 0 ) or ( #sun2 > 0 ) then
+if ( ( #sun > 0 ) and ( HasFlagPersistent( "darkmoon_is_sun" ) == false ) ) or ( ( #sun > 0 ) and ( HasFlagPersistent( "darkmoon_is_darksun" ) == false ) ) then
 	local flag = GameHasFlagRun( "secret_sun_collision_1" )
 	EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 	
@@ -49,8 +49,14 @@ if ( #sun > 0 ) or ( #sun2 > 0 ) then
 		
 		if ( #sun > 0 ) then
 			EntityLoad("data/entities/misc/moon_effect_sun.xml", x, y)
+			
+			RemoveFlagPersistent( "darkmoon_is_darksun" )
+			AddFlagPersistent( "darkmoon_is_sun" )
 		elseif ( #sun2 > 0 ) then
 			EntityLoad("data/entities/misc/moon_effect_darksun.xml", x, y)
+			
+			RemoveFlagPersistent( "darkmoon_is_sun" )
+			AddFlagPersistent( "darkmoon_is_darksun" )
 		end
 		
 		GamePrintImportant( "$log_collision_1", "$logdesc_collision_1" )
@@ -61,10 +67,16 @@ if ( #sun > 0 ) or ( #sun2 > 0 ) then
 			EntityLoad("data/entities/misc/moon_effect_sun.xml", x, y)
 			GamePrintImportant( "$log_collision_2", "$logdesc_collision_2" )
 			AddFlagPersistent( "secret_sun_collision" )
+			
+			RemoveFlagPersistent( "darkmoon_is_darksun" )
+			AddFlagPersistent( "darkmoon_is_sun" )
 		elseif ( #sun2 > 0 ) then
 			EntityLoad("data/entities/misc/moon_effect_darksun.xml", x, y)
 			GamePrintImportant( "$log_collision_3", "$logdesc_collision_3" )
 			AddFlagPersistent( "secret_darksun_collision" )
+			
+			RemoveFlagPersistent( "darkmoon_is_sun" )
+			AddFlagPersistent( "darkmoon_is_darksun" )
 		end
 	end
 	

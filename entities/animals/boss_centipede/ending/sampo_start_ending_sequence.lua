@@ -97,6 +97,11 @@ if( doing_newgame_plus == false ) then
 		-- ORBS >= 33 ENDINGs
 		-- on top -> new game+
 		AddFlagPersistent( "secret_amulet" )
+		
+		if ( orb_count > 33 ) then
+			AddFlagPersistent( "secret_amulet_gem" )
+		end
+		
 		local distance_from_mountain = 1000
 
 		if( #endpoint_mountain > 0 ) then

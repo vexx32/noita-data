@@ -21,11 +21,21 @@ for _,enemy_id in pairs(EntityGetInRadiusWithTag( pos_x, pos_y, range, "enemy"))
 	local indicator_y = pos_y + dir_y * indicator_distance
 
 	-- display sprite based on proximity
-	if distance > range * 0.5 then
+	if distance > range * 0.75 then
 		GameCreateSpriteForXFrames( "data/particles/radar_enemy_faint.png", indicator_x, indicator_y )
-	elseif distance > range * 0.25 then
+	elseif distance > range * 0.5 then
 		GameCreateSpriteForXFrames( "data/particles/radar_enemy_medium.png", indicator_x, indicator_y )
-	else
+		-- turn emissive
+		if not EntityHasTag(enemy_id, "detected_by_radar") then
+			EntityAddTag(enemy_id, "detected_by_radar")
+			local sprite_comps = EntityGetComponent(enemy_id, "SpriteComponent")
+			for _,v in ipairs(sprite_comps) do
+				ComponentSetValue2(v, "emissive", true)
+				ComponentSetValue2(v, "fog_of_war_hole", true)
+				EntityRefreshSprite(enemy_id, v)
+			end
+		end
+	elseif distance > range * 0.3 then
 		GameCreateSpriteForXFrames( "data/particles/radar_enemy_strong.png", indicator_x, indicator_y )
 	end
 end

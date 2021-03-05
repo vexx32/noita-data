@@ -1295,6 +1295,68 @@
   	_parent="rock_static"
   	_inherit_reactions="1"
 	tags="[static],[alchemy],[solid],[earth]"
+  	name="rock_static_fungal" 
+	ui_name="$mat_fungisoil"
+	wang_color="ff00a244"
+	hp="150000"
+	audio_physics_material_event="rock"
+	audio_physics_material_wall="rock"
+	audio_physics_material_solid="rock"
+	show_in_creative_mode="1"
+	>
+  	<Graphics
+		texture_file="data/materials_gfx/fun.png"
+		color="ff495978" >
+		<Edge>
+			<EdgeGraphics 
+				color="ff261f26" 
+				overwrite="0" 
+				percent="1" 
+				require_same_material="0" 
+				require_same_material_type="0" 
+				type="NORMAL_BASED" 
+				z="1" >
+				<Images>
+					<Image 
+						do_only_horizontal_stripe="1" 
+						do_only_vertical_stripe="0" 
+						filename="data/materials_gfx/edge_files/edge_earth_fun_hor.png" 
+						min_angle="45" 
+						max_angle="135" />
+					<Image 
+						do_only_horizontal_stripe="1" 
+						do_only_vertical_stripe="0" 
+						filename="data/materials_gfx/edge_files/edge_earth_fun_hor.png" 
+						min_angle="235" 
+						max_angle="315" />
+					<Image 
+						do_only_horizontal_stripe="0" 
+						do_only_vertical_stripe="1" 
+						filename="data/materials_gfx/edge_files/edge_earth_fun_ver.png" 
+						min_angle="135" 
+						max_angle="235" />
+					  <Image 
+						do_only_horizontal_stripe="0" 
+						do_only_vertical_stripe="1" 
+						filename="data/materials_gfx/edge_files/edge_earth_fun_ver.png" 
+						min_angle="315" 
+						max_angle="360" />
+					  <Image 
+						do_only_horizontal_stripe="0" 
+						do_only_vertical_stripe="1" 
+						filename="data/materials_gfx/edge_files/edge_earth_fun_ver.png" 
+						min_angle="0" 
+						max_angle="45" />
+				</Images>
+			</EdgeGraphics>
+		</Edge>
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="rock_static"
+  	_inherit_reactions="1"
+	tags="[static],[alchemy],[solid],[earth]"
   	name="wood_tree" 
 	ui_name="$mat_wood"
 	wang_color="ff005345"
@@ -8268,6 +8330,33 @@
 		</Ingestion>
 	</StatusEffects>
   </CellDataChild>
+  
+  <CellDataChild
+  	_parent="slime"
+  	_inherit_reactions="1"
+  	name="slime_yellow" 
+	ui_name="$mat_slime_static"
+	wang_color="889cb32b" 
+	liquid_viscosity="0"
+	liquid_sticks_to_ceiling="100"
+	liquid_damping="0.9"
+	liquid_flow_speed="0.1"
+	status_effects="SLIMY"
+	audio_physics_material_event="slime"
+	audio_physics_material_wall="slime"
+	audio_physics_material_solid="slime"
+	show_in_creative_mode="1"
+	>
+  	<Graphics
+	texture_file="data/materials_gfx/yellowblood.png"
+	color="889cb32b" >
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="FOOD_POISONING" amount="0.2" />
+		</Ingestion>
+	</StatusEffects>
+  </CellDataChild>
 
   <CellDataChild
   	_parent="slime_green"
@@ -9833,6 +9922,27 @@
 	</StatusEffects>
   </CellData>
   
+  <CellDataChild
+  	_parent="fungus_powder"
+	name="fungus_powder_bad"
+	ui_name="$mat_fungisoil"
+	wang_color="ffcacafe"
+	>
+    <Graphics
+	color="ffa10F24"
+        >
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="POISONED" amount="0.15" />
+			<StatusEffect type="FOOD_POISONING" amount="0.05" />
+		</Ingestion>
+		<Stains>
+			<StatusEffect type="WET" />
+		</Stains>
+	</StatusEffects>
+  </CellDataChild>
+  
   <CellData
 	name="orb_powder"
 	ui_name="$mat_orb_powder"
@@ -11194,6 +11304,28 @@
   <CellDataChild
   	_parent="wood_loose"
   	_inherit_reactions="1"
+  	name="fungus_loose_green" 
+	ui_name="$mat_fungus_loose"
+	solid_restitution="0.4"
+	solid_on_collision_material="slime_green"
+	solid_on_collision_splash_power="1"
+	wang_color="ff64ab2c"
+	audio_physics_material_wall="organicbouncy"
+	audio_physics_material_solid="organicbouncy" >
+  	<Graphics
+	texture_file="data/materials_gfx/moss.png"
+	color="ff64ab2c" >
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="FOOD_POISONING" amount="1" />
+		</Ingestion>
+	</StatusEffects>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="wood_loose"
+  	_inherit_reactions="1"
   	name="fungus_loose_trippy" 
 	ui_name="$mat_fungi_trippy"
 	solid_restitution="0.4"
@@ -12244,7 +12376,7 @@
   <CellDataChild
   	_parent="aluminium"
   	_inherit_reactions="1"
-	tags="[box2d],[solid],[sunbaby_ignore_list]"
+	tags="[box2d],[solid],[sunbaby_ignore_list],[matter_eater_ignore_list]"
   	name="poop_box2d_hard"
 	ui_name="$mat_rock_box2d_hard"
 	platform_type="1"
@@ -12523,7 +12655,7 @@
 	gfx_glow_color="0xFFFF0000"
 	wang_color="fffd2d7d"
 	show_in_creative_mode="0"
-	solid_gravity_scale="0.2"
+	solid_gravity_scale="0.5"
 	durability="15"
 	>
   	<Graphics
@@ -15009,6 +15141,13 @@
 		input_cell1="fungus_powder" input_cell2="air"
 		output_cell1="air" output_cell2="air"
 		entity="data/entities/misc/fungus_powder.xml"
+		>
+	</Reaction>
+	
+	<Reaction probability="100"
+		input_cell1="fungus_powder_bad" input_cell2="air"
+		output_cell1="air" output_cell2="air"
+		entity="data/entities/misc/fungus_powder_bad.xml"
 		>
 	</Reaction>
 

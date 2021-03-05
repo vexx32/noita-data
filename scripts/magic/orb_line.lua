@@ -30,7 +30,7 @@ if ( Random( 1, 25 ) == 4 ) then
 		local ox = v[1] * 512 + 256
 		local oy = v[2] * 512 + 256
 		
-		-- print("Closest orb is at " .. tostring(v[1]) .. ", " .. tostring(v[2]))
+		-- print( "Closest orb is at " .. tostring(v[1]) .. ", " .. tostring(v[2]) .. " (parallel: " .. tostring(pw) .. ", " .. tostring(mx) .. ")" )
 		
 		local dir = get_direction( ox, oy, mx, y )
 		

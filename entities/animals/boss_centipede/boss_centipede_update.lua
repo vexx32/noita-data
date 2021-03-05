@@ -710,6 +710,12 @@ function check_death()
 
 		-- check death
 		if ( hp <= 0.0 ) then
+			local sun = EntityGetInRadiusWithTag( x, y, 540, "new_sun" )
+			if ( #sun > 0 ) then
+				print("SUN DETECTED")
+				GameAddFlagRun( "sun_kill" )
+			end
+			
 			move_to_reference()
 			GameTriggerMusicFadeOutAndDequeueAll()
 			if death_sound_started == false then

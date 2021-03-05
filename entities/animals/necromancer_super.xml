@@ -78,11 +78,11 @@
 		<CharacterPlatformingComponent 
 			jump_velocity_y="-12" 
 			run_velocity="14"  
-			fly_speed_max_up="100"
-			fly_speed_max_down="100"
+			fly_speed_max_up="80"
+			fly_speed_max_down="80"
 			fly_speed_mult="40"
 			fly_speed_change_spd="1"
-    		pixel_gravity="0" 
+    		pixel_gravity="50" 
 			fly_velocity_x="80">
 		</CharacterPlatformingComponent>
 	</Base>
