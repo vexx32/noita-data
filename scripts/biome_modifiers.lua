@@ -654,7 +654,7 @@ biome_modifiers =
 		ui_description="$biomemodifierdesc_flooded",
 		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/moist.png",
 		probability=0.75,
-		does_not_apply_to_biome={"mountain_hall","rainforest","rainforest_open","snowcave","crypt"},
+		does_not_apply_to_biome={"mountain_hall","rainforest","rainforest_open","snowcave","vault"},
 		action = function( biome_name, biome_filename )
 			BiomeObjectSetValue( biome_filename, "modifiers", "dust_amount", 0.3 )
 			BiomeSetValue( biome_filename, "color_grading_r", 0.90 )
@@ -667,21 +667,21 @@ biome_modifiers =
 			inject_spawn( g_lamp, 0.8, {
 				prob   		= 0,
 				min_count	= 1,
-				max_count	= 4,
+				max_count	= 1,
 				offset_y 	= 0,    
 				entity 	= "data/entities/buildings/biome_modifiers/drain_pipe_spawner.xml",
 			})
 			inject_spawn( g_props, 0.5, {
 				prob   		= 0,
 				min_count	= 1,
-				max_count	= 4,
+				max_count	= 1,
 				offset_y 	= 0,    
 				entity 	= "data/entities/buildings/biome_modifiers/drain_pipe_spawner.xml",
 			})
 			inject_spawn( g_props2, 0.5, {
 				prob   		= 0,
 				min_count	= 1,
-				max_count	= 4,
+				max_count	= 1,
 				offset_y 	= 0,    
 				entity 	= "data/entities/buildings/biome_modifiers/drain_pipe_spawner.xml",
 			})
@@ -713,6 +713,60 @@ biome_modifiers =
 				max_count	= 1,
 				offset_y 	= 0,    
 				entity 	=  "data/entities/animals/shaman.xml",
+			})
+		end,
+	},
+	-- acid gas pipes
+	{
+		id = "GAS_FLOODED",
+		ui_description="$biomemodifierdesc_gas_glooded",
+		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/gas.png",
+		probability=0.5,
+		does_not_apply_to_biome={"mountain_hall","excavationsite","snowcave","snowcastle","vault","crypt"},
+		action = function( biome_name, biome_filename )
+			BiomeObjectSetValue( biome_filename, "modifiers", "dust_amount", 0.5 )
+			BiomeSetValue( biome_filename, "color_grading_r", 0.9 )
+			BiomeSetValue( biome_filename, "color_grading_g", 1.05 )
+			BiomeSetValue( biome_filename, "color_grading_b", 0.9 )
+			BiomeSetValue( biome_filename, "color_grading_grayscale", 0.1 )
+		end,
+		inject_spawns_action = function()
+			-- leaky pipes
+			inject_spawn( g_lamp, 1.0, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	= "data/entities/buildings/biome_modifiers/gas_pipe_spawner.xml",
+			})
+			inject_spawn( g_props, 0.5, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	= "data/entities/buildings/biome_modifiers/gas_pipe_spawner_floor.xml",
+			})
+			inject_spawn( g_props2, 0.5, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	= "data/entities/buildings/biome_modifiers/gas_pipe_spawner_floor.xml",
+			})
+			-- enemies
+			inject_spawn( g_small_enemies, 0.2, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/animals/acidshooter.xml",
+			})
+			inject_spawn( g_big_enemies, 0.1, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/animals/giantshooter.xml",
 			})
 		end,
 	},
@@ -765,8 +819,6 @@ biome_modifiers =
 	--[[-- dry - fire spreads faster than usually, fire demons spawn
 	-- bouncy - projectiles and physics bodies bounce from surfaces
 	-- corrupted - corruption grows everywhere. corruption = some sort of easily destructible static material
-	-- flooded - lots of water everywhere
-	-- gas-flooded - lots of gas everywhere
 	-- toxic - pools of toxic sludge, toxic rock everywhere
 	-- vulcanous - lava, lava rock everywhere
 	-- haunted - ghost crystals spawn
@@ -995,7 +1047,7 @@ function get_modifier_mappings()
 	-- DEBUG - apply modifier to all biomes
 	for _,biome_names in ipairs(biomes) do
 		for _,biome_name in ipairs(biome_names) do
-			--result[biome_name] = get_modifier( "MOIST" )
+			--result[biome_name] = get_modifier( "GAS_FLOODED" )
 		end
 	end
 

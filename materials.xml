@@ -7868,6 +7868,20 @@
 	color="ff0A8240" >
     </Graphics>
   </CellDataChild>
+
+  <CellDataChild
+  	_parent="sand"
+  	_inherit_reactions="1"
+  	name="sand_petrify" 
+	ui_name="$mat_sand"
+	wang_color="ff433454"
+	hp="400"
+	>
+  	<Graphics
+	texture_file="data/materials_gfx/sand_petrify.png"
+	color="ffaaaaaa" >
+    </Graphics>
+  </CellDataChild>
   
   <CellData
 	name="bone"
@@ -12702,6 +12716,20 @@
 	>
   	<Graphics
 	color="ff42ffbd" >
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="gem_box2d"
+  	_inherit_reactions="1"
+  	name="gem_box2d_opal"
+	ui_name="$mat_gem_box2d_turquoise"
+	gfx_glow_color="0xFF52dd60"
+	wang_color="ff52dd60"
+	show_in_creative_mode="1"
+	>
+  	<Graphics
+	color="ff52dd60" >
     </Graphics>
   </CellDataChild>
   

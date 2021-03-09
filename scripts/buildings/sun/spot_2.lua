@@ -29,8 +29,9 @@ local x,y = EntityGetTransform( entity_id )
 
 local explosions = EntityGetInRadiusWithTag( x, y, 120, "big_explosion" )
 local seas = EntityGetInRadiusWithTag( x, y, 120, "sea_of_lava" )
+local beams = EntityGetInRadiusWithTag( x, y, 120, "beam_from_sky" )
 
-if ( #explosions > 5 ) or ( #seas > 0 ) then
+if ( #explosions > 5 ) or ( #seas > 0 ) or ( #beams > 0 ) then
 	EntityLoad("data/entities/items/pickup/sun/sunegg.xml", x, y)
 	EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 	EntityKill(entity_id)

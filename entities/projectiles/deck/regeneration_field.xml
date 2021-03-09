@@ -66,8 +66,9 @@
 			friendly_fire="1"
 			collide_with_shooter_frames="0" >
 			<damage_by_type 
-				healing="-0.05" 
-			>
+				healing="-0.05"
+				>
+			</damage_by_type>
 			<config_explosion
 				explosion_sprite="data/particles/blast_out_regeneration.xml" >
 			</config_explosion>

@@ -445,7 +445,7 @@ function shoot_projectile_from_projectile( who_shot, entity_file, x, y, vel_x, v
 		who_shot_creature = ComponentGetValue2( comp, "mWhoShot" )
 	end)
 
-	GameShootProjectile( who_shot_creature, x, y, x+vel_x, y+vel_y, entity_id )
+	GameShootProjectile( who_shot_creature, x, y, x+vel_x, y+vel_y, entity_id, true, who_shot )
 
 	edit_component( entity_id, "ProjectileComponent", function(comp,vars)
 		vars.mWhoShot       = component_get_value_int( who_shot, "ProjectileComponent", "mWhoShot", 0 )

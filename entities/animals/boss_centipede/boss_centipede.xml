@@ -221,6 +221,12 @@
 		>
 	</VariableStorageComponent>
 	
+	<LuaComponent
+		script_death="data/entities/animals/boss_centipede/death_check.lua"
+		execute_every_n_frame="-1"
+		>
+	</LuaComponent>
+	
 	<!-- limbs ---------------------- -->
 
 	<Entity>  <Base file="data/entities/animals/boss_centipede/limbs/limb_long.xml" />  </Entity>

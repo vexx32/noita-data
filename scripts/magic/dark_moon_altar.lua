@@ -40,7 +40,7 @@ if essence_1 and essence_2 and essence_3 and essence_4 and ( #players_ == 0 ) an
 	end
 end
 
-if ( ( #sun > 0 ) and ( HasFlagPersistent( "darkmoon_is_sun" ) == false ) ) or ( ( #sun > 0 ) and ( HasFlagPersistent( "darkmoon_is_darksun" ) == false ) ) then
+if ( ( #sun > 0 ) and ( HasFlagPersistent( "darkmoon_is_sun" ) == false ) ) or ( ( #sun2 > 0 ) and ( HasFlagPersistent( "darkmoon_is_darksun" ) == false ) ) then
 	local flag = GameHasFlagRun( "secret_sun_collision_1" )
 	EntityLoad("data/entities/projectiles/deck/explosion_giga.xml", x, y)
 	

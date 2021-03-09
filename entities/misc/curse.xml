@@ -9,6 +9,7 @@
 	
 	<VariableStorageComponent
 		_tags="effect_curse_damage"
+		name="effect_curse_damage"
 		value_float="0.08"
 		>
 	</VariableStorageComponent>

@@ -1,4 +1,4 @@
-<Entity name="$animal_fungus" tags="perk_fungus_tiny" >
+<Entity name="$animal_fungus_tiny_perk" tags="perk_fungus_tiny" >
   
 	<Base file="data/entities/base_enemy_basic.xml" >
 		<ItemChestComponent level="2" enemy_drop="1" > </ItemChestComponent>

@@ -15,7 +15,7 @@ function spawn_ghost()
 	local rnd = Random( 1, #opts )
 	local opt = "data/entities/animals/illusions/" .. opts[rnd] .. ".xml"
 	
-	local max_radius = 240
+	local max_radius = 512
 	local p = EntityGetInRadiusWithTag( x, y, max_radius, "player_unit" )
 	
 	if ( #p > 0 ) then

@@ -163,6 +163,7 @@ void main()
 	const vec3 LOW_HEALTH_INDICATOR_COLOR = vec3( 0.7, 0.1, 0.0 );
 
 	const float SCREEN_W = 427.0;
+	const float SCREEN_H = 242.0;
 
 // ==========================================================================================================
 // fetch texture coords etc =============================================================================
@@ -209,7 +210,7 @@ void main()
 		tex_coord_glow += vec2( liquid_distortion_offset.x, -liquid_distortion_offset.y );
 	}
 
-   	vec2 pos_seed = vec2(camera_pos.x / SCREEN_W, camera_pos.y / 242.0) + vec2( gl_TexCoord[0].x, - gl_TexCoord[0].y );
+   	vec2 pos_seed = vec2(camera_pos.x / SCREEN_W, camera_pos.y / SCREEN_H) + vec2( gl_TexCoord[0].x, - gl_TexCoord[0].y );
 
 #ifdef TRIPPY
    	// trip distortion
@@ -223,7 +224,7 @@ void main()
 	float tex_coord_warped_lerp = length(tex_coord - vec2(0.5,0.5)) * drugged_distortion_amount;
 	tex_coord = mix( tex_coord, tex_coord_warped, tex_coord_warped_lerp );
 
-   	pos_seed = vec2(camera_pos.x / SCREEN_W, camera_pos.y / 242.0) + vec2( tex_coord.x, - tex_coord.y );
+   	pos_seed = vec2(camera_pos.x / SCREEN_W, camera_pos.y / SCREEN_H) + vec2( tex_coord.x, - tex_coord.y );
 #endif
 
 // ===========================================================================================================
@@ -396,14 +397,17 @@ void main()
 // ==========================================================================================================
 // fog of war ================================================================================================
 
-	float sky_ambient2 = sqrt( sky_ambient_amount );
+	float fog_of_war_sky_ambient_amount = sky_ambient_amount;
+	float fade = clamp( (world_pos.y - 250.0) / 100.0, 0.0, 1.0 );
+	fog_of_war_sky_ambient_amount *= 1.0-fade;
+	float sky_ambient2 = sqrt( fog_of_war_sky_ambient_amount );
 	vec3 fog_of_war = 1.4 * vec3(0.6,0.5,0.45) * vec3( max( 0.0, 1.0 - fog_of_war_amount - sky_ambient2 ) );
-	// fog_of_war = min( vec3(1.0), max( dither_srgb( 1.1 * fog_of_war, noise.b, 32.0 ), sky_ambient_amount ) );
+	// fog_of_war = min( vec3(1.0), max( dither_srgb( 1.1 * fog_of_war, noise.b, 32.0 ), fog_of_war_sky_ambient_amount ) );
 	// fog_of_war = pow( fog_of_war, vec3( 0.6 ) );
-	fog_of_war = min( vec3(1.0), max( dither_srgb( 2.0 * fog_of_war, noise.b, 32.0 ), sky_ambient_amount ) );
+	fog_of_war = min( vec3(1.0), max( dither_srgb( 2.0 * fog_of_war, noise.b, 32.0 ), fog_of_war_sky_ambient_amount ) );
 
 	lights *= fog_of_war;
-	lights += max(0.35 - sky_ambient_amount, 0.0) * dither_srgb( fog_of_war, noise.b, 128.0 );
+	lights += max(0.35 - fog_of_war_sky_ambient_amount, 0.0) * dither_srgb( fog_of_war, noise.b, 128.0 );
 
 // ==========================================================================================================
 // apply fog ================================================================================================
@@ -422,8 +426,8 @@ void main()
 	fog_amount = fog_amount_fg * fog_amount;
 	
 	// apply fog to bg
-	color    = mix(color,    fog_color_bg, fog_amount_background);
-	color    = mix(color ,   dither_srgb(color, noise.a, 64.0 ), fog_amount );
+	color = mix(color, fog_color_bg, fog_amount_background);
+	color = mix(color , dither_srgb(color, noise.a, 64.0 ), fog_amount );
 
 // ==========================================================================================================
 // nightvision ==============================================================================================

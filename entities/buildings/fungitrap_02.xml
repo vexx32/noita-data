@@ -1,7 +1,7 @@
 <Entity>
 	<LuaComponent
 		script_source_file="data/scripts/buildings/fungitrap_02.lua"
-		execute_every_n_frame="60"
+		execute_every_n_frame="50"
 		>
 	</LuaComponent>
 	

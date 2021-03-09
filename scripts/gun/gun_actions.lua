@@ -6384,6 +6384,22 @@ actions =
 			draw_actions( 1, true )
 		end,
 	},
+	{
+		id          = "HITFX_PETRIFY",
+		name 		= "$action_petrify",
+		description = "$actiondesc_petrify_a",
+		sprite 		= "data/ui_gfx/gun_actions/petrify.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/explosive_projectile_unidentified.png",
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "2,3,5,6", -- PETRIFY
+		spawn_probability                 = "0.2,0.2,0.2,0.2", -- PETRIFY
+		price = 140,
+		mana = 10,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "data/entities/misc/hitfx_petrify.xml,"
+			draw_actions( 1, true )
+		end,
+	},
 	--[[ { WIP
 		id          = "HITFX_POLTERGEIST",
 		name 		= "$action_hitfx_poltergeist",
@@ -8364,11 +8380,13 @@ actions =
 			end
 			
 			if ( data ~= nil ) then
-				while ( #deck >= how_many ) and ( data.type == 2 ) do
+				while ( #deck >= how_many ) and ( ( data.type == ACTION_TYPE_MODIFIER ) or ( data.type == ACTION_TYPE_PASSIVE ) or ( data.type == ACTION_TYPE_OTHER ) or ( data.type == ACTION_TYPE_DRAW_MANY ) ) do
 					if ( ( data.uses_remaining == nil ) or ( data.uses_remaining ~= 0 ) ) and ( data.id ~= "ADD_TRIGGER" ) and ( data.id ~= "ADD_TIMER" ) and ( data.id ~= "ADD_DEATH_TRIGGER" ) then
-						dont_draw_actions = true
-						data.action()
-						dont_draw_actions = false
+						if ( data.type == ACTION_TYPE_MODIFIER ) then
+							dont_draw_actions = true
+							data.action()
+							dont_draw_actions = false
+						end
 					end
 					how_many = how_many + 1
 					data = deck[how_many]
@@ -8384,6 +8402,17 @@ actions =
 						table.remove( deck, 1 )
 					end
 					
+					local valid = false
+					
+					for i=1,#deck do
+						local check = deck[i]
+						
+						if ( check ~= nil ) and ( ( check.type == ACTION_TYPE_PROJECTILE ) or ( check.type == ACTION_TYPE_STATIC_PROJECTILE ) or ( check.type == ACTION_TYPE_MATERIAL ) or ( check.type == ACTION_TYPE_UTILITY ) ) then
+							valid = true
+							break
+						end
+					end
+					
 					if ( data.uses_remaining ~= nil ) and ( data.uses_remaining > 0 ) then
 						data.uses_remaining = data.uses_remaining - 1
 						
@@ -8393,8 +8422,14 @@ actions =
 						end
 					end
 					
-					for i=1,count do
-						add_projectile_trigger_hit_world(target, 1)
+					if valid then
+						for i=1,count do
+							add_projectile_trigger_hit_world(target, 1)
+						end
+					else
+						dont_draw_actions = true
+						data.action()
+						dont_draw_actions = false
 					end
 				end
 			end
@@ -8425,13 +8460,14 @@ actions =
 			end
 			
 			if ( data ~= nil ) then
-				while ( #deck >= how_many ) and ( data.type == 2 ) do
+				while ( #deck >= how_many ) and ( ( data.type == ACTION_TYPE_MODIFIER ) or ( data.type == ACTION_TYPE_PASSIVE ) or ( data.type == ACTION_TYPE_OTHER ) or ( data.type == ACTION_TYPE_DRAW_MANY ) ) do
 					if ( ( data.uses_remaining == nil ) or ( data.uses_remaining ~= 0 ) ) and ( data.id ~= "ADD_TRIGGER" ) and ( data.id ~= "ADD_TIMER" ) and ( data.id ~= "ADD_DEATH_TRIGGER" ) then
-						dont_draw_actions = true
-						data.action()
-						dont_draw_actions = false
+						if ( data.type == ACTION_TYPE_MODIFIER ) then
+							dont_draw_actions = true
+							data.action()
+							dont_draw_actions = false
+						end
 					end
-					
 					how_many = how_many + 1
 					data = deck[how_many]
 				end
@@ -8446,6 +8482,17 @@ actions =
 						table.remove( deck, 1 )
 					end
 					
+					local valid = false
+					
+					for i=1,#deck do
+						local check = deck[i]
+						
+						if ( check ~= nil ) and ( ( check.type == ACTION_TYPE_PROJECTILE ) or ( check.type == ACTION_TYPE_STATIC_PROJECTILE ) or ( check.type == ACTION_TYPE_MATERIAL ) or ( check.type == ACTION_TYPE_UTILITY ) ) then
+							valid = true
+							break
+						end
+					end
+					
 					if ( data.uses_remaining ~= nil ) and ( data.uses_remaining > 0 ) then
 						data.uses_remaining = data.uses_remaining - 1
 						
@@ -8455,8 +8502,14 @@ actions =
 						end
 					end
 					
-					for i=1,count do
-						add_projectile_trigger_timer(target, 20, 1)
+					if valid then
+						for i=1,count do
+							add_projectile_trigger_timer(target, 20, 1)
+						end
+					else
+						dont_draw_actions = true
+						data.action()
+						dont_draw_actions = false
 					end
 				end
 			end
@@ -8487,13 +8540,14 @@ actions =
 			end
 			
 			if ( data ~= nil ) then
-				while ( #deck >= how_many ) and ( data.type == 2 ) do
+				while ( #deck >= how_many ) and ( ( data.type == ACTION_TYPE_MODIFIER ) or ( data.type == ACTION_TYPE_PASSIVE ) or ( data.type == ACTION_TYPE_OTHER ) or ( data.type == ACTION_TYPE_DRAW_MANY ) ) do
 					if ( ( data.uses_remaining == nil ) or ( data.uses_remaining ~= 0 ) ) and ( data.id ~= "ADD_TRIGGER" ) and ( data.id ~= "ADD_TIMER" ) and ( data.id ~= "ADD_DEATH_TRIGGER" ) then
-						dont_draw_actions = true
-						data.action()
-						dont_draw_actions = false
+						if ( data.type == ACTION_TYPE_MODIFIER ) then
+							dont_draw_actions = true
+							data.action()
+							dont_draw_actions = false
+						end
 					end
-					
 					how_many = how_many + 1
 					data = deck[how_many]
 				end
@@ -8508,6 +8562,17 @@ actions =
 						table.remove( deck, 1 )
 					end
 					
+					local valid = false
+					
+					for i=1,#deck do
+						local check = deck[i]
+						
+						if ( check ~= nil ) and ( ( check.type == ACTION_TYPE_PROJECTILE ) or ( check.type == ACTION_TYPE_STATIC_PROJECTILE ) or ( check.type == ACTION_TYPE_MATERIAL ) or ( check.type == ACTION_TYPE_UTILITY ) ) then
+							valid = true
+							break
+						end
+					end
+					
 					if ( data.uses_remaining ~= nil ) and ( data.uses_remaining > 0 ) then
 						data.uses_remaining = data.uses_remaining - 1
 						
@@ -8517,8 +8582,14 @@ actions =
 						end
 					end
 					
-					for i=1,count do
-						add_projectile_trigger_death(target, 1)
+					if valid then
+						for i=1,count do
+							add_projectile_trigger_death(target, 1)
+						end
+					else
+						dont_draw_actions = true
+						data.action()
+						dont_draw_actions = false
 					end
 				end
 			end

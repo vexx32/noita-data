@@ -56,6 +56,12 @@ g_small_enemies =
 		max_count	= 4,    
 		entity 	= "data/entities/animals/frog_big.xml",
 	},
+	{
+		prob   		= 0.08,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/fungus_giga.xml",
+	},
 }
 
 
@@ -77,6 +83,12 @@ g_big_enemies =
 		min_count	= 1,
 		max_count	= 3,    
 		entity 	= "data/entities/animals/fungus.xml"
+	},
+	{
+		prob   		= 0.2,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/fungus_giga.xml"
 	},
 	{
 		prob   		= 0.1,
@@ -110,6 +122,28 @@ g_big_enemies =
 				min_count	= 1,
 				max_count	= 1,
 				entity	= "data/entities/animals/fungus_big.xml",
+			},
+		},
+	},
+	{
+		prob   		= 0.08,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	= {
+			{
+				min_count	= 1,
+				max_count	= 3,
+				entity	= "data/entities/animals/fungus.xml",
+			},
+			{
+				min_count	= 1,
+				max_count	= 1,
+				entity	= "data/entities/animals/fungus_big.xml",
+			},
+			{
+				min_count	= 1,
+				max_count	= 1,
+				entity	= "data/entities/animals/fungus_giga.xml",
 			},
 		},
 	},
@@ -260,7 +294,7 @@ g_fungitrap =
 {
 	total_prob = 0,
 	{
-		prob   		= 1.0,
+		prob   		= 0.8,
 		min_count	= 0,
 		max_count	= 0,    
 		entity 	= ""
