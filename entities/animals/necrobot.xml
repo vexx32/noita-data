@@ -30,7 +30,7 @@
         </SpriteComponent>
 
         <DamageModelComponent 
-            hp="20"
+            hp="16"
             ragdoll_material="steel"
 			ragdoll_filenames_file="data/ragdolls/necrobot/filenames.txt" 
 			blood_material="oil"

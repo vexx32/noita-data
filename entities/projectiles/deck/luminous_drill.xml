@@ -27,6 +27,7 @@
     ragdoll_force_multiplier="0.01"
     hit_particle_force_multiplier="0.25"
 	ground_penetration_coeff="4"
+	ground_penetration_max_durability_to_destroy="14"
     >
   </ProjectileComponent>
   

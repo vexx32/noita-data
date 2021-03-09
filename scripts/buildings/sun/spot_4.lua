@@ -134,9 +134,11 @@ if ( comp ~= nil ) and ( comp2 ~= nil ) then
 		if ( ohno == false ) then
 			EntityLoad("data/entities/items/pickup/sun/newsun.xml", x, y)
 			GamePrintImportant( "$log_new_step", "$itemdesc_seed_e" )
+			AddFlagPersistent( "progress_sun" )
 		else
 			EntityLoad("data/entities/items/pickup/sun/newsun_dark.xml", x, y)
 			GamePrintImportant( "$itemdesc_seed_f", "$logdesc_new_step_b" )
+			AddFlagPersistent( "progress_darksun" )
 		end
 		
 		GameTriggerMusicFadeOutAndDequeueAll( 3.0 )

@@ -41,6 +41,7 @@
       camera_shake="20" 
       explosion_radius="30"
       explosion_sprite="data/particles/explosion_032_pink.xml"
+	  load_this_entity="data/entities/misc/explosion_was_here.xml"
       explosion_sprite_lifetime="0" 
       create_cell_probability="3"
       explosion_sprite_additive="1"

@@ -46,7 +46,8 @@
       stains_enabled="1" 
       stains_image="data/temp/explosion_stain.png" 
 	  ray_energy="60000"
-    audio_enabled="0">
+      audio_event_name="explosions/slime"
+	  >
     </config_explosion>
   </ProjectileComponent>
   

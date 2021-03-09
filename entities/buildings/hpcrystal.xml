@@ -8,7 +8,7 @@
     falling_damages="0" 
     fire_damage_amount="0.2" 
     fire_probability_of_ignition="0.0" 
-    hp="30" 
+    hp="20" 
     is_on_fire="0" 
     blood_material="sand_blue"
     materials_create_messages="0" 

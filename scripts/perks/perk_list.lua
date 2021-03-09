@@ -650,7 +650,7 @@ perk_list =
 				ComponentSetValue2( comp, "ingestion_reduce_every_n_frame", 15 )
 				
 				local curr = ComponentGetValue2( comp, "ingestion_size" )
-				ComponentSetValue2( comp, "ingestion_size", math.max( curr, 8000 ) )
+				ComponentSetValue2( comp, "ingestion_size", math.max( curr, 7500 ) )
 			end
 		end,
 	},
@@ -1478,6 +1478,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					
@@ -1515,6 +1516,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					
@@ -1628,6 +1630,7 @@ perk_list =
 				
 				if ( funginess == 3 ) then
 					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
+					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
 					
 					AddFlagPersistent( "player_status_funky" )
 					
@@ -2606,6 +2609,18 @@ perk_list =
 			{ 
 				extra_modifier = "slow_firing",
 			} )
+		end,
+	},
+	{
+		id = "MEGA_BEAM_STONE",
+		ui_name = "$perk_mega_beam_stone",
+		ui_description = "$perkdesc_mega_beam_stone",
+		ui_icon = "data/ui_gfx/perk_icons/mega_beam_stone.png",
+		perk_icon = "data/items_gfx/perks/mega_beam_stone.png",
+		stackable = STACKABLE_YES,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local x,y = EntityGetTransform( entity_who_picked )
+			EntityLoad( "data/entities/items/pickup/beamstone.xml", x, y-10 )
 		end,
 	},
 

@@ -10,6 +10,24 @@ if ( curseflag == false ) then
 	local eid = EntityLoad( "data/entities/misc/curse.xml", x, y )
 	EntityAddChild( root_id, eid )
 	EntityAddTag( root_id, "effect_CURSE" )
+	
+	local comps = EntityGetComponent( entity_id, "VariableStorageComponent" )
+	if ( comps ~= nil ) then
+		for i,comp in ipairs( comps ) do
+			local name = ComponentGetValue2( comp, "name" )
+			
+			if ( name == "projectile_who_shot" ) then
+				local who_shot = ComponentGetValue2( comp, "value_int" )
+				
+				EntityAddComponent( eid, "VariableStorageComponent",
+				{
+					name="projectile_who_shot",
+					value_int=who_shot,
+				} )
+				break
+			end
+		end
+	end
 else
 	local c = EntityGetAllChildren( root_id )
 	if ( c ~= nil ) then

@@ -11,4 +11,5 @@ local length = 3000
 local vel_x = math.cos( angle ) * length
 local vel_y = 0 - math.sin( angle ) * length
 
-shoot_projectile_from_projectile( entity_id, "data/entities/projectiles/deck/tentacle.xml", pos_x, pos_y, vel_x, vel_y )
+-- NOTE: tentacle's mWhoShot will be the projectile, not the actual shooter
+local proj_id = shoot_projectile_from_projectile( entity_id, "data/entities/projectiles/deck/tentacle.xml", pos_x, pos_y, vel_x, vel_y )

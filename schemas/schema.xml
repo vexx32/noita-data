@@ -1,4 +1,4 @@
-<Schema hash="1b5fcb8e057004269f9afbce8012d765" >
+<Schema hash="33ccbd01a086729f144856e5de9762bc" >
   <Component component_name="AIAttackComponent" >
     <Var name="use_probability" size="4" type="int" >
     </Var>
@@ -755,6 +755,10 @@
     <Var name="collision_damage_frames_between" size="4" type="int" >
     </Var>
     <Var name="animate" size="1" type="bool" >
+    </Var>
+  </Component>
+  <Component component_name="CutThroughWorldDoneHereComponent" >
+    <Var name="id_of_done_cut" size="4" type="unsigned int" >
     </Var>
   </Component>
   <Component component_name="DamageModelComponent" >
@@ -3235,6 +3239,10 @@
     <Var name="mods_have_been_active_during_this_run" size="1" type="bool" >
     </Var>
     <Var name="twitch_has_been_active_during_this_run" size="1" type="bool" >
+    </Var>
+    <Var name="next_cut_through_world_id" size="4" type="unsigned int" >
+    </Var>
+    <Var name="cuts_through_world" size="12" type="class std::vector<class ConfigCutThroughWorld,class std::allocator<class ConfigCutThroughWorld> >" >
     </Var>
     <Var name="gore_multiplier" size="12" type="struct LensValue<int>" >
     </Var>

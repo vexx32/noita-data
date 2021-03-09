@@ -375,7 +375,7 @@ main_menu_items =
 			fungal_shift( player_entity, x, y, true )
 		end,
 	},
-	{
+	--[[{
 		ui_name="Fungal shift lava->water",
 		action = function()
 			ConvertMaterialEverywhere( CellFactory_GetType( "lava" ), CellFactory_GetType( "water" ) )
@@ -442,7 +442,7 @@ main_menu_items =
 			local mat = get_held_item_material( player_entity )
 			ConvertMaterialEverywhere( mat, CellFactory_GetType( "oil" ) )
 		end
-	},
+	},]]--
 	{
 		ui_name="ConvertMaterialOnAreaInstantly() - test near camera",
 		action = function()
@@ -459,6 +459,12 @@ main_menu_items =
 			local x,y = GameGetCameraPos()
 			local e = EntityLoad( "data/entities/items/pickup/goldnugget_200.xml" )
 			GameShootProjectile( 0, x, y, 0, 0, e, false )
+		end
+	},
+	{
+		ui_name="Test GameCreateBeamFromSky()",
+		action = function()
+			GameCreateBeamFromSky( 0, 10000, 40, 40 )
 		end
 	},
 	{

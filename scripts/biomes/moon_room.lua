@@ -32,5 +32,6 @@ function spawn_orb(x, y)
 end
 
 function spawn_essence(x, y)
-	perk_spawn( x, y, "MOON_RADAR" )
+	perk_spawn( x - 8, y, "MOON_RADAR" )
+	EntityLoad("data/entities/items/books/book_music_a.xml", x + 8, y )
 end

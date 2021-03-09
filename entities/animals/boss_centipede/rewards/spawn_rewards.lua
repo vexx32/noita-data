@@ -38,6 +38,7 @@ function spawn_rewards(x, y)
 	print( "money_all_time: " .. tostring(money_all_time ) )
 	print( "orbs collected: " .. tostring( orbs ) )
 	print( "kicks: " .. tostring(kicks) )
+	
 	-- less than 1 minutes -> minit watering can
 	-- less than 5 minutes
 	-- - 0 kills -> pacifist
@@ -126,5 +127,13 @@ function spawn_rewards(x, y)
 	if( spawned_n <= 0 ) then
 		entity = EntityLoad( "data/entities/animals/boss_centipede/rewards/gold_reward.xml", x, y )
 	end
-
+	
+	-- sun
+	
+	if GameHasFlagRun( "sun_kill" ) then
+		entity = EntityLoad( "data/entities/animals/boss_centipede/rewards/reward_sun.xml", x + spawned_n * 20, y - spawned_n * 10 )
+		spawned_n = spawned_n + 1
+		
+		AddFlagPersistent( "progress_sunkill" )
+	end
 end

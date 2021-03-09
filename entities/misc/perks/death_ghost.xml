@@ -54,7 +54,7 @@
 	</Entity>
 	
 	<CameraBoundComponent
-	  max_count="10"
+	  max_count="20"
 	  distance="2000">
 	</CameraBoundComponent>
 	

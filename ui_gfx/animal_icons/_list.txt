@@ -59,6 +59,7 @@ frog
 frog_big
 fungus
 fungus_big
+fungus_giga
 lurker
 maggot
 skullrat

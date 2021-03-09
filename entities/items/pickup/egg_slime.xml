@@ -29,6 +29,7 @@
   ></PhysicsThrowableComponent>
 
   <VelocityComponent
+	affect_physics_bodies="1"
     _tags="enabled_in_world"
   ></VelocityComponent>
   

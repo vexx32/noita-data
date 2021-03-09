@@ -223,12 +223,6 @@
 		>
 	</LuaComponent>
 	
-	<LuaComponent
-		script_death="data/scripts/animals/log_kill.lua"
-		execute_every_n_frame="-1"
-		>
-	</LuaComponent>
-	
 	<AudioLoopComponent
 		file="data/audio/Desktop/animals.bank"
 		event_name="animals/ghost/movement_loop"

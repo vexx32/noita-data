@@ -10,7 +10,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	local extra_damage = math.max( 0, pos_y * 0.0001 )
 	local rats = EntityGetWithTag( "death_ghost" )
 	
-	if ( #rats < 10 ) then
+	if ( #rats < 20 ) then
 		EntityLoad( "data/entities/misc/perks/death_ghost.xml", pos_x, pos_y )
 	end
 end
