@@ -1,4 +1,4 @@
-<Entity tags="beam_from_sky">
+<Entity>
 	<LuaComponent
     script_source_file="data/scripts/magic/beam_from_sky.lua"
     vm_type="ONE_PER_COMPONENT_INSTANCE"

@@ -1,5 +1,4 @@
-<Entity>
-
+<Entity tags="beam_from_sky">
   <ProjectileComponent 
     _enabled="1" 
 	speed_min="0"

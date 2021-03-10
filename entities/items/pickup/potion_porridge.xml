@@ -1,10 +1,9 @@
-<Entity tags="hittable,teleportable_NOT,item_physics" >
-
-	<Base file="data/entities/items/pickup/potion_alcohol.xml" >
-		<VariableStorageComponent
-			value_string="porridge"
-			>
-		</VariableStorageComponent>
-	</Base>
-
+<Entity>
+	<Base file="data/entities/items/pickup/potion.xml" />
+	
+	<VariableStorageComponent
+		name="potion_material"
+		value_string="porridge"
+		>
+	</VariableStorageComponent>
 </Entity>

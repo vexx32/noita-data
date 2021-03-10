@@ -209,3 +209,20 @@ function OnPlayerDied( player_entity )
 	GameDestroyInventoryItems( player_entity )
 	GameTriggerGameOver()
 end
+
+
+
+function OnPlayerSpawned( player_entity )
+	--[[for i,it in ipairs(ModGetFilesAt("data/entities/animals", true)) do
+
+		if it:sub(-4) == ".xml" then
+			local text = ModTextFileGetContent(it)
+			if text:sub(1,7) == "<Entity" then
+				print( it )
+				local e = EntityLoad( it, 100, 200 )
+				EntityKill(e)
+			end
+		end
+	end]]--
+	--ModGetFilesAt("data/entities/animals", true)
+end

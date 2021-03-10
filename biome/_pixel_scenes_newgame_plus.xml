@@ -15,6 +15,8 @@
     <File>data/biome_impl/spliced/moon.xml</File>
 	
 	<File>data/biome_impl/spliced/gourd_room.xml</File>
+	
+	<File>data/biome_impl/spliced/moon_dark.xml</File>
   </PixelSceneFiles>
 
   <BackgroundImages>
@@ -41,7 +43,14 @@
   </mBufferedPixelScenes>
 -->
 	<mBufferedPixelScenes>
-
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/essence_altar_visual.png" material_filename="data/biome_impl/overworld/essence_altar.png" pos_x="-6948" pos_y="-270" skip_biome_checks="1" skip_edge_textures="1" >
+		</PixelScene>
+		
+		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="data/biome_impl/overworld/essence_altar_desert_visual.png" material_filename="data/biome_impl/overworld/essence_altar_desert.png" pos_x="12519" pos_y="-30" skip_biome_checks="1" skip_edge_textures="1" >
+		</PixelScene>
+		
+		<PixelScene pos_x="-6888" pos_y="-155" just_load_an_entity="data/entities/buildings/essence_eater.xml" />
+		<PixelScene pos_x="12569" pos_y="30" just_load_an_entity="data/entities/buildings/essence_eater.xml" />
 	</mBufferedPixelScenes>
 </PixelScenes>
 

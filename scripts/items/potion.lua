@@ -124,16 +124,6 @@ function init( entity_id )
 	end
 
 	-- load the material from VariableStorageComponent
-	local components = EntityGetComponent( entity_id, "VariableStorageComponent" )
-
-	if( components ~= nil ) then
-		for key,comp_id in pairs(components) do 
-			local var_name = ComponentGetValue( comp_id, "name" )
-			if( var_name == "potion_material") then
-				potion_material = ComponentGetValue( comp_id, "value_string" )
-			end
-		end
-	end
 	
 	local year,month,day = GameGetDateAndTimeLocal()
 	
@@ -154,6 +144,17 @@ function init( entity_id )
 		end
 		
 		EntityAddTag( entity_id, "extra_potion_capacity" )
+	end
+	
+	local components = EntityGetComponent( entity_id, "VariableStorageComponent" )
+
+	if( components ~= nil ) then
+		for key,comp_id in pairs(components) do 
+			local var_name = ComponentGetValue( comp_id, "name" )
+			if( var_name == "potion_material") then
+				potion_material = ComponentGetValue( comp_id, "value_string" )
+			end
+		end
 	end
 
 	AddMaterialInventoryMaterial( entity_id, potion_material, total_capacity )

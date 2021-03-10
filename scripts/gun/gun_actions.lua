@@ -3346,6 +3346,44 @@ actions =
 			end
 		end,
 	},
+	{
+		id          = "NUKE_GIGA",
+		name 		= "$action_nuke_giga",
+		description = "$actiondesc_nuke_giga",
+		sprite 		= "data/ui_gfx/gun_actions/nuke_giga.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/nuke_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/nuke_giga.xml"},
+		spawn_requires_flag = "card_unlocked_nukegiga",
+		spawn_manual_unlock = true,
+		never_unlimited		= true,
+		recursive	= true,
+		ai_never_uses = true,
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "10", -- NUKE
+		spawn_probability                 = "0.2", -- NUKE
+		price = 800,
+		mana = 500,
+		max_uses    = 1,
+		custom_xml_file = "data/entities/misc/custom_cards/nuke_giga.xml",
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/nuke_giga.xml")
+			c.fire_rate_wait = 50
+			c.speed_multiplier = c.speed_multiplier * 0.5
+			c.material = "fire"
+			c.material_amount = c.material_amount + 80
+			c.ragdoll_fx = 2
+			c.gore_particles = c.gore_particles + 30
+			c.screenshake = c.screenshake + 30.5
+			current_reload_time = current_reload_time + 800
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 300.0
+			
+			if ( c.speed_multiplier >= 20 ) then
+				c.speed_multiplier = math.min( c.speed_multiplier, 20 )
+			elseif ( c.speed_multiplier < 0 ) then
+				c.speed_multiplier = 0
+			end
+		end,
+	},
 	--[[
 	{
 		id          = "HIGH_EXPLOSIVE",
@@ -4033,11 +4071,12 @@ actions =
 		spawn_requires_flag = "card_unlocked_maths",
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "3,4,5,6,10", -- LIFETIME
-		spawn_probability                 = "0.1,0.2,0.3,0.4,1", -- LIFETIME
+		spawn_probability                 = "0.1,0.2,0.3,0.4,0.4", -- LIFETIME
 		price = 50,
 		mana = 0,
 		action 		= function()
 			current_reload_time = 90
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 40.0
 			draw_actions( 1, true )
 		end,
 	},

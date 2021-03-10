@@ -7,7 +7,8 @@ local test2 = EntityGetInRadiusWithTag( x, y, 16, "final_secret_orb" )
 local test3 = EntityGetInRadiusWithTag( x, y, 16, "player_unit" )
 	
 if ( #test2 > 0 ) then
-	EntityLoad( "data/entities/items/pickup/waterstone.xml", x, y )
+	CreateItemActionEntity( "NUKE_GIGA", x, y )
+	AddFlagPersistent( "card_unlocked_nukegiga" )
 	EntityLoad( "data/entities/projectiles/deck/nuke.xml", x, y )
 	AddFlagPersistent( "final_secret_orb" )
 	

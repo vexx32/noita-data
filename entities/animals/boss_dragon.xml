@@ -203,7 +203,7 @@
 	</SpriteComponent>
 
 	<SpriteComponent 
-		_tags="health_bar_back,ui"
+		_tags="health_bar_back,ui,no_hitbox"
 		_enabled="1" 
 		alpha="1" 
 		has_special_scale="1" 
@@ -224,7 +224,7 @@
 	</SpriteComponent>
 
 	<SpriteComponent 
-		_tags="health_bar,ui" 
+		_tags="health_bar,ui,no_hitbox" 
 		_enabled="1" 
 		alpha="1" 
 		has_special_scale="1" 

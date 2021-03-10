@@ -231,6 +231,13 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		end
 	end
 	
+	if perk_data.game_effect2 ~= nil then
+		local game_effect_comp = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect2, true )
+		if game_effect_comp ~= nil then
+			ComponentSetValue( game_effect_comp, "frames", "-1" )
+		end
+	end
+	
 	if perk_data.remove_other_perks ~= nil then
 		for i,v in ipairs( perk_data.remove_other_perks ) do
 			local f = get_perk_picked_flag_name( v )

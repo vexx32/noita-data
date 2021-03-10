@@ -332,8 +332,10 @@ perk_list =
 		ui_description = "$perkdesc_exploding_corpses",
 		ui_icon = "data/ui_gfx/perk_icons/exploding_corpses.png",
 		perk_icon = "data/items_gfx/perks/exploding_corpses.png",
+		remove_other_perks = {"PROTECTION_EXPLOSION"},
 		stackable = STACKABLE_NO,
 		game_effect = "EXPLODING_CORPSE_SHOTS",
+		game_effect2 = "PROTECTION_EXPLOSION",
 	},
 	{
 		id = "SAVING_GRACE",
@@ -1299,6 +1301,9 @@ perk_list =
 			end
 			
 			child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_attacker.xml", x, y )
+			EntityAddChild( entity_who_picked, child_id )
+
+			child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_climb.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
 			
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )

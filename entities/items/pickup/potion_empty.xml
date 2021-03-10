@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,potion" >
+<Entity>
 	<Base file="data/entities/items/pickup/potion.xml">
 		<LuaComponent 
 			_enabled="0"

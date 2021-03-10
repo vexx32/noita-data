@@ -840,10 +840,10 @@ function init(x, y, w, h)
 	end
 	-- portal summoning position & hint statues related to it
 	-- NOTE: make sure the coordinates match with summon_portal_util.lua
-	local biome_x_min = -2550
-	local biome_x_max = 2000
-	local biome_y_min = 6750
-	local biome_y_max = 8050
+	local biome_x_min = -2450
+	local biome_x_max = 1900
+	local biome_y_min = 6700
+	local biome_y_max = 8000
 	local rim = 200 -- hint statues spawn on rim, portal target inside rim
 
 	local portal_x, portal_y = get_portal_position()
