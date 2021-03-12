@@ -1,6 +1,6 @@
 <Entity 
   name="unknown" 
-  tags="vegetation" >
+  tags="vegetation,pixelsprite" >
   
   <Base file="data/entities/props/base_coalmine_structure.xml" >
 

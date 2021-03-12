@@ -15,7 +15,7 @@ for i,v in ipairs( targets ) do
 		end)
 		
 		if ( vel_x ~= 0 ) or ( vel_y ~= 0 ) then
-			PhysicsApplyForce( entity_id, vel_x * 2.0, vel_y * 2.0 )
+			PhysicsApplyForce( entity_id, vel_x * 0.33, vel_y * 0.33 )
 		end
 	end
 	
@@ -35,3 +35,12 @@ for i,v in ipairs( targets2 ) do
 		PhysicsApplyForce( entity_id, vel_x, vel_y )
 	end
 end
+
+edit_component( entity_id, "VelocityComponent", function(comp,vars)
+	vel_x,vel_y = ComponentGetValueVector2( comp, "mVelocity")
+	
+	vel_x = vel_x * 0.95
+	vel_y = vel_y * 0.95
+	
+	ComponentSetValueVector2( comp, "mVelocity", vel_x, vel_y )
+end)

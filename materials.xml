@@ -12390,7 +12390,7 @@
   <CellDataChild
   	_parent="aluminium"
   	_inherit_reactions="1"
-	tags="[box2d],[solid],[sunbaby_ignore_list],[matter_eater_ignore_list]"
+	tags="[box2d],[sunbaby_ignore_list],[matter_eater_ignore_list]"
   	name="poop_box2d_hard"
 	ui_name="$mat_rock_box2d_hard"
 	platform_type="1"

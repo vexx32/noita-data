@@ -1,4 +1,4 @@
-<Entity tags="rocket_tier_2">
+<Entity>
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 

@@ -1,4 +1,4 @@
-<Entity tags="freeze_if_wet_shooter">
+<Entity>
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 

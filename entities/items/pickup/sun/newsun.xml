@@ -8,7 +8,7 @@
 	<PhysicsBodyComponent 
 		_tags="enabled_in_world"
 		uid="1" 
-		allow_sleep="1" 
+		allow_sleep="0" 
 		angular_damping="0" 
 		fixed_rotation="0" 
 		is_bullet="0" 
@@ -17,16 +17,10 @@
 		on_death_leave_physics_body="1"
 		gravity_scale_if_has_no_image_shapes="0"
 	></PhysicsBodyComponent>
-	
-	<PhysicsShapeComponent
-		is_circle="1"
-		radius_x="64"
-		radius_y="64"
-		>
-	</PhysicsShapeComponent>
 
 	<VelocityComponent
 		_tags="enabled_in_world"
+		affect_physics_bodies="1"
 	></VelocityComponent>
 	
 	<SpriteComponent
@@ -241,6 +235,12 @@
 	
 	<LuaComponent
 		script_source_file="data/scripts/buildings/sun/sun_controls.lua"
+		execute_every_n_frame="10"
+		>
+	</LuaComponent>
+	
+	<LuaComponent
+		script_source_file="data/scripts/buildings/sun/sun_collision.lua"
 		execute_every_n_frame="10"
 		>
 	</LuaComponent>

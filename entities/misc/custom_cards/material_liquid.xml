@@ -1,4 +1,4 @@
-<Entity tags="material_liquid">
+<Entity>
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 

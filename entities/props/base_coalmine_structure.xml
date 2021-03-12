@@ -1,5 +1,5 @@
 <Entity  
-  tags="vegetation" >
+  tags="vegetation,pixelsprite" >
   
   <PixelSpriteComponent 
     _enabled="1" 

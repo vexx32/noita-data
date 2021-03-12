@@ -498,7 +498,7 @@ function perk_reroll_perks( entity_item )
 		local is_stackable = get_perk_stackable_status( perk_id )
 		local tries = 0
 		
-		while ( is_stackable == false ) and ( tries < 10 ) do
+		while ( is_stackable == false ) and ( tries < 50 ) do
 			perk_id = perks[next_perk_index]
 			
 			next_perk_index = next_perk_index - 1
@@ -565,7 +565,6 @@ function DEBUG_PERKS()
 	
 		-- table.insert( all_perks, perk_data.id )
 	end	
-
 
 
 	local create_perk_pools = function()

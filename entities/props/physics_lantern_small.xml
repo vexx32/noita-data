@@ -53,8 +53,7 @@
     ragdoll_filenames_file="" 
     ragdoll_material=""
     critical_damage_resistance="1" 
-	ui_report_damage="0"
-	>
+	  ui_report_damage="0" >
   </DamageModelComponent>
 
   <ExplodeOnDamageComponent

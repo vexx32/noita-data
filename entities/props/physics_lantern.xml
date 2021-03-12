@@ -45,15 +45,14 @@
     falling_damages="0" 
     fire_damage_amount="0.2" 
     fire_probability_of_ignition="0" 
-	critical_damage_resistance="1"
+	  critical_damage_resistance="1"
     hp="0.9" 
     is_on_fire="0" 
     materials_create_messages="0" 
     materials_damage="0" 
     ragdoll_filenames_file="" 
     ragdoll_material="" 
-	ui_report_damage="0"
-	>
+    ui_report_damage="0" >
   </DamageModelComponent>
 
   <ExplodeOnDamageComponent

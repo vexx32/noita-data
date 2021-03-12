@@ -35,10 +35,9 @@
 	<!-- beamstone logic -->
 
 	<LuaComponent
-		_tags="enabled_in_world,enabled_in_hand"
+		_tags="enabled_in_world"
 		script_kick="data/scripts/items/beamstone_kick.lua"
-		execute_every_n_frame="-1"
-		>
+		execute_every_n_frame="-1">
 	</LuaComponent>
 	
 	<!-- item -->

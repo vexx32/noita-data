@@ -1288,6 +1288,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/attack_foot.png",
 		perk_icon = "data/items_gfx/perks/attack_foot.png",
 		stackable = STACKABLE_YES,
+		stackable_maximum = 3,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
@@ -1302,9 +1303,12 @@ perk_list =
 			
 			child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_attacker.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
-
-			child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_climb.xml", x, y )
-			EntityAddChild( entity_who_picked, child_id )
+			
+			if ( GameHasFlagRun( "ATTACK_FOOT_CLIMBER" ) == false ) then
+				child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_climb.xml", x, y )
+				EntityAddChild( entity_who_picked, child_id )
+				GameAddFlagRun( "ATTACK_FOOT_CLIMBER" )
+			end
 			
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
 			if( platformingcomponents ~= nil ) then

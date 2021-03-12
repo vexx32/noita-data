@@ -210,19 +210,21 @@ function OnPlayerDied( player_entity )
 	GameTriggerGameOver()
 end
 
+function OnCountSecrets()
+	local secret_flags = {
+		"progress_ending0",
+		"progress_ending1",
+	}
 
-
-function OnPlayerSpawned( player_entity )
-	--[[for i,it in ipairs(ModGetFilesAt("data/entities/animals", true)) do
-
-		if it:sub(-4) == ".xml" then
-			local text = ModTextFileGetContent(it)
-			if text:sub(1,7) == "<Entity" then
-				print( it )
-				local e = EntityLoad( it, 100, 200 )
-				EntityKill(e)
-			end
+	local total = GameGetOrbCountTotal() + #secret_flags
+	local found = 0
+	found = found + GameGetOrbCountAllTime()
+	for i,it in ipairs(secret_flags) do
+		if ( HasFlagPersistent(it) ) then
+			found = found + 1
 		end
-	end]]--
-	--ModGetFilesAt("data/entities/animals", true)
+	end
+
+	return total,found
 end
+

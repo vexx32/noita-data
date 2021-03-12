@@ -1,4 +1,4 @@
-<Entity	tags="hittable,mortal,prop" >
+<Entity	tags="hittable,mortal,prop,pixelsprite" >
 	<PixelSpriteComponent 
 		_enabled="1" 
 		image_file="data/props_gfx/sarcophagus_evil.png"

@@ -1,4 +1,4 @@
-<Schema hash="33ccbd01a086729f144856e5de9762bc" >
+<Schema hash="d985ffab23d9de0adb3c301b7c79349e" >
   <Component component_name="AIAttackComponent" >
     <Var name="use_probability" size="4" type="int" >
     </Var>
@@ -1321,6 +1321,10 @@
     <Var name="leg_velocity_coeff" size="4" type="float" >
     </Var>
     <Var name="affect_flying" size="1" type="bool" >
+    </Var>
+    <Var name="large_movement_penalty_coeff" size="4" type="float" >
+    </Var>
+    <Var name="no_ground_attachment_penalty_coeff" size="4" type="float" >
     </Var>
     <Var name="mPrevBodyPosition" size="8" type="class ceng::math::CVector2<float>" >
     </Var>

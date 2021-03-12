@@ -1,6 +1,6 @@
 <Entity 
   name="unknown" 
-  tags="prop" >
+  tags="prop,pixelsprite" >
   
   <PixelSpriteComponent 
     _enabled="1" 

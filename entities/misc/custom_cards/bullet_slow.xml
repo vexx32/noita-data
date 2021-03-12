@@ -1,4 +1,4 @@
-<Entity tags="slow bullet">
+<Entity>
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 

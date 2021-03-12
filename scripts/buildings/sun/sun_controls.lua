@@ -15,7 +15,7 @@ for i,v in ipairs( targets ) do
 		end)
 		
 		if ( vel_x ~= 0 ) or ( vel_y ~= 0 ) then
-			PhysicsApplyForce( entity_id, vel_x * 1.5, vel_y * 1.5 )
+			PhysicsApplyForce( entity_id, vel_x * 0.25, vel_y * 0.25 )
 		end
 	end
 	
@@ -34,4 +34,18 @@ for i,v in ipairs( targets2 ) do
 		
 		PhysicsApplyForce( entity_id, vel_x, vel_y )
 	end
+end
+
+edit_component( entity_id, "VelocityComponent", function(comp,vars)
+	vel_x,vel_y = ComponentGetValueVector2( comp, "mVelocity")
+	
+	vel_x = vel_x * 0.95
+	vel_y = vel_y * 0.95
+	
+	ComponentSetValueVector2( comp, "mVelocity", vel_x, vel_y )
+end)
+
+local props = EntityGetInRadiusWithTag( x, y, 10, "pixelsprite" )
+for i,v in ipairs( props ) do
+	EntityKill( v )
 end

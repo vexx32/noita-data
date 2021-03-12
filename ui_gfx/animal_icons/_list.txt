@@ -15,6 +15,7 @@ miner_weak
 miner
 miner_fire
 miner_santa
+miner_chef
 goblin_bomb
 shotgunner_weak
 shotgunner
