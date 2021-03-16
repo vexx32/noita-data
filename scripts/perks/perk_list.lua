@@ -1,4 +1,5 @@
 dofile_once("data/scripts/gun/procedural/gun_action_utils.lua")
+dofile_once("data/scripts/perks/perk_utilities.lua")
 
 STACKABLE_YES = true
 STACKABLE_NO = false
@@ -336,6 +337,9 @@ perk_list =
 		stackable = STACKABLE_NO,
 		game_effect = "EXPLODING_CORPSE_SHOTS",
 		game_effect2 = "PROTECTION_EXPLOSION",
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			add_halo_level(entity_who_picked, -1)
+		end,
 	},
 	{
 		id = "SAVING_GRACE",
@@ -346,6 +350,9 @@ perk_list =
 		game_effect = "SAVING_GRACE",
 		stackable = STACKABLE_NO,
 		usable_by_enemies = true,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			add_halo_level(entity_who_picked, 1)
+		end,
 	},
 	{
 		id = "INVISIBILITY",
@@ -365,6 +372,9 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/global_gore.png",
 		game_effect = "GLOBAL_GORE",
 		stackable = STACKABLE_YES,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			add_halo_level(entity_who_picked, -1)
+		end,
 	},
 	{
 		id = "REMOVE_FOG_OF_WAR",
@@ -435,6 +445,7 @@ perk_list =
 				end
 			end
 
+			add_halo_level(entity_who_picked, -1)
 		end,
 	},
 	{
@@ -593,6 +604,9 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/respawn.png",
 		game_effect = "RESPAWN",
 		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			add_halo_level(entity_who_picked, 1)
+		end,
 	},
 
 	{
@@ -1098,6 +1112,28 @@ perk_list =
 		end,
 	},
 	{
+		id = "BLEED_GAS",
+		ui_name = "$perk_gas_blood",
+		ui_description = "$perkdesc_gas_blood",
+		ui_icon = "data/ui_gfx/perk_icons/gas_blood.png",
+		perk_icon = "data/items_gfx/perks/gas_blood.png",
+		stackable = STACKABLE_NO,
+		usable_by_enemies = true,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+		
+			local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
+			if( damagemodels ~= nil ) then
+				for i,damagemodel in ipairs(damagemodels) do
+					ComponentSetValue( damagemodel, "blood_material", "acid_gas" )
+					ComponentSetValue( damagemodel, "blood_spray_material", "acid_gas" )
+					ComponentSetValue( damagemodel, "blood_multiplier", "3.0" )
+					ComponentSetValue( damagemodel, "blood_sprite_directional", "data/particles/bloodsplatters/bloodsplatter_directional_green_$[1-3].xml" )
+					ComponentSetValue( damagemodel, "blood_sprite_large", "data/particles/bloodsplatters/bloodsplatter_green_$[1-3].xml" )
+				end
+			end
+		end,
+	},
+	{
 		id = "SHIELD",
 		ui_name = "$perk_shield",
 		ui_description = "$perkdesc_shield",
@@ -1222,31 +1258,7 @@ perk_list =
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
 			end
 			
-			local rattiness = tonumber( GlobalsGetValue( "PLAYER_RATTINESS_LEVEL", "0" ) )
-			rattiness = rattiness + 1
-			GlobalsSetValue( "PLAYER_RATTINESS_LEVEL", tostring( rattiness ) )
-			
-			if ( rattiness == 3 ) then
-				child_id = EntityLoad( "data/entities/verlet_chains/tail/verlet_tail.xml", x, y )
-				EntityAddChild( entity_who_picked, child_id )
-				AddFlagPersistent( "player_status_ratty" )
-				
-				local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
-				if( platformingcomponents ~= nil ) then
-					for i,component in ipairs(platformingcomponents) do
-						local run_speed = tonumber( ComponentGetMetaCustom( component, "run_velocity" ) ) * 1.15
-						local vel_x = math.abs( tonumber( ComponentGetMetaCustom( component, "velocity_max_x" ) ) ) * 1.15
-						
-						local vel_x_min = 0 - vel_x
-						local vel_x_max = vel_x
-						
-						ComponentSetMetaCustom( component, "run_velocity", run_speed )
-						ComponentSetMetaCustom( component, "velocity_min_x", vel_x_min )
-						ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
-					end
-				end
-			end
-
+			add_rattiness_level(entity_who_picked)
 			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
 	},
@@ -1292,11 +1304,13 @@ perk_list =
 		stackable_is_rare = true,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
-		
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = 0
-			
-			for i=1,4 do
+			local is_stacking = GameHasFlagRun( "ATTACK_FOOT_CLIMBER" )
+
+			local limb_count = 4
+			if is_stacking then limb_count = 2 end
+			for i=1,limb_count do
 				child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_walker.xml", x, y )
 				EntityAddChild( entity_who_picked, child_id )
 			end
@@ -1304,10 +1318,20 @@ perk_list =
 			child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_attacker.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
 			
-			if ( GameHasFlagRun( "ATTACK_FOOT_CLIMBER" ) == false ) then
+			if not is_stacking then
+				-- enable climbing
 				child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_climb.xml", x, y )
 				EntityAddChild( entity_who_picked, child_id )
 				GameAddFlagRun( "ATTACK_FOOT_CLIMBER" )
+			else
+				-- add length to limbs
+				for _,v in ipairs(EntityGetAllChildren(entity_who_picked)) do
+					if EntityHasTag(v, "attack_foot_walker") then
+						component_readwrite(EntityGetFirstComponent(v, "IKLimbComponent"), { length = 50 }, function(comp)
+							comp.length = comp.length * 1.5
+						end)
+					end
+				end
 			end
 			
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
@@ -1337,21 +1361,38 @@ perk_list =
 		usable_by_enemies = true,
 		not_in_default_perk_pool = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
-		
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = 0
+			local is_stacking = GameHasFlagRun( "ATTACK_FOOT_CLIMBER" )
+			local limb_count = 2
+			if is_stacking then limb_count = 1 end
 			
-			for i=1,2 do
+			for i=1,limb_count do
 				child_id = EntityLoad( "data/entities/misc/perks/attack_leggy/leggy_limb_left.xml", x, y )
 				EntityAddChild( entity_who_picked, child_id )
 			end
-			for i=3,4 do
+			for i=1,limb_count do
 				child_id = EntityLoad( "data/entities/misc/perks/attack_leggy/leggy_limb_right.xml", x, y )
 				EntityAddChild( entity_who_picked, child_id )
 			end
 			
 			child_id = EntityLoad( "data/entities/misc/perks/attack_leggy/leggy_limb_attacker.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
+
+			if not is_stacking then
+				child_id = EntityLoad( "data/entities/misc/perks/attack_foot/limb_climb.xml", x, y )
+				EntityAddChild( entity_who_picked, child_id )
+				GameAddFlagRun( "ATTACK_FOOT_CLIMBER" )
+			else
+				-- add length to limbs
+				for _,v in ipairs(EntityGetAllChildren(entity_who_picked)) do
+					if EntityHasTag(v, "attack_foot_walker") then
+						component_readwrite(EntityGetFirstComponent(v, "IKLimbComponent"), { length = 50 }, function(comp)
+							comp.length = comp.length * 1.5
+						end)
+					end
+				end
+			end
 			
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
 			if( platformingcomponents ~= nil ) then
@@ -1389,31 +1430,7 @@ perk_list =
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
 			end
 			
-			local rattiness = tonumber( GlobalsGetValue( "PLAYER_RATTINESS_LEVEL", "0" ) )
-			rattiness = rattiness + 1
-			GlobalsSetValue( "PLAYER_RATTINESS_LEVEL", tostring( rattiness ) )
-			
-			if ( rattiness == 3 ) then
-				child_id = EntityLoad( "data/entities/verlet_chains/tail/verlet_tail.xml", x, y )
-				EntityAddChild( entity_who_picked, child_id )
-				AddFlagPersistent( "player_status_ratty" )
-				
-				local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
-				if( platformingcomponents ~= nil ) then
-					for i,component in ipairs(platformingcomponents) do
-						local run_speed = tonumber( ComponentGetMetaCustom( component, "run_velocity" ) ) * 1.15
-						local vel_x = math.abs( tonumber( ComponentGetMetaCustom( component, "velocity_max_x" ) ) ) * 1.15
-						
-						local vel_x_min = 0 - vel_x
-						local vel_x_max = vel_x
-						
-						ComponentSetMetaCustom( component, "run_velocity", run_speed )
-						ComponentSetMetaCustom( component, "velocity_min_x", vel_x_min )
-						ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
-					end
-				end
-			end
-
+			add_rattiness_level(entity_who_picked)
 			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
 	},
@@ -1436,31 +1453,7 @@ perk_list =
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
 			end
 			
-			local rattiness = tonumber( GlobalsGetValue( "PLAYER_RATTINESS_LEVEL", "0" ) )
-			rattiness = rattiness + 1
-			GlobalsSetValue( "PLAYER_RATTINESS_LEVEL", tostring( rattiness ) )
-			
-			if ( rattiness == 3 ) then
-				child_id = EntityLoad( "data/entities/verlet_chains/tail/verlet_tail.xml", x, y )
-				EntityAddChild( entity_who_picked, child_id )
-				AddFlagPersistent( "player_status_ratty" )
-				
-				local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
-				if( platformingcomponents ~= nil ) then
-					for i,component in ipairs(platformingcomponents) do
-						local run_speed = tonumber( ComponentGetMetaCustom( component, "run_velocity" ) ) * 1.15
-						local vel_x = math.abs( tonumber( ComponentGetMetaCustom( component, "velocity_max_x" ) ) ) * 1.15
-						
-						local vel_x_min = 0 - vel_x
-						local vel_x_max = vel_x
-						
-						ComponentSetMetaCustom( component, "run_velocity", run_speed )
-						ComponentSetMetaCustom( component, "velocity_min_x", vel_x_min )
-						ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
-					end
-				end
-			end
-
+			add_rattiness_level(entity_who_picked)
 			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
 	},
@@ -1481,25 +1474,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_cordyceps" ) == false ) then
 				GameAddFlagRun( "player_status_cordyceps" )
-				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
-				funginess = funginess + 1
-				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
-				
-				if ( funginess == 3 ) then
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
-					
-					AddFlagPersistent( "player_status_funky" )
-					
-					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
-					if( damagemodels ~= nil ) then
-						for i,damagemodel in ipairs(damagemodels) do
-							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
-							explosion_resistance = explosion_resistance * 0.9
-							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
-						end
-					end
-				end
+				add_funginess_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1519,25 +1494,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_mold" ) == false ) then
 				GameAddFlagRun( "player_status_mold" )
-				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
-				funginess = funginess + 1
-				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
-				
-				if ( funginess == 3 ) then
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
-					
-					AddFlagPersistent( "player_status_funky" )
-					
-					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
-					if( damagemodels ~= nil ) then
-						for i,damagemodel in ipairs(damagemodels) do
-							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
-							explosion_resistance = explosion_resistance * 0.9
-							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
-						end
-					end
-				end
+				add_funginess_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1633,25 +1590,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_fungal_disease" ) == false ) then
 				GameAddFlagRun( "player_status_fungal_disease" )
-				local funginess = tonumber( GlobalsGetValue( "PLAYER_FUNGAL_LEVEL", "0" ) )
-				funginess = funginess + 1
-				GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", tostring( funginess ) )
-				
-				if ( funginess == 3 ) then
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat", true )
-					EntitySetComponentsWithTagEnabled( entity_who_picked, "player_hat2_shadow", false )
-					
-					AddFlagPersistent( "player_status_funky" )
-					
-					local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
-					if( damagemodels ~= nil ) then
-						for i,damagemodel in ipairs(damagemodels) do
-							local explosion_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "explosion" ))
-							explosion_resistance = explosion_resistance * 0.9
-							ComponentObjectSetValue( damagemodel, "damage_multipliers", "explosion", tostring(explosion_resistance) )
-						end
-					end
-				end
+				add_funginess_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1748,26 +1687,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_angry_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_angry_ghost" )
-				local ghostness = tonumber( GlobalsGetValue( "PLAYER_GHOSTNESS_LEVEL", "0" ) )
-				ghostness = ghostness + 1
-				GlobalsSetValue( "PLAYER_GHOSTNESS_LEVEL", tostring( ghostness ) )
-				
-				if ( ghostness == 3 ) then
-					child_id = EntityLoad( "data/entities/misc/perks/ghostly_ghost.xml", x, y )
-					child_id2 = EntityLoad( "data/entities/misc/perks/tiny_ghost_extra.xml", x, y )
-					EntityAddChild( entity_who_picked, child_id )
-					EntityAddChild( entity_who_picked, child_id2 )
-					
-					AddFlagPersistent( "player_status_ghostly" )
-					
-					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
-					if( platformingcomponents ~= nil ) then
-						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
-							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
-						end
-					end
-				end
+				add_ghostness_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1787,26 +1707,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_hungry_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_hungry_ghost" )
-				local ghostness = tonumber( GlobalsGetValue( "PLAYER_GHOSTNESS_LEVEL", "0" ) )
-				ghostness = ghostness + 1
-				GlobalsSetValue( "PLAYER_GHOSTNESS_LEVEL", tostring( ghostness ) )
-				
-				if ( ghostness == 3 ) then
-					child_id = EntityLoad( "data/entities/misc/perks/ghostly_ghost.xml", x, y )
-					child_id2 = EntityLoad( "data/entities/misc/perks/tiny_ghost_extra.xml", x, y )
-					EntityAddChild( entity_who_picked, child_id )
-					EntityAddChild( entity_who_picked, child_id2 )
-					
-					AddFlagPersistent( "player_status_ghostly" )
-					
-					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
-					if( platformingcomponents ~= nil ) then
-						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
-							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
-						end
-					end
-				end
+				add_ghostness_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1827,26 +1728,7 @@ perk_list =
 			
 			if ( GameHasFlagRun( "player_status_death_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_death_ghost" )
-				local ghostness = tonumber( GlobalsGetValue( "PLAYER_GHOSTNESS_LEVEL", "0" ) )
-				ghostness = ghostness + 1
-				GlobalsSetValue( "PLAYER_GHOSTNESS_LEVEL", tostring( ghostness ) )
-				
-				if ( ghostness == 3 ) then
-					child_id = EntityLoad( "data/entities/misc/perks/ghostly_ghost.xml", x, y )
-					child_id2 = EntityLoad( "data/entities/misc/perks/tiny_ghost_extra.xml", x, y )
-					EntityAddChild( entity_who_picked, child_id )
-					EntityAddChild( entity_who_picked, child_id2 )
-					
-					AddFlagPersistent( "player_status_ghostly" )
-					
-					local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterDataComponent" )
-					if( platformingcomponents ~= nil ) then
-						for i,component in ipairs(platformingcomponents) do
-							local fly_time = ComponentGetValue2( component, "fly_recharge_spd" ) * 1.15
-							ComponentSetValue2( component, "fly_recharge_spd", fly_time )
-						end
-					end
-				end
+				add_ghostness_level(entity_who_picked)
 			end
 		end,
 	},
@@ -2506,6 +2388,7 @@ perk_list =
 				end
 			end
 
+			add_halo_level(entity_who_picked, -1)
 		end,
 	},
 	{
@@ -2526,6 +2409,8 @@ perk_list =
 					ComponentSetValue( comp_worldstate, "global_genome_relations_modifier", tostring( global_genome_relations_modifier ) )
 				end
 			end
+
+			add_halo_level(entity_who_picked, 1)
 		end,
 	},
 	{
@@ -2548,6 +2433,8 @@ perk_list =
 				end
 			end
 			-- give steve charm!
+
+			add_halo_level(entity_who_picked, 1)
 		end,
 	},
 	{

@@ -11852,6 +11852,7 @@
 	audio_physics_material_wall="gravel"
 	audio_physics_material_solid="rock"
 	show_in_creative_mode="1"
+	durability="14"
 	>
 	<ExplosionConfig 
 		cell_explosion_power="2.5"
@@ -12579,7 +12580,7 @@
 	ui_name="$mat_gem_box2d"
 	platform_type="0"
 	hp="30000"
-	durability="12"
+	durability="14"
 	gfx_glow="188"
 	electrical_conductivity="0"
 	gfx_glow_color="0xFF0000FF"

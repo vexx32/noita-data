@@ -22,24 +22,64 @@ function death( )
 		end
 	end
 	
-	if GameHasFlagRun( "essence_laser" ) then
-		EntityLoad( "data/entities/items/pickup/stonestone.xml", x, y )
+	local key1 = "ESSENCE_LASER_PICKUP_COUNT"
+	local key2 = "ESSENCE_FIRE_PICKUP_COUNT"
+	local key3 = "ESSENCE_WATER_PICKUP_COUNT"
+	local key4 = "ESSENCE_AIR_PICKUP_COUNT"
+	local key5 = "ESSENCE_ALCOHOL_PICKUP_COUNT"
+	
+	local pick1 = tonumber( GlobalsGetValue( key1, "0" ) )
+	local pick2 = tonumber( GlobalsGetValue( key2, "0" ) )
+	local pick3 = tonumber( GlobalsGetValue( key3, "0" ) )
+	local pick4 = tonumber( GlobalsGetValue( key4, "0" ) )
+	local pick5 = tonumber( GlobalsGetValue( key5, "0" ) )
+	
+	print( tostring( pick1 ) .. ", " .. tostring( pick2 ) .. ", " .. tostring( pick3 ) .. ", " .. tostring( pick4 ) .. ", " .. tostring( pick5 ) )
+	
+	local loadlist = {}
+	
+	if ( pick1 > 0 ) then
+		for i=1,pick1 do
+			table.insert( loadlist, "data/entities/items/pickup/stonestone.xml" )
+		end
+		
+		GlobalsSetValue( key1, "0" )
 	end
 	
-	if GameHasFlagRun( "essence_fire" ) then
-		EntityLoad( "data/entities/items/pickup/brimstone.xml", x, y - 12 )
+	if ( pick2 > 0 ) then
+		for i=1,pick2 do
+			table.insert( loadlist, "data/entities/items/pickup/brimstone.xml" )
+		end
+		
+		GlobalsSetValue( key2, "0" )
 	end
 	
-	if GameHasFlagRun( "essence_water" ) then
-		EntityLoad( "data/entities/items/pickup/waterstone.xml", x, y - 24 )
+	if ( pick3 > 0 ) then
+		for i=1,pick3 do
+			table.insert( loadlist, "data/entities/items/pickup/waterstone.xml" )
+		end
+		
+		GlobalsSetValue( key3, "0" )
 	end
 	
-	if GameHasFlagRun( "essence_air" ) then
-		EntityLoad( "data/entities/items/pickup/thunderstone.xml", x, y - 36 )
+	if ( pick4 > 0 ) then
+		for i=1,pick4 do
+			table.insert( loadlist, "data/entities/items/pickup/thunderstone.xml" )
+		end
+		
+		GlobalsSetValue( key4, "0" )
 	end
 	
-	if GameHasFlagRun( "essence_alcohol" ) then
-		EntityLoad( "data/entities/items/pickup/poopstone.xml", x, y - 48 )
+	if ( pick5 > 0 ) then
+		for i=1,pick5 do
+			table.insert( loadlist, "data/entities/items/pickup/poopstone.xml" )
+		end
+		
+		GlobalsSetValue( key5, "0" )
+	end
+	
+	for i,v in ipairs( loadlist ) do
+		EntityLoad( v, x, y - (i-1) * 12 )
 	end
 	
 	GameRemoveFlagRun( "essence_laser" )

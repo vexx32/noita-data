@@ -911,6 +911,11 @@ function orb_map_get()
 	return result
 end
 
+function is_in_camera_bounds(x, y, padding)
+	local left, up, w, h = GameGetCameraBounds()
+	return x >= left - padding and y >= up - padding and x <= left + w + padding and y <= up + h + padding
+end
+
 -----------------------------------------------------------------------------------------
 -- gui
 

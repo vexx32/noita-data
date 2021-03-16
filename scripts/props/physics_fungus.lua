@@ -3,20 +3,23 @@ local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
 
 -- twist
-local t = GameGetFrameNum() * 0.02 + entity_id * 2.721
-local speed_mult = ProceduralRandomf(entity_id, 4, 0.1, 0.75)
+if is_in_camera_bounds(x,y,50) then
+	print("updating")
+	local t = GameGetFrameNum() * 0.02 + entity_id * 2.721
+	local speed_mult = ProceduralRandomf(entity_id, 4, 0.1, 0.75)
 
-edit_all_components2( entity_id, "PhysicsJoint2MutatorComponent", function(comp,vars)
-	local joint = ComponentGetValue2( comp, "joint_id" )
-	local time_offset = joint * 0.632
-	local spd = math.sin(t + time_offset) * speed_mult
+	edit_all_components2( entity_id, "PhysicsJoint2MutatorComponent", function(comp,vars)
+		local joint = ComponentGetValue2( comp, "joint_id" )
+		local time_offset = joint * 0.632
+		local spd = math.sin(t + time_offset) * speed_mult
 
-	if joint == 1 then
-		vars.motor_speed = -spd
-	else
-		vars.motor_speed = spd
-	end
-end)
+		if joint == 1 then
+			vars.motor_speed = -spd
+		else
+			vars.motor_speed = spd
+		end
+	end)
+end
 
 -- lift
 -- use variable storage to get better result with various sizes

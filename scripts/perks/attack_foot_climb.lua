@@ -1,10 +1,9 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
 local DEBUG = false
-local lerp_speed = 0.92
-local default_gravity = 380 -- slightly stronger than default
-local fly_gravity = default_gravity * 0.9
-local hover_gravity = default_gravity * 0.1
+local lerp_speed = 0.60
+local default_gravity = 350
+local fly_gravity = default_gravity * -0.8
 
 local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
@@ -25,8 +24,9 @@ component_readwrite( EntityGetFirstComponent( player_id, "CharacterPlatformingCo
 			-- flying
 			gravity = fly_gravity
 		else
-			-- not flying
-			gravity = hover_gravity
+			-- not flying: stabilize
+			local _,vy = GameGetVelocityCompVelocity(player_id)
+			gravity = -vy*200
 		end
 	end)
 	

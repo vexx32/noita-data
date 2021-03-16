@@ -816,6 +816,41 @@ biome_modifiers =
 			})
 		end,
 	},
+	-- Creates fields that grant temporary invulnerability to enemies
+	{
+		id = "PROTECTION_FIELDS",
+		ui_description="$biomemodifierdesc_sunlight",
+		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/sunlight.png",
+		probability = 0.2,
+		requires_flag = "moon_is_sun",
+		does_not_apply_to_biome={"mountain_hall"},
+		action = function( biome_name, biome_filename )
+			--BiomeObjectSetValue( biome_filename, "modifiers", "projectile_drag_coeff", 1.1 )
+		end,
+		inject_spawns_action = function()
+			inject_spawn( g_props, 0.8, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/protection_field.xml",
+			})
+			inject_spawn( g_props2, 0.7, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/protection_field.xml",
+			})
+			inject_spawn( g_lamp, 0.3, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/protection_field.xml",
+			})
+		end,
+	},
 	--[[-- dry - fire spreads faster than usually, fire demons spawn
 	-- bouncy - projectiles and physics bodies bounce from surfaces
 	-- corrupted - corruption grows everywhere. corruption = some sort of easily destructible static material
@@ -852,6 +887,16 @@ biome_modifier_cosmetic_freeze = {
 		BiomeSetValue( biome_filename, "color_grading_g", 0.90 )
 		BiomeSetValue( biome_filename, "color_grading_b", 1.10 )
 		BiomeSetValue( biome_filename, "color_grading_grayscale", 0.1 )
+	end,
+}
+
+biome_modifier_fog_of_war_clear_at_player = {
+	id = "FOG_OF_WAR_CLEAR_AT_PLAYER",
+	ui_description="$biomemodifierdesc_fog_of_war_clear_at_player",
+	ui_decoration_file="data/ui_gfx/decorations_biome_modifier/fog_of_war_clear_at_player.png",
+	probability=0,
+	action = function( biome_name, biome_filename )
+		BiomeSetValue( biome_filename, "fog_of_war_type", "HEAVY_CLEAR_AT_PLAYER" )
 	end,
 }
 
@@ -912,6 +957,12 @@ function biome_modifier_applies_to_biome( modifier, biome_name )
 	end
 
 	local ok = true
+	
+	if modifier.requires_flag ~= nil then
+		if ( HasFlagPersistent( modifier.requires_flag ) == false ) then
+			return false
+		end
+	end
 
 	if modifier.does_not_apply_to_biome ~= nil then
 		for _,skip_biome in ipairs(modifier.does_not_apply_to_biome) do
@@ -960,6 +1011,12 @@ function apply_modifier_from_data( biome_name, modifier )
 				ok = true
 				break
 			end
+		end
+	end
+	
+	if modifier.requires_flag ~= nil then
+		if ( HasFlagPersistent( modifier.requires_flag ) == false ) then
+			ok = false
 		end
 	end
 
@@ -1052,6 +1109,11 @@ function get_modifier_mappings()
 	end
 
 	set_modifier_if_has_none( "fungicave", "MOIST" )
+
+	-- force custom fog of war in these biomes
+	result["wandcave"] = biome_modifier_fog_of_war_clear_at_player
+	result["wizardcave"] = biome_modifier_fog_of_war_clear_at_player
+	result["alchemist_secret"] = biome_modifier_fog_of_war_clear_at_player
 	--apply_modifier_if_has_none( "snowcave", "FREEZING" )
 
 	-- side biomes

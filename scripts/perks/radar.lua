@@ -7,17 +7,11 @@ pos_y = pos_y - 4 -- offset to middle of character
 local range = 400
 local indicator_distance = 20
 
-local cam_x, cam_y = GameGetCameraPos()
-local cam_x_min = cam_x - 213
-local cam_x_max = cam_x + 213
-local cam_y_min = cam_y - 128
-local cam_y_max = cam_y + 128
-
 -- ping nearby enemies
 for _,enemy_id in pairs(EntityGetInRadiusWithTag( pos_x, pos_y, range, "enemy")) do
 	local enemy_x, enemy_y = EntityGetTransform(enemy_id)
-
-	local in_view = enemy_x >= cam_x_min and enemy_x <= cam_x_max	and enemy_y >= cam_y_min and enemy_y <= cam_y_max
+	
+	local in_view = is_in_camera_bounds(enemy_x, enemy_y, 5)
 	if in_view then
 		-- turn enemies in camera view emissive
 		if not EntityHasTag(enemy_id, "detected_by_radar") then

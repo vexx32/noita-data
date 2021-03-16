@@ -66,6 +66,11 @@ function item_pickup( entity_item, entity_who_picked, item_name )
 	
 	GameAddFlagRun( "essence_" .. id )
 	AddFlagPersistent( "essence_" .. id )
+	
+	local globalskey = "ESSENCE_" .. string.upper(id) .. "_PICKUP_COUNT"
+	local pickups = tonumber( GlobalsGetValue( globalskey, "0" ) )
+	pickups = pickups + 1
+	GlobalsSetValue( globalskey, tostring( pickups ) )
 
 	-- cosmetic fx -------------------------------------------------------
 

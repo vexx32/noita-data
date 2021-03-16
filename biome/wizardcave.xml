@@ -10,7 +10,6 @@
     background_edge_priority="10"
     background_use_neighbor="0"
     background_image_height="0"
-
     wang_template_file="data/wang_tiles/wizardcave.png" 
     lua_script="data/scripts/biomes/wizardcave.lua"
     wang_map_width="256"
@@ -18,7 +17,6 @@
     limit_background_image="0"
     audio_music_2="wandcave"
     audio_ambience="temple"
-	fog_of_war_type="HEAVY_CLEAR_AT_PLAYER"
   >
 	
   <BitmapCaves 

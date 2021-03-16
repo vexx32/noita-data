@@ -1,5 +1,7 @@
 <Entity tags="hittable,teleportable_NOT,item_physics,item_pickup,potion" >
 
+  <!-- NOTE: this file is inherited by other potions. be careful to not break inheritor component overrides when adding or removing components -->
+
   <!-- physical presence -->
   
   <PhysicsBodyComponent 

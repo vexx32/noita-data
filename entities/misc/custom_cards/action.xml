@@ -1,4 +1,4 @@
-<Entity>
+<Entity tags="card_action">
 
     <ItemComponent
         _tags="enabled_in_world"

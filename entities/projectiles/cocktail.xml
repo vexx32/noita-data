@@ -108,8 +108,7 @@
       sparks_enabled="1" 
       stains_enabled="1" 
       stains_radius="0" 
-	  audio_event_name="explosions/cocktail
-"
+	  audio_event_name="explosions/cocktail"
 	  >
     </config_explosion>
   </ExplodeOnDamageComponent>
@@ -119,6 +118,10 @@
     speed_threshold="80.0"
   ></PhysicsBodyCollisionDamageComponent>
 
+  <LuaComponent 
+    script_death="data/scripts/items/potion_glass_break_temporary.lua" 
+  ></LuaComponent>
+  
   <!-- item -->
 
   <SpriteComponent
@@ -136,7 +139,7 @@
     is_pickable="1"
     is_equipable_forced="1"
     ui_sprite="data/ui_gfx/items/potion.png"
-    ui_description="Equip and throw."
+    ui_description="$item_description_potion"
     preferred_inventory="QUICK"
   ></ItemComponent>
 

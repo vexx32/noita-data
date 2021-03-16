@@ -8,15 +8,12 @@
     background_edge_top="data/weather_gfx/edges/background_wandcave_top.png"
     background_edge_bottom="data/weather_gfx/edges/background_wandcave_bottom.png"
     background_edge_priority="11"     
-
-
     limit_background_image="0"
     wang_template_file="data/wang_tiles/wand.png" 
     lua_script="data/scripts/biomes/wandcave.lua"
     wang_map_width="256"
     wang_map_height="256"
     audio_ambience="wandcave"
-    fog_of_war_type="HEAVY_CLEAR_AT_PLAYER"
   >
   <BitmapCaves 
       size_x="516"
