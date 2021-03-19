@@ -4,7 +4,6 @@ local x, y = EntityGetTransform( entity_id )
 
 -- twist
 if is_in_camera_bounds(x,y,50) then
-	print("updating")
 	local t = GameGetFrameNum() * 0.02 + entity_id * 2.721
 	local speed_mult = ProceduralRandomf(entity_id, 4, 0.1, 0.75)
 

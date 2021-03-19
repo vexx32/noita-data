@@ -91,7 +91,7 @@
     velocity_sets_rotation="0"
     lifetime_randomness="0"
     ragdoll_force_multiplier="0.04"
-    hit_particle_force_multiplier="5.5 "
+    hit_particle_force_multiplier="5.5"
     camera_shake_when_shot="5.0"
     bounces_left="4"
     shoot_light_flash_radius="0"

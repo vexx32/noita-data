@@ -1,4 +1,4 @@
-<Schema hash="d985ffab23d9de0adb3c301b7c79349e" >
+<Schema hash="bc8e34976878e0ad545b21cecb274f49" >
   <Component component_name="AIAttackComponent" >
     <Var name="use_probability" size="4" type="int" >
     </Var>
@@ -1342,7 +1342,7 @@
     </Var>
     <Var name="blood_healing_speed" size="4" type="float" >
     </Var>
-    <Var name="DEBUG_allmaterials" size="1" type="bool" >
+    <Var name="ingestion_satiation_material_tag" size="24" type="class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >" >
     </Var>
     <Var name="m_ingestion_cooldown_frames" size="4" type="int" >
     </Var>

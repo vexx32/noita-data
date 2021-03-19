@@ -38,6 +38,8 @@
 			blood_sprite_directional="data/particles/bloodsplatters/bloodsplatter_directional_blue_$[1-3].xml"
 			blood_sprite_large="data/particles/bloodsplatters/bloodsplatter_blue_$[1-3].xml"
 			healing_particle_effect_entity="data/entities/particles/heal_effect.xml"
+			materials_that_damage="acid,lava,poison,radioactive_gas,radioactive_gas_static,rock_static_radioactive,rock_static_poison,ice_radioactive_static,ice_radioactive_glass,ice_acid_static,ice_acid_glass,rock_static_cursed,poo_gas" 
+			materials_how_much_damage="0.004,0.004,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.005,0.00001"
 			>
 			<damage_multipliers
 				explosion="0.2"

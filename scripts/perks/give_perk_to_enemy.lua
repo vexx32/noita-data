@@ -31,7 +31,7 @@ if ( #targets > 0 ) then
 			
 			local perk_data = perk_list[result]
 			
-			give_perk_to_enemy( perk_data, target, entity_id )
+			give_perk_to_enemy( perk_data, target, entity_id, 1 )
 		end
 	end
 end

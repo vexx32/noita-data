@@ -1,3 +1,4 @@
+player
 sheep
 sheep_bat
 sheep_fly

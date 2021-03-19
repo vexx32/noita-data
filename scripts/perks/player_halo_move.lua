@@ -23,5 +23,5 @@ target_y = target_y + math.sin(t * bob_speed) * bob_amount
 local rot = math.sin(t * roll_speed) * roll_amount
 
 -- move towards target
-local x,y = vec_lerp(target_x, target_y, x, y, follow_amount)
+x,y = vec_lerp(target_x, target_y, x, y, follow_amount)
 EntitySetTransform(entity_id, x, y, rot)

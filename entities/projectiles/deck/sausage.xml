@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT,mortal,item_physics" >
+<Entity tags="hittable,teleportable_NOT,mortal,item_physics,projectile_item" >
 
   <!-- physical presence -->
   

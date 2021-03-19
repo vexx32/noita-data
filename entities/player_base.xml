@@ -197,9 +197,21 @@
   </SpriteAnimatorComponent>
 
   <SpriteComponent 
-    _tags="character" 
+    _tags="character,lukki_disable" 
     alpha="1" 
     image_file="data/enemies_gfx/player.xml" 
+    next_rect_animation="" 
+    offset_x="6" 
+    offset_y="14" 
+    rect_animation="walk" 
+    z_index="0.6"
+  ></SpriteComponent>
+  
+  <SpriteComponent 
+    _tags="character,lukki_enable"
+	_enabled="0"
+    alpha="1" 
+    image_file="data/enemies_gfx/player_lukky.xml" 
     next_rect_animation="" 
     offset_x="6" 
     offset_y="14" 

@@ -1,4 +1,4 @@
-<Entity>
+<Entity tags="projectile_item">
 	<Base file="data/entities/items/pickup/potion.xml">
 		<LuaComponent 
 			script_source_file="data/scripts/items/potion_aggressive.lua"

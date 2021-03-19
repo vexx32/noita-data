@@ -121,5 +121,11 @@
 		damage_multiplier="0.9"
 		>
 	</HitboxComponent>
+	
+	<LuaComponent
+		script_source_file="data/scripts/animals/limit_projectiles.lua"
+		execute_every_n_frame="80"
+		>
+	</LuaComponent>
 
 </Entity>

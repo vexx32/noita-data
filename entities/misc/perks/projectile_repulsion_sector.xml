@@ -1,4 +1,4 @@
-<Entity>
+<Entity name="projectile_repulsion_sector">
 	<InheritTransformComponent
 		only_position="1"
 		>

@@ -8,6 +8,8 @@ local x, y = EntityGetTransform( entity_id )
 local x_orig = x
 local y_orig = y
 
+if not is_in_camera_bounds(x,y,300) then return end
+
 -- center position drifts around
 local time = GameGetFrameNum()
 local t = time * 0.02

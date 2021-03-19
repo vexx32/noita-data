@@ -1173,7 +1173,7 @@
  <CellData 
 	name="slime_static"
 	ui_name="$mat_slime_static"
-	tags="[static],[alchemy],[solid],[earth]"
+	tags="[static],[alchemy],[solid],[earth],[food]"
 	burnable="0"
 	density="4"
 	cell_type="liquid"
@@ -6617,7 +6617,7 @@
   <CellData
 	name="blood"
 	ui_name="$mat_blood"
-  	tags="[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common]"
+  	tags="[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common],[food]"
 	burnable="0"
 	density="4.1"
 	cell_type="liquid"
@@ -6639,7 +6639,7 @@
   <CellData
 	name="blood_fading"
 	ui_name="$mat_blood_fading"
-  	tags="[liquid],[corrodible],[soluble],[evaporable_fast],[blood],[impure],[liquid_common]"
+  	tags="[liquid],[corrodible],[soluble],[evaporable_fast],[blood],[impure],[liquid_common],[food]"
 	burnable="0"
 	density="3"
 	cell_type="liquid"
@@ -6672,7 +6672,7 @@
   <CellData
 	name="blood_fungi"
 	ui_name="$mat_blood_fungi"
-  	tags="[liquid],[corrodible],[soluble],[evaporable],[blood],[impure],[liquid_common]"
+  	tags="[liquid],[corrodible],[soluble],[evaporable],[blood],[impure],[liquid_common],[food]"
 	burnable="0"
 	density="3"
 	cell_type="liquid"
@@ -6721,7 +6721,7 @@
   <CellData
 	name="blood_worm"
 	ui_name="$mat_blood_worm"
-  	tags="[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common]"
+  	tags="[liquid],[corrodible],[soluble],[blood],[impure],[liquid_common],[food]"
 	burnable="0"
 	density="2.123"
 	cell_type="liquid"
@@ -6749,7 +6749,7 @@
   <CellData
 	name="porridge"
 	ui_name="$mat_porridge"
-  	tags="[liquid],[corrodible],[soluble],[impure],[liquid_common],[evaporable_by_fire]"
+  	tags="[liquid],[corrodible],[soluble],[impure],[liquid_common],[evaporable_by_fire],[food]"
 	burnable="1"
 	density="2.123"
 	cell_type="liquid"
@@ -8252,7 +8252,7 @@
   <CellData 
 	name="slime"
 	ui_name="$mat_slime_pink"
-  	tags="[corrodible],[meltable_to_lava],[alchemy],[slime],[liquid_common]"
+  	tags="[corrodible],[meltable_to_lava],[alchemy],[slime],[liquid_common],[food]"
 	burnable="0"  
 	density="5"  
 	cell_type="liquid" 
@@ -8402,6 +8402,7 @@
   	_inherit_reactions="0"
 	name="vomit"
 	ui_name="$mat_vomit"
+	tags="[food]"
 	wang_color="88E8BD5B"  
 	>
     <Graphics
@@ -8702,7 +8703,7 @@
   <CellData
 	name="rotten_meat"
 	ui_name="$mat_rotten_meat"
-  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat]"
+  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat],[food]"
 	burnable="1"
 	autoignition_temperature="80"
 	density="6"
@@ -8777,7 +8778,7 @@
   <CellData
 	name="meat_slime_sand"
 	ui_name="$mat_meat_slime_sand"
-  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat],[slime]"
+  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat],[slime],[food]"
 	burnable="1"
 	autoignition_temperature="80"
 	density="6"
@@ -8855,7 +8856,7 @@
   <CellData
 	name="rotten_meat_radioactive"
 	ui_name="$mat_rotten_meat_radioactive"
-  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth]"
+  	tags="[sand_ground],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth],[food]"
 	burnable="0"
 	density="6"
 	cell_type="liquid"
@@ -8988,7 +8989,7 @@
 	>
 	<StatusEffects>
 		<Ingestion>
-			<StatusEffect type="TRIP" amount="0.3" />
+			<StatusEffect type="TRIP" amount="0.6" />
 		</Ingestion>
 	</StatusEffects>
   </CellDataChild>
@@ -11442,6 +11443,22 @@
   <CellDataChild
   	_parent="wood_prop"
   	_inherit_reactions="1"
+  	name="nest_firebug_box2d" 
+	ui_name="$mat_nest_box2d"
+	burnable="0"
+	autoignition_temperature="100"
+	temperature_of_fire="10"
+	platform_type="0"
+	wang_color="ff3b3e3b" >
+  	<Graphics
+	texture_file="data/materials_gfx/nest.png"
+	color="ff3b8d4b" >
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="wood_prop"
+  	_inherit_reactions="1"
   	name="cocoon_box2d" 
 	ui_name="$mat_cocoon_box2d"
 	platform_type="0"
@@ -12655,7 +12672,8 @@
 	wang_color="ffff9919"
 	show_in_creative_mode="0"
 	solid_gravity_scale="0"
-	durability="15"
+	hp="1000000"
+	durability="16"
 	>
   	<Graphics
 	color="ffffc74e" >
@@ -13120,7 +13138,7 @@
   <CellData
 	name="meat"
 	ui_name="$mat_meat"
-  	tags="[box2d],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth]"
+  	tags="[box2d],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth],[food]"
 	burnable="1"
 	density="6"
 	solid_friction="1"
@@ -13197,7 +13215,7 @@
   <CellData
 	name="meat_slime"
 	ui_name="$mat_meat_slime"
-  	tags="[box2d],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth]"
+  	tags="[box2d],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth],[food]"
 	burnable="1"
 	density="3"
 	cell_type="solid"
@@ -13580,7 +13598,7 @@
   <CellData
 	name="blood_thick"
 	ui_name="$mat_blood_thick"
-	tags="[static],[corrodible],[blood]"
+	tags="[static],[corrodible],[blood],[food]"
 	burnable="0"
 	density="10"
 	platform_type="0"

@@ -1,4 +1,4 @@
-<Entity tags="hittable,teleportable_NOT" name="$projectile_default">
+<Entity tags="hittable,teleportable_NOT,projectile_item" name="$projectile_default">
 
   <!-- physical presence -->
   

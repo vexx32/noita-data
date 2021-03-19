@@ -19,7 +19,7 @@ materials_from =
 	{ probability = 0.4, materials = { "sand" } },
 	{ probability = 0.4, materials = { "snow_sticky" } },
 	{ probability = 0.05, materials = { "rock_static" } },
-	{ probability = 0.001, materials = { "gold", "gold_box2d" }, name_material = "gold" },
+	{ probability = 0.0003, materials = { "gold", "gold_box2d" }, name_material = "gold" },
 }
 
 materials_to = 

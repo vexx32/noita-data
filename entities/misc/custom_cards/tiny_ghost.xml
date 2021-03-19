@@ -10,16 +10,7 @@
 			action_id="TINY_GHOST" >
 		</ItemActionComponent>
 	</Base>
-
-	<!-- note: transform is handled by tiny_ghost_move.lua while in_hand -->
-	<InheritTransformComponent
-		_tags="enabled_in_world" >
-		<Transform 
-			position.x="8" 
-			position.y="0">
-		</Transform>
-	</InheritTransformComponent>
-
+	
 	<!-- ghost functionality and visuals -->		
 	<SpriteComponent 
 		_tags="enabled_in_hand"

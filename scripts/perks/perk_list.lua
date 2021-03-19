@@ -18,6 +18,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/critical_hit.png",
 		perk_icon = "data/items_gfx/perks/critical_hit.png",
 		game_effect = "CRITICAL_HIT_BOOST",
+		particle_effect = "critical_hit_boost",
 		stackable = STACKABLE_YES,
 		usable_by_enemies = true,
 	},
@@ -68,6 +69,15 @@ perk_list =
 				end
 			end
 		end,
+		func_remove = function( entity_who_picked )
+			local world_entity_id = GameGetWorldStateEntity()
+			if( world_entity_id ~= nil ) then
+				local comp_worldstate = EntityGetFirstComponent( world_entity_id, "WorldStateComponent" )
+				if( comp_worldstate ~= nil ) then
+					ComponentSetValue( comp_worldstate, "perk_gold_is_forever", "0" )
+				end
+			end
+		end,
 	},
 	{
 		id = "TRICK_BLOOD_MONEY",
@@ -86,6 +96,15 @@ perk_list =
 				end
 			end
 		end,
+		func_remove = function( entity_who_picked )
+			local world_entity_id = GameGetWorldStateEntity()
+			if( world_entity_id ~= nil ) then
+				local comp_worldstate = EntityGetFirstComponent( world_entity_id, "WorldStateComponent" )
+				if( comp_worldstate ~= nil ) then
+					ComponentSetValue( comp_worldstate, "perk_trick_kills_blood_money", "0" )
+				end
+			end
+		end,
 	},
 	{
 		id = "EXPLODING_GOLD",
@@ -97,6 +116,10 @@ perk_list =
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			GameAddFlagRun( "exploding_gold" )
 		end,
+		func_remove = function( entity_who_picked )
+			GameRemoveFlagRun( "exploding_gold" )
+		end,
+		
 	},
 	-- movement related
 	{
@@ -117,7 +140,6 @@ perk_list =
 		game_effect = "FASTER_LEVITATION",
 		stackable = STACKABLE_YES,
 		func = function( entity_perk_item, entity_who_picked, item_name )
-
 			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
 			if( models ~= nil ) then
 				for i,model in ipairs(models) do
@@ -125,7 +147,14 @@ perk_list =
 					ComponentSetValue( model, "pixel_gravity", gravity )
 				end
 			end
-
+		end,
+		func_remove = function( entity_who_picked )
+			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					ComponentSetValue2( model, "pixel_gravity", 350 )
+				end
+			end
 		end,
 	},
 	{
@@ -250,6 +279,19 @@ perk_list =
 			end
 
 		end,
+		func_remove = function( entity_who_picked )
+			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					ComponentSetValue( model, "swim_idle_buoyancy_coeff", 1.2 )
+					ComponentSetValue( model, "swim_up_buoyancy_coeff", 0.9 )
+					ComponentSetValue( model, "swim_down_buoyancy_coeff", 0.7 )
+					
+					ComponentSetValue( model, "swim_drag", 0.95 )
+					ComponentSetValue( model, "swim_extra_horizontal_drag", 0.9 )
+				end
+			end
+		end,
 	},
 	{
 		id = "STRONG_KICK",
@@ -259,7 +301,6 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/strong_kick.png",
 		stackable = STACKABLE_YES,
 		func = function( entity_perk_item, entity_who_picked, item_name )
-		 
 			local models = EntityGetComponent( entity_who_picked, "KickComponent" )
 			if( models ~= nil ) then
 				for i,model in ipairs(models) do
@@ -286,7 +327,26 @@ perk_list =
 					ComponentSetValue2( model, "throw_speed", throw_speed )
 				end
 			end
+		end,
+		func_remove = function( entity_who_picked )
+			local models = EntityGetComponent( entity_who_picked, "KickComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					ComponentSetMetaCustom( model, "max_force", 12.0 )
+					ComponentSetMetaCustom( model, "player_kickforce", 28.0 )
+					ComponentSetMetaCustom( model, "kick_damage", 0.04 )
+					ComponentSetMetaCustom( model, "kick_knockback", 3.0 )
+					ComponentSetValue2( model, "telekinesis_throw_speed", 25.0 )
+					ComponentSetValue2( model, "kick_entities", "" )
+				end
+			end
 
+			models = EntityGetComponent( entity_who_picked, "TelekinesisComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					ComponentSetValue2( model, "throw_speed", 25.0 )
+				end
+			end
 		end,
 	},
 	{
@@ -640,8 +700,8 @@ perk_list =
 		id = "FOOD_CLOCK",
 		ui_name = "$perk_food_clock",
 		ui_description = "$perkdesc_food_clock",
-		ui_icon = "data/ui_gfx/perk_icons/food_clock.png",
-		perk_icon = "data/items_gfx/perks/food_clock.png",
+		ui_icon = "data/ui_gfx/perk_icons/mystery_eggplant.png",
+		perk_icon = "data/items_gfx/perks/mystery_eggplant.png",
 		stackable = STACKABLE_NO,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 		
@@ -658,15 +718,21 @@ perk_list =
 			
 			local x,y = EntityGetTransform( entity_perk_item )
 			EntityLoad( "data/entities/items/pickup/potion_porridge.xml", x, y )
+			EntityLoad( "data/entities/particles/poof_white_appear.xml", x, y )
 			
 			local comp = EntityGetFirstComponent( entity_who_picked, "IngestionComponent" )
 
 			if ( comp ~= nil ) then
-				ComponentSetValue2( comp, "ingestion_cooldown_delay_frames", 400 )
-				ComponentSetValue2( comp, "ingestion_reduce_every_n_frame", 15 )
+				local size = ComponentGetValue2( comp, "ingestion_size" )
+				local capacity = ComponentGetValue2( comp, "ingestion_capacity" )
+				component_write( comp,
+				{
+					ingestion_cooldown_delay_frames = 400,
+					ingestion_reduce_every_n_frame = 3,
+					ingestion_size = math.max( size, capacity / 4 * 3 ),
+					ingestion_satiation_material_tag = "[food]",
+				})
 				
-				local curr = ComponentGetValue2( comp, "ingestion_size" )
-				ComponentSetValue2( comp, "ingestion_size", math.max( curr, 7500 ) )
 			end
 		end,
 	},
@@ -1119,6 +1185,8 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/gas_blood.png",
 		stackable = STACKABLE_NO,
 		usable_by_enemies = true,
+		game_effect = "PROTECTION_RADIOACTIVITY",
+		remove_other_perks = {"PROTECTION_RADIOACTIVITY"},
 		func = function( entity_perk_item, entity_who_picked, item_name )
 		
 			local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
@@ -1129,6 +1197,14 @@ perk_list =
 					ComponentSetValue( damagemodel, "blood_multiplier", "3.0" )
 					ComponentSetValue( damagemodel, "blood_sprite_directional", "data/particles/bloodsplatters/bloodsplatter_directional_green_$[1-3].xml" )
 					ComponentSetValue( damagemodel, "blood_sprite_large", "data/particles/bloodsplatters/bloodsplatter_green_$[1-3].xml" )
+				end
+			end
+			
+			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					local gravity = ComponentGetValue2( model, "pixel_gravity" ) * 0.75
+					ComponentSetValue2( model, "pixel_gravity", gravity )
 				end
 			end
 		end,
@@ -1303,7 +1379,7 @@ perk_list =
 		stackable_maximum = 3,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
-		func = function( entity_perk_item, entity_who_picked, item_name )
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = 0
 			local is_stacking = GameHasFlagRun( "ATTACK_FOOT_CLIMBER" )
@@ -1347,6 +1423,10 @@ perk_list =
 					ComponentSetMetaCustom( component, "velocity_min_x", vel_x_min )
 					ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
 				end
+			end
+			
+			if ( pickup_count <= 2 ) then
+				add_lukkiness_level(entity_who_picked)
 			end
 		end,
 	},
@@ -1408,6 +1488,10 @@ perk_list =
 					ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
 				end
 			end
+			
+			if ( pickup_count <= 2 ) then
+				add_lukkiness_level(entity_who_picked)
+			end
 		end,
 	},
 	{
@@ -1447,6 +1531,7 @@ perk_list =
 			EntityAddChild( entity_who_picked, child_id )
 			
 			EntityLoad( "data/entities/items/pickup/potion_vomit.xml", x, y )
+			EntityLoad( "data/entities/particles/poof_white_appear.xml", x, y )
 			
 			local world_entity_id = GameGetWorldStateEntity()
 			if ( world_entity_id ~= nil ) then
@@ -1491,6 +1576,7 @@ perk_list =
 			EntityAddChild( entity_who_picked, child_id )
 			
 			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
+			EntityLoad( "data/entities/particles/poof_white_appear.xml", x, y )
 			
 			if ( GameHasFlagRun( "player_status_mold" ) == false ) then
 				GameAddFlagRun( "player_status_mold" )
@@ -1543,12 +1629,19 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
-		func = function( entity_perk_item, entity_who_picked, item_name )
-			
-			local x,y = EntityGetTransform( entity_who_picked )
-			local child_id = EntityLoad( "data/entities/misc/perks/projectile_repulsion_field.xml", x, y )
-			EntityAddChild( entity_who_picked, child_id )
-			
+		particle_effect = "projectile_repulsion_field",
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
+			if pickup_count <= 1 then
+				-- no existing perk found, spawn perk
+				local x,y = EntityGetTransform( entity_who_picked )
+				local child_id = EntityLoad( "data/entities/misc/perks/projectile_repulsion_field.xml", x, y )
+				EntityAddChild( entity_who_picked, child_id )
+			else
+				-- skip spawning, store pickup count
+				set_perk_entity_pickup_count(entity_who_picked, "projectile_repulsion", pickup_count)
+			end
+
+			-- increase resistance
 			local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
 			if( damagemodels ~= nil ) then
 				for i,damagemodel in ipairs(damagemodels) do
@@ -1603,6 +1696,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
+		particle_effect = "projectile_slow_field",
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/projectile_slow_field.xml", x, y )
@@ -1617,10 +1711,20 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/projectile_repulsion_sector.png",
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
-		func = function( entity_perk_item, entity_who_picked, item_name )
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			local x,y = EntityGetTransform( entity_who_picked )
-			local child_id = EntityLoad( "data/entities/misc/perks/projectile_repulsion_sector.xml", x, y )
-			EntityAddChild( entity_who_picked, child_id )
+			local child_id
+			
+			if ( pickup_count <= 1 ) then
+				child_id = EntityLoad( "data/entities/misc/perks/projectile_repulsion_sector.xml", x, y )
+			else
+				set_perk_entity_pickup_count(entity_who_picked, "projectile_repulsion_sector", pickup_count)
+				--child_id = EntityLoad( "data/entities/misc/perks/projectile_repulsion_sector_noparticles.xml", x, y )
+			end
+			
+			if ( child_id ~= nil ) then
+				EntityAddChild( entity_who_picked, child_id )
+			end
 		end,
 	},
 	{
@@ -1630,10 +1734,19 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/projectile_eater_sector.png",
 		perk_icon = "data/items_gfx/perks/projectile_eater_sector.png",
 		stackable = STACKABLE_NO,
-		func = function( entity_perk_item, entity_who_picked, item_name )
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			local x,y = EntityGetTransform( entity_who_picked )
-			local child_id = EntityLoad( "data/entities/misc/perks/projectile_eater_sector.xml", x, y )
-			EntityAddChild( entity_who_picked, child_id )
+			local child_id
+			
+			if ( pickup_count <= 1 ) then
+				child_id = EntityLoad( "data/entities/misc/perks/projectile_eater_sector.xml", x, y )
+			else
+				child_id = EntityLoad( "data/entities/misc/perks/projectile_eater_sector_noparticles.xml", x, y )
+			end
+			
+			if ( child_id ~= nil ) then
+				EntityAddChild( entity_who_picked, child_id )
+			end
 		end,
 	},
 	{
@@ -1743,6 +1856,29 @@ perk_list =
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/homunculus_spawner.xml", x, y )
 			EntityAddChild( entity_who_picked, child_id )
+		end,
+	},
+	{
+		id = "LUKKI_MINION",
+		ui_name = "$perk_lukki_minion",
+		ui_description = "$perkdesc_lukki_minion",
+		ui_icon = "data/ui_gfx/perk_icons/lukki_minion.png",
+		perk_icon = "data/items_gfx/perks/lukki_minion.png",
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local x,y = EntityGetTransform( entity_who_picked )
+			local child_id = EntityLoad( "data/entities/misc/perks/lukki_minion.xml", x, y )
+			
+			EntityAddComponent( child_id, "VariableStorageComponent", 
+			{ 
+				name = "owner_id",
+				value_int = tostring( entity_who_picked ),
+			} )
+			
+			if ( GameHasFlagRun( "player_status_lukki_minion" ) == false ) then
+				GameAddFlagRun( "player_status_lukki_minion" )
+				add_lukkiness_level(entity_who_picked)
+			end
 		end,
 	},
 	{
@@ -2517,6 +2653,7 @@ perk_list =
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			EntityLoad( "data/entities/items/pickup/beamstone.xml", x, y-10 )
+			EntityLoad( "data/entities/particles/poof_white_appear.xml", x, y-10 )
 		end,
 	},
 

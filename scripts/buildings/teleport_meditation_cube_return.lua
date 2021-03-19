@@ -2,8 +2,10 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 local entity_id = GetUpdatedEntityID()
 local pos_x, pos_y = EntityGetTransform( entity_id )
-local time = GameGetFrameNum()
 
+if not is_in_camera_bounds(pos_x,pos_y,300) then return end
+
+local time = GameGetFrameNum()
 local scale = 50
 
 -- pyramid

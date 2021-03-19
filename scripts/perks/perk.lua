@@ -223,7 +223,7 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 	end
 	GameAddFlagRun( flag_name )
 
-	-- add game effect
+	-- add a game effect or two
 	if perk_data.game_effect ~= nil then
 		local game_effect_comp = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect, true )
 		if game_effect_comp ~= nil then
@@ -238,6 +238,14 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		end
 	end
 	
+	-- particle effect only applied once
+	if perk_data.particle_effect ~= nil and ( pickup_count <= 1 ) then
+		local particle_id = EntityLoad( "data/entities/particles/perks/" .. perk_data.particle_effect .. ".xml" )
+		
+		EntityAddChild( entity_who_picked, particle_id )
+	end
+	
+	-- certain other perks may be marked as picked-up
 	if perk_data.remove_other_perks ~= nil then
 		for i,v in ipairs( perk_data.remove_other_perks ) do
 			local f = get_perk_picked_flag_name( v )
@@ -246,7 +254,7 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 	end
 
 	if perk_data.func ~= nil then
-		perk_data.func( entity_item, entity_who_picked, item_name )
+		perk_data.func( entity_item, entity_who_picked, item_name, pickup_count )
 	end
 	
 	perk_name = GameTextGetTranslatedOrNot( perk_data.ui_name )

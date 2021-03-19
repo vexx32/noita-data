@@ -8,7 +8,7 @@
     air_in_lungs_max="5" 
     air_lack_of_damage="0.2" 
     air_needed="0" 
-    ragdoll_material="nest_box2d"
+    ragdoll_material="nest_firebug_box2d"
     blood_material="lava"
     drop_items_on_death="1" 
     falling_damage_damage_max="1.2" 

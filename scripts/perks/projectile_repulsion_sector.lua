@@ -17,6 +17,8 @@ local a = 0 - math.atan2( ay, ax )
 EntitySetTransform( entity_id, x, y, 0 - a )
 
 if ( #projectiles > 0 ) then
+	local pickup_count = get_stored_perk_pickup_count( entity_id )
+
 	for i,projectile_id in ipairs(projectiles) do	
 		local px, py = EntityGetTransform( projectile_id )
 		
@@ -30,7 +32,7 @@ if ( #projectiles > 0 ) then
 			local velocitycomponents = EntityGetComponent( projectile_id, "VelocityComponent" )
 			
 			local gravity_percent = math.max(( distance_full - distance ) / distance_full, 0.01)
-			local gravity_coeff = 240
+			local gravity_coeff = 240 * pickup_count
 			if EntityHasTag(projectile_id, "resist_repulsion") then gravity_coeff = gravity_coeff * 0.25 end
 			
 			if ( velocitycomponents ~= nil ) then

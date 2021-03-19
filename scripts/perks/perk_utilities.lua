@@ -1,4 +1,25 @@
--- event implementation
+-- for stacking perks where duplicate entities are to be avoided. returns increase success bool
+function set_perk_entity_pickup_count(entity_who_picked, perk_entity_name, count)
+	-- make sure perk entity has a matching name!
+	local children = EntityGetAllChildren(entity_who_picked)
+	for _,id in ipairs(children) do
+		if EntityGetName(id) == perk_entity_name then
+			local variable_storage = get_variable_storage_component(id, "perk_pickup_count")
+			if variable_storage ~= nil then
+				ComponentSetValue2(variable_storage, "value_int", count)
+			else
+				-- no existing variable storage found, create a new one
+				EntityAddComponent( id, "VariableStorageComponent", 
+				{ 
+					name = "perk_pickup_count",
+					value_int = count,
+				})
+			end
+		end
+	end
+end
+
+-------------------------------
 
 function add_rattiness_level(entity_who_picked)
 	local x,y = EntityGetTransform( entity_who_picked )
@@ -74,6 +95,38 @@ function add_ghostness_level(entity_who_picked)
 	end
 end
 
+function add_lukkiness_level(entity_who_picked)
+	local x,y = EntityGetTransform( entity_who_picked )
+	local lochness = tonumber( GlobalsGetValue( "PLAYER_LUKKINESS_LEVEL", "0" ) )
+	lochness = lochness + 1
+	GlobalsSetValue( "PLAYER_LUKKINESS_LEVEL", tostring( lochness ) )
+	
+	if ( lochness == 3 ) then
+		EntitySetComponentsWithTagEnabled( entity_who_picked, "lukki_enable", true )
+		AddFlagPersistent( "player_status_lukky" )
+		
+		local comp = EntityGetFirstComponent( entity_who_picked, "SpriteComponent", "lukki_disable" )
+		if ( comp ~= nil ) then
+			ComponentSetValue2( comp, "alpha", 0.0 )
+		end
+		
+		local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+		if( platformingcomponents ~= nil ) then
+			for i,component in ipairs(platformingcomponents) do
+				local run_speed = tonumber( ComponentGetMetaCustom( component, "run_velocity" ) ) * 1.1
+				local vel_x = math.abs( tonumber( ComponentGetMetaCustom( component, "velocity_max_x" ) ) ) * 1.1
+				
+				local vel_x_min = 0 - vel_x
+				local vel_x_max = vel_x
+				
+				ComponentSetMetaCustom( component, "run_velocity", run_speed )
+				ComponentSetMetaCustom( component, "velocity_min_x", vel_x_min )
+				ComponentSetMetaCustom( component, "velocity_max_x", vel_x_max )
+			end
+		end
+	end
+end
+
 
 function add_halo_level(entity_who_picked, amount)
 	-- NOTE: Player may be able to play the system slightly by toggling
@@ -107,7 +160,7 @@ function add_halo_level(entity_who_picked, amount)
 			for i,damagemodel in ipairs(damagemodels) do
 				local fire_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "fire" ))
 				fire_resistance = fire_resistance / 0.9
-				print(fire_resistance)
+				--print(fire_resistance)
 				ComponentObjectSetValue( damagemodel, "damage_multipliers", "fire", tostring(fire_resistance) )
 			end
 		end
@@ -129,7 +182,7 @@ function add_halo_level(entity_who_picked, amount)
 			for i,damagemodel in ipairs(damagemodels) do
 				local fire_resistance = tonumber(ComponentObjectGetValue( damagemodel, "damage_multipliers", "fire" ))
 				fire_resistance = fire_resistance * 0.9
-				print(fire_resistance)
+				--print(fire_resistance)
 				ComponentObjectSetValue( damagemodel, "damage_multipliers", "fire", tostring(fire_resistance) )
 			end
 		end

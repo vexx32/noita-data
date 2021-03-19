@@ -1117,10 +1117,10 @@ function get_modifier_mappings()
 	--apply_modifier_if_has_none( "snowcave", "FREEZING" )
 
 	-- side biomes
-	set_modifier_if_has_none( "mountain_top", "FREEZING" )
-	set_modifier_if_has_none( "mountain_floating_island", "FREEZING" )
+	set_modifier_if_has_none( "mountain_top", "FREEZING" ) -- NOTE: Freezing tends to occasionally bug out physics bodies, only put it in overworld biomes
+	set_modifier_if_has_none( "mountain_floating_island", "FREEZING" ) 
 	set_modifier_if_has_none( "winter", "FREEZING" )
-	set_modifier_if_has_none( "winter_caves", "FREEZING" )
+	result["winter_caves"] = biome_modifier_cosmetic_freeze
 	--apply_modifier_if_has_none( "bridge", "FREEZING" )
 	--apply_modifier_if_has_none( "vault_frozen", "FREEZING" )
 

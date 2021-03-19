@@ -270,6 +270,29 @@ function get_variable_storage_component( entity_id, name )
 	return nil
 end
 
+function get_stored_perk_pickup_count( entity_id )
+	if not is_valid_entity( entity_id ) then  
+		return nil
+	end
+
+	local value = nil
+	local storage_comp = get_variable_storage_component(entity_id, "perk_pickup_count")
+	if storage_comp ~= nil then
+		component_read(storage_comp, { value_int = 0 }, function(comp)
+			value = comp.value_int
+		end)
+	else
+		value = 1
+		EntityAddComponent( entity_id, "VariableStorageComponent", 
+		{ 
+			name = "perk_pickup_count",
+			value_int = value,
+		})
+	end
+
+	return value
+end
+
 -- component API v2 --------------------------------------------------------------------
 
 function edit_component2( entity_id, type_name, do_what )

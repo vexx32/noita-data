@@ -20,7 +20,9 @@ extra_modifiers =
 	end,
 	
 	damage_plus_small = function()
-		c.damage_projectile_add = c.damage_projectile_add + 0.4
+		c.damage_projectile_add = c.damage_projectile_add + 0.3
+		c.damage_projectile_add = c.damage_projectile_add * 1.25
+		c.damage_healing_add = c.damage_healing_add * 1.25
 	end,
 
 	damage_projectile_boost = function()

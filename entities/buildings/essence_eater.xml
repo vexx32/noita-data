@@ -24,12 +24,8 @@
 	
   <DamageModelComponent 
     air_needed="0" 
-    blood_material="blood" 
+    blood_material="plasma_fading" 
     drop_items_on_death="0" 
-    falling_damage_damage_max="1.2" 
-    falling_damage_damage_min="0.1" 
-    falling_damage_height_max="250" 
-    falling_damage_height_min="70" 
     falling_damages="0" 
     fire_damage_amount="0.4" 
     fire_probability_of_ignition="0"

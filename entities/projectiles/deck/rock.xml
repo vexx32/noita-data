@@ -53,25 +53,6 @@
     image_file="data/items_gfx/in_hand/rock_in_hand.png"
   ></SpriteComponent>
 
-  <ItemComponent
-    _tags="enabled_in_world"
-    item_name="$item_rock"
-    max_child_items="0"
-    is_pickable="1"
-    is_equipable_forced="1"
-    ui_sprite="data/ui_gfx/items/rock.png"
-    ui_description="$itemdesc_rock"
-    preferred_inventory="QUICK"
-  ></ItemComponent>
-
-  <AbilityComponent
-    ui_name="$item_rock"
-    throw_as_item="1"
-  ><gun_config
-    deck_capacity="0"
-  ></gun_config>
-  </AbilityComponent>
-
   <UIInfoComponent
     _tags="enabled_in_world"
     name="$item_rock">
