@@ -1,4 +1,4 @@
-<Entity  tags="prop,hittable,mortal,homing_target" >
+<Entity  tags="prop,hittable,mortal,homing_target,effectable_prop" >
 	<PhysicsBody2Component 
 		angular_damping="0.1" 
 		init_offset_x="11"

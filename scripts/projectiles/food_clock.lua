@@ -10,7 +10,7 @@ if ( comp2 ~= nil ) then
 		local comp = EntityGetFirstComponent( player_id, "IngestionComponent" )
 
 		if ( comp ~= nil ) then
-			local damage_add = 0.8
+			local damage_add = 1.3
 			local count_max = ComponentGetValue2( comp, "ingestion_capacity" )
 			local count = ComponentGetValue2( comp, "ingestion_size" ) - math.floor( count_max * 0.6 )
 			local percent = math.max( count, 0 ) / count_max

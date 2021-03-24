@@ -1,4 +1,4 @@
-<Entity tags="statue_hand_1,statue_hand,hittable">
+<Entity tags="statue_hand_1,statue_hand,hittable,effectable_prop">
 	<PhysicsBody2Component 
 		angular_damping="0.5"
 		destroy_body_if_entity_destroyed="1"

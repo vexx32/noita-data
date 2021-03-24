@@ -89,5 +89,9 @@ if ( ( #sun > 0 ) and ( HasFlagPersistent( "moon_is_sun" ) == false ) ) or ( ( #
 		end
 	end
 	
+	if HasFlagPersistent( "moon_is_sun" ) and HasFlagPersistent( "darkmoon_is_darksun" ) then
+		AddFlagPersistent( "secret_hat" )
+	end
+	
 	EntityKill( entity_id )
 end

@@ -942,4 +942,10 @@
 		height_index="0"
 		color="ff326655" >
 	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/null_room.xml" 
+		height_index="0"
+		color="ffe17e32" >
+	</Biome>
 </BiomesToLoad>

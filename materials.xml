@@ -11410,6 +11410,29 @@
   <CellDataChild
   	_parent="wood"
   	_inherit_reactions="1"
+  	name="cloth_box2d" 
+	ui_name="$mat_cloth"
+	durability="8"
+	platform_type="0"
+	solid_static_type="0"
+	solid_collide_with_self="1"
+	fire_hp="420"
+	hp="5000"
+	wang_color="ff937f52"
+	audio_physics_material_wall="cloth"
+	audio_physics_material_solid="cloth"
+	show_in_creative_mode="0"
+	solid_go_through_sand="1" 
+	>
+  	<Graphics
+	texture_file="data/materials_gfx/cloth.png"
+	color="ff937f52" >
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="wood"
+  	_inherit_reactions="1"
   	name="wood_prop_durable" 
 	ui_name="$mat_wood_prop_durable"
 	platform_type="1"
@@ -15195,6 +15218,12 @@
 		input_cell1="fungus_powder_bad" input_cell2="air"
 		output_cell1="air" output_cell2="air"
 		entity="data/entities/misc/fungus_powder_bad.xml"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="acid_gas_static" input_cell2="air"
+		output_cell1="acid_gas" output_cell2="air"
 		>
 	</Reaction>
 

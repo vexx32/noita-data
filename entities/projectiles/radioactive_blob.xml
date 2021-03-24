@@ -12,7 +12,7 @@
 	<ProjectileComponent 
 		_enabled="1" 
 		speed_min="90"
-		speed_max="115"
+		speed_max="105"
 		on_death_explode="1"
 		on_death_gfx_leave_sprite="0" 
 		on_lifetime_out_explode="1"

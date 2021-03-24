@@ -40,6 +40,7 @@ function item_pickup( entity_item, entity_who_picked, item_name )
 			else
 				message_title = "$itempickup_orb"
 				message_desc = "$itempickupdesc_orb_" .. orb_id_string
+				AddFlagPersistent( "progress_orb_pickup_" .. orb_id_string )
 				
 				for key,comp_id in pairs(components) do 
 					local var_name = ComponentGetValue( comp_id, "name" )

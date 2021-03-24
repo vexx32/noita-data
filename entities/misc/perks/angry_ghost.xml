@@ -1,4 +1,4 @@
-<Entity tags="angry_ghost">
+<Entity tags="angry_ghost" >
 	<HitboxComponent 
         _tags="enabled_in_world"
         aabb_min_x="-4" 

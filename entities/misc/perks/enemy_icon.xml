@@ -1,4 +1,4 @@
-<Entity tags="perk_icon_enemy">	
+<Entity tags="perk_icon_enemy" >	
 
     <InheritTransformComponent
         _tags="enabled_in_hand"

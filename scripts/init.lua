@@ -214,6 +214,9 @@ function OnCountSecrets()
 	local secret_flags = {
 		"progress_ending0",
 		"progress_ending1",
+		"progress_ending2",
+		"progress_ngplus",
+		"progress_orb_evil",
 	}
 
 	local total = GameGetOrbCountTotal() + #secret_flags

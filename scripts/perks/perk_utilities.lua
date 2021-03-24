@@ -29,6 +29,7 @@ function add_rattiness_level(entity_who_picked)
 	
 	if ( rattiness == 3 ) then
 		local child_id = EntityLoad( "data/entities/verlet_chains/tail/verlet_tail.xml", x, y )
+		EntityAddTag( child_id, "perk_entity" )
 		EntityAddChild( entity_who_picked, child_id )
 		AddFlagPersistent( "player_status_ratty" )
 		
@@ -80,6 +81,8 @@ function add_ghostness_level(entity_who_picked)
 	if ( ghostness == 3 ) then
 		local child_id = EntityLoad( "data/entities/misc/perks/ghostly_ghost.xml", x, y )
 		local child_id2 = EntityLoad( "data/entities/misc/perks/tiny_ghost_extra.xml", x, y )
+		EntityAddTag( child_id, "perk_entity" )
+		EntityAddTag( child_id2, "perk_entity" )
 		EntityAddChild( entity_who_picked, child_id )
 		EntityAddChild( entity_who_picked, child_id2 )
 		
@@ -128,7 +131,7 @@ function add_lukkiness_level(entity_who_picked)
 end
 
 
-function add_halo_level(entity_who_picked, amount)
+function add_halo_level(entity_who_picked, amount, set_to_this_value)
 	-- NOTE: Player may be able to play the system slightly by toggling
 	-- the resistance boost on/off in combination with other boosts.
 	-- It's most likely not worth the effort though...
@@ -143,6 +146,11 @@ function add_halo_level(entity_who_picked, amount)
 	local halo_lost = (lvl == -3 and amount == 1) or (lvl == 3 and amount == -1)
 	
 	lvl = lvl + amount
+	
+	if ( set_to_this_value ~= nil ) then
+		lvl = set_to_this_value
+	end
+	
 	GlobalsSetValue( "PLAYER_HALO_LEVEL", tostring( lvl ) )
 
 	if halo_lost then

@@ -268,6 +268,7 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		description = perk_data.ui_description,
 		icon_sprite_file = perk_data.ui_icon
 	})
+	EntityAddTag( entity_ui, "perk_entity" )
 	EntityAddChild( entity_who_picked, entity_ui )
 
 	-- cosmetic fx -------------------------------------------------------
@@ -340,7 +341,7 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 end
 
  -- spawns one perk
-function perk_spawn( x, y, perk_id )
+function perk_spawn( x, y, perk_id, dont_remove_other_perks_ )
 	local perk_data = get_perk_with_id( perk_list, perk_id )
 	if ( perk_data == nil ) then
 		print_error( "spawn_perk( perk_id ) called with'" .. perk_id .. "' - no perk with such id exists." )
@@ -354,6 +355,8 @@ function perk_spawn( x, y, perk_id )
 	if ( entity_id == nil ) then
 		return
 	end
+	
+	local dont_remove_other_perks = dont_remove_other_perks_ or false
 	
 	-- init perk item
 	EntityAddComponent( entity_id, "SpriteComponent", 
@@ -396,12 +399,20 @@ function perk_spawn( x, y, perk_id )
 		name = "perk_id",
 		value_string = perk_data.id,
 	} )
+	
+	if dont_remove_other_perks then
+		EntityAddComponent( entity_id, "VariableStorageComponent", 
+		{ 
+			name="perk_dont_remove_others",
+			value_bool="1",
+		} )
+	end
 
 	return entity_id
 end
 
 -- spawns a random perk
-function perk_spawn_random( x, y )
+function perk_spawn_random( x, y, dont_remove_others_ )
 	local perks = perk_get_spawn_order()
 	local result_id = 0
 	
@@ -413,21 +424,25 @@ function perk_spawn_random( x, y )
 		next_perk_index = 1
 	end
 	GlobalsSetValue( "TEMPLE_NEXT_PERK_INDEX", tostring(next_perk_index) )
+	
+	local dont_remove_others = dont_remove_others_ or false
 
 	GameAddFlagRun( get_perk_flag_name(perk_id) )
-	result_id = perk_spawn( x, y, perk_id )
+	result_id = perk_spawn( x, y, perk_id, dont_remove_others )
 	
 	return result_id
 end
 
 -- spawns perk with text-based id
-function perk_spawn_with_name( x, y, id )
+function perk_spawn_with_name( x, y, id, dont_remove_others_ )
 	local result_id
+	
+	local dont_remove_others = dont_remove_others_ or false
 	
 	for i,v in ipairs( perk_list ) do
 		if ( v.id == id ) then
 			GameAddFlagRun( get_perk_flag_name(v.id) )
-			result_id = perk_spawn( x, y, v.id )
+			result_id = perk_spawn( x, y, v.id, dont_remove_others )
 		end
 	end
 	
@@ -435,12 +450,13 @@ function perk_spawn_with_name( x, y, id )
 end
 
 -- this spawns perks in the temple
-function perk_spawn_many( x, y )
+function perk_spawn_many( x, y, dont_remove_others_ )
 	local perk_count = tonumber( GlobalsGetValue( "TEMPLE_PERK_COUNT", "3" ) )
 	
 	local count = perk_count
 	local width = 60
 	local item_width = width / count
+	local dont_remove_others = dont_remove_others_ or false
 
 	local perks = perk_get_spawn_order()
 
@@ -455,7 +471,7 @@ function perk_spawn_many( x, y )
 		GlobalsSetValue( "TEMPLE_NEXT_PERK_INDEX", tostring(next_perk_index) )
 
 		GameAddFlagRun( get_perk_flag_name(perk_id) )
-		perk_spawn( x + (i-0.5)*item_width, y, perk_id )
+		perk_spawn( x + (i-0.5)*item_width, y, perk_id, dont_remove_others )
 	end
 end
 
@@ -602,4 +618,125 @@ function DEBUG_PERKS()
 	print( "stackable_count:" .. tostring( #perk_pool_stackable ) )
 	print( "non_stackable_count:" .. tostring( #perk_pool_non_stackable ) )
 
+end
+
+function remove_all_perks()
+	local players = get_players()
+	local player_id = players[1]
+	
+	if ( player_id ~= nil ) then
+		for i,perk_data in ipairs(perk_list) do
+			local perk_id = perk_data.id
+			
+			local flag_name = get_perk_picked_flag_name( perk_id )
+			local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
+			
+			if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
+				GameRemoveFlagRun( flag_name )
+				pickup_count = 0
+				GlobalsSetValue( flag_name .. "_PICKUP_COUNT", tostring( pickup_count ) )
+				
+				if ( perk_data.game_effect ~= nil ) then
+					local comp = GameGetGameEffect( player_id, perk_data.game_effect )
+					
+					if ( comp ~= NULL_ENTITY ) then
+						ComponentSetValue2( comp, "frames", 1 )
+					end
+				end
+				
+				if ( perk_data.game_effect2 ~= nil ) then
+					local comp = GameGetGameEffect( player_id, perk_data.game_effect2 )
+					
+					if ( comp ~= NULL_ENTITY ) then
+						ComponentSetValue2( comp, "frames", 1 )
+					end
+				end
+				
+				if ( perk_data.func_remove ~= nil ) then
+					perk_data.func_remove( player_id )
+				end
+				
+				local c = EntityGetAllChildren( player_id )
+				if ( c ~= nil ) then
+					for a,child in ipairs( c ) do
+						if EntityHasTag( child, "perk_entity" ) then
+							EntityKill( child )
+						end
+					end
+				end
+				
+				if ( perk_data.remove_other_perks ~= nil ) then
+					for a,b in ipairs( perk_data.remove_other_perks ) do
+						local f = get_perk_picked_flag_name( b )
+						GameRemoveFlagRun( f )
+					end
+				end
+			end
+		end
+		
+		local comps = EntityGetAllComponents( player_id )
+		for i,v in ipairs( comps ) do
+			if ComponentHasTag( v, "perk_component" ) then
+				EntityRemoveComponent( player_id, v )
+			end
+		end
+		
+		add_halo_level( player_id, 0, 0)
+		
+		GlobalsSetValue( "PLAYER_RATTINESS_LEVEL", "0" )
+		GlobalsSetValue( "PLAYER_FUNGAL_LEVEL", "0" )
+		GlobalsSetValue( "PLAYER_GHOSTNESS_LEVEL", "0" )
+		GlobalsSetValue( "PLAYER_LUKKINESS_LEVEL", "0" )
+		GlobalsSetValue( "PLAYER_HALO_LEVEL", "0" )
+		
+		EntitySetComponentsWithTagEnabled( player_id, "lukki_enable", false )
+		EntitySetComponentsWithTagEnabled( player_id, "player_hat", false )
+		
+		local hat2 = EntityGetComponent( player_id, "SpriteComponent", "player_hat2" )
+		
+		if ( hat2 ~= nil ) then
+			EntitySetComponentsWithTagEnabled( player_id, "player_hat2_shadow", true )
+		end
+	end
+end
+
+function create_all_player_perks( x, y )
+	local perks_to_spawn = {}
+	
+	for i,perk_data in ipairs(perk_list) do
+		local perk_id = perk_data.id
+		
+		local flag_name = get_perk_picked_flag_name( perk_id )
+		local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
+		
+		if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
+			table.insert( perks_to_spawn, { perk_id, pickup_count } )
+			print( "Added " .. perk_id .. ", pickup count " .. tostring( pickup_count ) )
+		end
+	end
+	
+	local full_arc = math.pi
+	local count = #perks_to_spawn
+	local arc_offset = full_arc * 0.04
+	
+	local angle = 0
+	local inc = ( full_arc ) / count
+	
+	local initlen = 24
+	local len_inc = 16
+	
+	for i,v in ipairs( perks_to_spawn ) do
+		local pid = v[1]
+		local pcount = v[2]
+		
+		if ( pcount > 0 ) then
+			for j=1,pcount do
+				local px = x + math.cos( angle ) * ( initlen + (j-1) * len_inc )
+				local py = y - math.sin( angle ) * ( initlen + (j-1) * len_inc )
+				perk_spawn_with_name( px, py, pid, true )
+			end
+		end
+		
+		angle = angle + inc
+	end
 end

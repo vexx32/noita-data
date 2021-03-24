@@ -1,4 +1,4 @@
-<Entity tags="death_ghost">
+<Entity tags="death_ghost" >
 	<Entity>
 		<HitboxComponent 
 			_tags="enabled_in_world"

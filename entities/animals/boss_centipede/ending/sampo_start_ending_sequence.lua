@@ -72,7 +72,8 @@ if( orb_count < 33
 			py = py - 25
 			EntitySetTransform( player_id, px, py )
 		end
-
+		
+		AddFlagPersistent( "progress_ngplus" )
 		doing_newgame_plus = true
 		do_newgame_plus()
 

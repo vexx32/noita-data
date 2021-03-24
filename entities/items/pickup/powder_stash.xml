@@ -11,15 +11,15 @@
     is_bullet="1" 
     linear_damping="0"
     auto_clean="0"
-    on_death_leave_physics_body="0"
+    on_death_leave_physics_body="1"
     hax_fix_going_through_ground="1"
   ></PhysicsBodyComponent>
   
   <PhysicsImageShapeComponent 
     body_id="1"
     centered="1"
-    image_file="data/items_gfx/powder_stash.png"
-    material="wood_prop_noplayerhit"
+    image_file="data/items_gfx/material_pouch.png"
+    material="cloth_box2d"
   ></PhysicsImageShapeComponent>
   
   <PhysicsThrowableComponent
@@ -130,11 +130,6 @@
     </config_explosion>
   </ExplodeOnDamageComponent>
 
-  <PhysicsBodyCollisionDamageComponent 
-    _tags="enabled_in_world" 
-    speed_threshold="120.0"
-  ></PhysicsBodyCollisionDamageComponent>
-
   <!-- item -->
 
   <SpriteComponent
@@ -142,23 +137,23 @@
     _enabled="0"
     offset_x="4"
     offset_y="4"
-    image_file="data/items_gfx/powder_stash.png"
+    image_file="data/items_gfx/material_pouch.png"
   ></SpriteComponent>
 
   <ItemComponent
     _tags="enabled_in_world"
-    item_name="$item_powder_stash"
+    item_name="$item_powder_stash_3"
     max_child_items="0"
     is_pickable="1"
     is_equipable_forced="1"
-    ui_sprite="data/ui_gfx/items/powder_stash.png"
-    ui_description="$itemdesc_powder_stash"
+    ui_sprite="data/ui_gfx/items/material_pouch.png"
+    ui_description="$itemdesc_powder_stash_3"
     preferred_inventory="QUICK"
 	drinkable="0"
   ></ItemComponent>
 
   <AbilityComponent
-    ui_name="$item_powder_stash_with_material"
+    ui_name="$item_powder_stash_with_material_3"
     throw_as_item="1"
   ><gun_config
     deck_capacity="0"
