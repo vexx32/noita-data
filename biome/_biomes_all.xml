@@ -932,6 +932,12 @@
 	</Biome>
 	
 	<Biome 
+		biome_filename="data/biome/robobase.xml" 
+		height_index="0"
+		color="ff4e5267" >
+	</Biome>
+	
+	<Biome 
 		biome_filename="data/biome/funroom.xml" 
 		height_index="0"
 		color="ff0a95a4" >

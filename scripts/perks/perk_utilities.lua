@@ -149,6 +149,11 @@ function add_halo_level(entity_who_picked, amount, set_to_this_value)
 	
 	if ( set_to_this_value ~= nil ) then
 		lvl = set_to_this_value
+		
+		if ( lvl == 0 ) then
+			halo_lost = true
+			halo_gained = false
+		end
 	end
 	
 	GlobalsSetValue( "PLAYER_HALO_LEVEL", tostring( lvl ) )

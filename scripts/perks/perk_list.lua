@@ -523,6 +523,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/extra_hp.png",
 		perk_icon = "data/items_gfx/perks/extra_hp.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
@@ -689,6 +690,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/respawn.png",
 		perk_icon = "data/items_gfx/perks/respawn.png",
 		game_effect = "RESPAWN",
+		one_off_effect = true,
 		stackable = STACKABLE_NO,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			add_halo_level(entity_who_picked, 1)
@@ -2291,6 +2293,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/always_cast.png",
 		perk_icon = "data/items_gfx/perks/always_cast.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 
 			local good_cards = { "DAMAGE", "CRITICAL_HIT", "HOMING", "SPEED", "ACID_TRAIL", "SINEWAVE" }
@@ -2356,6 +2359,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/extra_mana.png",
 		perk_icon = "data/items_gfx/perks/extra_mana.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local wand = find_the_wand_held( entity_who_picked )
 			local x,y = EntityGetTransform( entity_who_picked )
@@ -2429,7 +2433,7 @@ perk_list =
 				end
 			end 
 		end,
-		func = function( entity_perk_item, entity_who_picked, item_name )
+		func_remove = function( entity_perk_item, entity_who_picked, item_name )
 			GlobalsSetValue( "PERK_NO_MORE_SHUFFLE_WANDS", "0" )
 		end,
 	},
@@ -2501,6 +2505,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/faster_wands.png",
 		perk_icon = "data/items_gfx/perks/faster_wands.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x, y = EntityGetTransform( entity_who_picked )
 			local wands = EntityGetInRadiusWithTag( x, y, 24, "wand" )
@@ -2538,6 +2543,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/extra_slots.png",
 		perk_icon = "data/items_gfx/perks/extra_slots.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x, y = EntityGetTransform( entity_who_picked )
 			local wands = EntityGetInRadiusWithTag( x, y, 24, "wand" )
@@ -2704,6 +2710,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/gamble.png", -- TODO
 		perk_icon = "data/items_gfx/perks/gamble.png", -- TODO
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local pos_x, pos_y = EntityGetTransform(entity_who_picked)
 			EntityLoad("data/entities/misc/perk_gamble_spawner.xml", pos_x, pos_y)
@@ -2904,6 +2911,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/mega_beam_stone.png",
 		perk_icon = "data/items_gfx/perks/mega_beam_stone.png",
 		stackable = STACKABLE_YES,
+		one_off_effect = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			EntityLoad( "data/entities/items/pickup/beamstone.xml", x, y-10 )

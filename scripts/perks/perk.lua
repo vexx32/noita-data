@@ -450,19 +450,31 @@ function perk_spawn_with_name( x, y, id, dont_remove_others_ )
 end
 
 -- this spawns perks in the temple
-function perk_spawn_many( x, y, dont_remove_others_ )
+function perk_spawn_many( x, y, dont_remove_others_, ignore_these_ )
 	local perk_count = tonumber( GlobalsGetValue( "TEMPLE_PERK_COUNT", "3" ) )
 	
 	local count = perk_count
 	local width = 60
 	local item_width = width / count
 	local dont_remove_others = dont_remove_others_ or false
+	local ignore_these = ignore_these_ or {}
 
 	local perks = perk_get_spawn_order()
 
 	for i=1,count do
 		local next_perk_index = tonumber( GlobalsGetValue( "TEMPLE_NEXT_PERK_INDEX", "1" ) )
 		local perk_id = perks[next_perk_index]
+		
+		for a,b in ipairs( ignore_these ) do
+			if ( perk_id == b ) then
+				next_perk_index = next_perk_index + 1
+				if next_perk_index > #perks then
+					next_perk_index = 1
+				end
+				perk_id = perks[next_perk_index]
+				break
+			end
+		end
 		
 		next_perk_index = next_perk_index + 1
 		if next_perk_index > #perks then
@@ -706,12 +718,14 @@ function create_all_player_perks( x, y )
 	for i,perk_data in ipairs(perk_list) do
 		local perk_id = perk_data.id
 		
-		local flag_name = get_perk_picked_flag_name( perk_id )
-		local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
-		
-		if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
-			table.insert( perks_to_spawn, { perk_id, pickup_count } )
-			print( "Added " .. perk_id .. ", pickup count " .. tostring( pickup_count ) )
+		if ( perk_data.one_off_effect == nil ) or ( perk_data.one_off_effect == false ) then
+			local flag_name = get_perk_picked_flag_name( perk_id )
+			local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
+			
+			if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
+				table.insert( perks_to_spawn, { perk_id, pickup_count } )
+				print( "Added " .. perk_id .. ", pickup count " .. tostring( pickup_count ) )
+			end
 		end
 	end
 	

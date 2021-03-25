@@ -83,9 +83,9 @@ function do_money_drop( amount_multiplier, trick_kill )
 	end
 	
 	---
-	while money >= 500000 do
-		local eid = load_gold_entity( gold_entity .. "500000.xml", x, y-8, remove_timer )
-		money = money - 500000
+	while money >= 200000 do
+		local eid = load_gold_entity( gold_entity .. "200000.xml", x, y-8, remove_timer )
+		money = money - 200000
 		
 		table.insert( entity_list, {eid, 12} )
 	end	
