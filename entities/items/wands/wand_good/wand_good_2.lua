@@ -43,7 +43,7 @@ gun.shuffle_deck_when_empty = 0
 gun.fire_rate_wait = {20,50}
 gun.spread_degrees = 0
 gun.speed_multiplier = 1.33
-gun.mana_charge_speed = {300,500}
+gun.mana_charge_speed = {800,800}
 gun.mana_max = {1100,1500}
 gun.actions = {"ROCKET_TIER_3"}
 

@@ -1,4 +1,4 @@
-<Entity tags="attack_foot_walker" >
+<Entity tags="leggy_foot_walker" >
 
 	<InheritTransformComponent>
 	</InheritTransformComponent>

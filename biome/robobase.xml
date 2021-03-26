@@ -11,7 +11,7 @@
     limit_background_image="0"
 
     wang_template_file="data/wang_tiles/robobase.png" 
-    lua_script="data/scripts/biomes/vault.lua"
+    lua_script="data/scripts/biomes/robobase.lua"
     wang_map_width="256"
     wang_map_height="256"
     limit_background_image="0"

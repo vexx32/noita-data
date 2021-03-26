@@ -23,6 +23,8 @@
 	<File>data/biome_impl/spliced/lavalake_pit_bottom.xml</File>
 	
 	<File>data/biome_impl/spliced/gourd_room.xml</File>
+	
+	<File>data/biome_impl/spliced/skull.xml</File>
   </PixelSceneFiles>
 
   <BackgroundImages>

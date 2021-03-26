@@ -9044,7 +9044,7 @@
   <CellDataChild
   	_parent="meat_trippy"
 	name="meat_frog"
-	ui_name="$mat_mat_meat_frog"
+	ui_name="$mat_meat_frog"
 	wang_color="ffe2c2a5"
 	solid_on_collision_material="blood"
 	solid_break_to_type="blood"
@@ -9479,7 +9479,6 @@
 	autoignition_temperature="99"
 	solid_friction="0.7"
 	hp="8000" 
-	platform_type="0"
 	show_in_creative_mode="1"
 	>
     <Graphics
@@ -11498,8 +11497,9 @@
   </CellDataChild>
   
   <CellDataChild
-  	_parent="wood"
+  	_parent="aluminium"
   	_inherit_reactions="1"
+	tags="[box2d],[burnable],[solid]"
   	name="cloth_box2d" 
 	ui_name="$mat_cloth"
 	durability="8"
@@ -11512,7 +11512,6 @@
 	audio_physics_material_wall="cloth"
 	audio_physics_material_solid="cloth"
 	show_in_creative_mode="0"
-	solid_go_through_sand="1" 
 	>
   	<Graphics
 	texture_file="data/materials_gfx/cloth.png"
@@ -15318,13 +15317,13 @@
 	</Reaction>
 	
 	<Reaction probability="50"
-		input_cell1="diamond" input_cell2="magic_liquid_polymorph"
+		input_cell1="diamond" input_cell2="magic_liquid_random_polymorph"
 		output_cell1="silver" output_cell2="smoke"
 		>
 	</Reaction>
 	
 	<Reaction probability="50"
-		input_cell1="gold" input_cell2="magic_liquid_polymorph"
+		input_cell1="gold" input_cell2="magic_liquid_random_polymorph"
 		output_cell1="silver" output_cell2="smoke"
 		>
 	</Reaction>
@@ -15336,13 +15335,13 @@
 	</Reaction>
 	
 	<Reaction probability="50"
-		input_cell1="copper" input_cell2="magic_liquid_polymorph"
+		input_cell1="copper" input_cell2="magic_liquid_teleportation"
 		output_cell1="brass" output_cell2="smoke"
 		>
 	</Reaction>
 	
 	<Reaction probability="50"
-		input_cell1="brass" input_cell2="magic_liquid_polymorph"
+		input_cell1="brass" input_cell2="magic_liquid_unstable_teleportation"
 		output_cell1="metal_sand" output_cell2="smoke"
 		>
 	</Reaction>
@@ -15360,7 +15359,7 @@
 	</Reaction>
 	
 	<Reaction probability="100"
-		input_cell1="copper" input_cell2="brass" input_cell3="blood"
+		input_cell1="copper" input_cell2="brass" input_cell3="water"
 		output_cell1="silver" output_cell2="smoke" output_cell3="smoke"
 		>
 	</Reaction>
@@ -15372,7 +15371,7 @@
 	</Reaction>
 	
 	<Reaction probability="100"
-		input_cell1="diamond" input_cell2="silver" input_cell3="blood"
+		input_cell1="diamond" input_cell2="silver" input_cell3="blood_worm"
 		output_cell1="purifying_powder" output_cell2="smoke" output_cell3="smoke"
 		>
 	</Reaction>

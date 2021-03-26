@@ -165,6 +165,9 @@ function fungal_shift( entity, x, y, debug_no_limits )
 
 	-- fx
 	if converted_any then
+		-- remove tripping effect
+		EntityRemoveIngestionStatusEffect( entity, "TRIP" );
+
 		-- audio
 		GameTriggerMusicFadeOutAndDequeueAll( 5.0 )
 		GameTriggerMusicEvent( "music/oneshot/tripping_balls_01", false, x, y )

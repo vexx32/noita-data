@@ -1784,6 +1784,28 @@ actions =
 		end,
 	},
 	{
+		id          = "FUNKY_SPELL",
+		name 		= "???",
+		description = "???",
+		sprite 		= "data/ui_gfx/gun_actions/machinegun_bullet.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/light_bullet_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/machinegun_bullet.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_requires_flag = "card_unlocked_funky",
+		spawn_level                       = "6,10", -- LIGHT_BULLET
+		spawn_probability                 = "0.1,0.1", -- LIGHT_BULLET
+		price = 50,
+		mana = 5,
+		--max_uses = -1,
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/machinegun_bullet.xml")
+			c.fire_rate_wait = c.fire_rate_wait - 3
+			c.screenshake = c.screenshake + 0.2
+			c.spread_degrees = c.spread_degrees + 2.0
+			c.damage_critical_chance = c.damage_critical_chance + 1
+		end,
+	},
+	{
 		id          = "PEBBLE",
 		name 		= "$action_pebble",
 		description = "$actiondesc_pebble",
@@ -3704,7 +3726,8 @@ actions =
 		spawn_probability                 = "1", -- DESTRUCTION
 		price = 600,
 		mana = 600,
-		max_uses    = 5, 
+		max_uses    = 5,
+		ai_never_uses = true,
 		action 		= function()
 			add_projectile("data/entities/projectiles/deck/destruction.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 100
@@ -4077,7 +4100,7 @@ actions =
 		mana = 0,
 		action 		= function()
 			current_reload_time = 90
-			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 40.0
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback - 80.0
 			draw_actions( 1, true )
 		end,
 	},

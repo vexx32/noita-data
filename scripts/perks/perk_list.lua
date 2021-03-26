@@ -1628,7 +1628,7 @@ perk_list =
 			else
 				-- add length to limbs
 				for _,v in ipairs(EntityGetAllChildren(entity_who_picked)) do
-					if EntityHasTag(v, "attack_foot_walker") then
+					if EntityHasTag(v, "leggy_foot_walker") then
 						component_readwrite(EntityGetFirstComponent(v, "IKLimbComponent"), { length = 50 }, function(comp)
 							comp.length = comp.length * 1.5
 						end)
