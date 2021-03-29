@@ -430,6 +430,14 @@ perk_list =
 		game_effect = "INVISIBILITY",
 		stackable = STACKABLE_NO,
 		usable_by_enemies = true,
+		func_remove = function( entity_who_picked )
+			local s = EntityGetComponent( entity_who_picked, "SpriteComponent" )
+			if ( s ~= nil ) then
+				for a,b in ipairs( s ) do
+					ComponentSetValue2( b, "alpha", 1.0 )
+				end
+			end
+		end,
 	},
 	{
 		id = "GLOBAL_GORE",
@@ -691,7 +699,9 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/respawn.png",
 		game_effect = "RESPAWN",
 		one_off_effect = true,
-		stackable = STACKABLE_NO,
+		do_not_remove = true,
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			add_halo_level(entity_who_picked, 1)
 		end,
@@ -831,6 +841,21 @@ perk_list =
 				script_source_file = "data/scripts/perks/radar_moon.lua",
 				execute_every_n_frame = "1",
 			} )
+		end,
+	},
+	{
+		id = "MAP",
+		ui_name = "$perk_map",
+		ui_description = "$perkdesc_map",
+		ui_icon = "data/ui_gfx/perk_icons/map.png",
+		perk_icon = "data/items_gfx/perks/map.png",
+		not_in_default_perk_pool = true,
+		stackable = STACKABLE_NO,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			local x,y = EntityGetTransform( entity_who_picked )
+			local child_id = EntityLoad( "data/entities/misc/perks/map.xml", x, y )
+			EntityAddTag( child_id, "perk_entity" )
+			EntityAddChild( entity_who_picked, child_id )
 		end,
 	},
 	-- RESISTANCE AFFECTORS
@@ -2105,10 +2130,10 @@ perk_list =
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/lukki_minion.xml", x, y )
+			EntityAddTag( child_id, "perk_entity" )
 			
 			EntityAddComponent( child_id, "VariableStorageComponent", 
 			{
-				_tags = "perk_component",
 				name = "owner_id",
 				value_int = tostring( entity_who_picked ),
 			} )

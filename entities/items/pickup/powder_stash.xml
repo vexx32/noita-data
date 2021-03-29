@@ -31,6 +31,7 @@
     _tags="enabled_in_world"
     lifetime="-1"
     penetrate_entities="1"
+	collide_with_entities="0"
   ></ProjectileComponent>
 
   <VelocityComponent
@@ -131,6 +132,13 @@
   </ExplodeOnDamageComponent>
 
   <!-- item -->
+  
+  <LuaComponent 
+    execute_on_added="1"
+    remove_after_executed="1"
+    call_init_function="1"
+    script_source_file="data/scripts/items/powder_stash.lua" 
+  ></LuaComponent>
 
   <SpriteComponent
     _tags="enabled_in_hand"

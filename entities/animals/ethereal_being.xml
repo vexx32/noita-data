@@ -31,6 +31,7 @@
 		can_fly="1" 
 		aggressiveness_min="1"
 		aggressiveness_max="100"
+		sense_creatures_through_walls="1"
 		>
 	</AnimalAIComponent>
 
@@ -69,6 +70,8 @@
 		blood_spray_material="plasma_fading"
 		blood_sprite_directional=""
 		blood_sprite_large=""
+		air_needed="0"
+		falling_damages="0"
 		>
 		<damage_multipliers
 			projectile="0.0"

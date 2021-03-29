@@ -42,16 +42,22 @@ g_small_enemies =
 		entity 	= "data/entities/animals/basebot_sentry.xml"
 	},
 	{
-		prob   		= 0.2,
-		min_count	= 1,
-		max_count	= 2,    
-		entity 	= "data/entities/animals/robobase/drone_lasership.xml"
-	},
-	{
-		prob   		= 0.05,
+		prob   		= 0.08,
 		min_count	= 1,
 		max_count	= 1,    
-		entity 		= "data/entities/animals/robobase/monk.xml"
+		entity 	= "data/entities/animals/basebot_hidden.xml"
+	},
+	{
+		prob   		= 0.12,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/basebot_neutralizer.xml"
+	},
+	{
+		prob   		= 0.12,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/basebot_soldier.xml"
 	},
 	{
 		prob   		= 0.2,
@@ -63,10 +69,7 @@ g_small_enemies =
 		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    
-		entities 	= {
-			"data/entities/animals/roboguard_big.xml",
-			"data/entities/animals/robobase/healerdrone_physics.xml"
-		},
+		entity 	= "data/entities/animals/robobase/healerdrone_physics.xml"
 	},
 }
 
@@ -88,26 +91,34 @@ g_big_enemies =
 		entity 	= "data/entities/animals/robobase/drone_shield.xml",
 	},
 	{
-		prob   		= 0.2,
+		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    
-		entity 	= "data/entities/animals/robobase/tank_super.xml",
-	},
-	{
-		prob   		= 0.2,
-		min_count	= 1,
-		max_count	= 1,    
-		entity 	= "data/entities/animals/roboguard_big.xml"
+		entity 	= "data/entities/animals/basebot_hidden.xml"
 	},
 	{
 		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    
-		entities 	= {
-			"data/entities/animals/roboguard_big.xml",
-			"data/entities/animals/robobase/healerdrone_physics.xml",
-			"data/entities/animals/vault/coward.xml",
-		},
+		entity 	= "data/entities/animals/basebot_neutralizer.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/basebot_sentry.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/basebot_soldier.xml"
+	},
+	{
+		prob   		= 0.2,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/robobase/tank_super.xml",
 	},
 	{
 		prob   		= 0.1,

@@ -30,7 +30,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 		table.remove( opts, rnd )
 	end
 	
-	StatsLogPlayerKill( entity_id )
+	--StatsLogPlayerKill( entity_id )
 
 	--EntityKill( entity_id )
 end

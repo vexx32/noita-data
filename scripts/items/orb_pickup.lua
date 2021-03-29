@@ -56,6 +56,7 @@ function item_pickup( entity_item, entity_who_picked, item_name )
 	local orbs = GameGetOrbCountAllTime()
 	if ( orbs >= 11 ) then
 		AddFlagPersistent( "progress_orb_all" )
+		GameGiveAchievement( "ALL_ORBS" )
 	end
 	
 	-- todo( Petri ): Only do this if the boss has not been beaten

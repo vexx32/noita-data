@@ -1,7 +1,7 @@
 <Sprite
  filename="data/enemies_gfx/basebot_sentry.png"
  offset_x="9"
- offset_y="9"
+ offset_y="15"
   default_animation="stand" >
 
  <!-- stand -->

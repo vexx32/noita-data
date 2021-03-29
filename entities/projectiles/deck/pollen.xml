@@ -1,7 +1,7 @@
 <Entity 
   name="$projectile_default" tags="projectile_player,hittable"
    >
-
+   
 	<Base file="data/entities/base_projectile.xml" >
 		<VelocityComponent
 			gravity_y="10"
@@ -137,6 +137,11 @@
         aabb_min_y="-5" 
         aabb_max_y="5" >
     </HitboxComponent>
+	
+	<GenomeDataComponent
+		herd_id="player"
+		>
+	</GenomeDataComponent>
 
     <DamageModelComponent 
         _enabled="1" 
@@ -149,6 +154,10 @@
         blood_material="fungisoil"
         blood_multiplier="0"
         create_ragdoll="0" >
+		<damage_multipliers
+			explosion="0.0"
+			>
+		</damage_multipliers>
     </DamageModelComponent>
 
 </Entity>

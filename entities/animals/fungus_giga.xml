@@ -33,7 +33,8 @@
 			minimum_knockback_force="100000"
 			>
 			<damage_multipliers
-				fire="1.4" 
+				fire="1.4"
+				explosion="0.0"
 				>
 			</damage_multipliers>
 		</DamageModelComponent>

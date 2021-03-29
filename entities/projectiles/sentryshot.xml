@@ -56,6 +56,7 @@
     offset_y="0" 
     rect_animation="fireball"
 	additive="1"
+	emissive="1"
      >
   </SpriteComponent>
 

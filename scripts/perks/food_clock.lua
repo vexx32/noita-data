@@ -16,9 +16,12 @@ if ( comp ~= nil ) then
 
 	if (count < count_max * damage_starts_at_satiation_percent) then
 		local damage = 0.0
-		component_read( EntityGetFirstComponent( entity_id, "DamageModelComponent" ), { max_hp = 1}, function(damagemodel)
-			damage = damagemodel.max_hp / 100
-			EntityInflictDamage( entity_id, damage, "DAMAGE_CURSE", "$damage_hunger", "NONE", 0, 0, entity_id )
+		component_read( EntityGetFirstComponent( entity_id, "DamageModelComponent" ), { max_hp = 1, hp = 0.04 }, function(damagemodel)
+			damage = damagemodel.max_hp / 120
+			
+			if ( damagemodel.hp > damage ) then
+				EntityInflictDamage( entity_id, damage, "DAMAGE_CURSE", "$damage_hunger", "NONE", 0, 0, entity_id )
+			end
 		end)
 	end
 

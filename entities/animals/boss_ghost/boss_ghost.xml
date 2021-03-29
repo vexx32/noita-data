@@ -55,7 +55,7 @@
 		attack_dash_enabled="0"
 		attack_ranged_enabled="1"
 		attack_ranged_max_distance="200"
-		attack_ranged_entity_file="data/entities/animals/boss_ghost/polyp_shot.xml"
+		attack_ranged_entity_file="data/entities/animals/boss_ghost/boss_ghost_polyp.xml"
 		attack_ranged_frames_between="60"
 		attack_melee_enabled="0"
 		food_material="blood"

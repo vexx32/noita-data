@@ -24,6 +24,7 @@ function material_area_checker_failed( pos_x, pos_y )
 			GamePrintImportant( "$logdesc_temple_spawn_guardian", "" )
 		else
 			GamePrintImportant( "$logdesc_gods_are_very_angry", "" )
+			GameGiveAchievement( "GODS_ENRAGED" )
 		end
 		GamePlaySound( "data/audio/Desktop/event_cues.bank", "event_cues/angered_the_gods/create", pos_x, pos_y )
 		GameScreenshake( 150 )

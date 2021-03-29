@@ -960,4 +960,10 @@
 		height_index="0"
 		color="ff39a760" >
 	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/roboroom.xml" 
+		height_index="0"
+		color="ff9d893d" >
+	</Biome>
 </BiomesToLoad>

@@ -183,18 +183,30 @@ function perk_get_spawn_order()
 end
 
 -- picks a perk. entity_item should be created by spawn_perk
-function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx, kill_other_perks )
+function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx, kill_other_perks, no_perk_entity_ )
 	-- fetch perk info ---------------------------------------------------
+	
+	local no_perk_entity = no_perk_entity_ or false
+	local pos_x, pos_y
 
-	local pos_x, pos_y = EntityGetTransform( entity_item )
+	if no_perk_entity then
+		pos_x, pos_y = EntityGetTransform( entity_who_picked )
+	else
+		pos_x, pos_y = EntityGetTransform( entity_item )
+	end
 	
 	local perk_name = "PERK_NAME_NOT_DEFINED"
 	local perk_desc = "PERK_DESCRIPTION_NOT_DEFINED"
 
 	local perk_id = ""
-	edit_component( entity_item, "VariableStorageComponent", function(comp,vars)
-		perk_id = ComponentGetValue( comp, "value_string" )
-	end)
+	
+	if no_perk_entity then
+		perk_id = item_name
+	else
+		edit_component( entity_item, "VariableStorageComponent", function(comp,vars)
+			perk_id = ComponentGetValue( comp, "value_string" )
+		end)
+	end
 
 	local perk_data = get_perk_with_id( perk_list, perk_id )
 	if perk_data == nil then
@@ -222,25 +234,41 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		AddFlagPersistent( flag_name_persistent )
 	end
 	GameAddFlagRun( flag_name )
+	
+	local no_remove = perk_data.do_not_remove or false
 
 	-- add a game effect or two
 	if perk_data.game_effect ~= nil then
-		local game_effect_comp = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect, true )
+		local game_effect_comp,game_effect_entity = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect, true )
 		if game_effect_comp ~= nil then
 			ComponentSetValue( game_effect_comp, "frames", "-1" )
+			
+			if ( no_remove == false ) then
+				ComponentAddTag( game_effect_comp, "perk_component" )
+				EntityAddTag( game_effect_entity, "perk_entity" )
+			end
 		end
 	end
 	
 	if perk_data.game_effect2 ~= nil then
-		local game_effect_comp = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect2, true )
+		local game_effect_comp,game_effect_entity = GetGameEffectLoadTo( entity_who_picked, perk_data.game_effect2, true )
 		if game_effect_comp ~= nil then
 			ComponentSetValue( game_effect_comp, "frames", "-1" )
+			
+			if ( no_remove == false ) then
+				ComponentAddTag( game_effect_comp, "perk_component" )
+				EntityAddTag( game_effect_entity, "perk_entity" )
+			end
 		end
 	end
 	
 	-- particle effect only applied once
 	if perk_data.particle_effect ~= nil and ( pickup_count <= 1 ) then
 		local particle_id = EntityLoad( "data/entities/particles/perks/" .. perk_data.particle_effect .. ".xml" )
+		
+		if ( no_remove == false ) then
+			EntityAddTag( particle_id, "perk_entity" )
+		end
 		
 		EntityAddChild( entity_who_picked, particle_id )
 	end
@@ -268,7 +296,11 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 		description = perk_data.ui_description,
 		icon_sprite_file = perk_data.ui_icon
 	})
-	EntityAddTag( entity_ui, "perk_entity" )
+	
+	if ( no_remove == false ) then
+		EntityAddTag( entity_ui, "perk_entity" )
+	end
+	
 	EntityAddChild( entity_who_picked, entity_ui )
 
 	-- cosmetic fx -------------------------------------------------------
@@ -336,8 +368,10 @@ function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx,
 			EntitySetComponentsWithTagEnabled( rid, "perk_reroll_disable", false )
 		end
 	end
-
-	EntityKill( entity_item ) -- entity item should always be killed, hence we don't kill it in the above loop
+	
+	if ( no_perk_entity == false ) then
+		EntityKill( entity_item ) -- entity item should always be killed, hence we don't kill it in the above loop
+	end
 end
 
  -- spawns one perk
@@ -637,13 +671,14 @@ function remove_all_perks()
 	local player_id = players[1]
 	
 	if ( player_id ~= nil ) then
-		for i,perk_data in ipairs(perk_list) do
+		for i,perk_data in ipairs( perk_list ) do
 			local perk_id = perk_data.id
 			
 			local flag_name = get_perk_picked_flag_name( perk_id )
 			local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
 			
-			if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
+			if ( GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) ) and ( ( perk_data.do_not_remove == nil ) or ( perk_data.do_not_remove == false ) ) then
+				print( "Removing " .. perk_id )
 				GameRemoveFlagRun( flag_name )
 				pickup_count = 0
 				GlobalsSetValue( flag_name .. "_PICKUP_COUNT", tostring( pickup_count ) )
@@ -709,6 +744,11 @@ function remove_all_perks()
 		if ( hat2 ~= nil ) then
 			EntitySetComponentsWithTagEnabled( player_id, "player_hat2_shadow", true )
 		end
+		
+		local minions = EntityGetWithTag( "perk_entity" )
+		for i,v in ipairs( minions ) do
+			EntityKill( v )
+		end
 	end
 end
 
@@ -724,19 +764,21 @@ function create_all_player_perks( x, y )
 			
 			if GameHasFlagRun( flag_name ) or ( pickup_count > 0 ) then
 				table.insert( perks_to_spawn, { perk_id, pickup_count } )
-				print( "Added " .. perk_id .. ", pickup count " .. tostring( pickup_count ) )
+				-- print( "Added " .. perk_id .. ", pickup count " .. tostring( pickup_count ) )
 			end
 		end
 	end
 	
 	local full_arc = math.pi
-	local count = #perks_to_spawn
-	local arc_offset = full_arc * 0.04
+	local count = 8
+	local row_size_inc = 4
+	local currcount = 0
 	
 	local angle = 0
 	local inc = ( full_arc ) / count
 	
 	local initlen = 24
+	local length = initlen
 	local len_inc = 16
 	
 	for i,v in ipairs( perks_to_spawn ) do
@@ -745,12 +787,22 @@ function create_all_player_perks( x, y )
 		
 		if ( pcount > 0 ) then
 			for j=1,pcount do
-				local px = x + math.cos( angle ) * ( initlen + (j-1) * len_inc )
-				local py = y - math.sin( angle ) * ( initlen + (j-1) * len_inc )
+				local px = x + math.cos( angle ) * length
+				local py = y - math.sin( angle ) * length
 				perk_spawn_with_name( px, py, pid, true )
+				
+				angle = angle + inc
+				currcount = currcount + 1
+				
+				if ( currcount > count ) then
+					currcount = 0
+					angle = 0
+					count = count + row_size_inc
+					length = length + len_inc
+					
+					inc = ( full_arc ) / count
+				end
 			end
 		end
-		
-		angle = angle + inc
 	end
 end

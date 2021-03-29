@@ -1,4 +1,4 @@
-<Entity  name="$animal_drone_lasership" tags="drone_lasership">
+<Entity  name="$animal_sentry">
   
 	<Base file="data/entities/base_enemy_robot.xml" >
 		<AnimalAIComponent 
@@ -14,7 +14,7 @@
 			can_walk="0"
 			attack_ranged_entity_file="data/entities/projectiles/sentryshot.xml"
 			attack_ranged_min_distance="0"
-			attack_ranged_max_distance="90"
+			attack_ranged_max_distance="200"
 			attack_ranged_frames_between="60"
 			attack_ranged_action_frame="3"
 			attack_ranged_offset_y="-1"
@@ -23,7 +23,7 @@
 		
 		<DamageModelComponent 
             hp="14.5"
-			ragdoll_filenames_file="data/ragdolls/basebot_sentry/filenames.txt" >
+			ragdoll_filenames_file="data/ragdolls/basebot/filenames_sentry.txt" >
 			<damage_multipliers
 				projectile="0.0" 
 				>
@@ -136,6 +136,15 @@
 		execute_every_n_frame="40"
 		>
 	</LuaComponent>
+	
+	<SpriteComponent 
+        _tags="character" 
+		alpha="1" 
+		image_file="data/enemies_gfx/basebot_sentry_emissive.xml"
+		emissive="1"
+        additive="1"
+		rect_animation="walk" >
+	</SpriteComponent>
 
 </Entity>
 

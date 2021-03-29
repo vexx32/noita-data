@@ -85,8 +85,13 @@ worm_end
 drone_physics
 drone_lasership
 drone_shield
+basebot_sentry
+basebot_hidden
+basebot_neutralizer
+basebot_soldier
 healerdrone_physics
 roboguard
+roboguard_big
 assassin
 spearbot
 tank
@@ -150,6 +155,7 @@ parallel_alchemist
 boss_ghost
 boss_ghost_polyp
 boss_pit
+boss_robot
 parallel_tentacles
 minipit
 gate_monster_a
