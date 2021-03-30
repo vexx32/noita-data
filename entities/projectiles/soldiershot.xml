@@ -40,9 +40,9 @@
 		shoot_light_flash_radius="100" 
 		>
 		<damage_by_type
-			fire="0.6"
-			slice="0.6"
-			radioactive="0.6"
+			fire="0.4"
+			slice="0.4"
+			radioactive="0.4"
 			>
 		</damage_by_type>
 		<config_explosion

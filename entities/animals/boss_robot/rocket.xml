@@ -31,7 +31,7 @@
     explosion_dont_damage_shooter="0" 
     on_collision_die="1"
     lifetime="100"
-    damage="32"
+    damage="3"
     velocity_sets_scale="1"
     lifetime_randomness="7"
     ragdoll_force_multiplier="0.04"

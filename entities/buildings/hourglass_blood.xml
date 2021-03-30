@@ -17,7 +17,7 @@
 		area_aabb.min_x="-16" 
 		area_aabb.max_x="16" 
 		area_aabb.min_y="0"   
-		area_aabb.max_y="11" 
+		area_aabb.max_y="8" 
 		update_every_x_frame="1"
 		material="blood"
 		material2="blood"

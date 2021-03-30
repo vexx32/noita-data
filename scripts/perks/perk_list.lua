@@ -2113,6 +2113,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/homunculus.png",
 		perk_icon = "data/items_gfx/perks/homunculus.png",
 		stackable = STACKABLE_YES,
+		stackable_maximum = 10,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/homunculus_spawner.xml", x, y )

@@ -11,7 +11,7 @@
         max_amount_in_inventory="1" 
         reload_time_frames="0" 
         shooting_reduces_amount_in_inventory="0" 
-        sprite_file="data/entities/items/wands/wand_good/wand_good_1_sprite.xml" 
+        sprite_file="data/items_gfx/wands/custom/good_01.xml" 
         swim_propel_amount="0" 
         throw_as_item="0" 
         ui_name="wand_good_1" 
@@ -29,7 +29,7 @@
     
     <HotspotComponent 
         _tags="shoot_pos" 
-        offset.x="6" 
+        offset.x="15" 
         offset.y="-0.5" >
     </HotspotComponent>
 	
@@ -43,7 +43,7 @@
 		<SpriteComponent 
 			_tags="item,enabled_in_world,enabled_in_hand" 
 			alpha="1" 
-			image_file="data/entities/items/wands/wand_good/wand_good_1_sprite.xml" 
+			image_file="data/items_gfx/wands/custom/good_01.xml" 
 			next_rect_animation="default" 
 			rect_animation="default"
 			z_index="-1.5" >

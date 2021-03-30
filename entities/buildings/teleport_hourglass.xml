@@ -146,7 +146,7 @@
 		area_aabb.min_x="-16" 
 		area_aabb.max_x="16" 
 		area_aabb.min_y="110"   
-		area_aabb.max_y="120"
+		area_aabb.max_y="115"
 		update_every_x_frame="1"
 		material="magic_liquid_teleportation"
 		material2="magic_liquid_unstable_teleportation"

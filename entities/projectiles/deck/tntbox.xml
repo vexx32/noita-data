@@ -10,7 +10,7 @@
   
   <PhysicsImageShapeComponent 
     image_file="data/props_gfx/tnt_box.png"
-    material="tnt"
+    material="wood"
   ></PhysicsImageShapeComponent>
   
   <PhysicsThrowableComponent
@@ -111,7 +111,7 @@
   	explode_on_death_percent="1"
   	explode_on_damage_percent="0.1"
     physics_body_modified_death_probability="0.9"
-    physics_body_destruction_required="0.8"
+    physics_body_destruction_required="0.2"
   	>
     <config_explosion
       never_cache="0"

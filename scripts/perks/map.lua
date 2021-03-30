@@ -5,6 +5,8 @@ local player_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 y = y - 4 -- offset to middle of character
 
+local pw,mx = check_parallel_pos( x )
+
 local timer = 0
 local timercomp
 local comps = EntityGetComponent( entity_id, "VariableStorageComponent" )
@@ -36,7 +38,7 @@ if ( timercomp ~= nil ) and ( entity_id ~= player_id ) then
 			local mult_x = 512 / 6.0
 			local mult_y = 512 / 6.0
 
-			local dx = math.min( math.max( ( map_x - x ) / mult_x, -128), 128 )
+			local dx = math.min( math.max( ( map_x - mx ) / mult_x, -128), 128 )
 			local dy = math.min( math.max( ( map_y - y ) / mult_y, -240), 240 )
 
 			local mi_x = x + dx * 0.5
@@ -55,6 +57,18 @@ if ( timercomp ~= nil ) and ( entity_id ~= player_id ) then
 
 			GameCreateSpriteForXFrames( "data/particles/" .. map_sprite .. ".png", mi_x, mi_y, true, 0, 0, 1, true )
 			GameCreateSpriteForXFrames( "data/particles/spatial_map_player.png", pi_x, pi_y, true, 0, 0, 1, true )
+			
+			if ( pw ~= 0 ) then
+				local name = "spatial_map_pw_"
+				
+				if ( pw > 0 ) then
+					name = name .. tostring( math.min( 4, pw ) )
+				elseif ( pw < 0 ) then
+					name = name .. "m" .. tostring( math.min( 4, math.abs( pw ) ) )
+				end
+				
+				GameCreateSpriteForXFrames( "data/particles/" .. name .. ".png", mi_x + 6, mi_y - 92, true, 0, 0, 1, true )
+			end
 		end
 	else
 		timer = 0

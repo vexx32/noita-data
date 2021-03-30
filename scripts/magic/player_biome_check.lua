@@ -29,5 +29,21 @@ else
 	print( "nooo" )
 end
 
+if ( ( string.find( biome, "holymountain" ) ~= nil ) or ( string.find( biome, "victoryroom" ) ~= nil ) ) then
+	local deepest_hm = tonumber( GlobalsGetValue( "HOLY_MOUNTAIN_DEPTH", "0" ) )
+	
+	pos_y = math.floor( pos_y / 512 )
+	
+	if ( pos_y > deepest_hm + 1 ) then
+		local hm_visits = tonumber( GlobalsGetValue( "HOLY_MOUNTAIN_VISITS", "0" ) )
+		hm_visits = hm_visits + 1
+		deepest_hm = pos_y
+		GlobalsSetValue( "HOLY_MOUNTAIN_VISITS", tostring( hm_visits ) )
+		GlobalsSetValue( "HOLY_MOUNTAIN_DEPTH", tostring( deepest_hm ) )
+		
+		print( "uusi HM " .. tostring( hm_visits ) )
+	end
+end
+
 GlobalsSetValue( "visited_biomes", vb )
 GlobalsSetValue( "visited_biomes_count", tostring( vbc ) )

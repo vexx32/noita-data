@@ -12,6 +12,10 @@ local old_depth = 0
 local status = 0
 local memory = ""
 
+local flag_name = "PERK_PICKED_HOMUNCULUS"
+local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
+local h_limit = 4 + pickup_count
+
 local scomp,dcomp,mcomp
 
 if ( comps ~= nil ) then
@@ -32,10 +36,14 @@ end
 
 if ( status == 0 ) then
 	if ( string.find( biome, "holymountain" ) == nil ) and ( string.find( biome, "victoryroom" ) == nil ) then
+		local h = EntityGetWithTag( "homunculus" )
 		status = 1
-		EntityLoad( "data/entities/misc/homunculus.xml", pos_x, pos_y )
-		EntityLoad( "data/entities/particles/swarm_poof.xml", pos_x, pos_y )
-		GamePrint( "$log_homunculus" )
+		
+		if ( #h < h_limit ) then
+			EntityLoad( "data/entities/misc/homunculus.xml", pos_x, pos_y )
+			EntityLoad( "data/entities/particles/swarm_poof.xml", pos_x, pos_y )
+			GamePrint( "$log_homunculus" )
+		end
 	end
 elseif ( status >= 1 ) then
 	if ( ( string.find( biome, "holymountain" ) ~= nil ) or ( string.find( biome, "victoryroom" ) ~= nil ) ) and ( old_depth < depth ) and ( depth_remainder > 150 ) then		
@@ -47,9 +55,13 @@ elseif ( status >= 1 ) then
 	
 	if ( string.find( memory, "_SPAWN" ) == nil ) and ( string.find( memory, biome ) == nil ) and ( string.find( memory, "holymountain" ) == nil ) and ( string.find( memory, "victoryroom" ) == nil ) then
 		status = 1
-		EntityLoad( "data/entities/misc/homunculus.xml", pos_x, pos_y )
-		EntityLoad( "data/entities/particles/swarm_poof.xml", pos_x, pos_y )
-		GamePrint( "$log_homunculus" )
+		
+		local h = EntityGetWithTag( "homunculus" )
+		if ( #h < h_limit ) then
+			EntityLoad( "data/entities/misc/homunculus.xml", pos_x, pos_y )
+			EntityLoad( "data/entities/particles/swarm_poof.xml", pos_x, pos_y )
+			GamePrint( "$log_homunculus" )
+		end
 		memoryid = biome .. "_SPAWN"
 	end
 	
