@@ -112,7 +112,9 @@ perk_list =
 		ui_description = "$perkdesc_exploding_gold",
 		ui_icon = "data/ui_gfx/perk_icons/exploding_gold.png",
 		perk_icon = "data/items_gfx/perks/exploding_gold.png",
-		stackable = STACKABLE_NO,
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
+		stackable_maximum = 6,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			GameAddFlagRun( "exploding_gold" )
 		end,
@@ -1486,6 +1488,8 @@ perk_list =
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
 			end
 			
+			perk_pickup_event("RAT")
+			
 			add_rattiness_level(entity_who_picked)
 			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
@@ -1596,11 +1600,14 @@ perk_list =
 				end
 			end
 			
+			perk_pickup_event("LUKKI")
+			
 			if ( pickup_count <= 2 ) then
 				add_lukkiness_level(entity_who_picked)
 			end
 		end,
-		func_remove = function( entity_who_picked )	
+		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("LUKKI")
 			GameRemoveFlagRun( "ATTACK_FOOT_CLIMBER" )
 			
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
@@ -1676,11 +1683,14 @@ perk_list =
 				end
 			end
 			
+			perk_pickup_event("LUKKI")
+			
 			if ( pickup_count <= 2 ) then
 				add_lukkiness_level(entity_who_picked)
 			end
 		end,
-		func_remove = function( entity_who_picked )	
+		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("LUKKI")
 			GameRemoveFlagRun( "ATTACK_FOOT_CLIMBER" )
 			local platformingcomponents = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
 			if( platformingcomponents ~= nil ) then
@@ -1698,25 +1708,30 @@ perk_list =
 		ui_description = "$perkdesc_plague_rats",
 		ui_icon = "data/ui_gfx/perk_icons/plague_rats.png",
 		perk_icon = "data/items_gfx/perks/plague_rats.png",
-		stackable = STACKABLE_NO,
-		func = function( entity_perk_item, entity_who_picked, item_name )
-		
-			EntityAddComponent( entity_who_picked, "LuaComponent", 
-			{
-				_tags = "perk_component",
-				script_source_file = "data/scripts/perks/plague_rats.lua",
-				execute_every_n_frame = "20",
-			} )
-			
-			local world_entity_id = GameGetWorldStateEntity()
-			if ( world_entity_id ~= nil ) then
-				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
+		stackable_maximum = 5,
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
+			if ( pickup_count <= 1 ) then
+				EntityAddComponent( entity_who_picked, "LuaComponent", 
+				{
+					_tags = "perk_component",
+					script_source_file = "data/scripts/perks/plague_rats.lua",
+					execute_every_n_frame = "20",
+				} )
+				
+				local world_entity_id = GameGetWorldStateEntity()
+				if ( world_entity_id ~= nil ) then
+					component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
+				end
+				--GenomeSetHerdId( entity_who_picked, "rat" )
 			end
 			
+			perk_pickup_event("RAT")
 			add_rattiness_level(entity_who_picked)
-			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
 		func_remove = function( entity_perk_item, entity_who_picked, item_name )
+			reset_perk_pickup_event("RAT")
 			local world_entity_id = GameGetWorldStateEntity()
 			if ( world_entity_id ~= nil ) then
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = false, } )
@@ -1744,10 +1759,12 @@ perk_list =
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = true, } )
 			end
 			
+			perk_pickup_event("RAT")
 			add_rattiness_level(entity_who_picked)
 			--GenomeSetHerdId( entity_who_picked, "rat" )
 		end,
 		func_remove = function( entity_perk_item, entity_who_picked, item_name )
+			reset_perk_pickup_event("RAT")
 			local world_entity_id = GameGetWorldStateEntity()
 			if ( world_entity_id ~= nil ) then
 				component_write( EntityGetFirstComponent( world_entity_id, "WorldStateComponent" ), { perk_rats_player_friendly = false, } )
@@ -1761,14 +1778,17 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/cordyceps.png",
 		perk_icon = "data/items_gfx/perks/cordyceps.png",
 		stackable = STACKABLE_NO,
-		func = function( entity_perk_item, entity_who_picked, item_name )
-		
-			EntityAddComponent( entity_who_picked, "LuaComponent", 
-			{
-				_tags = "perk_component",
-				script_source_file = "data/scripts/perks/cordyceps.lua",
-				execute_every_n_frame = "20",
-			} )
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
+			if ( pickup_count <= 1 ) then
+				EntityAddComponent( entity_who_picked, "LuaComponent", 
+				{
+					_tags = "perk_component",
+					script_source_file = "data/scripts/perks/cordyceps.lua",
+					execute_every_n_frame = "20",
+				} )
+			end
+			
+			perk_pickup_event("FUNGI")
 			
 			if ( GameHasFlagRun( "player_status_cordyceps" ) == false ) then
 				GameAddFlagRun( "player_status_cordyceps" )
@@ -1776,6 +1796,7 @@ perk_list =
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("FUNGI")
 			GameRemoveFlagRun( "player_status_cordyceps" )
 		end,
 	},
@@ -1795,12 +1816,15 @@ perk_list =
 			EntityLoad( "data/entities/items/pickup/potion_slime.xml", x, y )
 			EntityLoad( "data/entities/particles/poof_white_appear.xml", x, y )
 			
+			perk_pickup_event("FUNGI")
+			
 			if ( GameHasFlagRun( "player_status_mold" ) == false ) then
 				GameAddFlagRun( "player_status_mold" )
 				add_funginess_level(entity_who_picked)
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("FUNGI")
 			GameRemoveFlagRun( "player_status_mold" )
 		end,
 	},
@@ -1913,12 +1937,15 @@ perk_list =
 			EntityAddTag( child_id, "perk_entity" )
 			EntityAddChild( entity_who_picked, child_id )
 			
+			perk_pickup_event("FUNGI")
+			
 			if ( GameHasFlagRun( "player_status_fungal_disease" ) == false ) then
 				GameAddFlagRun( "player_status_fungal_disease" )
 				add_funginess_level(entity_who_picked)
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("FUNGI")
 			GameRemoveFlagRun( "player_status_fungal_disease" )
 		end,
 	},
@@ -2048,12 +2075,15 @@ perk_list =
 				execute_every_n_frame = "1",
 			} )
 			
+			perk_pickup_event("GHOST")
+			
 			if ( GameHasFlagRun( "player_status_angry_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_angry_ghost" )
 				add_ghostness_level(entity_who_picked)
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("GHOST")
 			GameRemoveFlagRun( "player_status_angry_ghost" )
 		end,
 	},
@@ -2072,12 +2102,15 @@ perk_list =
 			EntityAddTag( child_id, "perk_entity" )
 			EntityAddChild( entity_who_picked, child_id )
 			
+			perk_pickup_event("GHOST")
+			
 			if ( GameHasFlagRun( "player_status_hungry_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_hungry_ghost" )
 				add_ghostness_level(entity_who_picked)
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("GHOST")
 			GameRemoveFlagRun( "player_status_hungry_ghost" )
 		end,
 	},
@@ -2087,15 +2120,19 @@ perk_list =
 		ui_description = "$perkdesc_death_ghost",
 		ui_icon = "data/ui_gfx/perk_icons/death_ghost.png",
 		perk_icon = "data/items_gfx/perks/death_ghost.png",
-		stackable = STACKABLE_NO,
-		func = function( entity_perk_item, entity_who_picked, item_name )
-		
-			EntityAddComponent( entity_who_picked, "LuaComponent", 
-			{
-				_tags = "perk_component",
-				script_source_file = "data/scripts/perks/death_ghost.lua",
-				execute_every_n_frame = "20",
-			} )
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
+			if ( pickup_count <= 1 ) then
+				EntityAddComponent( entity_who_picked, "LuaComponent", 
+				{
+					_tags = "perk_component",
+					script_source_file = "data/scripts/perks/death_ghost.lua",
+					execute_every_n_frame = "20",
+				} )
+			end
+			
+			perk_pickup_event("GHOST")
 			
 			if ( GameHasFlagRun( "player_status_death_ghost" ) == false ) then
 				GameAddFlagRun( "player_status_death_ghost" )
@@ -2103,6 +2140,7 @@ perk_list =
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("GHOST")
 			GameRemoveFlagRun( "player_status_death_ghost" )
 		end,
 	},
@@ -2139,12 +2177,15 @@ perk_list =
 				value_int = tostring( entity_who_picked ),
 			} )
 			
+			perk_pickup_event("LUKKI")
+			
 			if ( GameHasFlagRun( "player_status_lukki_minion" ) == false ) then
 				GameAddFlagRun( "player_status_lukki_minion" )
 				add_lukkiness_level(entity_who_picked)
 			end
 		end,
 		func_remove = function( entity_who_picked )
+			reset_perk_pickup_event("LUKKI")
 			GameRemoveFlagRun( "player_status_lukki_minion" )
 		end,
 	},

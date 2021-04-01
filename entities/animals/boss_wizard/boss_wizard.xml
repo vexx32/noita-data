@@ -131,6 +131,11 @@
 		>
 	</SpriteComponent>
 	
+	<HotspotComponent
+		_tags="hand"
+		sprite_hotspot_name="hand"
+	></HotspotComponent>
+	
 	<ParticleEmitterComponent 
 		_enabled="0"
 		_tags="head"

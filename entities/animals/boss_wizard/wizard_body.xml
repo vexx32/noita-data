@@ -1,8 +1,19 @@
 <Sprite 
-	filename="data/entities/animals/boss_wizard/wizard_body.png" 
+	filename="data/entities/animals/boss_wizard/wizard_body.png"
+	hotspots_filename="data/entities/animals/boss_wizard/wizard_hotspots.png"
 	offset_x="40" 
 	offset_y="56"
 	default_animation="stand" >
+	
+	<Hotspot 
+		color="00ff00" 
+		name="hand" >
+	</Hotspot>
+	
+	<Hotspot 
+		color="ff0000" 
+		name="shoot_pos" >
+	</Hotspot>
 
 	<RectAnimation 
 		frame_count="6" 

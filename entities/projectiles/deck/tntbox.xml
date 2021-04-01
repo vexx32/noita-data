@@ -28,6 +28,8 @@
 	  shoot_light_flash_r="255"
 	  shoot_light_flash_g="240"
 	  shoot_light_flash_b="30"
+	  damage_every_x_frames="25"
+	  do_moveto_update="1"
 	>
 	<config_explosion
       never_cache="0"
@@ -75,6 +77,11 @@
   </DamageModelComponent>
   
   </Base>
+  
+  <GenomeDataComponent
+		herd_id="player"
+		>
+	</GenomeDataComponent>
   
   <ExplosionComponent
 	_tags="enabled_in_world"

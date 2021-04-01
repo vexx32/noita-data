@@ -35,7 +35,7 @@
 			>
 		</SpriteComponent>
 		<LuaComponent 
-			script_source_file="data/scripts/animals/tiny_ghost_move.lua"
+			script_source_file="data/scripts/animals/death_ghost_move.lua"
 			execute_every_n_frame="1"
 			>
 		</LuaComponent>

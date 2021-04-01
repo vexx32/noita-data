@@ -35,6 +35,8 @@
 	friendly_fire="1"
 	collide_with_shooter_frames="6"
 	on_collision_die="0"
+	damage_every_x_frames="25"
+	do_moveto_update="1"
 	>
 	<config_explosion
       never_cache="0"
@@ -87,6 +89,11 @@
   </DamageModelComponent>
   
   </Base>
+  
+  <GenomeDataComponent
+		herd_id="player"
+		>
+	</GenomeDataComponent>
   
   <ExplodeOnDamageComponent
 	_tags="enabled_in_world"

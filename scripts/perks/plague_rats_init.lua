@@ -2,9 +2,12 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 local entity_id    = GetUpdatedEntityID()
 local pos_x, pos_y = EntityGetTransform( entity_id )
+
+local flag_name = "RAT_PERK_TOTAL_COUNT"
+local pickup_count = tonumber( GlobalsGetValue( flag_name, "0" ) )
 	
-local extra_hp = math.max( 0, pos_y * 0.0002 )
-local extra_damage = math.max( 0, pos_y * 0.0001 )
+local extra_hp = math.max( 0, pos_y * 0.0002 ) + ( pickup_count - 1 ) * 4
+local extra_damage = math.max( 0, pos_y * 0.0001 ) + ( pickup_count - 1 ) * 0.4
 	
 EntityRemoveTag( entity_id, "homing_target" )
 EntityRemoveTag( entity_id, "enemy" )

@@ -6,7 +6,7 @@ local x, y = EntityGetTransform( entity_id )
 SetRandomSeed( x, y )
 local rats = EntityGetWithTag( "perk_fungus_tiny" )
 
-if ( #rats < 20 ) then
+if ( #rats < 30 ) then
 	if ( Random( 1, 20 ) == 5 ) then
 		local eid = EntityLoad( "data/entities/misc/perks/fungus.xml", x, y )
 		EntityRemoveTag( eid, "enemy" )

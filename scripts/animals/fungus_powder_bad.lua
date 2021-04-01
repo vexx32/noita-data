@@ -6,7 +6,7 @@ local x, y = EntityGetTransform( entity_id )
 SetRandomSeed( x, y )
 local rats = EntityGetWithTag( "fungus_tiny_bad" )
 
-if ( #rats < 20 ) then
+if ( #rats < 30 ) then
 	if ( Random( 1, 30 ) == 5 ) then
 		local eid = EntityLoad( "data/entities/animals/fungus_tiny.xml", x, y )
 	end

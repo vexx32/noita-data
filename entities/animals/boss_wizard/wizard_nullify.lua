@@ -41,6 +41,11 @@ function damage_received( damage, desc, entity_who_caused, is_fatal, proj_id )
 			EntitySetComponentsWithTagEnabled( entity_id, "head", false )
 			EntitySetComponentsWithTagEnabled( entity_id, "end", true )
 			EntityLoad( "data/entities/particles/blood_explosion.xml", x, y - 20 )
+			
+			local hcomp = EntityGetFirstComponent( entity_id, "HotspotComponent" )
+			if ( hcomp ~= nil ) then
+				ComponentSetValue2( hcomp, "sprite_hotspot_name", "shoot_pos" )
+			end
 		end
 		
 		ComponentSetValue2( comp2, "value_int", mode )

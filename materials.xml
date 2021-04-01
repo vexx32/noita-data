@@ -15412,5 +15412,11 @@
 		entity="data/entities/misc/shock_powder.xml"
 		>
 	</Reaction>
+	
+	<Reaction probability="100"
+		input_cell1="purifying_powder" input_cell2="lava"
+		output_cell1="gunpowder_unstable" output_cell2="gunpowder_unstable"
+		>
+	</Reaction>
 
 </Materials>

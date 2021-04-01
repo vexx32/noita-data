@@ -130,7 +130,7 @@
 		offset_x="0" 
 		offset_y="0"
 		emissive="1"
-    additive="1"
+		additive="1"
 		rect_animation="stand"
 		next_rect_animation="" 
     >

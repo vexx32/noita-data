@@ -1,4 +1,8 @@
 <Entity name="$projectile_default">
+	<InheritTransformComponent
+		parent_hotspot_tag="hand"
+		>
+	</InheritTransformComponent>
 
 	<Base file="data/entities/base_projectile.xml" >
       <VelocityComponent

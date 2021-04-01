@@ -21,6 +21,19 @@ end
 
 -------------------------------
 
+function perk_pickup_event(style)
+	local flag_name = string.upper( style ) .. "_PERK_TOTAL_COUNT"
+	
+	local count = tonumber( GlobalsGetValue( flag_name, "0" ) )
+	count = count + 1
+	GlobalsSetValue( flag_name, tostring( count ) )
+end
+
+function reset_perk_pickup_event(style)
+	local flag_name = string.upper( style ) .. "_PERK_TOTAL_COUNT"
+	GlobalsSetValue( flag_name, "0" )
+end
+
 function add_rattiness_level(entity_who_picked)
 	local x,y = EntityGetTransform( entity_who_picked )
 	local rattiness = tonumber( GlobalsGetValue( "PLAYER_RATTINESS_LEVEL", "0" ) )

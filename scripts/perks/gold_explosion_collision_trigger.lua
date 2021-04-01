@@ -32,9 +32,12 @@ function collision_trigger()
 		end)
 	end
 	
-	local exp_radius = ( value / ( 10 + value * 0.01 ) ) + 16
+	local flag_name = "PERK_PICKED_EXPLODING_GOLD"
+	local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
+	
+	local exp_radius = ( value / ( 10 + value * 0.01 ) ) + math.min( 60, ( 16 + ( pickup_count - 1 ) * 4 ) )
 	local exp_shake = 0 --( value / ( 10 + value * 0.01 ) ) + 16
-	local exp_damage = ( ( value / ( 10 + value * 0.01 ) ) + 1.5 ) * 0.4
+	local exp_damage = ( ( value / ( 10 + value * 0.01 ) ) + 1.5 ) * math.min( 2.0, ( 0.4 + ( pickup_count - 1 ) * 0.2 ) )
 	
 	local exp_sparks_min = math.max( 5, math.floor( exp_radius * 0.75 ) )
 	local exp_sparks_max = math.max( 10, math.floor( exp_radius * 1.25 ) )

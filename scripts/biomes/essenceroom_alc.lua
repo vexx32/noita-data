@@ -24,7 +24,7 @@ function spawn_potions( x, y ) end
 function spawn_wands( x, y ) end
 
 function init( x, y, w, h )
-	LoadPixelScene( "data/biome_impl/essenceroom_submerged.png", "", x, y, "data/biome_impl/essenceroom_background.png", true )
+	LoadPixelScene( "data/biome_impl/essenceroom_submerged.png", "data/biome_impl/essenceroom_visual.png", x, y, "data/biome_impl/essenceroom_background_with_diamond.png", true )
 end
 
 function spawn_orb(x, y)

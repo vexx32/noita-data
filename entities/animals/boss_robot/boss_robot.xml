@@ -115,7 +115,7 @@
 			melee="0"
 			projectile="0"
 			explosion="0"
-			electricity="1.2"
+			electricity="0.8"
 			fire="0" 
 			>
 		</damage_multipliers>

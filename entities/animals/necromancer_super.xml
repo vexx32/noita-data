@@ -29,6 +29,7 @@
 			minimum_knockback_force="10000"
 			>
 			<damage_multipliers
+				projectile="0.4"
 				explosion="0.2"
 				electricity="0"
 				ice="0"
@@ -214,7 +215,7 @@
 		<Base file="data/entities/misc/animal_energy_shield.xml">
 			<EnergyShieldComponent 
 				_tags="enabled_in_hand,item_identified__LEGACY"
-				recharge_speed="0.4" 
+				recharge_speed="0.9" 
 				radius="52.0" >
 			</EnergyShieldComponent>
 			
@@ -259,7 +260,7 @@
 
 			<EnergyShieldComponent 
 				_tags="enabled_in_hand,item_identified__LEGACY"
-				recharge_speed="0.4" 
+				recharge_speed="0.9" 
 				radius="40.0" >
 			</EnergyShieldComponent>
 			

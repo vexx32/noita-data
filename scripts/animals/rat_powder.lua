@@ -6,7 +6,7 @@ local x, y = EntityGetTransform( entity_id )
 SetRandomSeed( x, y )
 local rats = EntityGetWithTag( "plague_rat" )
 
-if ( #rats < 20 ) then
+if ( #rats < 30 ) then
 	if ( Random( 1, 20 ) == 5 ) then
 		EntityLoad( "data/entities/misc/perks/plague_rats_rat.xml", x, y )
 	end

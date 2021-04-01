@@ -130,6 +130,11 @@
         aabb_min_y="-5" 
         aabb_max_y="5" >
     </HitboxComponent>
+	
+	<GenomeDataComponent
+		herd_id="fungus"
+		>
+	</GenomeDataComponent>
 
     <DamageModelComponent 
         _enabled="1" 
