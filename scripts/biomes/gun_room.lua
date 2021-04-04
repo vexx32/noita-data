@@ -31,6 +31,6 @@ function spawn_orb(x, y)
 end
 
 function spawn_essence(x, y)
-	EntityLoad( "data/entities/items/wands/experimental/experimental_wand_3.xml", x - 8, y )
+	EntityLoad( "data/entities/items/wands/experimental/experimental_wand_3.xml", x - 8, y + 12 )
 	EntityLoad("data/entities/items/books/book_robot.xml", x + 8, y )
 end

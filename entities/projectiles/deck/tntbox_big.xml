@@ -12,7 +12,7 @@
     body_id="1"
     centered="1"
     image_file="data/props_gfx/tnt_box_big.png"
-    material="wood"
+    material="wood_prop_noplayerhit"
   ></PhysicsImageShapeComponent>
   
   <PhysicsThrowableComponent
@@ -81,6 +81,7 @@
     ragdoll_filenames_file="" 
     ragdoll_material="" 
 	blood_multiplier="0"
+	ui_report_damage="0"
 	>
 	<damage_multipliers
 		melee="0.1"
