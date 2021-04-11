@@ -113,7 +113,7 @@
 
   <UIInfoComponent
     _tags="enabled_in_world"
-    name="$action_tntbox">
+    name="$item_tntbox">
   </UIInfoComponent>
   
   <ExplodeOnDamageComponent
@@ -148,5 +148,11 @@
     file="data/audio/Desktop/projectiles.bank"
     event_root="player_projectiles/throwable">
   </AudioComponent>
+  
+  <VariableStorageComponent
+		name="projectile_file"
+		value_string="data/entities/projectiles/deck/tntbox.xml"
+		>
+	</VariableStorageComponent>
 
 </Entity>

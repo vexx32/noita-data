@@ -223,6 +223,7 @@ function gui_fn_teleport_to_location()
 		{ui_name = "lukki lair", 		x=-3665, y=7823, },
 		{ui_name = "wizard den", 		x=9706, y=12603, },
 		{ui_name = "overgrown cavern", 	x=13188, y=4286, },
+		{ui_name = "power plant", 		x=12350, y=8170, },
 		{ui_name = "---" },
 		{ui_name = "ancient laboratory", x=-3150, y=860, },
 		{ui_name = "dark altar", 		x=3840, y=15590, },

@@ -99,7 +99,7 @@
 	
 	<VariableStorageComponent
 		name="projectile_file"
-		value_string="data/entities/projectiles/deck/bounce_spark_silent.xml"
+		value_string="data/entities/projectiles/deck/bounce_spark_friendly_fire_silent.xml"
 		>
 	</VariableStorageComponent>
 

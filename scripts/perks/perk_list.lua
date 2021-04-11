@@ -1616,6 +1616,7 @@ perk_list =
 					ComponentSetMetaCustom( component, "run_velocity", 154 )
 					ComponentSetMetaCustom( component, "velocity_min_x", -57 )
 					ComponentSetMetaCustom( component, "velocity_max_x", 57 )
+					ComponentSetValue2( component, "pixel_gravity", 350 )
 				end
 			end
 		end,

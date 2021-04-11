@@ -168,7 +168,8 @@
 	<LuaComponent
 		execute_every_n_frame="300"
 		script_source_file="data/scripts/animals/book_physics.lua"
-		></LuaCompnent>
+		>
+	</LuaComponent>
 			
 </Entity>
 

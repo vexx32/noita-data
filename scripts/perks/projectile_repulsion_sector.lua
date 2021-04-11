@@ -4,7 +4,8 @@ local entity_id = GetUpdatedEntityID()
 local player_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 local distance_full = 50
-local ax,ay = 0
+local ax = 0
+local ay = 0
 
 local projectiles = EntityGetInRadiusWithTag( x, y, distance_full, "projectile" )
 

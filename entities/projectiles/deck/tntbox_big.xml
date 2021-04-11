@@ -158,6 +158,12 @@
 
   <UIInfoComponent
     _tags="enabled_in_world"
-    name="$action_tntbox_big">
+    name="$item_tntbox_big">
   </UIInfoComponent>
+  
+  <VariableStorageComponent
+		name="projectile_file"
+		value_string="data/entities/projectiles/deck/tntbox_big.xml"
+		>
+	</VariableStorageComponent>
 </Entity>

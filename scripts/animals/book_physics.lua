@@ -1,3 +1,4 @@
+dofile_once("data/scripts/lib/utilities.lua")
 
 function spawn_wand()
 	-- check that we only have less than N minions
