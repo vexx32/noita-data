@@ -188,7 +188,11 @@ function order_deck()
     else
 		-- sort the deck
 		if ( force_stop_draws == false ) then
-			table.sort( deck, function(a,b) return a.deck_index<b.deck_index end )
+			table.sort( deck, function(a,b) 
+					local a_index = a.deck_index or 0 
+					local b_index = b.deck_index or 0
+					return a_index<b_index
+				end )
 		else
 			table.sort( deck, function(a,b) local a_ = a.deck_index or 0 local b_ = b.deck_index or 0 return a_<b_ end )
 		end

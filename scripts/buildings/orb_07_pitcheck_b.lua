@@ -8,4 +8,5 @@ function collision_trigger( colliding_entity )
 
 	local pid = EntityLoad( "data/entities/animals/boss_pit/boss_pit.xml", x - 160, y + 256 )
 	PhysicsApplyForce( pid, 0, -80 )
+	EntityKill( entity_id )
 end
