@@ -38,10 +38,10 @@ extra_modifiers =
 	end,
 	
 	lower_spread = function()
-		c.spread_degrees = c.spread_degrees - 30
+		c.spread_degrees = c.spread_degrees - 25
 		c.damage_explosion_add = c.damage_explosion_add + 0.2
 		c.damage_projectile_add = c.damage_projectile_add + 0.5
-		c.fire_rate_wait   = c.fire_rate_wait + 3
+		c.fire_rate_wait   = c.fire_rate_wait + 2
 		shot_effects.recoil_knockback = shot_effects.recoil_knockback + 10.0
 	end,
 	

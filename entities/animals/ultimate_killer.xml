@@ -30,13 +30,14 @@
 		</AnimalAIComponent>
 		
 		<DamageModelComponent 
-            hp="3.5"
+            hp="5.5"
             materials_create_messages="1"
 			ragdoll_filenames_file="data/ragdolls/ultimate_killer/filenames.txt" 
 			ragdoll_material="meat_helpless"
 			fire_probability_of_ignition="5"
     		blood_spray_material="blood"
 			ragdoll_offset_y="1"
+			air_needed="0"
 			>
 		</DamageModelComponent>
 

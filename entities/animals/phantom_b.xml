@@ -38,6 +38,7 @@
 			blood_spray_material="plasma_fading"
 			blood_sprite_directional=""
 			blood_sprite_large=""
+			air_needed="0"
 			>
 			<damage_multipliers
 				projectile="0.5"

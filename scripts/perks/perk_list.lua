@@ -29,8 +29,44 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/breath_underwater.png",
 		perk_icon = "data/items_gfx/perks/breath_underwater.png",
 		game_effect = "BREATH_UNDERWATER",
-		stackable = STACKABLE_NO,
+		stackable = STACKABLE_YES,
+		stackable_is_rare = true,
 		usable_by_enemies = true,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+		
+			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					local swim_idle = math.min( math.max( tonumber( ComponentGetValue( model, "swim_idle_buoyancy_coeff" ) ) * 0.6, 0.0 ), 2.0 )
+					local swim_up = math.min( math.max( tonumber( ComponentGetValue( model, "swim_up_buoyancy_coeff" ) ) * 0.2, 0.0 ), 2.0 )
+					local swim_down = math.min( math.max( tonumber( ComponentGetValue( model, "swim_down_buoyancy_coeff" ) ) * 0.2, 0.0 ), 2.0 )
+					
+					local swim_drag = math.min( math.max( tonumber( ComponentGetValue( model, "swim_drag" ) ) * 1.2, 0.0 ), 1.01 )
+					local swim_drag_extra = math.min( math.max( tonumber( ComponentGetValue( model, "swim_extra_horizontal_drag" ) ) * 1.2, 0.0 ), 1.01 )
+					
+					ComponentSetValue( model, "swim_idle_buoyancy_coeff", swim_idle )
+					ComponentSetValue( model, "swim_up_buoyancy_coeff", swim_up )
+					ComponentSetValue( model, "swim_down_buoyancy_coeff", swim_down )
+					
+					ComponentSetValue( model, "swim_drag", swim_drag )
+					ComponentSetValue( model, "swim_extra_horizontal_drag", swim_drag_extra )
+				end
+			end
+
+		end,
+		func_remove = function( entity_who_picked )
+			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
+			if( models ~= nil ) then
+				for i,model in ipairs(models) do
+					ComponentSetValue( model, "swim_idle_buoyancy_coeff", 1.2 )
+					ComponentSetValue( model, "swim_up_buoyancy_coeff", 0.9 )
+					ComponentSetValue( model, "swim_down_buoyancy_coeff", 0.7 )
+					
+					ComponentSetValue( model, "swim_drag", 0.95 )
+					ComponentSetValue( model, "swim_extra_horizontal_drag", 0.9 )
+				end
+			end
+		end,
 	},
 	-- gold / money related
 	{
@@ -249,7 +285,6 @@ perk_list =
 			end
 		end,
 	},
-	]]--
 	{
 		id = "SPEED_DIVER",
 		ui_name = "$perk_speed_diver",
@@ -295,6 +330,7 @@ perk_list =
 			end
 		end,
 	},
+	]]--
 	{
 		id = "STRONG_KICK",
 		ui_name = "$perk_strong_kick",
@@ -1699,6 +1735,8 @@ perk_list =
 					ComponentSetMetaCustom( component, "run_velocity", 154 )
 					ComponentSetMetaCustom( component, "velocity_min_x", -57 )
 					ComponentSetMetaCustom( component, "velocity_max_x", 57 )
+					-- NOTE apparently this isn't needed, since the LEGGY works differently from the LUKKI
+					-- ComponentSetValue2( component, "pixel_gravity", 350 )
 				end
 			end
 		end,
