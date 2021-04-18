@@ -5,7 +5,7 @@ extra_modifiers =
 	end,
 	
 	critical_plus_small = function()
-		c.damage_critical_chance = c.damage_critical_chance + 20
+		c.damage_critical_chance = c.damage_critical_chance + 40
 	end,
 	
 	powerful_shot = function()
@@ -152,8 +152,7 @@ extra_modifiers =
 	end,
 	
 	slow_firing = function()
-		c.fire_rate_wait   = c.fire_rate_wait + 20
+		c.fire_rate_wait   = c.fire_rate_wait + 5
 		current_reload_time = current_reload_time + 5
-		c.speed_multiplier = c.speed_multiplier * 0.8
 	end,
 }

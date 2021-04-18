@@ -17,8 +17,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	end
 	
 	if ( player_id ~= nil ) and ( player_id ~= NULL_ENTITY ) then
-		local rnd = Random( 5, 20 )
-		
-		EntityAddRandomStains( player_id, CellFactory_GetType("magic_liquid_mana_regeneration"), rnd )
+		local eid = EntityLoad( "data/entities/misc/perks/mana_from_kills_effect.xml", pos_x, pos_y )
+		EntityAddChild( player_id, eid )
 	end
 end

@@ -295,7 +295,7 @@
 		<InheritTransformComponent />
 		
 	    <GameEffectComponent 
-	        effect="PROTECTION_FREEZE"
+	        effect="STUN_PROTECTION_FREEZE"
 	        frames="-1"
 	    >
 		</GameEffectComponent >
@@ -305,7 +305,7 @@
 		<InheritTransformComponent />
 		
 	    <GameEffectComponent 
-	        effect="PROTECTION_ELECTRICITY"
+	        effect="STUN_PROTECTION_ELECTRICITY"
 	        frames="-1"
 	    >
 		</GameEffectComponent >

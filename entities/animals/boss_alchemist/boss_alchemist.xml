@@ -39,6 +39,7 @@
 			air_needed="0" 
 			>
 			<damage_multipliers
+			slice="0.0"
 			projectile="0.3"
 			electricity="0.6"
 			fire="0.4"
@@ -184,7 +185,7 @@
 		<InheritTransformComponent />
 		
 	    <GameEffectComponent 
-	        effect="PROTECTION_FREEZE"
+	        effect="STUN_PROTECTION_FREEZE"
 	        frames="-1"
 	    >
 		</GameEffectComponent >
@@ -194,7 +195,7 @@
 		<InheritTransformComponent />
 		
 	    <GameEffectComponent 
-	        effect="PROTECTION_ELECTRICITY"
+	        effect="STUN_PROTECTION_ELECTRICITY"
 	        frames="-1"
 	    >
 		</GameEffectComponent >

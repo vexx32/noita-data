@@ -2997,17 +2997,36 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/personal_laser.png",
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
-		func = function( entity_perk_item, entity_who_picked, item_name )
+		stackable_maximum = 5,
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			local x,y = EntityGetTransform( entity_who_picked )
-			local child_id = EntityLoad( "data/entities/misc/perks/personal_laser.xml", x, y )
-			EntityAddTag( child_id, "perk_entity" )
-			EntityAddChild( entity_who_picked, child_id )
 			
-			EntityAddComponent( entity_who_picked, "ShotEffectComponent", 
-			{
-				_tags = "perk_component",
-				extra_modifier = "slow_firing",
-			} )
+			if ( pickup_count <= 1 ) then
+				local child_id = EntityLoad( "data/entities/misc/perks/personal_laser.xml", x, y )
+				EntityAddTag( child_id, "perk_entity" )
+				EntityAddChild( entity_who_picked, child_id )
+				
+				EntityAddComponent( entity_who_picked, "ShotEffectComponent", 
+				{
+					_tags = "perk_component",
+					extra_modifier = "slow_firing",
+				} )
+			elseif ( pickup_count > 1 ) then
+				local entities = EntityGetWithTag( "personal_laser" )
+				
+				for i,entity_id in ipairs( entities ) do
+					local comp = EntityGetFirstComponent( entity_id, "LaserEmitterComponent" )
+					if ( comp ~= nil ) then
+						local damage_entities = 0.15 + ( pickup_count - 1 ) * 0.025
+						local damage_cells = 3000 + ( pickup_count - 1 ) * 350
+						local range = 54 + ( pickup_count - 1 ) * 12
+						
+						ComponentObjectSetValue2( comp, "laser", "damage_to_entities", damage_entities )
+						ComponentObjectSetValue2( comp, "laser", "damage_to_cells", damage_cells )
+						ComponentObjectSetValue2( comp, "laser", "max_length", range )
+					end
+				end
+			end
 		end,
 	},
 	{

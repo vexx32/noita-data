@@ -3,7 +3,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 local entity_id    = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
 
-local targets = EntityGetInRadiusWithTag( x, y, 100, "seed_f" )
+local targets = EntityGetInRadiusWithTag( x, y, 180, "seed_f" )
 
 if ( #targets > 0 ) then
 	for i,v in ipairs( targets ) do

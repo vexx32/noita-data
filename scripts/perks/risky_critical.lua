@@ -4,7 +4,7 @@ dofile_once("data/scripts/gun/procedural/gun_action_utils.lua")
 local entity_id = GetUpdatedEntityID()
 
 local x,y = EntityGetTransform( entity_id )
-local radius = 40
+local radius = 56
 
 local targets = EntityGetInRadiusWithTag( x, y, radius, "enemy" )
 local comp = EntityGetFirstComponent( entity_id, "ShotEffectComponent", "risky_critical" )

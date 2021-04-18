@@ -398,7 +398,7 @@
 		<InheritTransformComponent />
 		
 	    <GameEffectComponent 
-	        effect="PROTECTION_ELECTRICITY"
+	        effect="STUN_PROTECTION_ELECTRICITY"
 	        frames="-1"
 	    >
 		</GameEffectComponent >
