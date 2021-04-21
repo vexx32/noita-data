@@ -2,6 +2,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 dofile_once( "data/scripts/perks/perk_list.lua" )
 
 
+
 local get_perk_flag_name = function( perk_id )
 	return "PERK_" .. perk_id
 end
@@ -26,162 +27,143 @@ function perk_is_stackable( perk_data )
 end
 
 
+local function shuffle_table( t )
+	assert( t, "shuffle_table() expected a table, got nil" )
+	local iterations = #t
+	local j
+	
+	for i = iterations, 2, -1 do
+		j = Random(1,i)
+		t[i], t[j] = t[j], t[i]
+	end
+end
+
+function table_contains(table, element)
+	for _, value in pairs(table) do
+		if value == element then
+			return true
+		end
+	end
+	return false
+end
+
+
  -- this generates global perk spawn order for current world seed
-function perk_get_spawn_order()
-	-- this function should return the same results no matter when or where during a run it is called.
-	-- this function should have no side effects.
+function perk_get_spawn_order( ignore_these_ )
+	-- this function should return the same list in the same order no matter when or where during a run it is called.
+	-- the expection is that some of the elements in the list can be set to "" to indicate that they're used
+
+	-- 1) Create a Deck from all the perks, add multiple of stackable
+	-- 2) Shuffle the Deck
+	-- 3) Remove duplicate perks that are too close to each other
+
+	-- NON DETERMISTIC THINGS ARE ALLOWED TO HAPPEN
+	-- 4) Go through the perk list and "" the perks we've picked up
+
+	local ignore_these = ignore_these_ or {}
+
 	local MIN_DISTANCE_BETWEEN_DUPLICATE_PERKS = 4
-	local PERK_SPAWN_ORDER_LENGTH = 300
-	local PERK_DUPLICATE_AVOIDANCE_TRIES = 400
+	local DEFAULT_MAX_STACKABLE_PERK_COUNT = 128
 
 	SetRandomSeed( 1, 2 ) 
 
-	-- NOTE( Petri ): 23.4.2020 - The problem with this perk list spawning code is that it all the stackable perks end up at the bottom
-	-- to fix this we just shift a bunch of the perks so that the segment hat is full of stackable perks is in about the middle
+	-- 1) Create a Deck from all the perks, add multiple of stackable
+	-- create the perk pool
+	-- local perk_pool = {}
+	local perk_deck = {}
+	local stackable_distances = {}
+	local stackable_count = {}			-- -1 = NON_STACKABLE otherwise the result is how many times can be stacked
 
-	-- NOTE( Petri ): 23.4.2020 - This needs a reimplementation and redesign. The problem of distribution between stackable and 
-	-- non stackable perks causes all kinds of issues.
 
-	--[[
-	local create_perk_pools = function()
-		local perks_stackable = {}
-		local perks_not_stackable = {}
+	-- function create_perk_pool
+	for i,perk_data in ipairs(perk_list) do
+		if ( ( table_contains( ignore_these, perk_data.id ) == false ) and ( perk_data.not_in_default_perk_pool == nil or perk_data.not_in_default_perk_pool == false ) ) then
+			local perk_name = perk_data.id
+			local how_many_times = 1
+			stackable_distances[ perk_name ] = -1
+			stackable_count[ perk_name ] = -1
 
-		for i,perk_data in ipairs(perk_list) do
-			if ( perk_data.not_in_default_perk_pool == nil or perk_data.not_in_default_perk_pool == false ) then
-				
-				if( perk_is_stackable( perk_data ) ) then
-					table.insert( perks_stackable, perk_data )
+			if( ( perk_data.stackable ~= nil ) and ( perk_data.stackable == true ) ) then
+				local max_perks = Random( 1, 5 )
+				-- TODO( Petri ): We need a new variable that indicates how many times they can appear in the pool
+				if( perk_data.max_in_perk_pool ~= nil ) then
+					max_perks = Random( 1, perk_data.max_in_perk_pool )
+				end
+
+				if( perk_data.stackable_maximum ~= nil ) then
+					stackable_count[ perk_name ] = perk_data.stackable_maximum
 				else
-					table.insert( perks_not_stackable, perk_data )
+					stackable_count[ perk_name ] = DEFAULT_MAX_STACKABLE_PERK_COUNT
 				end
+
+				if( ( perk_data.stackable_is_rare ~= nil ) and ( perk_data.stackable_is_rare == true ) ) then
+					max_perks = 1
+				end
+
+				stackable_distances[ perk_name ] = perk_data.stackable_how_often_reappears or MIN_DISTANCE_BETWEEN_DUPLICATE_PERKS
+
+				how_many_times = Random( 1, max_perks )
+			end
+
+			for j=1,how_many_times do
+				table.insert( perk_deck, perk_name )
 			end
 		end
-
-		return perks_stackable, perks_not_stackable
 	end
 
+	-- 2) Shuffle the Deck
+	shuffle_table( perk_deck )
 
-	local perk_pool_stackable, perk_pool_non_stackable = create_perk_pools()
+	-- 3) Remove duplicate perks that are too close to each other
+	-- we need to do this in reverse, since otherwise table.remove might cause the iterator to bug out
+	for i=#perk_deck,1,-1 do
+		
+		local perk = perk_deck[i]
+		if( stackable_distances[ perk ] ~= -1 ) then
 
-	perk_pool_stackable = shuffle_array( perk_pool_stackable )
-	perk_pool_non_stackable = shuffle_array( perk_pool_non_stackable )
-
-	local result = {}
-	local perk_pool_stackable_i = 1
-	local perk_pool_non_stackable_i = 1
-
-	for i=1,PERK_SPAWN_ORDER_LENGTH do
-		local how_many_left = PERK_SPAWN_ORDER_LENGTH - i
-
-	end
-	
-	-- table.insert( result, perk_data.id )
-	-- while( #perk_pool_stackable + #perk_pool_non_stackable < PERK_SPAWN_ORDER_LENGTH ) do
-	-- 	local temp_array = shuffle_array( perk_pool_non_stackable )
-	-- end
-	]]--
-	
-	-- NOTE( Arvi ): 26.10.2020 - the dummied-out part was formatted wrong; I tried to look for the correct spot where the dummying was supposed to end.
-	
-	----
-	local create_perk_pool = function()
-		local result = {}
-
-		for i,perk_data in ipairs(perk_list) do
-			if ( perk_data.not_in_default_perk_pool == nil or perk_data.not_in_default_perk_pool == false ) then
-				table.insert( result, perk_data )
-			end
-		end
-
-		return result
-	end
-
-	----
-	local perk_pool = create_perk_pool()
-
-	local result = { }
-	local nonstackables = { }
-
-	for i=1,PERK_SPAWN_ORDER_LENGTH do
-		local tries = 0
-		local perk_data = nil
-
-		while tries < PERK_DUPLICATE_AVOIDANCE_TRIES do
-			local ok = true
-			if #perk_pool == 0 then
-				perk_pool = create_perk_pool()
-			end
-
-			local index_in_perk_pool = Random( 1, #perk_pool )
-			perk_data = perk_pool[index_in_perk_pool]
+			local min_distance = stackable_distances[ perk ]
+			local remove_me = false
 			
-			local can_stack,only_once_per_spawn_order = perk_is_stackable( perk_data )
-
-			if can_stack and ( only_once_per_spawn_order == false ) then
-				
-				-- Perks may have a special reoccurrence value
-				local min_distance = perk_data.stackable_how_often_reappears or MIN_DISTANCE_BETWEEN_DUPLICATE_PERKS
-				
-				for ri=#result-min_distance,#result do --  ensure stackable perks are not spawned too close to each other
-					if ri >= 1 and result[ri] == perk_data.id then
-						ok = false
-						break
-					end
+			--  ensure stackable perks are not spawned too close to each other
+			for ri=i-min_distance,i-1 do 
+				if ri >= 1 and perk_deck[ri] == perk then
+					remove_me = true
+					break
 				end
-			else
-				if ( can_stack == false ) then --  mark actual nonstackable perks so that they never appear again
-					nonstackables[perk_data.id] = 1
-				end
-				
-				table.remove( perk_pool, index_in_perk_pool ) -- remove non-stackable perks and rare stackable perks from the pool
 			end
 
-			if ok then
-				--print( "Ignoring " .. perk_data.id .. " because it tried to reappear too soon" )
-				break
-			end
-
-			tries = tries + 1
+			if( remove_me ) then table.remove( perk_deck, i ) end
 		end
+	end	
 
-		table.insert( result, perk_data.id )
-	end
-	
+	-- NON DETERMISTIC THINGS ARE ALLOWED TO HAPPEN
+	-- 4) Go through the perk list and "" the perks we've picked up
 	-- remove non-stackable perks already collected from the list
-	for i,perk_id in pairs( result ) do
-		local flag_name = get_perk_picked_flag_name( perk_id )
+	for i,perk_name in pairs( perk_deck ) do
+		local flag_name = get_perk_picked_flag_name( perk_name )
 		local pickup_count = tonumber( GlobalsGetValue( flag_name .. "_PICKUP_COUNT", "0" ) )
 		
-		if ( nonstackables[perk_id] ~= nil ) and ( ( pickup_count > 0 ) or GameHasFlagRun( flag_name ) ) then
-			print( "Removed " .. perk_id .. " from perk pool because it had been picked up already" )
-			table.remove( result, i )
+		-- GameHasFlagRun( flag_name ) - this is if its ever been spawned
+		-- has been picked up
+		if( ( pickup_count > 0 ) ) then
+			local stack_count = stackable_count[ perk_name ] or -1
+			-- print( perk_name .. ": " .. tostring( stack_count ) )
+			if( ( stack_count == -1 ) or ( pickup_count >= stack_count ) ) then
+				perk_deck[i] = ""
+			end
 		end
 	end
 
-	-- shift the results a random number forward
-	local new_start_i = Random( 10, 20 )
-	local real_result = {}
-	for i=1,PERK_SPAWN_ORDER_LENGTH do
-		real_result[i] = result[ new_start_i ]
-		new_start_i = new_start_i + 1
-		if( new_start_i > #result ) then
-			new_start_i = 1
+	-- DEBUG
+	if( false ) then
+		for i,perk in ipairs(perk_deck) do
+			print(  tostring( i ) .. ": " .. perk )
 		end
 	end
+	
 
-	-- debug - print duplicates
-	-- for i,id in ipairs(result) do
-	-- 	for i2,id2 in ipairs(result) do
-	-- 		if id == id2 and i ~= i2 then
-	-- 			print(id .. " " .. tostring(i) .. " and " .. tostring(i2))
-	-- 		end
-	-- 	end
-	-- end
-
-	return real_result
+	return perk_deck
 end
-
 -- picks a perk. entity_item should be created by spawn_perk
 function perk_pickup( entity_item, entity_who_picked, item_name, do_cosmetic_fx, kill_other_perks, no_perk_entity_ )
 	-- fetch perk info ---------------------------------------------------
@@ -453,6 +435,16 @@ function perk_spawn_random( x, y, dont_remove_others_ )
 	local next_perk_index = tonumber( GlobalsGetValue( "TEMPLE_NEXT_PERK_INDEX", "1" ) )
 	local perk_id = perks[next_perk_index]
 	
+	while( perk_id == nil or perk_id == "" ) do
+		-- if we over flow
+		perks[next_perk_index] = "LEGGY_FEET"
+		next_perk_index = next_perk_index + 1		
+		if next_perk_index > #perks then
+			next_perk_index = 1
+		end
+		perk_id = perks[next_perk_index]
+	end
+
 	next_perk_index = next_perk_index + 1
 	if next_perk_index > #perks then
 		next_perk_index = 1
@@ -493,12 +485,25 @@ function perk_spawn_many( x, y, dont_remove_others_, ignore_these_ )
 	local dont_remove_others = dont_remove_others_ or false
 	local ignore_these = ignore_these_ or {}
 
-	local perks = perk_get_spawn_order()
+
+	local perks = perk_get_spawn_order( ignore_these )
 
 	for i=1,count do
 		local next_perk_index = tonumber( GlobalsGetValue( "TEMPLE_NEXT_PERK_INDEX", "1" ) )
 		local perk_id = perks[next_perk_index]
 		
+		while( perk_id == nil or perk_id == "" ) do
+			-- if we over flow
+			perks[next_perk_index] = "LEGGY_FEET"
+			next_perk_index = next_perk_index + 1		
+			if next_perk_index > #perks then
+				next_perk_index = 1
+			end
+			perk_id = perks[next_perk_index]
+		end
+
+		-- ignore_these == empty?
+		--[[
 		for a,b in ipairs( ignore_these ) do
 			if ( perk_id == b ) then
 				next_perk_index = next_perk_index + 1
@@ -509,6 +514,7 @@ function perk_spawn_many( x, y, dont_remove_others_, ignore_these_ )
 				break
 			end
 		end
+		]]--
 		
 		next_perk_index = next_perk_index + 1
 		if next_perk_index > #perks then
@@ -560,25 +566,19 @@ function perk_reroll_perks( entity_item )
 		local next_perk_index = tonumber( GlobalsGetValue( "TEMPLE_REROLL_PERK_INDEX", tostring(#perks) ) )
 		local perk_id = perks[next_perk_index]
 		
-		next_perk_index = next_perk_index - 1
-		if next_perk_index <= 0 then
-			next_perk_index = #perks
-		end
-		
-		local is_stackable = get_perk_stackable_status( perk_id )
-		local tries = 0
-		
-		while ( is_stackable == false ) and ( tries < 50 ) do
-			perk_id = perks[next_perk_index]
-			
-			next_perk_index = next_perk_index - 1
+		while( perk_id == nil or perk_id == "" ) do
+			-- if we over flow
+			perks[next_perk_index] = "LEGGY_FEET"
+			next_perk_index = next_perk_index - 1		
 			if next_perk_index <= 0 then
 				next_perk_index = #perks
 			end
-			
-			tries = tries + 1
-			
-			is_stackable = get_perk_stackable_status( perk_id )
+			perk_id = perks[next_perk_index]
+		end
+
+		next_perk_index = next_perk_index - 1
+		if next_perk_index <= 0 then
+			next_perk_index = #perks
 		end
 		
 		GlobalsSetValue( "TEMPLE_REROLL_PERK_INDEX", tostring(next_perk_index) )
@@ -618,14 +618,6 @@ function DEBUG_PERKS()
 	end
 
 	-- make sure every perk is in here
-	function table_contains(table, element)
-		for _, value in pairs(table) do
-			if value == element then
-				return true
-			end
-		end
-		return false
-	end
 
 	for i,perk_data in ipairs(perk_list) do
 		local perk_id = perk_data.id

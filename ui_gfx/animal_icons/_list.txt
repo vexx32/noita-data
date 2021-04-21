@@ -165,3 +165,4 @@ gate_monster_d
 boss_wizard
 boss_centipede
 ultimate_killer
+friend

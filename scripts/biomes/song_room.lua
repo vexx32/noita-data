@@ -32,4 +32,5 @@ end
 
 function spawn_secret( x, y )
 	EntityLoad( "data/entities/buildings/chest_light.xml", x, y )
+	EntityLoad( "data/entities/items/books/book_essences.xml", x + 24, y - 16 )
 end

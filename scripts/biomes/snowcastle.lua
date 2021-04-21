@@ -12,6 +12,7 @@ RegisterSpawnFunction( 0xffc78f20, "spawn_barricade" )
 RegisterSpawnFunction( 0xffc022f5, "spawn_forcefield_generator" )
 RegisterSpawnFunction( 0xffa3d900, "spawn_brimstone" )
 RegisterSpawnFunction( 0xff00d982, "spawn_vasta_or_vihta" )
+RegisterSpawnFunction( 0xff932020, "spawn_cook" )
 
 RegisterSpawnFunction( 0xff614630, "load_panel_01" )
 RegisterSpawnFunction( 0xff614635, "load_panel_02" )
@@ -643,10 +644,17 @@ g_pixel_scene_02 =
 		is_unique		= 0
 	},
 	{
-		prob   			= 0.1,
+		prob   			= 0.3,
 		material_file 	= "data/biome_impl/snowcastle/sauna.png",
 		visual_file		= "data/biome_impl/snowcastle/sauna_visual.png",
 		background_file	= "data/biome_impl/snowcastle/sauna_background.png",
+		is_unique		= 0
+	},
+	{
+		prob   			= 0.3,
+		material_file 	= "data/biome_impl/snowcastle/kitchen.png",
+		visual_file		= "",
+		background_file	= "",
 		is_unique		= 0
 	},
 }
@@ -1161,4 +1169,8 @@ end
 
 function spawn_drill_laser(x, y)
 	EntityLoad( "data/entities/buildings/drill_laser.xml", x, y )
+end
+
+function spawn_cook(x, y)
+	EntityLoad( "data/entities/animals/miner_chef.xml", x, y )
 end

@@ -30,8 +30,17 @@
 		collide_with_tag="racing_track" >
 	</ProjectileComponent>
 	
-	<SpriteComponent 
+	<SpriteComponent
+		_tags="driverless"
 		image_file="data/projectiles_gfx/racing_cart.xml"
+		has_special_scale="1"
+		special_scale_x="1"
+		>
+	</SpriteComponent>
+	
+	<SpriteComponent
+		_tags="driver"
+		image_file="data/projectiles_gfx/racing_cart_killer.xml"
 		has_special_scale="1"
 		special_scale_x="1"
 		>
@@ -41,6 +50,12 @@
 	<LuaComponent
 		script_source_file="data/scripts/buildings/racing_cart_move.lua"
 		execute_every_n_frame="1"  >
+	</LuaComponent>
+	
+	<LuaComponent
+		_tags="driverless"
+		script_source_file="data/scripts/buildings/racing_cart_check.lua"
+		execute_every_n_frame="20"  >
 	</LuaComponent>
 
 	<!-- checkpoints & race logic -->

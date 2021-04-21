@@ -32,13 +32,13 @@ if ( timercomp ~= nil ) and ( entity_id ~= player_id ) then
 		
 		if ( timer > 80 ) then
 			local map_sprite = "spatial_map_1"
-			local map_x = 0.5 * 512
-			local map_y = 12 * 512
+			local map_x = 0 * 512
+			local map_y = 10 * 512
 
 			local mult_x = 512 / 6.0
 			local mult_y = 512 / 6.0
-
-			local dx = math.min( math.max( ( map_x - mx ) / mult_x, -128), 128 )
+			
+			local dx = math.min( math.max( ( map_x - mx ) / mult_x, -420), 420 )
 			local dy = math.min( math.max( ( map_y - y ) / mult_y, -240), 240 )
 
 			local mi_x = x + dx * 0.5

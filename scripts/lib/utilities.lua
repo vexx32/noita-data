@@ -854,7 +854,10 @@ function check_parallel_pos( x )
 	local mapwidth = BiomeMapGetSize() * 512
 	local half = mapwidth * 0.5
 	
-	local mx = x % mapwidth
+	local sign = x / math.abs( x )
+	local mx = ( math.abs( x ) % mapwidth ) * sign
+	
+	print(tostring(sign) .. ", " .. tostring(mx))
 	
 	return pw,mx
 end

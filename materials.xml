@@ -13250,7 +13250,7 @@
   <CellData
 	name="meat"
 	ui_name="$mat_meat"
-  	tags="[box2d],[corrodible],[meltable_to_lava],[alchemy],[meat],[solid],[earth],[food]"
+  	tags="[box2d],[corrodible],[alchemy],[meat],[solid],[earth],[food]"
 	burnable="1"
 	density="6"
 	solid_friction="1"
@@ -13323,6 +13323,156 @@
 		>
     </Graphics>
   </CellDataChild>
+  
+  <CellDataChild
+  	name="meat_warm" 
+	ui_name="$mat_meat_warm"
+  	_parent="meat"
+  	_inherit_reactions="0"
+	wang_color="ff5b5246"
+	platform_type="1"
+	fire_hp="9000"
+	solid_on_collision_material="oil"
+	solid_static_type="0"
+	>
+	<Graphics
+		texture_file="data/materials_gfx/meat_warm.png"
+		color="ff5b5246"
+		pixel_all_around="ff7d5a4d"
+	
+		pixel_lonely="ff7d5a4d"
+		pixel_top_right="ff7d5a4d"
+		pixel_bottom_left="ff7d5a4d"
+		
+		pixel_left="ff7d5a4d"
+		pixel_top_left="ff7d5a4d"
+		pixel_top="ff7d5a4d"
+		
+		pixel_right="ff7d5a4d"
+		pixel_bottom_right="ff7d5a4d"
+		pixel_bottom="ff7d5a4d"
+		>
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	name="meat_hot" 
+	ui_name="$mat_meat_hot"
+  	_parent="meat"
+  	_inherit_reactions="0"
+	wang_color="ff5c5246"
+	platform_type="1"
+	fire_hp="9000"
+	solid_on_collision_material="oil"
+	solid_static_type="0"
+	>
+	    <Graphics
+		texture_file="data/materials_gfx/meat_hot.png"
+		color="ff5c5246"
+		pixel_all_around="ff7d5a4d"
+	
+		pixel_lonely="ff7d5a4d"
+		pixel_top_right="ff7d5a4d"
+		pixel_bottom_left="ff7d5a4d"
+		
+		pixel_left="ff7d5a4d"
+		pixel_top_left="ff7d5a4d"
+		pixel_top="ff7d5a4d"
+		
+		pixel_right="ff7d5a4d"
+		pixel_bottom_right="ff7d5a4d"
+		pixel_bottom="ff7d5a4d"
+		>
+    </Graphics>
+  </CellDataChild>
+  
+  <CellDataChild
+  	name="meat_done" 
+	ui_name="$mat_meat_done"
+  	_parent="meat"
+  	_inherit_reactions="0"
+	wang_color="ff5d5246"
+	platform_type="1"
+	fire_hp="9000"
+	solid_on_collision_material="oil"
+	solid_static_type="0"
+	>
+	    <Graphics
+		texture_file="data/materials_gfx/meat_done.png"
+		color="ff5d5246"
+		pixel_all_around="ff7d5a4d"
+	
+		pixel_lonely="ff7d5a4d"
+		pixel_top_right="ff7d5a4d"
+		pixel_bottom_left="ff7d5a4d"
+		
+		pixel_left="ff7d5a4d"
+		pixel_top_left="ff7d5a4d"
+		pixel_top="ff7d5a4d"
+		
+		pixel_right="ff7d5a4d"
+		pixel_bottom_right="ff7d5a4d"
+		pixel_bottom="ff7d5a4d"
+		>
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="MOVEMENT_FASTER_2X" amount="0.1" />
+		</Ingestion>
+	</StatusEffects>
+  </CellDataChild>
+  
+  <CellDataChild
+  	name="meat_burned" 
+	ui_name="$mat_meat_burned"
+  	_parent="meat"
+  	_inherit_reactions="0"
+	wang_color="ff5e5246"
+	platform_type="1"
+	fire_hp="9000"
+	solid_on_collision_material="oil"
+	solid_static_type="0"
+	>
+	    <Graphics
+		texture_file="data/materials_gfx/meat_burned.png"
+		color="ff5e5246"
+		pixel_all_around="ff7d5a4d"
+	
+		pixel_lonely="ff7d5a4d"
+		pixel_top_right="ff7d5a4d"
+		pixel_bottom_left="ff7d5a4d"
+		
+		pixel_left="ff7d5a4d"
+		pixel_top_left="ff7d5a4d"
+		pixel_top="ff7d5a4d"
+		
+		pixel_right="ff7d5a4d"
+		pixel_bottom_right="ff7d5a4d"
+		pixel_bottom="ff7d5a4d"
+		>
+    </Graphics>
+	<StatusEffects>
+		<Ingestion>
+			<StatusEffect type="FOOD_POISONING" amount="0.3" />
+		</Ingestion>
+	</StatusEffects>
+  </CellDataChild>
+
+  <CellDataChild
+  	name="meat_pumpkin" 
+	ui_name="$mat_meat_fruit"
+  	_parent="meat_fruit"
+  	_inherit_reactions="0"
+	wang_color="ffff531b"
+	solid_on_collision_material="water"
+	>
+	    <Graphics
+		texture_file="data/materials_gfx/meat.png"
+		color="ffff531b"
+		>
+    </Graphics>
+  </CellDataChild>
+
 
   <CellData
 	name="meat_slime"
@@ -15416,6 +15566,72 @@
 	<Reaction probability="100"
 		input_cell1="purifying_powder" input_cell2="lava"
 		output_cell1="gunpowder_unstable" output_cell2="gunpowder_unstable"
+		>
+	</Reaction>
+	
+	<!-- Cooking -->
+	
+	<Reaction probability="10"
+		input_cell1="meat" input_cell2="[fire]" input_cell3="oil"
+		output_cell1="meat_warm" output_cell2="[fire]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="meat_warm" input_cell2="[fire]" input_cell3="oil"
+		output_cell1="meat_hot" output_cell2="[fire]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="meat_hot" input_cell2="[fire]" input_cell3="oil"
+		output_cell1="meat_done" output_cell2="[fire]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="2"
+		input_cell1="meat_done" input_cell2="[fire]" input_cell3="oil"
+		output_cell1="meat_burned" output_cell2="[fire]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="meat" input_cell2="[lava]" input_cell3="oil"
+		output_cell1="meat_warm" output_cell2="[lava]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="meat_warm" input_cell2="[lava]" input_cell3="oil"
+		output_cell1="meat_hot" output_cell2="[lava]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="10"
+		input_cell1="meat_hot" input_cell2="[lava]" input_cell3="oil"
+		output_cell1="meat_done" output_cell2="[lava]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
+		>
+	</Reaction>
+	
+	<Reaction probability="2"
+		input_cell1="meat_done" input_cell2="[lava]" input_cell3="oil"
+		output_cell1="meat_burned" output_cell2="[lava]" output_cell3="smoke"
+		blob_radius1="5"
+		blob_restrict_to_input_material1="1"
 		>
 	</Reaction>
 

@@ -11,10 +11,15 @@ if player == nil then return end
 -- update lap time display
 local stopwatch_id = EntityGetClosestWithTag(pos_x, pos_y, "stopwatch_lap")
 if stopwatch_id ~= nil then
-	component_read(get_variable_storage_component(entity_id, "lap_start_time"), { value_int = 0 }, function(comp)
-		local lap_time = GameGetFrameNum() - comp.value_int
-		ComponentSetValue2(get_variable_storage_component(stopwatch_id, "time"), "value_int", lap_time)
-	end)
+	local lcomp = get_variable_storage_component( entity_id, "lap_start_time" )
+	local scomp = get_variable_storage_component( stopwatch_id, "time" )
+	
+	if ( scomp ~= nil ) and ( lcomp ~= nil ) then
+		component_read(get_variable_storage_component(entity_id, "lap_start_time"), { value_int = 0 }, function(comp)
+			local lap_time = GameGetFrameNum() - comp.value_int
+			ComponentSetValue2(get_variable_storage_component(stopwatch_id, "time"), "value_int", lap_time)
+		end)
+	end
 end
 
 local wand_id = find_the_wand_held(player)

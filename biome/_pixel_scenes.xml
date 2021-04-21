@@ -240,6 +240,8 @@
 		<PixelScene pos_x="15104" pos_y="1792" just_load_an_entity="data/entities/buildings/eyespot_c.xml" />
 		<PixelScene pos_x="-1280" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_d.xml" />
 		<PixelScene pos_x="13056" pos_y="9984" just_load_an_entity="data/entities/buildings/eyespot_e.xml" />
+		
+		<PixelScene pos_x="14941" pos_y="18654" just_load_an_entity="data/entities/buildings/maggotspot.xml" />
 
 	</mBufferedPixelScenes>
 </PixelScenes>
