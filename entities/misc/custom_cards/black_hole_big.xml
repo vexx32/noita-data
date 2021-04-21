@@ -2,7 +2,7 @@
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 
-			image_file="data/ui_gfx/gun_actions/black_hole.png" 
+			image_file="data/ui_gfx/gun_actions/black_hole_big.png" 
 			>
 		</SpriteComponent>
 		

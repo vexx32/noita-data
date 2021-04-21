@@ -21,10 +21,11 @@
     material="glass_box2d"
   ></PhysicsImageShapeComponent>
 
+  <!-- used to be 7,2 -->
   <HotspotComponent 
     _tags="spray_pos" 
-    offset.x="7" 
-    offset.y="2" >
+    offset.x="0" 
+    offset.y="0" >
   </HotspotComponent>
   
   <PhysicsThrowableComponent
@@ -146,17 +147,18 @@
 
   <ItemComponent
     _tags="enabled_in_world"
-    item_name="Potion"
+    item_name="$item_potion"
     max_child_items="0"
     is_pickable="1"
     is_equipable_forced="1"
     ui_sprite="data/items_gfx/beer_bottle.png"
-    ui_description="Equip and throw."
+    ui_description="$item_description_potion"
     preferred_inventory="QUICK"
   ></ItemComponent>
 
+
   <AbilityComponent
-    ui_name="$item_potion_with_material"
+    ui_name="$item_kaljapullo"
     throw_as_item="1"
   ><gun_config
     deck_capacity="0"
@@ -165,9 +167,10 @@
 
   <UIInfoComponent
     _tags="enabled_in_world"
-    name="Watering can">
+    name="$item_kaljapullo">
   </UIInfoComponent>
   
+  <!-- 
   <SpriteParticleEmitterComponent
 		sprite_file="data/particles/ray.xml" 
 		delay="0"
@@ -197,6 +200,7 @@
 		randomize_velocity.max_y="30"
 		velocity_always_away_from_center="1">
 	</SpriteParticleEmitterComponent>
+  -->
 
   <AudioLoopComponent
     _tags="sound_spray,enabled_in_world,enabled_in_hand"

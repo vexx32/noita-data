@@ -1,4 +1,4 @@
-<Entity tags="enemy,hittable,teleportable_NOT,boss_dragon,homing_target,glue_NOT,necrobot_NOT,polymorphable_NOT" name="$animal_maggot_tiny">
+<Entity tags="enemy,hittable,teleportable_NOT,homing_target,glue_NOT,necrobot_NOT,polymorphable_NOT,touchmagic_immunity" name="$animal_maggot_tiny">
 	
 	<StreamingKeepAliveComponent/>
 	
@@ -14,8 +14,8 @@
 		speed="8"
 		speed_hunt="10"
 		acceleration="0.55"
-		direction_adjust_speed="0.01"
-		direction_adjust_speed_hunt="0.02"
+		direction_adjust_speed="0.006"
+		direction_adjust_speed_hunt="0.01"
 		tail_gravity="30"
 		part_distance="56"
 		ground_check_offset="40"
@@ -27,7 +27,7 @@
 		random_target_box_radius="400"
 		new_hunt_target_check_every="240"
 		new_random_target_check_every="240"
-		ragdoll_filename="data/ragdolls/dragon/filenames.txt"
+		ragdoll_filename="data/ragdolls/maggot_tiny/filenames.txt"
 		jump_cam_shake="20" 
 		projectile_1=""
 		projectile_2=""
@@ -269,6 +269,11 @@
 		g="149"
 		b="0" >
 	</LightComponent>
+	
+	<LuaComponent
+		script_death="data/entities/animals/maggot_tiny/death.lua"
+		>
+	</LuaComponent>
 
 	<HealthBarComponent>
 	</HealthBarComponent>
@@ -657,5 +662,49 @@
 			>
 		</LuaComponent>
 	</Entity>
+	
+	<Entity>
+		<InheritTransformComponent />
+		
+	    <GameEffectComponent 
+	        effect="STUN_PROTECTION_FREEZE"
+	        frames="-1"
+	    >
+		</GameEffectComponent >
+	</Entity>
+	
+	<Entity>
+		<InheritTransformComponent />
+		
+	    <GameEffectComponent 
+	        effect="STUN_PROTECTION_ELECTRICITY"
+	        frames="-1"
+	    >
+		</GameEffectComponent >
+	</Entity>
+	
+	<AreaDamageComponent
+		aabb_min.x="-36" 
+		aabb_min.y="-36" 
+		aabb_max.x="36" 
+		aabb_max.y="36" 
+		damage_per_frame="0.24"
+		update_every_n_frame="4"
+		entities_with_tag="mortal"
+		damage_type="DAMAGE_CURSE"
+		>
+	</AreaDamageComponent>
+	
+	<VariableStorageComponent
+		name="shooter_part"
+		value_int="1"
+		>
+	</VariableStorageComponent>
+	
+	<LuaComponent
+		script_source_file="data/entities/animals/maggot_tiny/shot.lua"
+		execute_every_n_frame="20"
+		>
+	</LuaComponent>
 
 </Entity>

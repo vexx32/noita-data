@@ -92,6 +92,18 @@
 	</HitboxComponent>
 	
 	<DamageNearbyEntitiesComponent
+		radius="16"
+		time_between_damaging="40"
+		damage_min="0.16"
+		damage_max="0.32"
+		target_tag="player_unit"
+		damage_description="$ethereal_damage"
+		damage_type="DAMAGE_CURSE"
+		ragdoll_fx="NONE"
+		>
+	</DamageNearbyEntitiesComponent>
+	
+	<DamageNearbyEntitiesComponent
 		_tags="magic_eye"
 		radius="16"
 		time_between_damaging="3"
@@ -165,8 +177,8 @@
 		x_vel_max="2"
 		y_vel_min="-2"
 		y_vel_max="2"
-		count_min="1"
-		count_max="3"
+		count_min="3"
+		count_max="6"
 		is_trail="0"
 		fade_based_on_lifetime="1"
 		lifetime_min="0.8"

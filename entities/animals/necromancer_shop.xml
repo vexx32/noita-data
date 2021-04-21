@@ -28,6 +28,7 @@
 			blood_sprite_directional=""
 			blood_sprite_large=""
 			fire_probability_of_ignition="0"
+			air_needed="0"
 			>
 			<damage_multipliers
 				explosion="0.2"

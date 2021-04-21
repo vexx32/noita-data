@@ -29,8 +29,8 @@ if ( state == 0 ) then
 else
 	EntitySetComponentsWithTagEnabled( entity_id, "boss_robot_spell_eater", true )
 	if ( player_id ~= nil ) then
-		local px,py = EntityGetTransform( player_id )
-		ax,ay = x - px, y - py
+		local plx,ply = EntityGetTransform( player_id )
+		ax,ay = x - plx, y - ply
 		local a = math.pi - math.atan2( ay, ax )
 
 		EntitySetTransform( entity_id, x, y, 0 - a )

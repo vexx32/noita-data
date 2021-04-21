@@ -5,11 +5,15 @@ local x, y = EntityGetTransform( entity_id )
 
 local targets = EntityGetInRadiusWithTag( x, y, 20, "small_friend" )
 if ( #targets > 0 ) then
-	local t = targets[1]
-	EntityKill( t )
-	
-	EntitySetComponentsWithTagEnabled( entity_id, "driver", true )
-	EntitySetComponentsWithTagEnabled( entity_id, "driverless", false )
-	
-	EntityAddTag( entity_id, "final_secret_orb" )
+	for i,t in ipairs( targets ) do
+		if ( EntityHasTag( t, "polymorphed") == false ) then
+			EntityKill( t )
+			
+			EntitySetComponentsWithTagEnabled( entity_id, "driver", true )
+			EntitySetComponentsWithTagEnabled( entity_id, "driverless", false )
+			
+			EntityAddTag( entity_id, "small_friend" )
+			return
+		end
+	end
 end

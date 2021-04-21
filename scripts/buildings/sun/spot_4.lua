@@ -2,7 +2,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
-local radius = 46
+local radius = 56
 
 local t_w = EntityGetInRadiusWithTag( x, y, radius, "waterstone" )
 local t_f = EntityGetInRadiusWithTag( x, y, radius, "brimstone" )

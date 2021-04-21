@@ -125,10 +125,15 @@ function init( entity_id )
 
 	-- load the material from VariableStorageComponent
 	
-	local year,month,day = GameGetDateAndTimeLocal()
+	local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+
 	
 	if ((( month == 5 ) and ( day == 1 )) or (( month == 4 ) and ( day == 30 ))) and (Random( 0, 100 ) <= 20) then
 		potion_material = "sima"
+	end
+
+	if( jussi and Random( 0, 100 ) <= 9 ) then
+		potion_material = "juhannussima"
 	end
 
 	if ( month == 2 and day == 14 and Random( 0, 100 ) <= 8) then

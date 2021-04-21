@@ -70,7 +70,7 @@ g_small_enemies =
 		prob   		= 0.06,
 		min_count	= 1,
 		max_count	= 3,    
-		entity 	= "data/entities/animals/wizard_wither.xml"
+		entity 	= "data/entities/animals/wizard_homing.xml"
 	},
 }
 

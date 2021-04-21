@@ -105,10 +105,10 @@ function parallel_check( x, y )
 			rx = Random( 0, 512 )
 			
 			if ( r >= 98 ) then
-				print( "ALCHEMIST AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
+				-- print( "ALCHEMIST AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
 				EntityLoad( "data/entities/animals/parallel/alchemist/parallel_alchemist.xml", x + rx, y )
 			elseif ( r >= 96 ) then
-				print( "TENTACLE AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
+				-- print( "TENTACLE AT " .. tostring( x + rx ) .. ", " .. tostring( y ) )
 				EntityLoad( "data/entities/animals/parallel/tentacles/parallel_tentacles.xml", x + rx, y )
 			end
 		end

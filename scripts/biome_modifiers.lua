@@ -851,6 +851,102 @@ biome_modifiers =
 			})
 		end,
 	},
+	{
+		id = "OMINOUS",
+		ui_description="$biomemodifierdesc_sundark",
+		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/ominous.png",
+		probability = 0.2,
+		requires_flag = "darkmoon_is_darksun",
+		does_not_apply_to_biome={"mountain_hall","coalmine","excavationsite"},
+		action = function( biome_name, biome_filename )
+			--BiomeObjectSetValue( biome_filename, "modifiers", "projectile_drag_coeff", 1.1 )
+		end,
+		inject_spawns_action = function()
+			inject_spawn( g_props, 0.3, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/ominous_orb.xml",
+			})
+			inject_spawn( g_props2, 0.4, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/ominous_orb.xml",
+			})
+			inject_spawn( g_lamp, 0.2, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/ominous_orb.xml",
+			})
+		end,
+	},
+	{
+		id = "INVISIBILITY",
+		ui_description="$biomemodifierdesc_invisibility",
+		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/invisible.png",
+		probability=0.1,
+		does_not_apply_to_biome={"mountain_hall","coalmine"},
+		action = function( biome_name, biome_filename )	end,
+		inject_spawns_action = function()
+			inject_spawn( g_small_enemies, 0.1, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/invisibility_machine.xml",
+			})
+			inject_spawn( g_props, 0.5, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/invisibility_machine.xml",
+			})
+			inject_spawn( g_props2, 0.5, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/buildings/biome_modifiers/invisibility_machine.xml",
+			})
+		end,
+	},
+	{
+		id = "WORMY",
+		ui_description="$biomemodifierdesc_wormy",
+		ui_decoration_file="data/ui_gfx/decorations_biome_modifier/wormy.png",
+		probability=0.05,
+		does_not_apply_to_biome={"mountain_hall","coalmine"},
+		action = function( biome_name, biome_filename )	end,
+		inject_spawns_action = function()
+			inject_spawn( g_small_enemies, 0.2, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 2,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/animals/worm_tiny.xml",
+			})
+			inject_spawn( g_small_enemies, 0.08, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/animals/worm.xml",
+			})
+			inject_spawn( g_big_enemies, 0.08, {
+				prob   		= 0,
+				min_count	= 1,
+				max_count	= 1,
+				offset_y 	= 0,    
+				entity 	=  "data/entities/animals/worm_big.xml",
+			})
+		end,
+	},
 	--[[-- dry - fire spreads faster than usually, fire demons spawn
 	-- bouncy - projectiles and physics bodies bounce from surfaces
 	-- corrupted - corruption grows everywhere. corruption = some sort of easily destructible static material

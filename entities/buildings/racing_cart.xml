@@ -1,4 +1,4 @@
-<Entity tags="racing_cart">
+<Entity tags="racing_cart,moon_energy">
 	<!-- jetpack spray -->
 	<Base file="data/entities/base_jetpack_nosound.xml">
 		<ParticleEmitterComponent
@@ -40,6 +40,7 @@
 	
 	<SpriteComponent
 		_tags="driver"
+		_enabled="0"
 		image_file="data/projectiles_gfx/racing_cart_killer.xml"
 		has_special_scale="1"
 		special_scale_x="1"

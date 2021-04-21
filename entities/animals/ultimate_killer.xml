@@ -1,4 +1,4 @@
-<Entity name="$animal_ultimate_killer" tags="final_secret_orb,small_friend" >
+<Entity name="$animal_ultimate_killer" tags="small_friend" >
   
 	<Base file="data/entities/base_enemy_flying.xml" >
 		<AnimalAIComponent  

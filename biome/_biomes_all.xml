@@ -672,6 +672,12 @@
 		height_index="13"
 		color="ff1133F1" >
 	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/lake_deep.xml" 
+		height_index="13"
+		color="ff1158f1" >
+	</Biome>
 
 	<Biome 
 		biome_filename="data/biome/lake_blood.xml" 
@@ -965,5 +971,47 @@
 		biome_filename="data/biome/roboroom.xml" 
 		height_index="0"
 		color="ff9d893d" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/scale.xml" 
+		height_index="0"
+		color="ffeba500" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_1.xml" 
+		height_index="0"
+		color="ff6db55a" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_2.xml" 
+		height_index="0"
+		color="ff6db55b" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_3.xml" 
+		height_index="0"
+		color="ff6db55c" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_4.xml" 
+		height_index="0"
+		color="ff6db55d" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_5.xml" 
+		height_index="0"
+		color="ff6db55e" >
+	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/friend_6.xml" 
+		height_index="0"
+		color="ff6db55f" >
 	</Biome>
 </BiomesToLoad>

@@ -252,8 +252,10 @@ function drop_random_reward( x, y, entity_id, rand_x, rand_y, set_rnd_  )
 			-------------------------------------------------------------------
 			rnd = Random(0,100)
 			
-			if (rnd <= 89) then
+			if (rnd <= 88) then
 				table.insert( entities, { "data/entities/items/pickup/heart.xml" } )
+			elseif (rnd <= 89) then
+				table.insert( entities, { "data/entities/misc/effect_heart.xml" } )
 			elseif (rnd <= 99) then
 				table.insert( entities, { "data/entities/items/pickup/heart_better.xml" } )
 			else

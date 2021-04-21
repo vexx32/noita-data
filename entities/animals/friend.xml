@@ -1,4 +1,4 @@
-<Entity name="$animal_friend" tags="final_secret_orb" >
+<Entity name="$animal_friend" tags="big_friend" >
   
 	<Base file="data/entities/base_enemy_flying.xml" >
 		<AnimalAIComponent  
@@ -23,7 +23,7 @@
 			attack_ranged_entity_file="data/entities/projectiles/ultimate_killer_megabomb.xml"
 			attack_ranged_frames_between="20"
 			attack_ranged_offset_x="0"
-			attack_ranged_offset_y="0"
+			attack_ranged_offset_y="-10"
 			aggressiveness_min="1"
 			aggressiveness_max="80"
 			>
@@ -37,8 +37,14 @@
 			fire_probability_of_ignition="5"
     		blood_spray_material="blood"
 			ragdoll_offset_y="1"
-			air_needed="0"
+			air_needed="1"
+			healing_particle_effect_entity="data/entities/particles/heal_effect.xml"
+			materials_damage="0"
 			>
+			<damage_multipliers
+				explosion="0.2"
+				 >
+			</damage_multipliers>
 		</DamageModelComponent>
 
 		<SpriteComponent 
@@ -118,10 +124,89 @@
 	</AudioComponent>
 	
 	<LuaComponent
-		script_death="data/scripts/animals/ultimate_killer_death.lua"
+		script_death="data/scripts/animals/friend_death.lua"
 		execute_every_n_frame="-1"
 		remove_after_executed="0"
 		>
 	</LuaComponent>
+	
+	<LuaComponent
+		script_source_file="data/scripts/animals/friend_status.lua"
+		execute_every_n_frame="5"
+		>
+	</LuaComponent>
+	
+	<LuaComponent
+		script_shot="data/scripts/animals/friend_shot.lua"
+		execute_every_n_frame="-1"
+		>
+	</LuaComponent>
+	
+	<VariableStorageComponent
+		name="friend_status"
+		value_int="0"
+		>
+	</VariableStorageComponent>
+	
+	<Entity>
+		<InheritTransformComponent>
+			<Transform position.x="0" position.y="-12" ></Transform>
+		</InheritTransformComponent>
+			
+		<CellEaterComponent
+			radius="12" 
+			eat_probability="100">
+		</CellEaterComponent>
+	</Entity>
+	
+	<SpriteComponent 
+		_tags="health_bar_back,ui,invincible"
+		_enabled="0" 
+		transform_offset.x="0"
+		transform_offset.y="-26"
+		alpha="1" 
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_back.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="12" 
+		offset_y="42" 
+		rect_animation="" 
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		visible="1" 
+		emissive="1"
+		never_ragdollify_on_death="1"
+		z_index="-9000" >
+	</SpriteComponent>
+	
+	<SpriteComponent 
+		_tags="health_bar,ui,invincible" 
+		_enabled="0" 
+		alpha="1" 
+		transform_offset.x="0"
+		transform_offset.y="-26"
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_front.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="12" 
+		offset_y="42" 
+		rect_animation="" 
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		visible="1" 
+		emissive="1"
+		never_ragdollify_on_death="1"
+		z_index="-9000" >
+	</SpriteComponent>
+	
+	<HealthBarComponent>
+	</HealthBarComponent>
+	
 </Entity>
 

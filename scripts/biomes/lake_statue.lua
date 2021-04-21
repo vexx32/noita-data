@@ -70,6 +70,125 @@ g_small_animals =
 	},
 }
 
+g_hiisi =
+{
+	total_prob = 0,
+	{
+		prob   		= 0.3,
+		min_count	= 2,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/miner_weak.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 2,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/miner_fire.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/shotgunner.xml"
+	},
+		{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	= {
+			"data/entities/animals/drunk/miner.xml",
+			"data/entities/animals/drunk/miner.xml",
+			"data/entities/animals/drunk/shotgunner.xml",
+		}
+	},
+	{
+		prob   		= 0.12,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/shotgunner.xml"
+	},
+		{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entities 	= {
+			"data/entities/animals/drunk/scavenger_grenade.xml",
+			"data/entities/animals/drunk/scavenger_smg.xml",
+		}
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entities 	= {
+			{
+				min_count	= 1,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 0,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		}
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/sniper.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/miner.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/shotgunner.xml"
+	},
+	{
+		prob   		= 0.04,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/scavenger_heal.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drone_lasership.xml"
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/scavenger_leader.xml",
+		ngpluslevel = 2,
+	},
+	{
+		prob   		= 0.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	= {
+			{
+				min_count	= 0,
+				max_count	= 1,
+				entity	= "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 1,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		}
+	},
+}
+
 g_lamp =
 {
 	total_prob = 0,
@@ -94,7 +213,6 @@ function spawn_items( x, y ) end
 function spawn_props( x, y ) end
 function spawn_props2( x, y ) end
 function spawn_props3( x, y ) end
-function spawn_lamp( x, y ) end
 function spawn_chest( x, y ) end
 function spawn_blood( x, y ) end
 function load_pixel_scene( x, y ) end
@@ -111,6 +229,19 @@ function init( x, y, w, h )
 	--LoadPixelScene( "data/biome_impl/lake_statue.png", "", x, y, "", true )
 end
 
+function is_jussi() 
+	local year, month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+	return jussi
+end
+
+function spawn_lamp( x, y ) 
+	-- jussi
+	if( is_jussi() ) then
+		LoadPixelScene( "data/biome_impl/fire_5x5.png", "", x-2, y-2 )
+	end
+end
+
+
 function load_building_stash( x, y )
 end
 
@@ -125,6 +256,16 @@ end
 
 function spawn_small_animals(x,y)
 	spawn( g_small_animals, x, y )
+	-- if Jussi
+	if( is_jussi() ) then
+		spawn( g_hiisi, x, y )
+		-- effect_drunk_forever.xml
+		local r = ProceduralRandom( x-11.631, y+10.2257 )
+		if( r >= 0.1 ) then EntityLoad( "data/entities/items/easter/beer_bottle.xml", x, y ) end
+		if( r >= 0.3 ) then EntityLoad( "data/entities/items/easter/beer_bottle.xml", x+5, y-5 ) end
+		if( r >= 0.6 ) then EntityLoad( "data/entities/items/easter/beer_bottle.xml", x+10, y-10 ) end
+		if( r >= 0.9 ) then EntityLoad( "data/entities/items/easter/beer_bottle.xml", x+15, y-15 ) end
+	end
 end
 
 function spawn_fish(x, y)

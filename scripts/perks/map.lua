@@ -54,9 +54,20 @@ if ( timercomp ~= nil ) and ( entity_id ~= player_id ) then
 			elseif ( timer > 82 ) then
 				map_sprite = "spatial_map_2"
 			end
+			
+			SetRandomSeed( 24, 32 )
+			local fspot = Random( 1, 6 )
+			local fspots = { { 249, 153 }, { 261, 201 }, { 153, 141 }, { 87, 135 }, { 81, 219 }, { 153, 237 } }
+			
+			local fdata = fspots[fspot]
+			local fx, fy = fdata[1],fdata[2]
+			
+			fx = fx - 420 * 0.5
+			fy = fy - 288 * 0.5
 
 			GameCreateSpriteForXFrames( "data/particles/" .. map_sprite .. ".png", mi_x, mi_y, true, 0, 0, 1, true )
 			GameCreateSpriteForXFrames( "data/particles/spatial_map_player.png", pi_x, pi_y, true, 0, 0, 1, true )
+			GameCreateSpriteForXFrames( "data/particles/spatial_map_friend.png", mi_x + fx, mi_y + fy, true, 0, 0, 1, true )
 			
 			if ( pw ~= 0 ) then
 				local name = "spatial_map_pw_"

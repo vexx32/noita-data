@@ -5,7 +5,7 @@ local x, y = EntityGetTransform( entity_id )
 
 SetRandomSeed( x, y * entity_id )
 
-local opts = { "wizard_tele", "wizard_dark", "wizard_poly", "wizard_wither", "wizard_weaken", "wizard_twitchy", "wizard_neutral", "wizard_hearty", "wizard_returner" }
+local opts = { "wizard_tele", "wizard_dark", "wizard_poly", "wizard_homing", "wizard_weaken", "wizard_twitchy", "wizard_neutral", "wizard_hearty", "wizard_returner" }
 
 for i=1,1 do
 	local rnd = Random( 1, #opts )

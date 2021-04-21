@@ -118,7 +118,7 @@ wizard_swapper
 wizard_neutral
 wizard_returner
 wizard_hearty
-wizard_wither
+wizard_homing
 wizard_weaken
 wizard_twitchy
 enlightened_alchemist
@@ -146,6 +146,7 @@ bloodcrystal_physics
 skycrystal_physics
 chest_mimic
 chest_leggy
+dark_alchemist
 necromancer_shop
 necromancer_super
 boss_dragon

@@ -402,6 +402,33 @@ actions =
 		end,
 	},
 	{
+		id          = "BLACK_HOLE_GIGA",
+		name 		= "$action_black_hole_giga",
+		description = "$actiondesc_black_hole_giga",
+		sprite 		= "data/ui_gfx/gun_actions/black_hole_giga.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/black_hole_big_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/deck/black_hole_giga.xml"},
+		spawn_requires_flag = "card_unlocked_black_hole",
+		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		spawn_level                       = "10", -- BLACK_HOLE_BIG
+		spawn_probability                 = "1", -- BLACK_HOLE_BIG
+		price = 600,
+		mana = 500,
+		max_uses    = 6,
+		never_unlimited = true,
+		custom_xml_file = "data/entities/misc/custom_cards/black_hole_giga.xml",
+		action 		= function()
+			local black_holes = EntityGetWithTag( "black_hole_giga" )
+			
+			if ( #black_holes < 3 ) then
+				add_projectile("data/entities/projectiles/deck/black_hole_giga.xml")
+				c.fire_rate_wait = c.fire_rate_wait + 120
+				current_reload_time = current_reload_time + 100
+				c.screenshake = c.screenshake + 40
+			end
+		end,
+	},
+	{
 		id          = "TENTACLE_PORTAL",
 		name 		= "$action_tentacle_portal",
 		description = "$actiondesc_tentacle_portal",
@@ -2009,6 +2036,29 @@ actions =
 		end,
 	},
 	{
+		id          = "BOMB_HOLY_GIGA",
+		name 		= "$action_bomb_holy_giga",
+		description = "$actiondesc_bomb_holy_giga",
+		spawn_requires_flag = "card_unlocked_bomb_holy_giga",
+		sprite 		= "data/ui_gfx/gun_actions/bomb_holy_giga.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/bomb_unidentified.png",
+		related_projectiles	= {"data/entities/projectiles/bomb_holy_giga.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "10", -- BOMB_HOLY
+		spawn_probability                 = "1", -- BOMB_HOLY
+		price = 600,
+		mana = 600, 
+		max_uses    = 2,
+		never_unlimited = true,
+		custom_xml_file = "data/entities/misc/custom_cards/bomb_holy_giga.xml",
+		action 		= function()
+			add_projectile("data/entities/projectiles/bomb_holy_giga.xml")
+			current_reload_time = current_reload_time + 160
+			shot_effects.recoil_knockback = shot_effects.recoil_knockback + 100.0
+			c.fire_rate_wait = c.fire_rate_wait + 120
+		end,
+	},
+	{
 		id          = "PROPANE_TANK",
 		name 		= "$action_propane_tank",
 		description = "$actiondesc_propane_tank",
@@ -3382,7 +3432,7 @@ actions =
 		ai_never_uses = true,
 		type 		= ACTION_TYPE_PROJECTILE,
 		spawn_level                       = "10", -- NUKE
-		spawn_probability                 = "0.2", -- NUKE
+		spawn_probability                 = "1", -- NUKE
 		price = 800,
 		mana = 500,
 		max_uses    = 1,
@@ -4280,6 +4330,43 @@ actions =
 					else
 						c.damage_projectile_add = c.damage_projectile_add + ( damage / 55 )
 					end
+				end
+			end
+			
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "BLOOD_TO_POWER",
+		name 		= "$action_blood_to_power",
+		description = "$actiondesc_blood_to_power",
+		sprite 		= "data/ui_gfx/gun_actions/blood_punch.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/spread_reduce_unidentified.png",
+		related_extra_entities = { "data/entities/particles/blood_sparks.xml" },
+		type 		= ACTION_TYPE_UTILITY,
+		spawn_level                       = "2,5,6,10", -- MANA_REDUCE
+		spawn_probability                 = "0.2,0.8,0.1,0.5", -- MANA_REDUCE
+		price = 150,
+		mana = 20,
+		custom_xml_file = "data/entities/misc/custom_cards/blood_to_power.xml",
+		action 		= function()
+			local entity_id = GetUpdatedEntityID()
+			
+			local dcomp = EntityGetFirstComponent( entity_id, "DamageModelComponent" )
+			
+			if ( dcomp ~= nil ) then
+				local hp = ComponentGetValue2( dcomp, "hp" )
+				local damage = math.min( hp * 0.44, 960 )
+				local self_damage = hp * 0.2
+				
+				if ( hp >= 0.4 ) and ( self_damage > 0.2 ) then
+					c.extra_entities = c.extra_entities .. "data/entities/particles/blood_sparks.xml,"
+					
+					EntityInflictDamage( entity_id, self_damage, "DAMAGE_CURSE", "$action_blood_to_power", "NONE", 0, 0, entity_id )
+					
+					-- print( "Spent " .. tostring( damage ) )
+					
+					c.damage_projectile_add = c.damage_projectile_add + damage
 				end
 			end
 			

@@ -699,6 +699,11 @@ function remove_all_perks()
 				if ( c ~= nil ) then
 					for a,child in ipairs( c ) do
 						if EntityHasTag( child, "perk_entity" ) then
+							local ikcomp = EntityGetFirstComponent( child, "IKLimbWalkerComponent" )
+							if ( ikcomp ~= nil ) then
+								ComponentSetValue2( ikcomp, "affect_flying", false )
+							end
+							
 							EntityKill( child )
 						end
 					end

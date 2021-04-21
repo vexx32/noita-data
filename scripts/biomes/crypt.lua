@@ -122,7 +122,7 @@ g_small_enemies =
 		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    
-		entity 	= "data/entities/animals/wizard_wither.xml",
+		entity 	= "data/entities/animals/wizard_homing.xml",
 		ngpluslevel = 1,
 	},
 	{

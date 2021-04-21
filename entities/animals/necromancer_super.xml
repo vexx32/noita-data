@@ -27,6 +27,7 @@
 			fire_probability_of_ignition="0"
 			critical_damage_resistance="0.5"
 			minimum_knockback_force="10000"
+			air_needed="0"
 			>
 			<damage_multipliers
 				projectile="0.4"

@@ -8,7 +8,8 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 	-- do some kind of an effect? throw some particles into the air?
 	EntityLoad( "data/entities/items/pickup/heart_better.xml", pos_x - 24, pos_y )
 	EntityLoad( "data/entities/items/pickup/heart_fullhp.xml", pos_x + 24, pos_y )
-	EntityLoad( "data/entities/items/wand_unshuffle_10.xml", pos_x, pos_y )
+	EntityLoad( "data/entities/items/wand_unshuffle_10.xml", pos_x - 16, pos_y )
+	EntityLoad( "data/entities/items/wand_unshuffle_10.xml", pos_x + 16, pos_y )
 	
 	AddFlagPersistent( "miniboss_maggot" )
 	AddFlagPersistent( "card_unlocked_maggot" )

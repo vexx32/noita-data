@@ -32,5 +32,6 @@ function spawn_orb(x, y)
 end
 
 function spawn_essence(x, y)
-	EntityLoad( "data/entities/items/pickup/musicstone.xml", x, y )
+	EntityLoad( "data/entities/items/pickup/musicstone.xml", x - 24, y )
+	EntityLoad( "data/entities/items/books/book_moon.xml", x + 24, y - 16 )
 end

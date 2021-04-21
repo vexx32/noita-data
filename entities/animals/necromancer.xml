@@ -30,6 +30,7 @@
 			blood_sprite_directional=""
 			fire_probability_of_ignition="4"
 			blood_sprite_large=""
+			air_needed="0"
 			>
 		</DamageModelComponent>
 

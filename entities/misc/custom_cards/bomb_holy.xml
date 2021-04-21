@@ -31,7 +31,7 @@
 
 	<AbilityComponent
 		_tags="enabled_in_hand"
-		ui_name="Holy Bomb"
+		ui_name="action_bomb_holy"
 		entity_file="data/entities/projectiles/bomb_holy.xml"
 		rotate_hand_amount="0.05"
 		throw_as_item="1" 
