@@ -1,4 +1,4 @@
-<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT" name="$animal_boss_pit">
+<Entity tags="enemy,mortal,human,hittable,homing_target,teleportable_NOT,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT,curse_NOT" name="$animal_boss_pit">
 	
 	<!-- art - main body ---------------------- -->
 

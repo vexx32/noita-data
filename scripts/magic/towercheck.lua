@@ -15,10 +15,12 @@ if ( #test2 > 0 ) then
 	
 	EntityKill( entity_id )
 elseif ( #test4 > 0 ) then
-	CreateItemActionEntity( "HOLY_BOMB_GIGA", x, y )
+	CreateItemActionEntity( "BOMB_HOLY_GIGA", x, y )
 	AddFlagPersistent( "card_unlocked_bomb_holy_giga" )
 	EntityLoad( "data/entities/projectiles/deck/nuke.xml", x, y )
 	AddFlagPersistent( "final_secret_orb2" )
+	
+	EntityKill( entity_id )
 elseif GameHasFlagRun( "greed_curse" ) and ( GameHasFlagRun( "greed_curse_gone" ) == false ) and ( #test3 > 0 ) then
 	CreateItemActionEntity( "DIVIDE_10", x, y )
 	AddFlagPersistent( "card_unlocked_divide" )

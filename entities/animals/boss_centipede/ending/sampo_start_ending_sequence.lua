@@ -100,7 +100,8 @@ if( doing_newgame_plus == false ) then
 		AddFlagPersistent( "secret_amulet" )
 		
 		if ( orb_count > 33 ) then
-			AddFlagPersistent( "secret_amulet_gem" )
+			-- AddFlagPersistent( "secret_amulet_gem" )
+			GameAddFlagRun( "ending_game_completed_with_34_orbs" )
 		end
 		
 		local distance_from_mountain = 1000

@@ -45,6 +45,74 @@ if( GlobalsGetValue("MISC_CHEST_RAIN") ~= "1" ) then
 	end
 end
 
+if( GlobalsGetValue("MISC_SUN_EFFECT") ~= "1" ) then
+	local suns = EntityGetWithTag( "sunrock" )
+	
+	if ( #suns > 0 ) then
+		local collected = false
+		local players = EntityGetWithTag( "player_unit" )
+		
+		if ( #players > 0 ) then
+			local player_id = players[1]
+			local px, py = EntityGetTransform( player_id )
+			
+			for i,chest_id in ipairs(suns) do
+				local cx, cy = EntityGetTransform( chest_id )
+				
+				local distance = math.abs( x - cx ) + math.abs( y - cy )
+			
+				if ( distance < 48 ) then
+					EntityLoad("data/entities/items/pickup/sun/newsun.xml", cx, cy )
+					EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", cx, cy)
+					collected = true
+					EntityKill( chest_id )
+				end
+			end
+		end
+		
+		if collected then
+			GlobalsSetValue("MISC_SUN_EFFECT", "1" )			
+			GamePrintImportant( "$log_altar_magic", "" )
+			
+			AddFlagPersistent( "misc_sun_effect" )
+		end
+	end
+end
+
+if( GlobalsGetValue("MISC_DARKSUN_EFFECT") ~= "1" ) then
+	local suns = EntityGetWithTag( "darksunrock" )
+	
+	if ( #suns > 0 ) then
+		local collected = false
+		local players = EntityGetWithTag( "player_unit" )
+		
+		if ( #players > 0 ) then
+			local player_id = players[1]
+			local px, py = EntityGetTransform( player_id )
+			
+			for i,chest_id in ipairs(suns) do
+				local cx, cy = EntityGetTransform( chest_id )
+				
+				local distance = math.abs( x - cx ) + math.abs( y - cy )
+			
+				if ( distance < 48 ) then
+					EntityLoad("data/entities/items/pickup/sun/newsun_dark.xml", cx, cy )
+					EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", cx, cy)
+					collected = true
+					EntityKill( chest_id )
+				end
+			end
+		end
+		
+		if collected then
+			GlobalsSetValue("MISC_DARKSUN_EFFECT", "1" )			
+			GamePrintImportant( "$log_altar_magic", "" )
+			
+			AddFlagPersistent( "misc_darksun_effect" )
+		end
+	end
+end
+
 local greed_crystals = EntityGetWithTag( "greed_crystal" )
 if ( #greed_crystals > 0 ) then
 	local collected = false

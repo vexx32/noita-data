@@ -151,7 +151,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 6,
-		max_in_perk_pool = 4,
+		max_in_perk_pool = 1,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			GameAddFlagRun( "exploding_gold" )
 		end,
@@ -169,7 +169,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/hover_boost.png",
 		game_effect = "HOVER_BOOST",
 		stackable = STACKABLE_YES,
-		max_in_perk_pool = 2,
+		max_in_perk_pool = 1,
 	},
 	{
 		id = "FASTER_LEVITATION",
@@ -179,7 +179,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/faster_levitation.png",
 		game_effect = "FASTER_LEVITATION",
 		stackable = STACKABLE_YES,
-		max_in_perk_pool = 2,
+		max_in_perk_pool = 1,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
 			if( models ~= nil ) then
@@ -206,6 +206,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/movement_faster.png",
 		game_effect = "MOVEMENT_FASTER",
 		stackable = STACKABLE_YES,
+		max_in_perk_pool = 2,
 		usable_by_enemies = true,
 	},
 	--[[
@@ -341,6 +342,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/strong_kick.png",
 		perk_icon = "data/items_gfx/perks/strong_kick.png",
 		stackable = STACKABLE_YES,
+		max_in_perk_pool = 1,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local models = EntityGetComponent( entity_who_picked, "KickComponent" )
 			if( models ~= nil ) then
@@ -433,7 +435,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 8,
-		max_in_perk_pool = 4,
+		max_in_perk_pool = 2,
 		usable_by_enemies = true,
 	},
 	{
@@ -489,7 +491,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/global_gore.png",
 		game_effect = "GLOBAL_GORE",
 		stackable = STACKABLE_YES,
-		max_in_perk_pool = 2,
+		max_in_perk_pool = 1,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			add_halo_level(entity_who_picked, -1)
 		end,
@@ -511,6 +513,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/levitation_trail.png",
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			EntityAddComponent( entity_who_picked, "LuaComponent", 
 			{
@@ -574,6 +577,7 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/extra_hp.png",
 		perk_icon = "data/items_gfx/perks/extra_hp.png",
 		stackable = STACKABLE_YES,
+		max_in_perk_pool = 3,
 		one_off_effect = true,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
@@ -638,7 +642,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/hearts_more_extra_hp.png",
 		stackable = STACKABLE_YES,
 		stackable_maximum = 9,
-		max_in_perk_pool = 5,
+		max_in_perk_pool = 2,
 		stackable_is_rare = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			-- TODO heart containers give 2x more health
@@ -666,7 +670,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 2,
-		max_in_perk_pool = 3,
+		max_in_perk_pool = 2,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local damagemodels = EntityGetComponent( entity_who_picked, "DamageModelComponent" )
@@ -725,6 +729,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/low_hp_damage_boost.png",
 		game_effect = "LOW_HP_DAMAGE_BOOST",
 		stackable = STACKABLE_YES,
+		max_in_perk_pool = 2,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
 		func_enemy = function( entity_perk_item, entity_who_picked )
@@ -835,6 +840,15 @@ perk_list =
 				
 			end
 		end,
+	},
+	{
+		id = "IRON_STOMACH",
+		ui_name = "$perk_iron_stomach",
+		ui_description = "$perkdesc_iron_stomach",
+		ui_icon = "data/ui_gfx/perk_icons/iron_stomach.png",
+		perk_icon = "data/items_gfx/perks/iron_stomach.png",
+		game_effect = "IRON_STOMACH",
+		stackable = STACKABLE_NO,
 	},
 	{
 		id = "WAND_RADAR",
@@ -1391,7 +1405,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_how_often_reappears = 10,
 		stackable_maximum = 5,
-		max_in_perk_pool = 5,
+		max_in_perk_pool = 2,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
@@ -1593,7 +1607,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/attack_foot.png",
 		stackable = STACKABLE_YES,
 		stackable_maximum = 3,
-		max_in_perk_pool = 3,
+		max_in_perk_pool = 2,
 		stackable_is_rare = true,
 		usable_by_enemies = true,
 		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
@@ -1759,7 +1773,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 5,
-		max_in_perk_pool = 3,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			if ( pickup_count <= 1 ) then
 				EntityAddComponent( entity_who_picked, "LuaComponent", 
@@ -1964,7 +1978,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 3,
-		max_in_perk_pool = 3,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/risky_critical.xml", x, y )
@@ -1981,7 +1995,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 3,
-		max_in_perk_pool = 3,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/fungal_disease.xml", x, y )
@@ -2073,6 +2087,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/orbit.png",
 		usable_by_enemies = true,
 		stackable = STACKABLE_YES,
+		max_in_perk_pool = 2,
 		stackable_how_often_reappears = 10,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 		
@@ -2147,7 +2162,7 @@ perk_list =
 		usable_by_enemies = true,
 		stackable = STACKABLE_YES,
 		stackable_maximum = 5,
-		max_in_perk_pool = 4,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/hungry_ghost.xml", x, y )
@@ -2204,7 +2219,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/homunculus.png",
 		stackable = STACKABLE_YES,
 		stackable_maximum = 10,
-		max_in_perk_pool = 4,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local x,y = EntityGetTransform( entity_who_picked )
 			local child_id = EntityLoad( "data/entities/misc/perks/homunculus_spawner.xml", x, y )
@@ -2270,7 +2285,7 @@ perk_list =
 		usable_by_enemies = true,
 		stackable = STACKABLE_YES,
 		stackable_maximum = 6,
-		max_in_perk_pool = 2,
+		max_in_perk_pool = 1,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local distance_full = tonumber( GlobalsGetValue( "PERK_ATTRACT_ITEMS_RANGE", "0" ) )
 			
@@ -2793,7 +2808,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/extra_perk.png",
 		stackable = STACKABLE_YES,
 		stackable_maximum = 5,
-		max_in_perk_pool = 5,
+		max_in_perk_pool = 3,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			-- TODO - this should work - seems to work
 			local perk_count = tonumber( GlobalsGetValue( "TEMPLE_PERK_COUNT", "3" ) )
@@ -2814,7 +2829,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 6,
-		max_in_perk_pool = 5,
+		max_in_perk_pool = 3,
 		-- when picking up a perk, there's 50% chance less (instead of 100%) of other perks disappearing
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			-- TODO - this should work - seems to work
@@ -2847,7 +2862,7 @@ perk_list =
 		perk_icon = "data/items_gfx/perks/extra_shop_item.png",
 		stackable = STACKABLE_YES,
 		stackable_maximum = 5,
-		max_in_perk_pool = 5,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			local shop_item_count = tonumber( GlobalsGetValue( "TEMPLE_SHOP_ITEM_COUNT", "5" ) )
 			shop_item_count = math.min( shop_item_count + 1, 10 )
@@ -3016,7 +3031,7 @@ perk_list =
 		stackable = STACKABLE_YES,
 		stackable_is_rare = true,
 		stackable_maximum = 5,
-		max_in_perk_pool = 4,
+		max_in_perk_pool = 2,
 		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
 			local x,y = EntityGetTransform( entity_who_picked )
 			

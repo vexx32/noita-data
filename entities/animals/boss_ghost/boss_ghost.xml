@@ -1,4 +1,4 @@
-<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT" name="$animal_boss_ghost">	
+<Entity tags="enemy,teleportable_NOT,hittable,mortal,boss,touchmagic_immunity,music_energy_100,miniboss,polymorphable_NOT,necrobot_NOT,glue_NOT,curse_NOT" name="$animal_boss_ghost">	
 	<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
 
 	<!-- art - main body ---------------------- -->

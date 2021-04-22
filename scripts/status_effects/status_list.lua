@@ -43,6 +43,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/radioactive.png",
 		protects_from_fire=true,
 		effect_entity="data/entities/misc/effect_radioactive.xml",
+		is_harmful=true,
 	},
 	{
 		id="ALCOHOLIC",
@@ -50,6 +51,7 @@ status_effects =
 		ui_description="$statusdesc_alcoholic",
 		ui_icon="data/ui_gfx/status_indicators/alcoholic.png",
 		effect_entity="data/entities/misc/effect_drunk.xml",
+		is_harmful=true,
 	},
 	{
 		id="POISONED",
@@ -57,6 +59,7 @@ status_effects =
 		ui_description="$statusdesc_poisoned",
 		ui_icon="data/ui_gfx/status_indicators/poisoned.png",
 		effect_entity="data/entities/misc/effect_poison.xml",
+		is_harmful=true,
 	},
 	{
 		id="TELEPORTATION",
@@ -64,6 +67,7 @@ status_effects =
 		ui_description="$statusdesc_teleportation",
 		ui_icon="data/ui_gfx/status_indicators/teleportation.png",
 		effect_entity="data/entities/misc/effect_teleportation.xml",
+		is_harmful=true,
 	},
 	{
 		id="UNSTABLE_TELEPORTATION",
@@ -71,6 +75,7 @@ status_effects =
 		ui_description="$statusdesc_teleportation",
 		ui_icon="data/ui_gfx/status_indicators/teleportation.png",
 		effect_entity="data/entities/misc/effect_unstable_teleportation.xml",
+		is_harmful=true,
 	},
 	{
 		id="HP_REGENERATION",
@@ -86,6 +91,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/polymorph.png",
 		remove_cells_that_cause_when_activated=true,
 		effect_entity="data/entities/misc/effect_polymorph.xml",
+		is_harmful=true,
 	},
 	{
 		id="POLYMORPH_RANDOM",
@@ -94,6 +100,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/polymorph_random.png",
 		remove_cells_that_cause_when_activated=true,
 		effect_entity="data/entities/misc/effect_polymorph_random.xml",
+		is_harmful=true,
 	},
 	{
 		id="POLYMORPH_UNSTABLE",
@@ -102,6 +109,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/polymorph_random.png",
 		remove_cells_that_cause_when_activated=true,
 		effect_entity="data/entities/misc/effect_polymorph_unstable.xml",
+		is_harmful=true,
 	},
 	{
 		id="BERSERK",
@@ -109,6 +117,7 @@ status_effects =
 		ui_description="$statusdesc_berserk",
 		ui_icon="data/ui_gfx/status_indicators/berserk.png",
 		effect_entity="data/entities/misc/effect_berserk.xml",
+		is_harmful=true,
 	},
 	{
 		id="CHARM",
@@ -130,6 +139,7 @@ status_effects =
 		ui_description="$statusdesc_on_fire",
 		ui_icon="data/ui_gfx/status_indicators/on_fire.png",
 		effect_entity="",
+		is_harmful=true,
 	},
 	{
 		id="CONFUSION",
@@ -137,6 +147,7 @@ status_effects =
 		ui_description="$statusdesc_confusion",
 		ui_icon="data/ui_gfx/status_indicators/confusion.png",
 		effect_entity="data/entities/misc/effect_confusion.xml",
+		is_harmful=true,
 	},
 	{
 		id="MOVEMENT_FASTER_2X",
@@ -158,6 +169,7 @@ status_effects =
 		ui_description="$statusdesc_worm_attractor",
 		ui_icon="data/ui_gfx/status_indicators/worm_attractor.png",
 		effect_entity="data/entities/misc/effect_worm_attractor.xml",
+		is_harmful=true,
 	},
 	{
 		id="PROTECTION_ALL",
@@ -195,6 +207,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/drunk.png",
 		effect_entity="data/entities/misc/effect_drunk.xml",
 		min_threshold_normalized="0.0",
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_DRUNK",
@@ -203,6 +216,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/drunk.png",
 		effect_entity="data/entities/misc/effect_drunk.xml",
 		min_threshold_normalized="0.25",
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_DRUNK",
@@ -211,6 +225,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/drunk.png",
 		effect_entity="data/entities/misc/effect_drunk_01.xml",
 		min_threshold_normalized="0.75",
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_DRUNK",
@@ -219,7 +234,8 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/drunk.png",
 		effect_entity="data/entities/misc/effect_drunk_01.xml",
 		min_threshold_normalized="1.0",
-		extra_status_00="POISONED"
+		extra_status_00="POISONED",
+		is_harmful=true,
 	},
 	{
 		id="TRIP",
@@ -265,6 +281,7 @@ status_effects =
 		ui_description="$statusdesc_food_poisoning",
 		ui_icon="data/ui_gfx/status_indicators/food_poisoning.png",
 		effect_entity="data/entities/misc/effect_food_poisoning.xml",
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_MOVEMENT_SLOWER",
@@ -272,6 +289,7 @@ status_effects =
 		ui_description="$statusdesc_ingestion_movement_slower",
 		ui_icon="data/ui_gfx/status_indicators/ingestion_movement_slower.png",
 		effect_entity="data/entities/misc/effect_movement_slower.xml",
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_DAMAGE",
@@ -279,6 +297,7 @@ status_effects =
 		ui_description="$statusdesc_ingestion_damage",
 		ui_icon="data/ui_gfx/status_indicators/ingestion_damage.png",
 		-- this status is only used to show the icon to the player
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_EXPLODING",
@@ -286,6 +305,7 @@ status_effects =
 		ui_description="$statusdesc_ingestion_exploding",
 		ui_icon="data/ui_gfx/status_indicators/ingestion_exploding.png",
 		-- this status is only used to show the icon to the player
+		is_harmful=true,
 	},
 	{
 		id="INGESTION_FREEZING",
@@ -293,6 +313,7 @@ status_effects =
 		ui_description="$statusdesc_ingestion_freezing",
 		ui_icon="data/ui_gfx/status_indicators/ingestion_freezing.png",
 		effect_entity="data/entities/misc/effect_internal_ice.xml",
+		is_harmful=true,
 	},
 	{
 		id="FARTS",
@@ -300,6 +321,7 @@ status_effects =
 		ui_description="$statusdesc_farts",
 		ui_icon="data/ui_gfx/status_indicators/farts.png",
 		effect_entity="data/entities/misc/effect_farts.xml",
+		is_harmful=true,
 	},
 	{
 		id="RAINBOW_FARTS",
@@ -314,6 +336,7 @@ status_effects =
 		ui_description="$statusdesc_internal_fire",
 		ui_icon="data/ui_gfx/status_indicators/internal_fire.png",
 		effect_entity="data/entities/misc/effect_internal_fire.xml",
+		is_harmful=true,
 	},
 	{
 		id="CURSE_CLOUD",
@@ -321,6 +344,7 @@ status_effects =
 		ui_description="$statusdesc_curse_cloud_00",
 		ui_icon="data/ui_gfx/status_indicators/curse_cloud.png",
 		effect_entity="data/entities/misc/effect_curse_cloud_00.xml", -- rain
+		is_harmful=true,
 	},
 	{
 		id="CURSE_CLOUD",
@@ -329,6 +353,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/curse_cloud.png",
 		effect_entity="data/entities/misc/effect_curse_cloud_01.xml", -- thunder
 		min_threshold_normalized="0.25",
+		is_harmful=true,
 	},
 	{
 		id="CURSE_CLOUD",
@@ -337,6 +362,7 @@ status_effects =
 		ui_icon="data/ui_gfx/status_indicators/curse_cloud.png",
 		effect_entity="data/entities/misc/effect_curse_cloud_02.xml", -- acid
 		min_threshold_normalized="0.75",
+		is_harmful=true,
 	},
 	{
 		id="PROTECTION_POLYMORPH",

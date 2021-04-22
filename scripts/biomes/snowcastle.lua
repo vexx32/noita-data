@@ -166,6 +166,153 @@ g_small_enemies =
 			},
 		}
 	},
+
+	-- jussi
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entities 	= {
+			"data/entities/animals/drunk/scavenger_grenade.xml",
+			"data/entities/animals/drunk/scavenger_smg.xml",
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entities 	= {
+			{
+				min_count	= 1,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 0,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/sniper.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/miner.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/animals/drunk/shotgunner.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.05,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.01,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.002,
+		min_count	= 1,
+		max_count	= 2,    
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.04,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/scavenger_heal.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 1.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	= {
+			{
+				min_count	= 0,
+				max_count	= 1,
+				entity	= "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 1,
+				max_count	= 2,
+				entity	= "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
 }
 
 ------------ BIG ENEMIES ------------------------------------------------------
@@ -322,6 +469,89 @@ g_big_enemies =
 		entity 	= "data/entities/animals/necrobot_super.xml",
 		ngpluslevel = 3,
 	},
+	-- jussi
+	{
+		prob   		= 2.1,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	=  {
+			"data/entities/animals/drunk/scavenger_leader.xml",
+			{
+				min_count	= 1,
+				max_count 	= 3,
+				entity = "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 1,
+				max_count 	= 3,
+				entity = "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.1,
+		min_count	= 1,
+		max_count	= 1,
+		ngpluslevel	= 1,
+		entities 	=  {
+			"data/entities/animals/drunk/scavenger_leader.xml",
+			{
+				min_count	= 1,
+				max_count 	= 2,
+				entity = "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 1,
+				max_count 	= 2,
+				entity = "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.04,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/scavenger_heal.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.02,
+		min_count	= 1,
+		max_count	= 1,    
+		entities 	=  {
+			"data/entities/animals/drunk/scavenger_clusterbomb.xml",
+			{
+				min_count	= 1,
+				max_count 	= 3,
+				entity = "data/entities/animals/drunk/scavenger_grenade.xml",
+			},
+			{
+				min_count	= 1,
+				max_count 	= 3,
+				entity = "data/entities/animals/drunk/scavenger_smg.xml",
+			},
+			{
+				min_count	= 1,
+				max_count 	= 1,
+				entity = "data/entities/animals/drunk/scavenger_heal.xml",
+			},
+		},
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
 }
 
 ---------- UNIQUE ENCOUNTERS ---------------
@@ -398,6 +628,47 @@ g_unique_enemy2 =
 		max_count	= 1,    
 		entity 	= "data/entities/animals/scavenger_heal.xml"
 	},
+	-- jussi 
+	{
+		prob   		= 2.6,
+		min_count	= 1,
+		max_count	= 3,    
+		entity 	= "data/entities/animals/drunk/scavenger_grenade.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.6,
+		min_count	= 1,
+		max_count	= 3,    
+		entity 	= "data/entities/animals/drunk/scavenger_smg.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.5,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/sniper.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
+	{
+		prob   		= 2.01,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/drunk/scavenger_heal.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
 }
 
 ------------ ITEMS ------------------------------------------------------------
@@ -432,6 +703,16 @@ g_items =
 		max_count	= 1,    
 		entity 	= "data/entities/items/wand_unshuffle_03.xml"
 	},
+	{
+		prob   		= 5,
+		min_count	= 1,
+		max_count	= 3,    		
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	}
 }
 
 g_lamp =
@@ -483,6 +764,16 @@ g_props =
 		offset_y 	= -8,
 		entity 	= "data/entities/props/physics_seamine.xml"
 	},
+	{
+		prob   		= 0.5,
+		min_count	= 1,
+		max_count	= 3,    		
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
+	},
 }
 
 g_props2 =
@@ -508,6 +799,16 @@ g_props2 =
 		max_count	= 3,    
 		offset_y 	= 0,
 		entity 	= "data/entities/props/physics_propane_tank.xml"
+	},
+	{
+		prob   		= 0.5,
+		min_count	= 1,
+		max_count	= 3,    		
+		entity 	= "data/entities/items/easter/beer_bottle.xml",
+		spawn_check = function()
+			local year,month,day,temp1,temp2,temp3,jussi = GameGetDateAndTimeLocal()
+			return jussi
+		end,
 	},
 }
 

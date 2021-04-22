@@ -3,6 +3,8 @@ dofile_once( "data/scripts/lib/utilities.lua" )
 CHANCE_OF_MODIFIER_PER_BIOME = 0.1
 CHANCE_OF_MODIFIER_COALMINE = 0.2
 CHANCE_OF_MODIFIER_EXCAVATIONSITE = 0.15
+CHANCE_OF_MOIST_FUNGICAVE = 0.5
+CHANCE_OF_MOIST_LAKE = 0.75
 
 -- NOTE: at the moment the modifiers aren't serialized. it is assumed the modifiers stay static throughout a single run.
 -- this script re-applies the modifiers every time the game systems are initialized (through init_biome_modifiers() and biome_modifiers_inject_spawns()).
@@ -1204,7 +1206,9 @@ function get_modifier_mappings()
 		end
 	end
 
-	set_modifier_if_has_none( "fungicave", "MOIST" )
+	if( random_next( rnd, 0.0, 1.0 ) < CHANCE_OF_MOIST_FUNGICAVE ) then
+		set_modifier_if_has_none( "fungicave", "MOIST" )
+	end
 
 	-- force custom fog of war in these biomes
 	result["wandcave"] = biome_modifier_fog_of_war_clear_at_player
@@ -1228,7 +1232,10 @@ function get_modifier_mappings()
 	set_modifier_if_has_none( "pyramid_right", "HOT" )
 
 	set_modifier_if_has_none( "watercave", "MOIST" )
-	set_modifier_if_has_none( "lake_statue", "MOIST" )
+
+	if( random_next( rnd, 0.0, 1.0 ) < CHANCE_OF_MOIST_LAKE ) then
+		set_modifier_if_has_none( "lake_statue", "MOIST" )
+	end
 
 	return result
 end

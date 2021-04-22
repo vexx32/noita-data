@@ -1,4 +1,4 @@
-<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT,glue_NOT">
+<Entity name="$animal_boss_alchemist" tags="touchmagic_immunity,polymorphable_NOT,boss,miniboss,music_energy_100,necrobot_NOT,glue_NOT,curse_NOT">
   
 	<Base file="data/entities/base_enemy_basic.xml" >
 		<ItemChestComponent level="2" > </ItemChestComponent>

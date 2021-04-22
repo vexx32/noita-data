@@ -1014,4 +1014,10 @@
 		height_index="0"
 		color="ff6db55f" >
 	</Biome>
+	
+	<Biome 
+		biome_filename="data/biome/teleroom.xml" 
+		height_index="0"
+		color="ff5f8fab" >
+	</Biome>
 </BiomesToLoad>

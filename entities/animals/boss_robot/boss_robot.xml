@@ -116,7 +116,8 @@
 			projectile="0"
 			explosion="0"
 			electricity="0.8"
-			fire="0" 
+			fire="0"
+			slice="0.6"
 			>
 		</damage_multipliers>
 	</DamageModelComponent>
@@ -337,6 +338,42 @@
 		execute_every_n_frame="40"
 		>
 	</LuaComponent>
+	
+	<LaserEmitterComponent
+		is_emitting="0"
+		laser_angle_add_rad="0"
+		>
+		<laser
+			damage_to_entities="0.8"
+			max_cell_durability_to_destroy="14"
+			damage_to_cells="50000"
+			max_length="240"
+			beam_radius="10.5"
+			hit_particle_chance="20"
+			beam_particle_chance="100"
+			beam_particle_type="spark_red"
+			audio_enabled="1"
+			>
+		</laser>
+	</LaserEmitterComponent>
+	
+	<LaserEmitterComponent
+		is_emitting="0"
+		laser_angle_add_rad="0"
+		>
+		<laser
+			damage_to_entities="0.8"
+			max_cell_durability_to_destroy="14"
+			damage_to_cells="50000"
+			max_length="240"
+			beam_radius="10.5"
+			hit_particle_chance="20"
+			beam_particle_chance="100"
+			beam_particle_type="spark_red"
+			audio_enabled="1"
+			>
+		</laser>
+	</LaserEmitterComponent>
 	
 	<LaserEmitterComponent
 		is_emitting="0"

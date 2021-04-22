@@ -11,6 +11,7 @@ for i,effect in ipairs(status_effects) do
 		effect.effect_entity or "",
 		effect.min_threshold_normalized or 0.0,
 		effect.extra_status_00 or "",
-		effect.effect_permanent or false
+		effect.effect_permanent or false,
+		effect.is_harmful or false
 	)
 end

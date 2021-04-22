@@ -27,7 +27,12 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 		ComponentSetValue2( ac, "attack_ranged_entity_file", "data/entities/projectiles/machinegun_bullet_roboguard_big.xml" )
 	end
 	
-	EntitySetComponentsWithTagEnabled( entity_id, "invincible", true )
+	local c = EntityGetComponent( entity_id, "SpriteComponent", "health_bar" )
+	if ( c ~= nil ) then
+		for i,v in ipairs( c ) do
+			ComponentSetValue2( v, "visible", true )
+		end
+	end
 	
 	for i=count,tcount do
 		if ( c ~= nil ) then
@@ -61,6 +66,8 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )
 			end
+			
+			EntityAddTag( entity_id, "polymorphable_NOT" )
 		elseif ( count == 1 ) then
 			local game_effect_comp = GetGameEffectLoadTo( entity_id, "PROTECTION_FIRE", true )
 			if ( game_effect_comp ~= nil ) then
@@ -71,6 +78,8 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )
 			end
+			
+			EntityAddTag( entity_id, "touchmagic_immunity" )
 		elseif ( count == 2 ) then
 			local game_effect_comp = GetGameEffectLoadTo( entity_id, "PROTECTION_FREEZE", true )
 			if ( game_effect_comp ~= nil ) then
@@ -81,6 +90,8 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )
 			end
+			
+			EntityAddTag( entity_id, "curse_NOT" )
 		end
 		
 		local game_effect_comp = GetGameEffectLoadTo( entity_id, "CRITICAL_HIT_BOOST", true )

@@ -38,7 +38,7 @@
 		  stains_enabled="1" 
 		  stains_radius="35"
 		  background_lightning_count="5" 
-		  max_durability_to_destroy="13" 
+		  max_durability_to_destroy="14" 
       audio_event_name="explosions/holy" 
       >
       </config_explosion>

@@ -157,6 +157,8 @@ boss_ghost
 boss_ghost_polyp
 boss_pit
 boss_robot
+fish_giga
+maggot_tiny
 parallel_tentacles
 minipit
 gate_monster_a

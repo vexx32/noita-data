@@ -84,7 +84,7 @@ function perk_get_spawn_order( ignore_these_ )
 			stackable_count[ perk_name ] = -1
 
 			if( ( perk_data.stackable ~= nil ) and ( perk_data.stackable == true ) ) then
-				local max_perks = Random( 1, 5 )
+				local max_perks = Random( 1, 2 )
 				-- TODO( Petri ): We need a new variable that indicates how many times they can appear in the pool
 				if( perk_data.max_in_perk_pool ~= nil ) then
 					max_perks = Random( 1, perk_data.max_in_perk_pool )

@@ -25,7 +25,7 @@ SetRandomSeed( x + GameGetFrameNum(), y + entity_id )
 if ( varcomp ~= nil ) and ( eatercomp ~= nil ) then
 	state = state + 1
 	
-	local lcomp = EntityGetFirstComponent( entity_id, "LaserEmitterComponent" )
+	local lcomps = EntityGetComponent( entity_id, "LaserEmitterComponent" )
 	
 	if ( state == 2 ) then
 		ComponentSetValue2( eatercomp, "value_int", 0 )
@@ -46,39 +46,48 @@ if ( varcomp ~= nil ) and ( eatercomp ~= nil ) then
 	elseif ( state == 6 ) then
 		ComponentSetValue2( eatercomp, "value_int", 0 )
 		
-		if ( lcomp ~= nil ) then
-			local players = EntityGetWithTag( "player_unit" )
-			local p = players[1]
-			
-			if ( p ~= nil ) then
-				local px,py = EntityGetTransform( p )
+		if ( lcomps ~= nil ) then
+			for a,lcomp in ipairs( lcomps ) do
+				local players = EntityGetWithTag( "player_unit" )
+				local p = players[1]
 				
-				local a = math.atan2( py - y, px - x )
-				ComponentSetValue2( lcomp, "laser_angle_add_rad", a )
+				if ( p ~= nil ) then
+					local px,py = EntityGetTransform( p )
+					
+					local a = math.atan2( py - y, px - x )
+					ComponentSetValue2( lcomp, "laser_angle_add_rad", a )
+					ComponentObjectSetValue2( lcomp, "laser", "beam_radius", 1.5 )
+					ComponentObjectSetValue2( lcomp, "laser", "damage_to_entities", 0 )
+					ComponentObjectSetValue2( lcomp, "laser", "damage_to_cells", 10 )
+					ComponentObjectSetValue2( lcomp, "laser", "max_cell_durability_to_destroy", 2 )
+					ComponentObjectSetValue2( lcomp, "laser", "audio_enabled", false )
+					ComponentSetValue2( lcomp, "is_emitting", true )
+				end
+			end
+		end
+	elseif ( state == 8 ) then
+		if ( lcomps ~= nil ) then
+			for a,lcomp in ipairs( lcomps ) do
+				ComponentObjectSetValue2( lcomp, "laser", "beam_radius", 10.5 )
+				ComponentObjectSetValue2( lcomp, "laser", "damage_to_entities", 0.6 )
+				ComponentObjectSetValue2( lcomp, "laser", "damage_to_cells", 700000 )
+				ComponentObjectSetValue2( lcomp, "laser", "max_cell_durability_to_destroy", 14 )
+				
+				if ( a == 1 ) then
+					ComponentObjectSetValue2( lcomp, "laser", "audio_enabled", true )
+				end
+			end
+		end
+	elseif ( state == 10 ) then
+		if ( lcomps ~= nil ) then
+			for a,lcomp in ipairs( lcomps ) do
+				ComponentSetValue2( lcomp, "is_emitting", false )
 				ComponentObjectSetValue2( lcomp, "laser", "beam_radius", 1.5 )
 				ComponentObjectSetValue2( lcomp, "laser", "damage_to_entities", 0 )
 				ComponentObjectSetValue2( lcomp, "laser", "damage_to_cells", 10 )
 				ComponentObjectSetValue2( lcomp, "laser", "max_cell_durability_to_destroy", 2 )
 				ComponentObjectSetValue2( lcomp, "laser", "audio_enabled", false )
-				ComponentSetValue2( lcomp, "is_emitting", true )
 			end
-		end
-	elseif ( state == 8 ) then
-		if ( lcomp ~= nil ) then
-			ComponentObjectSetValue2( lcomp, "laser", "beam_radius", 6.5 )
-			ComponentObjectSetValue2( lcomp, "laser", "damage_to_entities", 0.8 )
-			ComponentObjectSetValue2( lcomp, "laser", "damage_to_cells", 50000 )
-			ComponentObjectSetValue2( lcomp, "laser", "max_cell_durability_to_destroy", 13 )
-			ComponentObjectSetValue2( lcomp, "laser", "audio_enabled", true )
-		end
-	elseif ( state == 10 ) then
-		if ( lcomp ~= nil ) then
-			ComponentSetValue2( lcomp, "is_emitting", false )
-			ComponentObjectSetValue2( lcomp, "laser", "beam_radius", 1.5 )
-			ComponentObjectSetValue2( lcomp, "laser", "damage_to_entities", 0 )
-			ComponentObjectSetValue2( lcomp, "laser", "damage_to_cells", 10 )
-			ComponentObjectSetValue2( lcomp, "laser", "max_cell_durability_to_destroy", 2 )
-			ComponentObjectSetValue2( lcomp, "laser", "audio_enabled", false )
 		end
 		ComponentSetValue2( eatercomp, "value_int", 1 )
 	elseif ( state == 13 ) then

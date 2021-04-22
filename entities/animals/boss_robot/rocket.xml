@@ -31,7 +31,7 @@
     explosion_dont_damage_shooter="0" 
     on_collision_die="1"
     lifetime="100"
-    damage="3"
+    damage="6"
     velocity_sets_scale="1"
     lifetime_randomness="7"
     ragdoll_force_multiplier="0.04"
@@ -46,7 +46,7 @@
 	knockback_force="2.0"
 	>
 	<damage_by_type
-		fire="1.2"
+		fire="2.2"
 		>
 	</damage_by_type>
     <config_explosion
@@ -62,7 +62,7 @@
 	  explosion_sprite_additive="1"
       hole_enabled="1" 
       ray_energy="100000"
-      damage="2.5"
+      damage="5.5"
       particle_effect="1" 
       damage_mortals="1"
 	  physics_explosion_power.min="0.5" 

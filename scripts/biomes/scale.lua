@@ -26,7 +26,9 @@ function spawn_potions( x, y ) end
 function spawn_wands( x, y ) end
 
 function init( x, y, w, h )
-	if ( HasFlagPersistent( "progress_sun" ) or HasFlagPersistent( "progress_darksun" ) ) then
+	local pw = check_parallel_pos( x )
+	
+	if ( pw == 0 ) and ( HasFlagPersistent( "progress_sun" ) or HasFlagPersistent( "progress_darksun" ) ) then
 		LoadPixelScene( "data/biome_impl/overworld/scale.png", "", x + 100, y + 382, "", true )
 	else
 		LoadPixelScene( "data/biome_impl/overworld/scale_old.png", "", x + 100, y + 382, "", true )
@@ -49,7 +51,7 @@ function spawn_rock2(x, y)
 end
 
 function spawn_prize(x, y)
-	if ( HasFlagPersistent( "progress_sun" ) and HasFlagPersistent( "progress_darksun" ) ) then
+	if ( HasFlagPersistent( "progress_sun" ) and HasFlagPersistent( "progress_darksun" ) ) and ( HasFlagPersistent( "card_unlocked_black_hole" ) == false ) then
 		CreateItemActionEntity( "BLACK_HOLE_GIGA", x, y )
 	end
 end
