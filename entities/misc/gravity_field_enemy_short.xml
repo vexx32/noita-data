@@ -52,6 +52,16 @@
 		is_emitting="1" >
 	</ParticleEmitterComponent>
 	
+	<UIIconComponent
+		name="$streamingevent_gravity_player"
+		description="$streamingeventdesc_gravity_player"
+		icon_sprite_file="data/ui_gfx/status_indicators/gravity_field.png"
+		is_perk="0"
+		display_above_head="0"
+		display_in_hud="1"
+		>
+	</UIIconComponent>
+	
 	<Base file="data/entities/projectiles/deck/base_field.xml">
 		<SpriteComponent 
 			image_file="data/particles/area_indicator_072_purple_dark.png"

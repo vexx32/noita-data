@@ -25,6 +25,7 @@
     ragdoll_fx_on_collision="BLOOD_SPRAY"
 	die_on_liquid_collision="1"
     lifetime="20"
+    friendly_fire="1"
     ground_penetration_coeff="1.5"
     velocity_sets_scale="1"
 	velocity_sets_scale_coeff="2"

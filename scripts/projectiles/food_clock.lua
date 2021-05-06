@@ -15,7 +15,13 @@ if ( comp2 ~= nil ) then
 			local count = ComponentGetValue2( comp, "ingestion_size" ) - math.floor( count_max * 0.6 )
 			local percent = math.max( count, 0 ) / count_max
 			
-			-- print( tostring( damage_add * percent ) )
+			food_clock_fn = function( x ) if( x < 10 ) then return x else return ( 9.549 + ( math.log( 1+ (x-9)/9 ) * 10 ) ) end end
+
+			if ( percent > 1.0 ) then
+				-- percent = 1.0 + math.log( percent )
+				-- up to 10(ish) it's linear, after the it's a log
+				percent = food_clock_fn( percent )
+			end
 			
 			local currdamage = ComponentGetValue2( comp2, "damage" )
 			local healing = ComponentObjectGetValue2( comp2, "damage_by_type", "healing" )

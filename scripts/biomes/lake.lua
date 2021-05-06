@@ -9,6 +9,7 @@ RegisterSpawnFunction( 0xffb27600, "spawn_bunker" )
 RegisterSpawnFunction( 0xff390000, "spawn_alchemist" )
 RegisterSpawnFunction( 0xffffeedd, "init" )
 RegisterSpawnFunction( 0xFF5078C8, "spawn_rainbow_card")
+RegisterSpawnFunction( 0xff235a15, "spawn_music_machine" )
 
 ------------ SMALL ENEMIES ----------------------------------------------------
 
@@ -248,4 +249,8 @@ end
 
 function spawn_rainbow_card( x, y )
 	CreateItemActionEntity( "RAINBOW_TRAIL", x, y )
+end
+
+function spawn_music_machine( x, y )
+	EntityLoad( "data/entities/props/music_machines/music_machine_02.xml", x, y )
 end

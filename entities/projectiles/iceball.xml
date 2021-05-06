@@ -1,5 +1,5 @@
 <Entity 
-  name="$projectile_default" tags="projectile_player"
+  name="$projectile_default"
    >
 
 	<Base file="data/entities/base_projectile.xml" >
@@ -14,8 +14,8 @@
     _enabled="1" 
   	lob_min="0.8"
   	lob_max="1.0"
-  	speed_min="160"
-  	speed_max="170"
+  	speed_min="220"
+  	speed_max="240"
     die_on_low_velocity="1"
     on_death_explode="1"
     on_death_gfx_leave_sprite="0" 
@@ -35,7 +35,7 @@
 	physics_impulse_coeff="2800"
 	>
 	<damage_by_type
-		ice="0.25"
+		ice="0.35"
 		>
 	</damage_by_type>
     <config_explosion
@@ -44,7 +44,7 @@
       explosion_radius="15" 
       explosion_sprite="data/particles/explosion_040_poof_blue.xml" 
       explosion_sprite_lifetime="0" 
-      create_cell_probability="100" 
+      create_cell_probability="50" 
       create_cell_material="blood_cold" 
       hole_destroy_liquid="0"
 	  load_this_entity="data/entities/particles/particle_explosion/main_blue_small.xml"
@@ -322,12 +322,12 @@
 
   <AudioComponent
       file="data/audio/Desktop/projectiles.bank"
-      event_root="player_projectiles/bullet_fire_heavy">
+      event_root="projectiles/icethrower">
   </AudioComponent>
   
 	<VariableStorageComponent
 		name="projectile_file"
-		value_string="data/entities/projectiles/deck/iceball.xml"
+		value_string="data/entities/projectiles/iceball.xml"
 		>
 	</VariableStorageComponent>
 

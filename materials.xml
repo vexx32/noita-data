@@ -12442,6 +12442,28 @@
 	color="ff968800" >
     </Graphics>
   </CellDataChild>
+  
+  <CellDataChild
+  	_parent="aluminium"
+  	_inherit_reactions="1"
+  	name="metal_prop_low_restitution" 
+	ui_name="$mat_metal_prop"
+	tags="[box2d],[corrodible],[alchemy],[meltable_metal_generic],[solid],[earth]"
+	platform_type="1"
+	solid_static_type="0"
+	solid_collide_with_self="1"
+	burnable="0"
+	hp="200000"
+	wang_color="ff9a8f00"
+	electrical_conductivity="1"
+	solid_restitution="0.1"
+	audio_physics_material_wall="metalwall"
+	audio_physics_material_solid="metalhollow"  >
+  	<Graphics
+	texture_file="data/materials_gfx/steel.png"
+	color="ff968800" >
+    </Graphics>
+  </CellDataChild>
 
   <CellDataChild
   	_parent="aluminium"

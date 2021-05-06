@@ -2,7 +2,7 @@
 filename="data/entities/animals/boss_fish/eye.png"
 offset_x="25"
 offset_y="36" 
-default_animation="opened"
+default_animation="closed"
 >
 
  <!-- stand -->

@@ -161,7 +161,7 @@
 	
 	<SpriteComponent 
 		_tags="health_bar_back,ui,invincible"
-		_enabled="0" 
+		_enabled="1" 
 		transform_offset.x="0"
 		transform_offset.y="12"
 		alpha="1" 
@@ -184,7 +184,7 @@
 	
 	<SpriteComponent 
 		_tags="health_bar,ui,invincible" 
-		_enabled="0" 
+		_enabled="1" 
 		alpha="1" 
 		transform_offset.x="0"
 		transform_offset.y="12"
@@ -207,6 +207,10 @@
 	
 	<HealthBarComponent>
 	</HealthBarComponent>
+	
+	<VariableStorageComponent
+		_tags="no_gold_drop">
+	</VariableStorageComponent>
 	
 </Entity>
 

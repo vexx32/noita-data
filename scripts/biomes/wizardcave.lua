@@ -55,6 +55,12 @@ g_small_enemies =
 		entity 	= "data/entities/animals/thundermage.xml"
 	},
 	{
+		prob   		= 0.05,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/icemage.xml"
+	},
+	{
 		prob   		= 0.1,
 		min_count	= 1,
 		max_count	= 1,    

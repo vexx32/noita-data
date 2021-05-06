@@ -7,6 +7,7 @@ RegisterSpawnFunction( 0xff33934c, "spawn_shopitem" )
 RegisterSpawnFunction( 0xffd0d0b4, "spawn_treasure" )
 RegisterSpawnFunction( 0xff41704d, "spawn_specialshop" )
 RegisterSpawnFunction( 0xffffeedd, "init" )
+RegisterSpawnFunction( 0xff235a15, "spawn_music_machine" )
 
 ------------ SMALL ENEMIES ----------------------------------------------------
 
@@ -270,4 +271,8 @@ end
 
 function spawn_treasure( x, y )
 	EntityLoad( "data/entities/misc/towercheck.xml", x, y )
+end
+
+function spawn_music_machine( x, y )
+	EntityLoad( "data/entities/props/music_machines/music_machine_02.xml", x, y )
 end

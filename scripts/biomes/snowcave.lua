@@ -181,6 +181,12 @@ g_big_enemies =
 		entity 	= "data/entities/animals/giant.xml"
 	},
 	{
+		prob   		= 0.04,
+		min_count	= 1,
+		max_count	= 1,    
+		entity 	= "data/entities/animals/icemage.xml"
+	},
+	{
 		prob   		= 0.2,
 		min_count	= 1,
 		max_count	= 1,    

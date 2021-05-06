@@ -81,8 +81,8 @@
     lifetime_max="0.3"
     create_real_particles="0"
     emit_cosmetic_particles="0"
-    emission_interval_min_frames="2"
-    emission_interval_max_frames="4"
+    emission_interval_min_frames="4"
+    emission_interval_max_frames="6"
     is_emitting="1"
     emitter_lifetime_frames="600" >
   </ParticleEmitterComponent>

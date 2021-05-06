@@ -16,7 +16,7 @@
 		damage_per_frame="0.24"
 		update_every_n_frame="1"
 		entities_with_tag="mortal"
-		death_cause="$ethereal_damage"
+		death_cause="$animal_fish_giga"
 		damage_type="DAMAGE_PROJECTILE"
 		circle_radius="24"
 		>

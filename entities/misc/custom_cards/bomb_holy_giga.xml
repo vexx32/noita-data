@@ -24,15 +24,15 @@
 	<SpriteComponent
 		_tags="enabled_in_hand,not_enabled_in_wand"
 		_enabled="0"
-		offset_x="3.5"
-		offset_y="6"
-    	image_file="data/items_gfx/in_hand/bomb_holy_in_hand.png" >
+		offset_x="11"
+		offset_y="26"
+    	image_file="data/items_gfx/in_hand/bomb_holy_giga_in_hand.png" >
 	</SpriteComponent>
 
 	<AbilityComponent
 		_tags="enabled_in_hand"
 		ui_name="$action_bomb_holy_giga"
-		entity_file="data/entities/projectiles/bomb_holy.xml"
+		entity_file="data/entities/projectiles/bomb_holy_giga.xml"
 		rotate_hand_amount="0.05"
 		throw_as_item="1" 
 		simulate_throw_as_item="1"

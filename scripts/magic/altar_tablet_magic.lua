@@ -61,7 +61,7 @@ if( GlobalsGetValue("MISC_SUN_EFFECT") ~= "1" ) then
 				
 				local distance = math.abs( x - cx ) + math.abs( y - cy )
 			
-				if ( distance < 48 ) then
+				if ( distance < 72 ) then
 					EntityLoad("data/entities/items/pickup/sun/newsun.xml", cx, cy )
 					EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", cx, cy)
 					collected = true
@@ -95,7 +95,7 @@ if( GlobalsGetValue("MISC_DARKSUN_EFFECT") ~= "1" ) then
 				
 				local distance = math.abs( x - cx ) + math.abs( y - cy )
 			
-				if ( distance < 48 ) then
+				if ( distance < 72 ) then
 					EntityLoad("data/entities/items/pickup/sun/newsun_dark.xml", cx, cy )
 					EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", cx, cy)
 					collected = true
@@ -127,7 +127,7 @@ if ( #greed_crystals > 0 ) then
 			
 			local distance = math.abs( x - cx ) + math.abs( y - cy )
 		
-			if ( distance < 48 ) then
+			if ( distance < 64 ) then
 				if( GlobalsGetValue("MISC_GREED_RAIN") ~= "1" ) then
 					local eid = EntityLoad("data/entities/misc/greed_curse/greed_rain.xml", px, py)
 					EntityAddChild( player_id, eid )
@@ -164,7 +164,7 @@ if ( #worm_crystals > 0 ) then
 			
 			local distance = math.abs( x - cx ) + math.abs( y - cy )
 		
-			if ( distance < 48 ) then
+			if ( distance < 64 ) then
 				local eid = EntityLoad("data/entities/misc/worm_rain.xml", px, py)
 				EntityAddChild( player_id, eid )
 				collected = true
@@ -186,7 +186,7 @@ if ( #hand_statues > 0 ) then
 	for _,statue_id in ipairs(hand_statues) do
 		local cx, cy = EntityGetTransform( statue_id )
 		
-		if ( get_distance(x, y, cx, cy) < 48 ) then
+		if ( get_distance(x, y, cx, cy) < 64 ) then
 			collected = true
 			-- spawn bots with monk arms in a circle formation
 			local count = 12
@@ -230,7 +230,7 @@ if ( #tablets > 0 ) then
 		if in_world then
 			local distance = math.abs(x - tx) + math.abs(y - ty)
 		
-			if ( distance < 48 ) then
+			if ( distance < 56 ) then
 				EntityLoad("data/entities/particles/image_emitters/chest_effect.xml", tx, ty)
 				EntityConvertToMaterial( tablet_id, "gold")
 				collected = true

@@ -174,7 +174,6 @@
 		<PixelScene pos_x="34447" pos_y="-300" just_load_an_entity="data/entities/props/music_machines/music_machine_01.xml" />
 		<PixelScene pos_x="-38257" pos_y="-300" just_load_an_entity="data/entities/props/music_machines/music_machine_01.xml" />
 		
-		<PixelScene pos_x="-12186" pos_y="-481" just_load_an_entity="data/entities/props/music_machines/music_machine_02.xml" />
 		<PixelScene pos_x="24166" pos_y="-421" just_load_an_entity="data/entities/props/music_machines/music_machine_02.xml" />
 		<PixelScene pos_x="-48538" pos_y="-421" just_load_an_entity="data/entities/props/music_machines/music_machine_02.xml" />
 		

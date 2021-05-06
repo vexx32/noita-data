@@ -183,6 +183,10 @@ local enemies = {
 		probability = 0.1,
 	},
 	{
+		file = "data/entities/animals/firemage_weak.xml",
+		probability = 0.1,
+	},
+	{
 		file = "data/entities/animals/scorpion.xml",
 		probability = 2.0,
 	},

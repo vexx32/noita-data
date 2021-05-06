@@ -134,8 +134,14 @@
 	</HotspotComponent>
 	
 	<LuaComponent
-		script_source_file="data/scripts/animals/limit_projectiles.lua"
-		execute_every_n_frame="80"
+		script_shot="data/scripts/animals/limit_sausages.lua"
+		execute_every_n_frame="-1"
 		>
 	</LuaComponent>
+	
+	<VariableStorageComponent
+		name="sausage_max"
+		value_int="0"
+		>
+	</VariableStorageComponent>
 </Entity>

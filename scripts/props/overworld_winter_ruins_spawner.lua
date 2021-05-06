@@ -116,6 +116,10 @@ local enemies = {
 		file = "data/entities/animals/iceskull.xml",
 		probability = 0.1,
 	},
+	{
+		file = "data/entities/animals/icemage.xml",
+		probability = 0.1,
+	},
 }
 
 -- pick base

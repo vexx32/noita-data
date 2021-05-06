@@ -6,6 +6,7 @@ dofile_once("data/scripts/biome_scripts.lua")
 RegisterSpawnFunction( 0xff33934c, "spawn_shopitem" )
 RegisterSpawnFunction( 0xffd0d0b4, "spawn_treasure" )
 RegisterSpawnFunction( 0xff41704d, "spawn_specialshop" )
+RegisterSpawnFunction( 0xff235a15, "spawn_music_machine" )
 RegisterSpawnFunction( 0xffffeedd, "init" )
 
 ------------ SMALL ENEMIES ----------------------------------------------------
@@ -77,7 +78,7 @@ g_big_enemies =
 		prob   		= 0.2,
 		min_count	= 1,
 		max_count	= 1,
-		entity 	= "data/entities/animals/thundermage.xml"
+		entity 	= "data/entities/animals/icemage.xml"
 	},
 	{
 		prob   		= 0.15,
@@ -396,4 +397,8 @@ end
 
 function spawn_treasure( x, y )
 	EntityLoad( "data/entities/misc/towercheck.xml", x, y )
+end
+
+function spawn_music_machine( x, y )
+	EntityLoad( "data/entities/props/music_machines/music_machine_02.xml", x, y )
 end

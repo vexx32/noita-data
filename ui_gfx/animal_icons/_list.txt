@@ -108,6 +108,7 @@ iceskull
 thunderskull
 firemage_weak
 firemage
+icemage
 thundermage
 thundermage_big
 barfer

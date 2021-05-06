@@ -2974,14 +2974,15 @@ perk_list =
 		ui_icon = "data/ui_gfx/perk_icons/mana_from_kills.png",
 		perk_icon = "data/items_gfx/perks/mana_from_kills.png",
 		stackable = STACKABLE_NO,
-		func = function( entity_perk_item, entity_who_picked, item_name )
-			
-			EntityAddComponent( entity_who_picked, "LuaComponent", 
-			{
-				_tags = "perk_component",
-				script_source_file = "data/scripts/perks/mana_from_kills.lua",
-				execute_every_n_frame = "20",
-			} )
+		func = function( entity_perk_item, entity_who_picked, item_name, pickup_count )
+			if ( pickup_count <= 1 ) then
+				EntityAddComponent( entity_who_picked, "LuaComponent", 
+				{
+					_tags = "perk_component",
+					script_source_file = "data/scripts/perks/mana_from_kills.lua",
+					execute_every_n_frame = "20",
+				} )
+			end
 		end,
 	},
 	{

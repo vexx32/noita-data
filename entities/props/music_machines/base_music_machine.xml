@@ -11,7 +11,7 @@
 		is_root="1"
 		centered="1" 
 		image_file="data/props_gfx/music_machine.png"
-		material="metal_prop"
+		material="metal_prop_low_restitution"
 	></PhysicsImageShapeComponent>
 
 	<DamageModelComponent 
