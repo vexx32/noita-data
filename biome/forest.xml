@@ -123,18 +123,7 @@
           strength_max="0.40"
           >
         </CaveStructure>
-        <CaveStructure
-          image_file="data/biome_impl/caves/ollipyysi.png"
-          aabb_min_x="5"
-          aabb_max_x="507"
-          aabb_min_y="0"
-          aabb_max_y="5"
-          count_min="0"
-          count_max="0"
-          strength_min="0.65"
-          strength_max="1.00"
-          >
-        </CaveStructure>
+
         <CaveStructure
           image_file="data/biome_impl/caves/brush_03.png"
           aabb_min_x="5"

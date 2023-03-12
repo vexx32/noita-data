@@ -12,7 +12,7 @@ if ( #enemies > 0 ) then
 		
 		local dist = math.abs( x - ex ) + math.abs( y - ey )
 		
-		if ( dist < 300 ) and ( EntityHasTag( enemy_id, "boss" ) == false ) then
+		if ( dist < 300 ) and ( EntityHasTag( enemy_id, "boss" ) == false ) and ( EntityHasTag( enemy_id, "this_is_sampo" ) == false ) then
 			EntityLoad( "data/entities/particles/destruction.xml", ex, ey )
 			EntityLoad( "data/entities/misc/explosion_was_here.xml", ex, ey )
 			EntityKill( enemy_id )

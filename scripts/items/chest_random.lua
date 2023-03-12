@@ -321,6 +321,11 @@ function on_open( entity_item )
 		rand_y = tonumber(ComponentGetValue( position_comp, "pos_y") )
 	end
 
+	-- NOTE( Petri ): x and y are also used in spawn_heart function, which then limits this
+	-- to 0.3 - 0.7 range... thus we'll mix the rand_x, rand_y
+	rand_x = rand_x + 509.7
+	rand_y = rand_y + 683.1
+
 	SetRandomSeed( rand_x, rand_y )
 
 	-- money

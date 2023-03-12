@@ -47,7 +47,7 @@ if ( varcomp ~= nil ) and ( eatercomp ~= nil ) then
 		ComponentSetValue2( eatercomp, "value_int", 0 )
 		
 		if ( lcomps ~= nil ) then
-			for a,lcomp in ipairs( lcomps ) do
+			for k,lcomp in ipairs( lcomps ) do
 				local players = EntityGetWithTag( "player_unit" )
 				local p = players[1]
 				

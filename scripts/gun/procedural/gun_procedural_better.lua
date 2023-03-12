@@ -587,6 +587,7 @@ function generate_gun( cost, level, force_unshuffle )
 	ComponentSetValue( ability_comp, "mana_charge_speed", gun["mana_charge_speed"])
 	ComponentSetValue( ability_comp, "mana_max", gun["mana_max"])
 	ComponentSetValue( ability_comp, "mana", gun["mana_max"])
+	ComponentSetValue( ability_comp, "gun_level", level )
 
 	ComponentSetValue( ability_comp, "item_recoil_recovery_speed", 15.0 ) -- TODO: implement logic for setting this
 

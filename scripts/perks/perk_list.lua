@@ -1,5 +1,6 @@
 dofile_once("data/scripts/gun/procedural/gun_action_utils.lua")
 dofile_once("data/scripts/perks/perk_utilities.lua")
+dofile_once("data/scripts/gun/gun_enums.lua")
 
 STACKABLE_YES = true
 STACKABLE_NO = false
@@ -52,7 +53,13 @@ perk_list =
 					ComponentSetValue( model, "swim_extra_horizontal_drag", swim_drag_extra )
 				end
 			end
-
+			
+			-- Thanks to Cr4xy
+			local damage_model = EntityGetFirstComponent( entity_who_picked, "DamageModelComponent" )
+			if( damage_model ~= nil ) then
+				local air_max = ComponentGetValue( damage_model, "air_in_lungs_max" )
+				ComponentSetValue( damage_model, "air_in_lungs", air_max )
+			end
 		end,
 		func_remove = function( entity_who_picked )
 			local models = EntityGetComponent( entity_who_picked, "CharacterPlatformingComponent" )
@@ -1040,9 +1047,9 @@ perk_list =
 			if( world_entity_id ~= nil ) then
 				local comp_worldstate = EntityGetFirstComponent( world_entity_id, "WorldStateComponent" )
 				if( comp_worldstate ~= nil ) then
-					-- 6% chance of dropping blood money
+					-- 20% chance of dropping blood money
 					local perk_hp_drop_chance = tonumber( ComponentGetValue2( comp_worldstate, "perk_hp_drop_chance" ) )
-					perk_hp_drop_chance = perk_hp_drop_chance + 6
+					perk_hp_drop_chance = perk_hp_drop_chance + 20
 					ComponentSetValue2( comp_worldstate, "perk_hp_drop_chance", perk_hp_drop_chance )
 				end
 			end
@@ -2445,7 +2452,8 @@ perk_list =
 
 			if( r <= 50 ) then
 				local p = Random(1,100)
-				
+
+				-- NOTE( Petri ): 8.3.2023 - The varied types didn't work, because we were missing dofile_once("data/scripts/gun/gun_enums.lua")				
 				--[[
 				Arvi (9.12.2020): DRAW_MANY cards were causing odd behaviour as always casts, so testing a different set of always_cast cards
 				if( p <= 80 ) then

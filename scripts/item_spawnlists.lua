@@ -63,7 +63,8 @@ spawnlists =
 				value_max = 72,
 				load_entity_func = 
 					function( data, x, y )
-						SetRandomSeed( x+425, y-243 )
+						-- NOTE( Petri ): 6.3.2023 - Changed the SetRandomSeed to be different, so that we might get other runestones than edges
+						SetRandomSeed( x+2617.941, y-1229.3581 )
 						local opts = { "laser", "fireball", "lava", "slow", "null", "disc", "metal" }
 						local rnd = Random( 1, #opts )
 						local opt = opts[rnd]

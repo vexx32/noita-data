@@ -27,14 +27,15 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 		ComponentSetValue2( ac, "attack_ranged_entity_file", "data/entities/projectiles/machinegun_bullet_roboguard_big.xml" )
 	end
 	
-	local c = EntityGetComponent( entity_id, "SpriteComponent", "health_bar" )
-	if ( c ~= nil ) then
-		for i,v in ipairs( c ) do
+	local sc = EntityGetComponent( entity_id, "SpriteComponent", "health_bar" )
+	if ( sc ~= nil ) then
+		for i,v in ipairs( sc ) do
 			ComponentSetValue2( v, "visible", true )
 		end
 	end
 	
-	for i=count,tcount do
+	-- NOTE( Petri ): 1.3.2023 - this loop was called one extra time. (credits to Letaali)
+	for i=count,tcount-1 do
 		if ( c ~= nil ) then
 			local max_hp = ComponentGetValue2( c, "max_hp" )
 			max_hp = max_hp * 1.5
@@ -56,7 +57,9 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			ComponentSetValue2( ac, "attack_ranged_frames_between", delay )
 		end
 		
-		if ( count == 0 ) then
+		-- NOTE( Petri ): 28.2.2023 - these if statements used count, instead of i
+		-- Thanks to Letaali for the fix
+		if ( i == 0 ) then
 			local game_effect_comp = GetGameEffectLoadTo( entity_id, "PROTECTION_MELEE", true )
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )
@@ -68,7 +71,7 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			end
 			
 			EntityAddTag( entity_id, "polymorphable_NOT" )
-		elseif ( count == 1 ) then
+		elseif ( i == 1 ) then
 			local game_effect_comp = GetGameEffectLoadTo( entity_id, "PROTECTION_FIRE", true )
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )
@@ -80,7 +83,7 @@ if ( count < tcount ) and ( countcomp ~= 0 ) then
 			end
 			
 			EntityAddTag( entity_id, "touchmagic_immunity" )
-		elseif ( count == 2 ) then
+		elseif ( i == 2 ) then
 			local game_effect_comp = GetGameEffectLoadTo( entity_id, "PROTECTION_FREEZE", true )
 			if ( game_effect_comp ~= nil ) then
 				ComponentSetValue2( game_effect_comp, "frames", -1 )

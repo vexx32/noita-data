@@ -1,7 +1,7 @@
 <Entity tags="shop">
 	  <HitboxComponent 
-	    aabb_min_x="-425" 
-	    aabb_min_y="-92"
+	    aabb_min_x="-495" 
+	    aabb_min_y="-112"
 	    aabb_max_x="490" 
 	    aabb_max_y="145" >
 	  </HitboxComponent>

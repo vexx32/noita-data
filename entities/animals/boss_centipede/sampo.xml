@@ -140,5 +140,27 @@
     	energy_lerp_up_speed_multiplier="5.0"
     	>
     </MusicEnergyAffectorComponent>
+
+
+    <!-- I Must Go, My People Need Me -->
+    <!-- to make this work proper, need to make sure the ghosts don't randomly disappear -->
+    <MaterialAreaCheckerComponent 
+        _tags="enabled_in_world"
+        update_every_x_frame="20"
+        look_for_failure="0"
+        area_aabb.min_x="-2" 
+        area_aabb.min_y="-4"        
+        area_aabb.max_x="2" 
+        area_aabb.max_y="0"     
+        material="magic_liquid_charm"
+        material2="magic_liquid_charm"
+        kill_after_message="0"
+        />
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_material_area_checker_success="data/scripts/animals/wand_charm.lua" >
+    </LuaComponent>
+    <!-- Temporary lolz -->
     
 </Entity>

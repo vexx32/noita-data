@@ -36,6 +36,7 @@ if ( who_shot ~= nil ) and ( comp ~= nil ) then
 			if delete then
 				local amount = ComponentGetValue2( comp2, "damage" ) or 0.1
 				local amount2 = tonumber( ComponentObjectGetValue2( comp2, "config_explosion", "damage" ) ) or 0.1
+
 				amount = amount * 10
 				amount2 = amount2 * 10
 				
@@ -75,7 +76,11 @@ if ( who_shot ~= nil ) and ( comp ~= nil ) then
 	edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)
 		local part_min = math.min( math.floor( totalcount * 0.5 ), 100 )
 		local part_max = math.min( totalcount + 1, 120 )
-		
+
+		-- NOTE( Petri ) 1.3.2023 - this fixes the crash. Thanks Letaali
+		if( part_min < 0 ) then part_min = 0 end
+		if( part_max < 0 ) then part_max = 0 end
+
 		ComponentSetValue2( comp3, "count_min", part_min )
 		ComponentSetValue2( comp3, "count_max", part_max )
 	end)

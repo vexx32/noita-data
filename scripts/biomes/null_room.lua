@@ -27,6 +27,7 @@ function spawn_wands( x, y ) end
 
 function init( x, y, w, h )
 	LoadPixelScene( "data/biome_impl/null_room.png", "data/biome_impl/null_room_visual.png", x, y, "", true )
+	EntityLoad( "data/entities/buildings/null_room/poly_hitbox.xml", x+256, y+256 )
 end
 
 function spawn_orb(x, y)

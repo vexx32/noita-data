@@ -62,8 +62,10 @@ function item_pickup( entity_item, entity_who_picked, name )
 				
 				if ( child_entities ~= nil ) then
 					for i,child_id in ipairs( child_entities ) do
-						EntityHasTag( child_id, "protection" )
-						child_to_remove = child_id
+						-- fix
+						if EntityHasTag( child_id, "protection" ) then
+							child_to_remove = child_id
+						end
 					end
 				end
 				

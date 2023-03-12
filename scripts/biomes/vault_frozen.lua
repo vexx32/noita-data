@@ -94,7 +94,7 @@ g_small_enemies =
 		prob   		= 0.08,
 		min_count	= 1,
 		max_count	= 1,    
-		entity 	= "data/entities/animals/vault/icemage.xml"
+		entity 	= "data/entities/animals/icemage.xml"
 	},
 	{
 		prob   		= 0.1,

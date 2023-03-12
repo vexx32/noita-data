@@ -1,5 +1,6 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
+
 local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform( entity_id )
 
@@ -113,6 +114,26 @@ edit_component( entity_id, "DamageModelComponent", function(comp,vars)
 	ComponentSetValue2( comp, "max_hp", max_hp )
 	ComponentSetValue2( comp, "hp", max_hp )
 end)
+
+
+-- immortal homunculus is angry
+if( max_hp < 0 ) then
+	local game_effect_comp = GetGameEffectLoadTo( entity_id, "BERSERK", true )
+	if game_effect_comp ~= nil then
+		ComponentSetValue( game_effect_comp, "frames", "-1" )
+	end
+
+	edit_component( entity_id, "GenomeDataComponent", function(comp,vars)
+		ComponentSetValue2( comp, "berserk_dont_attack_friends", false )
+		ComponentSetValue2( comp, "food_chain_rank", 666 )
+	end)
+
+	local my_charm = GameGetGameEffect( entity_id, "CHARM" )
+	if( my_charm ) then
+		ComponentSetValue( my_charm, "frames", "60" )	
+	end
+end
+
 
 for i,v in pairs(data) do
 	if ( type( v ) == "table" ) then
